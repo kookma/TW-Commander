@@ -179,6 +179,8 @@ Error message and password prompt
 
 <li>$:/commander/search-result</li>
 
+<li>$:/commander/stylesheet/multicols</li>
+
 <li>$:/commander/stylesheet/tabs</li>
 
 <li>$:/commander/stylesheet/text-area</li>
@@ -232,6 +234,8 @@ Error message and password prompt
 <li>$:/core</li>
 
 <li>$:/DefaultTiddlers</li>
+
+<li>$:/Import</li>
 
 <li>$:/isEncrypted</li>
 
@@ -365,6 +369,8 @@ Error message and password prompt
 
 <li>Beta Release</li>
 
+<li>Beta Releasexx</li>
+
 <li>Change Log</li>
 
 <li>commander/authors</li>
@@ -373,7 +379,9 @@ Error message and password prompt
 
 <li>Design Approach</li>
 
-<li>Home</li>
+<li>How can you help?</li>
+
+<li>Index of TW5 batch operations</li>
 
 <li>Mohammad</li>
 
@@ -389,11 +397,15 @@ Error message and password prompt
 
 <li>Test 4</li>
 
+<li>Tiddler Commander</li>
+
 <li>TiddlerBox: A Tiddler Commander</li>
 
 <li>To be Implemented</li>
 
 <li>ToDos</li>
+
+<li>What are batch operations?</li>
 
 </ul>
 </p>
@@ -804,6 +816,21 @@ Total number of tiddlers: &lt;b&gt;&lt;$count filter=&quot;[search:title[command
 &lt;/$set&gt;
 &lt;/$reveal&gt;
 &lt;/div&gt;</pre>
+</div>
+<div created="20190213143320587" creator="Mohammad" modified="20190213145421122" modifier="Mohammad" tags="$:/tags/Stylesheet" title="$:/commander/stylesheet/multicols" type="text/css">
+<pre>.flex-grid {
+  display: flex;
+}
+.col{
+  flex:1; 
+}
+
+@media (max-width: 800px) {
+  .flex-grid {
+    display: block;
+  }
+}
+</pre>
 </div>
 <div created="20190212114811859" modified="20190212120321419" tags="$:/tags/Stylesheet" title="$:/commander/stylesheet/tabs" type="text/css">
 <pre>.cm-tab-colorful  .tc-tab-buttons button:nth-child(1) {color:red;}
@@ -9981,11 +10008,17 @@ placeholder=&quot;suffix&quot;
     }
 }</pre>
 </div>
-<div created="20190212045537112" creator="Mohammad" modified="20190212150706833" modifier="Mohammad" title="$:/DefaultTiddlers">
+<div created="20190212045537112" creator="Mohammad" modified="20190213142841556" modifier="Mohammad" title="$:/DefaultTiddlers">
 <pre>[[Beta Release]]
 $:/Commander
-ToDos
+[[What are batch operations?]]
 </pre>
+</div>
+<div status="complete" title="$:/Import">
+<pre>The following tiddlers were imported:
+
+# [[Beta Release]]
+# [[TiddlerBox: A Tiddler Commander]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -11028,8 +11061,8 @@ exports.hljs = hljs;</pre>
 <div created="20190212112851652" modified="20190212112854841" title="$:/state/plugin-info--1284604328-$:/plugins/wikilabs/link-to-tabs--1981748087">
 <pre>contents</pre>
 </div>
-<div created="20190212050956480" modified="20190212142336214" title="$:/state/showeditpreview">
-<pre>no</pre>
+<div created="20190212050956480" creator="Mohammad" modified="20190213144808538" modifier="Mohammad" title="$:/state/showeditpreview">
+<pre>yes</pre>
 </div>
 <div created="20190212053007404" modified="20190212142352882" title="$:/state/sidebar">
 <pre>yes</pre>
@@ -11070,8 +11103,8 @@ exports.hljs = hljs;</pre>
 <div created="20190212133040845" creator="Mohammad" modified="20190213033631523" modifier="Mohammad" title="$:/state/tab-926729940">
 <pre>$:/commander/ui/tiddlerops/create-bulk-tiddlers</pre>
 </div>
-<div created="20190212045551130" creator="Mohammad" modified="20190213040307115" modifier="Mohammad" title="$:/state/tab/sidebar--595412856">
-<pre>$:/core/ui/SideBar/Open</pre>
+<div created="20190212045551130" creator="Mohammad" modified="20190213145142690" modifier="Mohammad" title="$:/state/tab/sidebar--595412856">
+<pre>$:/Commander-Tiddlers</pre>
 </div>
 <div created="20190212050923429" modified="20190212122356022" title="$:/state/toggle-view-fields">
 <pre>hide</pre>
@@ -11079,7 +11112,7 @@ exports.hljs = hljs;</pre>
 <div created="20190212150615218" creator="M" modified="20190212150616505" modifier="Mohamma" title="$:/status/UserName">
 <pre>Mohammad</pre>
 </div>
-<div list="[[Beta Release]] $:/Commander ToDos" title="$:/StoryList">
+<div list="[[Beta Release]] $:/Commander [[What are batch operations?]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190212062925887" list="$:/commander/ui/title-operation $:/commander/ui/tag-operation $:/commander/ui/field-operation" modified="20190212062935985" title="$:/tags/Commander">
@@ -11184,7 +11217,7 @@ exports.hljs = hljs;</pre>
     }
 }</pre>
 </div>
-<div created="20190212052443659" modified="20190212145520999" title="$:/temp/search">
+<div created="20190212052443659" creator="Mohammad" modified="20190213145101686" modifier="Mohammad" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.20-prerelease">
@@ -11299,7 +11332,33 @@ exports.hljs = hljs;</pre>
 <div created="20190212045912993" modified="20190212045912993" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div created="20190212150046333" creator="Mohammad" modified="20190212151344204" modifier="Mohammad" tags="warning" title="Beta Release">
+<div created="20190212150046333" creator="Mohammad" modified="20190213145120194" modifier="Mohammad" tags="warning" title="Beta Release">
+<pre> &lt;div class=&quot;flex-grid&quot;&gt;
+  &lt;div class=&quot;coll&quot;&gt;
+  
+* Warning
+** This is a ''beta release''.
+** Do not use on irreplaceable wikis or valuable data which has not been backed-up or which is important to you in any way, shape or form! 
+
+''Please back up your wikis first and use at your own risk!''  
+  
+  &lt;/div&gt;
+  &lt;div class=&quot;colr&quot;&gt;
+
+* [[Tiddler Commander]]
+* [[What are batch operations?]]
+* [[How can you help?]]
+  
+  &lt;/div&gt;
+
+&lt;/div&gt; 
+
+
+
+
+{{commander/readme}}</pre>
+</div>
+<div created="20190212150046333" creator="Mohammad" modified="20190213142148308" modifier="Mohammad" tags="warning" title="Beta Releasexx">
 <pre>;Risk of Loosing Data is very high!
 :This is a beta release. Do not use on your own wikis or valuable data!
 
@@ -11336,8 +11395,29 @@ exports.hljs = hljs;</pre>
 ** component can be added if tagged appropriately
 </pre>
 </div>
-<div created="20190212050033178" modified="20190212050047954" title="Home">
-<pre>{{TiddlerBox: A Tiddler Commander}}</pre>
+<div created="20190213085959339" creator="Mohammad" modified="20190213144435083" modifier="Mohammad" tags="Home" title="How can you help?">
+<pre>''Tiddler Commander needs you!''
+
+I Know Most of These Tools Have Already Been Developed and I aim to collect the best of them.
+
+I appreciate and welcome your comments and opinions on this endeavour and the aims of this project. 
+
+I would also appreciate hearing from any expert Tiddlywikians out there who have ready made solutions to the batch operations I've listed and who are willing to share them 'for the common good'.
+
+If you are interested in this project please get in touch. Any help is appreciated!
+
+Ref: https://groups.google.com/d/msg/tiddlywiki/BxJsWuae-Uc/JapAx4mtBgAJ</pre>
+</div>
+<div created="20190213144635656" creator="Mohammad" modified="20190213144931454" modifier="Mohammad" title="Index of TW5 batch operations">
+<pre>&lt;ol&gt;
+&lt;$list filter=&quot;[search:title[$:/commander/ui/]]&quot;&gt;
+&lt;li&gt;
+&lt;$view field=&quot;caption&quot;&gt;
+&lt;$view field=&quot;title&quot; /&gt;
+&lt;/$view&gt;
+&lt;/li&gt;
+&lt;/$list&gt;
+&lt;/ol&gt;</pre>
 </div>
 <div created="20180823200810883" creator="Mohammad" modified="20180830145820718" modifier="Mohammad" tags="kookma" title="Mohammad" type="application/x-tiddler">
 <pre>&quot;&quot;&quot;
@@ -11392,15 +11472,49 @@ Email : m[dot]rahmani[at]aut[dot]ac[dot]ir
 <div created="20190213035657629" creator="Mohammad" modified="20190213040302404" modifier="Mohammad" tags="xx" title="Test 4">
 <pre></pre>
 </div>
-<div created="20190211154235793" creator="Mohammad" modified="20190212052101962" modifier="Mohammad" tags="zorange task idea" title="TiddlerBox: A Tiddler Commander">
-<pre>Ref: https://groups.google.com/d/msg/tiddlywiki/BxJsWuae-Uc/JapAx4mtBgAJ
+<div created="20190211154235793" creator="Mohammad" modified="20190213145050273" modifier="Mohammad" tags="task idea" title="Tiddler Commander">
+<pre>{{commander/readme}}
 
-I am thinking on having a Tiddler Commander to do the below jobs in one place.
+!!This project aims to provide examples of code which can carry out common batch operations in Tiddlywiki 5.
 
-These are kind of batch (bulk) operation and work on a group of tiddlers or a bunch of tiddlers.
-A bunch of tiddlers is a group of tiddlers meet some criteria like having a common tag, common filed, have a common word in their title, created the same day, or month or year and like that.
+It aims to provide, for educational purposes, working demos and example code with practical explanations for many TW5 batch operations.
 
-!! The bulk operation:
+It aims to produce a utility tool, [[Tiddler Commander|$:/Commander]], which will bring these TW5 batch operations together in one place and which users can put to work on their own wikis.
+
+*[[What are batch operations?]]
+*[[Index of TW5 batch operations]]
+*[[How can you help?]]
+
+I want to keep this project minimal, easy to work with and simple to understand.
+
+''WARNING - High Risk of Data Loss!''
+
+Please be aware that this project is still in beta! Back-up your wiki first!
+
+Do not use any of the tools or examples illustrated here on valuable, irreplaceable or unbacked-up wikis! 
+
+Back-up your wiki before using these tools. They are provided as educational reference examples only and are used at your own risk! 
+</pre>
+</div>
+<div created="20190211154235793" creator="Mohammad" modified="20190212193513810" modifier="Mohammad" tags="zorange task idea" title="TiddlerBox: A Tiddler Commander">
+<pre>!!This project aims to provide examples of code which can carry out common batch operations in Tiddlywiki 5.
+
+It aims to provide, for educational purposes, working demos and example code with practical explanations for many TW5 batch operations.
+
+* Batch operations work on groups of tiddlers at the same time and make changes 'in bulk', in one go.
+
+* Batch operations operate on groups of tiddlers that share matching criteria.
+
+* Tiddlers which share  a common tag, a common field, a word in their title, or were  created on the same day, month or year are all candidates for batch operations.
+
+As a result batch operations can save users a great deal of time but, because they work on several tiddlers at once, the price of a mistake is multiplied!
+
+Please be aware that this project is still in beta. The material provided here is for educational purposes only. 
+Do not use any of the tools or examples illustrated here on valuable, irreplaceable or unbacked-up wikis! 
+
+Back-up your wiki before using these tools. They are provided as reference examples only and are used at your own risk! 
+
+!! Batch operations :
 # Rename tiddlers
 #* use  a totally new name
 #* add a suffix/prefix to title
@@ -11410,17 +11524,22 @@ A bunch of tiddlers is a group of tiddlers meet some criteria like having a comm
 #* Copy tiddlers (make duplicates)
 # Add/remove tag or any field
 # Change/replace the content of any field
-# Create empty bulk tiddlers (for lecture or slideshow) having common properties (tag, field, part of text,...)
-# Capability to undo the operation at least one step
-# Capability to get the user confirmation before doing the operation
+# Create multiple empty tiddlers (for lectures or a slideshow) with common properties (tag, field, part of text,...)
+# Capability to undo an operation at least one step back
+# Capability to get user confirmation before doing an operation
 
-I want to have this minimal, simple to work and simple to understand.
+I want to keep this project minimal, easy to work with and simple to understand.
 
-//I Know Most of These Tools are Already Developed// and I need to collect the best of them.
+//I Know Most of These Tools Have Already Been Developed// and I aim to collect the best of them.
 
-I appreciate to have your comments/opinion on this tool. I appreciate who knows or has these tools to share them.
+I appreciate and welcome your comments and opinions on this endeavour and the aims of my project. 
 
-As there are expert Tiddliwikians in this forum, I appreciate if anybody else can help, manage or do the job.
+I would also appreciate hearing from any expert Tiddlywikians out there who have ready made solutions to the batch operations I've listed and who are willing to share them 'for the common good'.
+
+If you are interested in this project please get in touch. Any help is appreciated!
+
+Ref: https://groups.google.com/d/msg/tiddlywiki/BxJsWuae-Uc/JapAx4mtBgAJ
+
 </pre>
 </div>
 <div created="20190212145030950" modified="20190212145324385" tags="task" title="To be Implemented">
@@ -11452,6 +11571,32 @@ As there are expert Tiddliwikians in this forum, I appreciate if anybody else ca
 &lt;/div&gt;
 &lt;/$checkbox&gt;
 &lt;/$list&gt;
+</pre>
+</div>
+<div created="20190213084150601" modified="20190213091505609" tags="Home" title="What are batch operations?">
+<pre>Making the same changes to large numbers of tiddlers in TW5 can be repetetive and time consuming.
+
+* Batch operations work on groups of tiddlers at the same time and make changes 'in bulk', in one go.
+
+* Batch operations operate on groups of tiddlers that share matching criteria.
+
+* Tiddlers which share  a common tag, a common field, a word in their title, or were  created on the same day, month or year are all candidates for batch operations.
+
+As a result batch operations can save users a great deal of time but, because they work on several tiddlers at once, the price of a mistake is multiplied! Back-up your wiki!
+
+!! Types of Batch operations :
+# Rename tiddlers
+#* use  a totally new name
+#* add a suffix/prefix to title
+#* add prefix to title
+#* replace part of title
+#* add ordinal number to title 
+#* Copy tiddlers (make duplicates)
+# Add/remove tag or any field
+# Change/replace the content of any field
+# Create multiple empty tiddlers (for lectures or a slideshow) with common properties (tag, field, part of text,...)
+# Capability to undo an operation at least one step back
+# Capability to get user confirmation before doing an operation
 </pre>
 </div>
 
