@@ -201,7 +201,9 @@ Error message and password prompt
 
 <li>$:/commander/ui/tiddlerops/create-bulk-tiddlers</li>
 
-<li>$:/commander/ui/tiddlerops/delete-all-tiddlers</li>
+<li>$:/commander/ui/tiddlerops/delete-all-tiddlers-at-once</li>
+
+<li>$:/commander/ui/tiddlerops/delete-all-tiddlers-selectively</li>
 
 <li>$:/commander/ui/title-operation</li>
 
@@ -367,6 +369,10 @@ Error message and password prompt
 
 <li>$:/themes/tiddlywiki/vanilla/options/sidebarlayout</li>
 
+<li>12th February 2019</li>
+
+<li>13th February 2019</li>
+
 <li>Beta Release</li>
 
 <li>Beta Releasexx</li>
@@ -387,19 +393,19 @@ Error message and password prompt
 
 <li>Naming Rule</li>
 
-<li>Test</li>
-
-<li>Test 1</li>
-
-<li>Test 2</li>
-
-<li>Test 3</li>
-
-<li>Test 4</li>
-
 <li>Tiddler Commander</li>
 
 <li>TiddlerBox: A Tiddler Commander</li>
+
+<li>TiddlyLovers1</li>
+
+<li>TiddlyLovers2</li>
+
+<li>TiddlyLovers3</li>
+
+<li>TiddlyLovers4</li>
+
+<li>TiddlyLovers5</li>
 
 <li>To be Implemented</li>
 
@@ -728,7 +734,7 @@ Total number of tiddlers: &lt;b&gt;&lt;$count filter=&quot;[search:title[command
 
 </pre>
 </div>
-<div created="20190212125920722" modified="20190212135949308" tags="$:/tags/Macro" title="$:/commander/macro/tiddler-operation">
+<div created="20190212125920722" creator="Mohammad" modified="20190213160143006" modifier="Mohammad" tags="$:/tags/Macro" title="$:/commander/macro/tiddler-operation">
 <pre>\define delete-tiddlers-selective-bulk()
 &lt;$list filter={{$:/temp/commander}} emptyMessage=&quot;No tiddler selected.&quot;&gt;
 &lt;$button message=&quot;tm-delete-tiddler&quot;  &gt;{{$:/core/images/done-button}}&lt;/$button&gt;
@@ -736,19 +742,22 @@ Total number of tiddlers: &lt;b&gt;&lt;$count filter=&quot;[search:title[command
 &lt;/$list&gt;
 \end
 
+\define delete-tiddlers-at-once-bulk()
+&lt;$action-deletetiddler $filter={{$:/temp/commander}} /&gt;
+\end
+
 \define oneTid(myTitle, myTags)
   &lt;$action-createtiddler 
-    $basetitle=&lt;&lt;__myTitle__&gt;&gt;
+    $basetitle={{{ [&lt;__myTitle__&gt;addsuffix[$(L1)$]] }}}
     tags=&lt;&lt;__myTags__&gt;&gt;
   /&gt; 
 \end
 
+\define blkNewTitle() $(baseTitle)
 \define bulk-tiddler-creator(baseTitle, baseTags, numberTiddler)
-&lt;$button&gt; Create tiddlers
 &lt;$list filter=&quot;[range[1,$numberTiddler$]]&quot; variable=&quot;L1&quot;&gt;
 &lt;$macrocall $name=&quot;oneTid&quot; myTitle=&lt;&lt;__baseTitle__&gt;&gt; myTags=&lt;&lt;__baseTags__&gt;&gt; /&gt;
 &lt;/$list&gt;
-&lt;/$button&gt;
 \end</pre>
 </div>
 <div created="20190212122742891" modified="20190212143230589" tags="$:/tags/Macro" title="$:/commander/macro/title-operation">
@@ -844,9 +853,12 @@ Total number of tiddlers: &lt;b&gt;&lt;$count filter=&quot;[search:title[command
 
 </pre>
 </div>
-<div created="20190212071143632" modified="20190212071359013" tags="$:/tags/Stylesheet" title="$:/commander/stylesheet/text-area" type="text/css">
+<div created="20190212071143632" creator="Mohammad" modified="20190213153154659" modifier="Mohammad" tags="$:/tags/Stylesheet" title="$:/commander/stylesheet/text-area" type="text/css">
 <pre>.cm-txt-area{
  width:30ch !important;
+}
+.cm-small-txt-area{
+ width:10ch !important;
 }</pre>
 </div>
 <div caption="Field" created="20190212061551615" modified="20190212145425576" tags="$:/tags/Commander" title="$:/commander/ui/field-operation">
@@ -955,7 +967,7 @@ placeholder=&quot;new tag&quot;
 &lt;&lt;tabs &quot;[all[shadows+tiddlers]tag[$:/tags/Commander/TiddlerOps]!has[draft.of]]&quot; class:&quot;tc-vertical cm-tab-colorful&quot;&gt;&gt;
 &lt;/div&gt;</pre>
 </div>
-<div caption="Create bulk tiddlers" created="20190212132049725" modified="20190212135855160" tags="$:/tags/Commander/TiddlerOps" title="$:/commander/ui/tiddlerops/create-bulk-tiddlers">
+<div caption="Create bulk tiddlers" created="20190212132049725" creator="Mohammad" modified="20190213154918659" modifier="Mohammad" tags="$:/tags/Commander/TiddlerOps" title="$:/commander/ui/tiddlerops/create-bulk-tiddlers">
 <pre>&lt;span style=&quot;color:blue;&quot;&gt;Create bulk tiddlers&lt;/span&gt;&lt;br&gt;
 
 &lt;div style=&quot;font-size:small; padding-left:20px;&quot;&gt;
@@ -974,25 +986,58 @@ Tags
  class=&quot;cm-txt-area&quot;
 /&gt; &amp;nbsp;
 
-
-Number of tiddlers
-&lt;$edit-text 
- tiddler=&quot;$:/temp/commander/base-number&quot; 
- tag=&quot;input&quot; 
- placeholder=&quot;number of tiddlers&quot; 
- class=&quot;cm-txt-area&quot;
-/&gt;
+Number of tiddlers  
+&lt;$select tiddler=&quot;$:/temp/commander/base-number&quot;  default='1'&gt;
+&lt;$list filter='1 2 3 4 [range[5,50, 5]] [range[60,100,10]]'&gt;
+&lt;option value=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$view field='title'/&gt;&lt;/option&gt;
+&lt;/$list&gt;
+&lt;/$select&gt;
 
 &lt;/div&gt;
 
+&lt;$button&gt; Create tiddlers
 &lt;$macrocall $name=&quot;bulk-tiddler-creator&quot;
 baseTitle={{$:/temp/commander/base-title}}
 baseTags={{$:/temp/commander/base-tag}}
 numberTiddler={{$:/temp/commander/base-number}}
 /&gt;
+&lt;/$button&gt;</pre>
+</div>
+<div caption="Delete at once" created="20190213155027060" creator="Mohammad" modified="20190213161518633" modifier="Mohammad" tags="$:/tags/Commander/TiddlerOps" title="$:/commander/ui/tiddlerops/delete-all-tiddlers-at-once">
+<pre>&lt;span style=&quot;color:red;&quot;&gt;Warning: Delete Tiddlers Silently!&lt;/span&gt;&lt;br&gt;
+
+&lt;div style=&quot;font-size:small; padding-left:20px;&quot;&gt;
+
+&lt;$reveal state=&quot;$:/temp/commander&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
+&lt;$button popup=&lt;&lt;qualify &quot;$:/state/commander/DeleteDropdown&quot;&gt;&gt; &gt;
+Delete tiddlers
+&lt;/$button&gt;
+&lt;/$reveal&gt;
+
+&lt;$reveal state=&lt;&lt;qualify &quot;$:/state/commander/DeleteDropdown&quot;&gt;&gt; type=&quot;popup&quot; position=&quot;belowleft&quot; animate=&quot;yes&quot;&gt;
+&lt;div class=&quot;tc-block-dropdown-wrapper&quot;&gt;
+&lt;div class=&quot;tc-block-dropdown tc-edit-type-dropdown&quot;&gt;
+&lt;div class=&quot;tc-dropdown-item-plain&quot;&gt;
+&lt;$set name=&quot;resultCount&quot; value=&quot;&quot;&quot;&lt;$count filter={{$:/temp/commander}}/&gt;&quot;&quot;&quot;&gt;
+Are you sure you wish to delete &lt;&lt;resultCount&gt;&gt; tiddler(s)?
+&lt;/$set&gt;
+&lt;/div&gt;
+&lt;div class=&quot;tc-dropdown-item-plain&quot;&gt;
+&lt;$button class=&quot;tc-btn&quot;&gt;
+&lt;$macrocall $name=&quot;delete-tiddlers-at-once-bulk&quot;/&gt;
+Delete these tiddlers
+&lt;/$button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/$reveal&gt;
+
+&lt;/div&gt;
+
+
 </pre>
 </div>
-<div caption="Delete tiddlers" created="20190212122708307" modified="20190212132014335" tags="$:/tags/Commander/TiddlerOps" title="$:/commander/ui/tiddlerops/delete-all-tiddlers">
+<div caption="Delete tiddlers" created="20190212122708307" creator="Mohammad" modified="20190213155018870" modifier="Mohammad" tags="$:/tags/Commander/TiddlerOps" title="$:/commander/ui/tiddlerops/delete-all-tiddlers-selectively">
 <pre>&lt;span style=&quot;color:red;&quot;&gt;Delete Tiddlers Selectively&lt;/span&gt;&lt;br&gt;
 
 &lt;div style=&quot;font-size:small; padding-left:20px;&quot;&gt;
@@ -10008,10 +10053,11 @@ placeholder=&quot;suffix&quot;
     }
 }</pre>
 </div>
-<div created="20190212045537112" creator="Mohammad" modified="20190213142841556" modifier="Mohammad" title="$:/DefaultTiddlers">
+<div created="20190212045537112" creator="Mohammad" modified="20190213152849106" modifier="Mohammad" title="$:/DefaultTiddlers">
 <pre>[[Beta Release]]
 $:/Commander
 [[What are batch operations?]]
+[[Change Log]]
 </pre>
 </div>
 <div status="complete" title="$:/Import">
@@ -11061,8 +11107,8 @@ exports.hljs = hljs;</pre>
 <div created="20190212112851652" modified="20190212112854841" title="$:/state/plugin-info--1284604328-$:/plugins/wikilabs/link-to-tabs--1981748087">
 <pre>contents</pre>
 </div>
-<div created="20190212050956480" creator="Mohammad" modified="20190213144808538" modifier="Mohammad" title="$:/state/showeditpreview">
-<pre>yes</pre>
+<div created="20190212050956480" creator="Mohammad" modified="20190213155113517" modifier="Mohammad" title="$:/state/showeditpreview">
+<pre>no</pre>
 </div>
 <div created="20190212053007404" modified="20190212142352882" title="$:/state/sidebar">
 <pre>yes</pre>
@@ -11070,8 +11116,8 @@ exports.hljs = hljs;</pre>
 <div created="20190212050830280" modified="20190212081225552" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Filter</pre>
 </div>
-<div created="20190212112541745" modified="20190212112544202" title="$:/state/tab--1790025794">
-<pre>$:/commander/ui/title-operation</pre>
+<div created="20190212112541745" creator="Mohammad" modified="20190213154804150" modifier="Mohammad" title="$:/state/tab--1790025794">
+<pre>$:/commander/ui/tagops/replace-tags</pre>
 </div>
 <div created="20190212045910509" modified="20190212045910509" title="$:/state/tab--1963855381">
 <pre>$:/themes/tiddlywiki/vanilla/themetweaks</pre>
@@ -11094,17 +11140,17 @@ exports.hljs = hljs;</pre>
 <div created="20190212052554451" modified="20190212052555136" title="$:/state/tab-248156275">
 <pre>$:/commander/ui/title-operation</pre>
 </div>
-<div created="20190212061049504" creator="Mohammad" modified="20190213035700689" modifier="Mohammad" title="$:/state/tab-607722857">
-<pre>$:/commander/ui/title-operation</pre>
+<div created="20190212061049504" creator="Mohammad" modified="20190213154931766" modifier="Mohammad" title="$:/state/tab-607722857">
+<pre>$:/commander/ui/tiddler-operation</pre>
 </div>
 <div created="20190212051649677" modified="20190212051923880" title="$:/state/tab-791620041">
 <pre>$:/commander/ui/tag-operation</pre>
 </div>
-<div created="20190212133040845" creator="Mohammad" modified="20190213033631523" modifier="Mohammad" title="$:/state/tab-926729940">
+<div created="20190212133040845" creator="Mohammad" modified="20190213161827768" modifier="Mohammad" title="$:/state/tab-926729940">
 <pre>$:/commander/ui/tiddlerops/create-bulk-tiddlers</pre>
 </div>
-<div created="20190212045551130" creator="Mohammad" modified="20190213145142690" modifier="Mohammad" title="$:/state/tab/sidebar--595412856">
-<pre>$:/Commander-Tiddlers</pre>
+<div created="20190212045551130" creator="Mohammad" modified="20190213161732440" modifier="Mohammad" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/Open</pre>
 </div>
 <div created="20190212050923429" modified="20190212122356022" title="$:/state/toggle-view-fields">
 <pre>hide</pre>
@@ -11112,7 +11158,7 @@ exports.hljs = hljs;</pre>
 <div created="20190212150615218" creator="M" modified="20190212150616505" modifier="Mohamma" title="$:/status/UserName">
 <pre>Mohammad</pre>
 </div>
-<div list="[[Beta Release]] $:/Commander [[What are batch operations?]]" title="$:/StoryList">
+<div list="[[Beta Release]] $:/Commander [[What are batch operations?]] [[Change Log]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190212062925887" list="$:/commander/ui/title-operation $:/commander/ui/tag-operation $:/commander/ui/field-operation" modified="20190212062935985" title="$:/tags/Commander">
@@ -11136,14 +11182,14 @@ exports.hljs = hljs;</pre>
 <div created="20190212070302208" modified="20190212140116247" title="$:/temp/commander/add-remove-tag">
 <pre></pre>
 </div>
-<div created="20190212135258608" modified="20190212135901758" title="$:/temp/commander/base-number">
+<div created="20190212135258608" creator="Mohammad" modified="20190213161855765" modifier="Mohammad" title="$:/temp/commander/base-number">
 <pre>5</pre>
 </div>
 <div created="20190212135047110" modified="20190212144250802" title="$:/temp/commander/base-tag">
 <pre>xx</pre>
 </div>
-<div created="20190212135044704" modified="20190212144247114" title="$:/temp/commander/base-title">
-<pre>Test</pre>
+<div created="20190212135044704" creator="Mohammad" modified="20190213161850854" modifier="Mohammad" title="$:/temp/commander/base-title">
+<pre>TiddlyLovers</pre>
 </div>
 <div created="20190212121722932" modified="20190212140157463" title="$:/temp/commander/field-name">
 <pre></pre>
@@ -11217,7 +11263,7 @@ exports.hljs = hljs;</pre>
     }
 }</pre>
 </div>
-<div created="20190212052443659" creator="Mohammad" modified="20190213145101686" modifier="Mohammad" title="$:/temp/search">
+<div created="20190212052443659" creator="Mohammad" modified="20190213161731148" modifier="Mohammad" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.20-prerelease">
@@ -11332,6 +11378,29 @@ exports.hljs = hljs;</pre>
 <div created="20190212045912993" modified="20190212045912993" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
+<div created="20190213152645701" creator="Mohammad" modified="20190213152724716" modifier="Mohammad" tags="change" title="12th February 2019">
+<pre>* Title operation
+** add/remove prefix
+** add/remove suffix
+
+* Tag operation
+** add/remove tags
+** replace tags
+
+* Field operation
+** add/remove field
+** set filed value (will create field if not existed!)
+
+* Tids (Tiddler operation)
+** delete tiddlers
+** create bulk tiddlers</pre>
+</div>
+<div created="20190213152409609" creator="Mohammad" modified="20190213161723841" modifier="Mohammad" tags="change" title="13th February 2019">
+<pre>* Fixed: remove suffix not working
+* New: bulk tiddler created has got new name format
+* New: added range and select widgets for &quot;create bulk tiddlers&quot;
+* New: added delete tiddlers at once operation</pre>
+</div>
 <div created="20190212150046333" creator="Mohammad" modified="20190213145120194" modifier="Mohammad" tags="warning" title="Beta Release">
 <pre> &lt;div class=&quot;flex-grid&quot;&gt;
   &lt;div class=&quot;coll&quot;&gt;
@@ -11364,23 +11433,16 @@ exports.hljs = hljs;</pre>
 
 {{commander/readme}}</pre>
 </div>
-<div created="20190212144737901" modified="20190212145023424" tags="task" title="Change Log">
-<pre>18:17, 12th February 2019
-* Title operation
-** add/remove prefix
-** add/remove suffix
+<div created="20190212144737901" creator="Mohammad" modified="20190213152832344" modifier="Mohammad" tags="task" title="Change Log">
+<pre>''Changes''
 
-* Tag operation
-** add/remove tags
-** replace tags
+&lt;$list filter=&quot;[tag[change]]&quot;&gt;
 
-* Field operation
-** add/remove field
-** set filed value (will create field if not existed!)
+&lt;$link to=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$text text=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/$link&gt;
 
-* Tids (Tiddler operation)
-** delete tiddlers
-** create bulk tiddlers</pre>
+&lt;$transclude/&gt;
+
+&lt;/$list&gt;</pre>
 </div>
 <div created="20190212051153468" modified="20190212051230677" tags="" title="commander/authors">
 <pre>!! Authors
@@ -11457,21 +11519,6 @@ Email : m[dot]rahmani[at]aut[dot]ac[dot]ir
 |sub-operation|||||
 </pre>
 </div>
-<div created="20190213035657625" creator="Mohammad" modified="20190213040302404" modifier="Mohammad" tags="xx" title="Test">
-<pre></pre>
-</div>
-<div created="20190213035657626" creator="Mohammad" modified="20190213040302404" modifier="Mohammad" tags="xx" title="Test 1">
-<pre></pre>
-</div>
-<div created="20190213035657628" creator="Mohammad" modified="20190213040302404" modifier="Mohammad" tags="xx" title="Test 2">
-<pre></pre>
-</div>
-<div created="20190213035657628" creator="Mohammad" modified="20190213040302404" modifier="Mohammad" tags="xx" title="Test 3">
-<pre></pre>
-</div>
-<div created="20190213035657629" creator="Mohammad" modified="20190213040302404" modifier="Mohammad" tags="xx" title="Test 4">
-<pre></pre>
-</div>
 <div created="20190211154235793" creator="Mohammad" modified="20190213145050273" modifier="Mohammad" tags="task idea" title="Tiddler Commander">
 <pre>{{commander/readme}}
 
@@ -11541,6 +11588,21 @@ If you are interested in this project please get in touch. Any help is appreciat
 Ref: https://groups.google.com/d/msg/tiddlywiki/BxJsWuae-Uc/JapAx4mtBgAJ
 
 </pre>
+</div>
+<div created="20190213161906586" creator="Mohammad" modified="20190213161906586" modifier="Mohammad" tags="xx" title="TiddlyLovers1">
+<pre></pre>
+</div>
+<div created="20190213161906588" creator="Mohammad" modified="20190213161906588" modifier="Mohammad" tags="xx" title="TiddlyLovers2">
+<pre></pre>
+</div>
+<div created="20190213161906588" creator="Mohammad" modified="20190213161906588" modifier="Mohammad" tags="xx" title="TiddlyLovers3">
+<pre></pre>
+</div>
+<div created="20190213161906589" creator="Mohammad" modified="20190213161906589" modifier="Mohammad" tags="xx" title="TiddlyLovers4">
+<pre></pre>
+</div>
+<div created="20190213161906589" creator="Mohammad" modified="20190213161906589" modifier="Mohammad" tags="xx" title="TiddlyLovers5">
+<pre></pre>
 </div>
 <div created="20190212145030950" modified="20190212145324385" tags="task" title="To be Implemented">
 <pre>* Confirmation on operation
