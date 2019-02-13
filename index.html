@@ -233,8 +233,6 @@ Error message and password prompt
 
 <li>$:/DefaultTiddlers</li>
 
-<li>$:/Import</li>
-
 <li>$:/isEncrypted</li>
 
 <li>$:/plugins/.mr/shiraz/images/view-fields.svg</li>
@@ -763,7 +761,7 @@ Total number of tiddlers: &lt;b&gt;&lt;$count filter=&quot;[search:title[command
 \end
 </pre>
 </div>
-<div created="20190212143639636" modified="20190212144342857" tags="$:/tags/Macro" title="$:/commander/macro/title-operation-ii">
+<div created="20190212143639636" creator="Mohammad" modified="20190213035651998" modifier="Mohammad" tags="$:/tags/Macro" title="$:/commander/macro/title-operation-ii">
 <pre>\define newTitle-sf() $(currentTiddler)$$(Suffix)$
 
 \define addSuffix-to-tiltle-bulk(suffix)
@@ -777,10 +775,10 @@ Total number of tiddlers: &lt;b&gt;&lt;$count filter=&quot;[search:title[command
 
 \define removeSuffix-from-tiltle-bulk(suffix)
 &lt;$list filter={{$:/temp/commander}}&gt;
-&lt;$set name=&quot;newTitle-sf-rm&quot; filter=&quot;[&lt;currentTiddler&gt;removesuffix[$prefix$]]&quot;&gt;
-  &lt;$action-setfield      $tiddler=&lt;&lt;currentTiddler&gt;&gt; title=&lt;&lt;newTitle-sf-rm&gt;&gt; /&gt;
+ &lt;$list filter=&quot;[&lt;currentTiddler&gt;removesuffix[$suffix$]]&quot; variable=&quot;newTitle&quot;&gt;
+  &lt;$action-setfield      $tiddler=&lt;&lt;currentTiddler&gt;&gt; title=&lt;&lt;newTitle&gt;&gt; /&gt;
   &lt;$action-deletetiddler $tiddler=&lt;&lt;currentTiddler&gt;&gt; /&gt;
-&lt;/$set&gt;
+ &lt;/$list&gt;
 &lt;/$list&gt;
 \end
 </pre>
@@ -1011,7 +1009,7 @@ placeholder=&quot;prefix&quot;
 
 </pre>
 </div>
-<div caption="Add remove suffix" created="20190212143434676" modified="20190212144541722" tags="$:/tags/Commander/TitleOps" title="$:/commander/ui/titleops/add-remove-suffix">
+<div caption="Add remove suffix" created="20190212143434676" creator="Mohammad" modified="20190213035406829" modifier="Mohammad" tags="$:/tags/Commander/TitleOps" title="$:/commander/ui/titleops/add-remove-suffix">
 <pre>&lt;div style=&quot;padding-left:20px;&quot;&gt;
 &lt;$edit-text
 tiddler=&quot;$:/temp/commander/suffix&quot;
@@ -1029,7 +1027,7 @@ placeholder=&quot;suffix&quot;
 &lt;/$button&gt; &amp;nbsp; 
 &lt;$button&gt; Remove suffix
 &lt;$macrocall 
- $name=&quot;removeSuffix-from-title-bulk&quot; 
+ $name=&quot;removeSuffix-from-tiltle-bulk&quot; 
  suffix={{$:/temp/commander/suffix}} 
 /&gt;
 &lt;/$button&gt;
@@ -9989,11 +9987,6 @@ $:/Commander
 ToDos
 </pre>
 </div>
-<div status="complete" title="$:/Import">
-<pre>The following tiddlers were imported:
-
-# [[viewtemplate/show-contents-macro-tiddler]]</pre>
-</div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
@@ -11029,7 +11022,7 @@ exports.hljs = hljs;</pre>
 <div created="20190212045520978" modified="20190212045525655" title="$:/SiteTitle">
 <pre>Tiddler Commander</pre>
 </div>
-<div created="20190212150004799" modified="20190212150004799" title="$:/state-reveal-$:/commander/search-result-607722857">
+<div created="20190212150004799" creator="Mohammad" modified="20190213032711486" modifier="Mohammad" title="$:/state-reveal-$:/commander/search-result-607722857">
 <pre>yes</pre>
 </div>
 <div created="20190212112851652" modified="20190212112854841" title="$:/state/plugin-info--1284604328-$:/plugins/wikilabs/link-to-tabs--1981748087">
@@ -11050,8 +11043,8 @@ exports.hljs = hljs;</pre>
 <div created="20190212045910509" modified="20190212045910509" title="$:/state/tab--1963855381">
 <pre>$:/themes/tiddlywiki/vanilla/themetweaks</pre>
 </div>
-<div created="20190212144034305" modified="20190212144625528" title="$:/state/tab--2002155392">
-<pre>$:/commander/ui/titleops/add-remove-prefix</pre>
+<div created="20190212144034305" creator="Mohammad" modified="20190213035702308" modifier="Mohammad" title="$:/state/tab--2002155392">
+<pre>$:/commander/ui/titleops/add-remove-suffix</pre>
 </div>
 <div created="20190212080422717" modified="20190212080422717" title="$:/state/tab--697582678">
 <pre>$:/core/ui/ControlPanel/Settings/CodeMirror</pre>
@@ -11068,17 +11061,17 @@ exports.hljs = hljs;</pre>
 <div created="20190212052554451" modified="20190212052555136" title="$:/state/tab-248156275">
 <pre>$:/commander/ui/title-operation</pre>
 </div>
-<div created="20190212061049504" modified="20190212115145607" title="$:/state/tab-607722857">
+<div created="20190212061049504" creator="Mohammad" modified="20190213035700689" modifier="Mohammad" title="$:/state/tab-607722857">
 <pre>$:/commander/ui/title-operation</pre>
 </div>
 <div created="20190212051649677" modified="20190212051923880" title="$:/state/tab-791620041">
 <pre>$:/commander/ui/tag-operation</pre>
 </div>
-<div created="20190212133040845" modified="20190212144647541" title="$:/state/tab-926729940">
+<div created="20190212133040845" creator="Mohammad" modified="20190213033631523" modifier="Mohammad" title="$:/state/tab-926729940">
 <pre>$:/commander/ui/tiddlerops/create-bulk-tiddlers</pre>
 </div>
-<div created="20190212045551130" creator="Mohammad" modified="20190212151214692" modifier="Mohammad" title="$:/state/tab/sidebar--595412856">
-<pre>$:/core/ui/SideBar/Recent</pre>
+<div created="20190212045551130" creator="Mohammad" modified="20190213040307115" modifier="Mohammad" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/Open</pre>
 </div>
 <div created="20190212050923429" modified="20190212122356022" title="$:/state/toggle-view-fields">
 <pre>hide</pre>
@@ -11134,8 +11127,8 @@ exports.hljs = hljs;</pre>
 <div created="20190212142640029" modified="20190212144626444" title="$:/temp/commander/prefix">
 <pre></pre>
 </div>
-<div created="20190212144046243" modified="20190212144625061" title="$:/temp/commander/suffix">
-<pre></pre>
+<div created="20190212144046243" creator="Mohammad" modified="20190213033644759" modifier="Mohammad" title="$:/temp/commander/suffix">
+<pre>-xx</pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
 <pre>{
@@ -11384,19 +11377,19 @@ Email : m[dot]rahmani[at]aut[dot]ac[dot]ir
 |sub-operation|||||
 </pre>
 </div>
-<div created="20190212144654363" modified="20190212144654363" tags="xx" title="Test">
+<div created="20190213035657625" creator="Mohammad" modified="20190213040302404" modifier="Mohammad" tags="xx" title="Test">
 <pre></pre>
 </div>
-<div created="20190212144654364" modified="20190212144654364" tags="xx" title="Test 1">
+<div created="20190213035657626" creator="Mohammad" modified="20190213040302404" modifier="Mohammad" tags="xx" title="Test 1">
 <pre></pre>
 </div>
-<div created="20190212144654365" modified="20190212144654365" tags="xx" title="Test 2">
+<div created="20190213035657628" creator="Mohammad" modified="20190213040302404" modifier="Mohammad" tags="xx" title="Test 2">
 <pre></pre>
 </div>
-<div created="20190212144654366" modified="20190212144654366" tags="xx" title="Test 3">
+<div created="20190213035657628" creator="Mohammad" modified="20190213040302404" modifier="Mohammad" tags="xx" title="Test 3">
 <pre></pre>
 </div>
-<div created="20190212144654367" modified="20190212144654367" tags="xx" title="Test 4">
+<div created="20190213035657629" creator="Mohammad" modified="20190213040302404" modifier="Mohammad" tags="xx" title="Test 4">
 <pre></pre>
 </div>
 <div created="20190211154235793" creator="Mohammad" modified="20190212052101962" modifier="Mohammad" tags="zorange task idea" title="TiddlerBox: A Tiddler Commander">
