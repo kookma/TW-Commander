@@ -1,0 +1,17 @@
+created: 20190214070256694
+creator: Mohammad
+modified: 20190214213348074
+modifier: Mohammad
+tags: rule
+title: Naming Operation
+type: text/vnd.tiddlywiki
+
+; Main operations
+: contains no operation itself and contains sub-operation
+: e.g: Title, Tag, Field,...
+; Sub operations
+: contains operations for main UI
+: e.g. add remove fileds, add remove tags
+; Item operation
+: contains operation to build a sub-operation
+:e.g add a filed, remove a field

@@ -1,0 +1,36 @@
+created: 20190212101155537
+creator: Mohammad
+modified: 20190214213347892
+modifier: Mohammad
+tags: $:/tags/Macro
+title: $:/commander/macro/field-operation
+type: text/vnd.tiddlywiki
+
+\define add-new-field-bulk(newField:"Empty")
+<$list filter="[<__newField__>] -Empty">
+<$list filter={{$:/temp/commander}}>
+<$fieldmangler>
+<$action-sendmessage $message="tm-add-field" $param=<<__newField__>> >
+</$fieldmangler>
+</$list>
+</$list>
+\end
+
+\define remove-old-field-bulk(oldField:"Empty")
+<$list filter="[<__oldField__>] -Empty">
+<$list filter={{$:/temp/commander}}>
+<$fieldmangler>
+<$action-sendmessage $message="tm-remove-field" $param=<<__oldField__>> >
+</$fieldmangler>
+</$list>
+</$list>
+\end
+
+\define set-field-value-create-bulk(fieldName:"Empty", fieldValue)
+<$list filter="[<__fieldName__>] -Empty">
+<$list filter={{$:/temp/commander}}>
+<$action-setfield $field=<<__fieldName__>> $value=<<__fieldValue__>>/>
+</$list>
+</$list>
+\end
+

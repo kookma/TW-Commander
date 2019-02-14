@@ -1,0 +1,94 @@
+core-version: >=5.1.14
+created: 20150902052640307
+creator: Andrew Harrison
+dependents: $:/language/Buttons/Choose/Caption $:/language/Buttons/Choose/Hint $:/language/Buttons/Favorites/Caption $:/language/Buttons/Favorites/Hint $:/language/SideBar/Favorites/Caption $:/plugins/ajh/favorites/icon $:/plugins/ajh/favorites/readme $:/plugins/ajh/favorites/SideBar $:/plugins/ajh/favorites/image $:/plugins/ajh/favorites/stylesheet $:/plugins/ajh/favorites/template
+description: Favorites
+list: readme
+modified: 20190214213348017
+modifier: Andrew Harrison
+plugin-type: plugin
+source: http://favorites.tiddlyspot.com
+title: $:/plugins/ajh/favorites
+type: application/json
+version: 3.0.12
+
+{
+    "tiddlers": {
+        "$:/language/Buttons/Choose/Caption": {
+            "text": "choose",
+            "title": "$:/language/Buttons/Choose/Caption"
+        },
+        "$:/language/Buttons/Choose/Hint": {
+            "text": "Add to favorites list",
+            "title": "$:/language/Buttons/Choose/Hint"
+        },
+        "$:/language/Buttons/Favorites/Caption": {
+            "text": "favorite",
+            "title": "$:/language/Buttons/Favorites/Caption"
+        },
+        "$:/language/Buttons/Favorites/Hint": {
+            "text": "Remove from favorites list",
+            "title": "$:/language/Buttons/Favorites/Hint"
+        },
+        "$:/language/SideBar/Favorites/Caption": {
+            "text": "Favorites",
+            "title": "$:/language/SideBar/Favorites/Caption"
+        },
+        "$:/plugins/ajh/favorites/readme": {
+            "created": "20181101141032553",
+            "creator": "Mohammad",
+            "text": "This plugin adds the {{$:/plugins/ajh/favorites/image}} button to the View Toolbar and also the `Favorites` tab to the Sidebar. The button becomes `red` when selected and then the tiddler appears in the list on the `Favorites` tab.  The list can be sorted using drag and drop. A tiddler can be removed from the `Favorites` tab by opening it and clicking again on the {{$:/plugins/ajh/favorites/image}} button.\n\nSimply drag $:/plugins/ajh/favorites to the top of your tiddlywiki display, save and reload.\n\n;First release\n: Andrew Harrison at http://favorites.tiddlyspot.com/\n;Second release\n: Mohammad Rahmani\n",
+            "title": "$:/plugins/ajh/favorites/readme",
+            "modified": "20181101142532050",
+            "modifier": "Mohammad"
+        },
+        "$:/plugins/ajh/favorites/SideBar": {
+            "created": "20181008195317473",
+            "creator": "Mohammad",
+            "text": "\\define drop-actions()\n<$action-listops $tiddler='$:/plugins/ajh/favorites/list' $subfilter='+[insertbefore:currentTiddler<actionTiddler>]'/>\n\\end\n\n<$list filter='[list[$:/plugins/ajh/favorites/list]]'>\n<div style='position: relative;'>\n<$droppable actions=<<drop-actions>>>\n<div class='tc-droppable-placeholder'>\n&nbsp;\n</div>\n<div>\n <$link to={{!!title}}>\n<$view field='caption'><$view field='title'/></$view></$link>\n</div>\n</$droppable>\n</div>\n</$list>\n",
+            "title": "$:/plugins/ajh/favorites/SideBar",
+            "tags": "$:/tags/SideBar",
+            "list-before": "$:/core/ui/SideBar/Recent",
+            "caption": "Favorites",
+            "modified": "20181008200310727",
+            "modifier": "Mohammad"
+        },
+        "$:/plugins/ajh/favorites/template": {
+            "created": "20181010141620348",
+            "creator": "Mohammad",
+            "text": "\\define add() [[$(currentTiddler)$]]\n\\define remove() -[[$(currentTiddler)$]]\n\\define my-svg()\n<svg class='tc-image-favorites tc-image-button' width='22pt' height='22pt' viewBox='0 0 129 129'><g><path fill='$(fill)$' stroke='$(stroke)$' stroke-width='5' d='m$(m)$$(path)$'/></g></svg>\n\\end\n\n<$list filter='[list[$:/plugins/ajh/favorites/list]is[current]]'><$button tooltip={{$:/language/Buttons/Favorites/Hint}} aria-label={{$:/language/Buttons/Favorites/Caption}} class=<<tv-config-toolbar-class>>>\n<$action-listops $tiddler='$:/plugins/ajh/favorites/list' $field='list' $subfilter=<<remove>>/>\n<$list filter='[<tv-config-toolbar-icons>prefix[yes]]'>\n<$vars fill={{$:/plugins/ajh/favorites/stylesheet!!button-color}} stroke={{$:/plugins/ajh/favorites/stylesheet!!button-outline-color}} m='121.6,40.1' path={{$:/plugins/ajh/favorites/image!!path}}>\n<<my-svg>>\n</$vars>\n</$list>\n<$list filter='[<tv-config-toolbar-text>prefix[yes]]'>\n<span class='tc-btn-text'>\n<$text text={{$:/language/Buttons/Favorites/Caption}}/>\n</span>\n</$list>\n</$button></$list><$list filter='[all[current]!list[$:/plugins/ajh/favorites/list]]'><$button tooltip={{$:/language/Buttons/Choose/Hint}} aria-label={{$:/language/Buttons/Choose/Caption}} class=<<tv-config-toolbar-class>>>\n<$action-listops $tiddler='$:/plugins/ajh/favorites/list' $field='list' $subfilter=<<add>>/>\n<$list filter='[<tv-config-toolbar-icons>prefix[yes]]'>\n{{$:/plugins/ajh/favorites/image}}\n</$list>\n<$list filter='[<tv-config-toolbar-text>prefix[yes]]'>\n<span class='tc-btn-text'>\n<$text text={{$:/language/Buttons/Choose/Caption}}/>\n</span>\n</$list>\n</$button></$list>",
+            "title": "$:/plugins/ajh/favorites/template",
+            "tags": "$:/tags/ViewToolbar",
+            "list-after": "$:/core/ui/Buttons/more-tiddler-actions",
+            "description": "{{$:/language/Buttons/Favorites/Hint}}",
+            "caption": "{{ $:/core/images/star-filled}} {{$:/language/Buttons/Favorites/Caption}}",
+            "modified": "20181010145946889",
+            "modifier": "Mohammad"
+        },
+        "$:/plugins/ajh/favorites/stylesheet": {
+            "created": "20181010142320082",
+            "creator": "Mohammad",
+            "text": ".tc-tab-buttons + .tc-favorites-hidden {\n    display: none;\n}\n.tc-tab-buttons button.tc-tab-selected {\n    fill: {{!!tab-icon-selected-color}};\n    stroke: {{!!tab-icon-outline-color}}; \n}\n.tc-tab-buttons button:not(.tc-tab-selected) {\n    fill: {{!!tab-icon-unselected-color}};\n}\n.tc-favorites {\n    stroke: {{!!button-outline-color}};\n    stroke-width:5;\n    fill: {{!!button-color}};\n}\n.tc-image-star-filled {\n    height:1em;\n    width:1em;\n}",
+            "title": "$:/plugins/ajh/favorites/stylesheet",
+            "tags": "$:/tags/Stylesheet",
+            "tab-icon-unselected-color": "#999",
+            "tab-icon-selected-color": "#ff0",
+            "tab-icon-outline-color": "#000",
+            "caption": "Favorites",
+            "button-outline-color": "red",
+            "button-color": "red",
+            "modified": "20181010145330913",
+            "modifier": "Mohammad"
+        },
+        "$:/plugins/ajh/favorites/image": {
+            "created": "20181010141333403",
+            "creator": "Mohammad",
+            "text": "\\define my-svg()\n<svg class='tc-image-favorites tc-image-button' width='22pt' height='22pt' viewBox=\"0 0 129 129\"><g><path stroke='#999'  stroke-width='5' d='m$(m)$$(path)$'/></g></svg>\n\\end\n\n<$vars m='121.6,40.1' path={{!!path}}>\n<<my-svg>>\n</$vars>",
+            "title": "$:/plugins/ajh/favorites/image",
+            "tags": "$:/tags/Image",
+            "path": "c-3.3-16.6-15.1-27.3-30.3-27.3-8.5,0-17.7,3.5-26.7,10.1-9.1-6.8-18.3-10.3-26.9-10.3-15.2,0-27.1,10.8-30.3,27.6-4.8,24.9 10.6,58 55.7,76 0.5,0.2 1,0.3 1.5,0.3 0.5,0 1-0.1 1.5-0.3 45-18.4 60.3-51.4 55.5-76.1zm-57,67.9c-39.6-16.4-53.3-45-49.2-66.3 2.4-12.7 11.2-21 22.3-21 7.5,0 15.9,3.6 24.3,10.5 1.5,1.2 3.6,1.2 5.1,0 8.4-6.7 16.7-10.2 24.2-10.2 11.1,0 19.8,8.1 22.3,20.7 4.1,21.1-9.5,49.6-49,66.3z",
+            "modified": "20181010150240481",
+            "modifier": "Mohammad"
+        }
+    }
+}

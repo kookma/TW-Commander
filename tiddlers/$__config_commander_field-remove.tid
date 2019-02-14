@@ -1,0 +1,8 @@
+created: 20190214044910237
+creator: Mohammad
+modified: 20190214213347804
+modifier: Mohammad
+title: $:/config/commander/field-remove
+type: text/vnd.tiddlywiki
+
+[subfilter{$:/temp/commander}fields[]sort[]] -title

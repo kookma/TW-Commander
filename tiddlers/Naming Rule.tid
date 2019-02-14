@@ -1,0 +1,16 @@
+created: 20190212051323105
+creator: Mohammad
+modified: 20190214213348072
+modifier: Mohammad
+tags: task
+title: Naming Rule
+type: text/vnd.tiddlywiki
+
+<$list filter="[tag[rule]]">
+<h2><$link to=<<currentTiddler>> ><$text text=<<currentTiddler>> /></$link></h2>
+<blockquote>
+
+<$transclude/>
+
+</blockquote>
+</$list>

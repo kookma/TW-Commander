@@ -1,0 +1,46 @@
+author: Mario Pietsch
+core-version: >=5.1.6
+created: 20190214213347981
+dependents: 
+description: Internal links are added to tabs if selected
+list: readme license
+modified: 20190214213347981
+plugin-type: plugin
+title: $:/plugins/wikilabs/link-to-tabs
+type: application/json
+version: 0.1.1
+
+{
+    "tiddlers": {
+        "$:/core/macros/tabs": {
+            "title": "$:/core/macros/tabs",
+            "tags": "$:/tags/Macro",
+            "text": "\\define tabs(tabsList,default,state:\"$:/state/tab\",class,template)\n<div class=\"tc-tab-set $class$\">\n<div class=\"tc-tab-buttons $class$\">\n<$list filter=\"$tabsList$\" variable=\"currentTab\"><$set name=\"save-currentTiddler\" value=<<currentTiddler>>><$tiddler tiddler=<<currentTab>>><$button set=<<qualify \"$state$\">> setTo=<<currentTab>> default=\"$default$\" selectedClass=\"tc-tab-selected\" tooltip={{!!tooltip}}>\n<$transclude tiddler={{!!icon}}/>\n<$tiddler tiddler=<<save-currentTiddler>>>\n<$set name=\"tv-wikilinks\" value=\"no\">\n<$transclude tiddler=<<currentTab>> field=\"caption\">\n<$macrocall $name=\"currentTab\" $type=\"text/plain\" $output=\"text/plain\"/>\n</$transclude>\n</$set></$tiddler></$button><span class=\"wltc-link-to-tab\"><$link to=<<currentTiddler>> >{{$:/core/images/link}}</$link></span></$tiddler></$set></$list>\n</div>\n<div class=\"tc-tab-divider $class$\"/>\n<div class=\"tc-tab-content $class$\">\n<$list filter=\"$tabsList$\" variable=\"currentTab\">\n\n<$reveal type=\"match\" state=<<qualify \"$state$\">> text=<<currentTab>> default=\"$default$\">\n\n<$transclude tiddler=\"$template$\" mode=\"block\">\n\n<$transclude tiddler=<<currentTab>> mode=\"block\"/>\n\n</$transclude>\n\n</$reveal>\n\n</$list>\n</div>\n</div>\n\\end"
+        },
+        "$:/core/ui/ControlPanel/Settings/link-to-tabs": {
+            "title": "$:/core/ui/ControlPanel/Settings/link-to-tabs",
+            "caption": "Link-to-Tabs plugin",
+            "tags": "$:/tags/ControlPanel/Settings",
+            "text": "<$checkbox tiddler=\"$:/plugins/wikilabs/link-to-tabs/config\" field=\"show-all-links\" checked=\"inline\" unchecked=\"none\" default=\"none\"> Show internal tab link for ''all tabs''</$checkbox>\n\n<$checkbox tiddler=\"$:/plugins/wikilabs/link-to-tabs/config\" field=\"show-single-link\" checked=\"inline\" unchecked=\"none\" default=\"inline\"> Show internal tab link for ''selected tabs''</$checkbox>\n"
+        },
+        "$:/plugins/wikilabs/link-to-tabs/config": {
+            "title": "$:/plugins/wikilabs/link-to-tabs/config",
+            "show-all-links": "none",
+            "show-single-link": "inline",
+            "text": "This tiddler is used to configure the \"Link-to-tabs\" plugin behaviour. \n\nThere are 2 fields, which are used by [[$:/plugins/wikilabs/link-to-tabs/styles]] enable and disable the internal links. \n\n* show-all-links: {{!!show-all-links}}\n* show-single-link: {{!!show-single-link}}\n"
+        },
+        "$:/plugins/wikilabs/link-to-tabs/license": {
+            "title": "$:/plugins/wikilabs/link-to-tabs/license",
+            "text": "Link-to-Tabs-Macro (c) Mario Pietsch - 2016-2018\n\nhttps://opensource.org/licenses/BSD-3-Clause"
+        },
+        "$:/plugins/wikilabs/link-to-tabs/styles": {
+            "title": "$:/plugins/wikilabs/link-to-tabs/styles",
+            "tags": "$:/tags/Stylesheet",
+            "text": "<pre>\n\n.wltc-link-to-tab {\n  display: {{$:/plugins/wikilabs/link-to-tabs/config!!show-all-links}};\n  position: relative;\n  top: -1em;\n  left: -1.3em;\n  font-size: 0.7em;\n  opacity: 0.7;\n  margin-right: -1em;\n}\n\n.wltc-link-to-tab svg{\n  width: 1.4em;\n  height: 1.4em;\n}\n\n.wltc-link-to-tab:hover {\n  opacity: 1;\n}\n\n.tc-tab-selected + .wltc-link-to-tab {\n  display: {{$:/plugins/wikilabs/link-to-tabs/config!!show-single-link}};\n}\n\n.tc-vertical > .wltc-link-to-tab {\n  top: -1.9em;\n  left: 0;\n  height: 0;\n  float: right;\n}\n\n</pre>"
+        },
+        "$:/plugins/wikilabs/link-to-tabs/readme": {
+            "title": "$:/plugins/wikilabs/link-to-tabs/readme",
+            "text": "This plugin adds a little link icon to every tab. \n\n''Important:'' This plugin changes the core tabs macro.\n\n! Lint-to-Tabs Settings\n\n{{$:/core/ui/ControlPanel/Settings/link-to-tabs}}"
+        }
+    }
+}

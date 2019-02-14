@@ -1,0 +1,54 @@
+caption: Create using templates
+created: 20190213193004029
+creator: Mohammad
+modified: 20190214213347827
+modifier: Mohammad
+tags: $:/tags/Commander/TiddlerOps
+title: $:/commander/ui/tiddlerops/create-bulk-tiddlers-using-templates
+type: text/vnd.tiddlywiki
+
+<span style="color:blue;">Create tiddlers using template</span><br>
+
+<div style="font-size:small; padding-left:20px;">
+
+Base title 
+<$edit-text 
+ tiddler="$:/temp/commander/tiddler-base-title" 
+ tag="input" 
+ placeholder="base title" 
+ class="cm-txt-area"/> &nbsp;
+Tags
+<$edit-text 
+ tiddler="$:/temp/commander/tiddler-base-tag" 
+ tag="input" 
+ placeholder="tags" 
+ class="cm-txt-area"
+/> &nbsp;
+Template
+<$select tiddler="$:/temp/commander/template-newtiddler"  default='base'>
+<$list filter='[tag[$:/tags/Commander/Template]]'>
+<$list filter="[<currentTiddler>removeprefix[$:/commander/template/]] ~[<currentTiddler>]" variable="tmplName">
+<option value=<<currentTiddler>>><$text text=<<tmplName>> /></option>
+</$list>
+</$list>
+</$select>
+
+Number of tiddlers  
+<$select tiddler="$:/temp/commander/tiddler-base-number"  default='1'>
+<$list filter='1 2 3 4 [range[5,50, 5]] [range[60,100,10]]'>
+<option value=<<currentTiddler>>><$view field='title'/></option>
+</$list>
+</$select>
+
+
+
+</div>
+
+<$button> Create tiddlers
+<$macrocall $name="bulk-tiddler-with-template-creator"
+baseTitle={{$:/temp/commander/tiddler-base-title}}
+baseTags={{$:/temp/commander/tiddler-base-tag}}
+template={{$:/temp/commander/template-newtiddler}}
+numberTiddler={{$:/temp/commander/tiddler-base-number}}
+/>
+</$button>

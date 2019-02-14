@@ -1,0 +1,14 @@
+caption: Setting
+created: 20190214140835173
+creator: Mohammad
+icon: $:/core/images/options-button
+modified: 20190214213347840
+modifier: Mohammad
+tags: $:/tags/Commander
+title: $:/commander/ui/setting
+type: text/vnd.tiddlywiki
+
+''Under development''
+
+* Allow overwriting tiddlers
+* Log one step operation

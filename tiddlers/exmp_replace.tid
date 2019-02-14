@@ -1,0 +1,34 @@
+created: 20190214192433236
+creator: Mohammad
+modified: 20190214213347916
+modifier: Mohammad
+tags: 
+title: exmp/replace
+type: text/vnd.tiddlywiki
+
+\define snr(searchString, replaceString, source)
+<$macrocall $name=regexpsub 
+text=<<__source__>>
+subtext=<<__replaceString__>>
+regtext=<<__searchString__>>
+/>
+\end
+
+\define rename-bulk(oldname newname)
+  <$action-setfield      $tiddler=<<currentTiddler>> title=<<__newname__>> />
+  <$action-deletetiddler $tiddler=<<__oldname__>> />
+\end
+
+
+
+<$button> Change
+<$list filter="[tag[replace]]">
+<$wikify name=newName text="""
+<$macrocall $name="snr"
+searchString="uu" replaceString="Ex" source=<<currentTiddler>> />""">
+<$macrocall $name="rename-bulk" oldname=<<currentTiddler>> newname=<<newName>> />
+</$wikify>
+</$list>
+</$button>
+
+<<list-links "[tag[replace]]" type:"ol">>

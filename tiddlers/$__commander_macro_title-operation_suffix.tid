@@ -1,0 +1,33 @@
+created: 20190212143639636
+creator: Mohammad
+modified: 20190214213347878
+modifier: Mohammad
+tags: $:/tags/Macro
+title: $:/commander/macro/title-operation/suffix
+type: text/vnd.tiddlywiki
+
+\define addSuffix-to-tiltle-bulk(suffix)
+<$list filter="[<__suffix__>] -Empty" variable=null>
+<$list filter={{$:/temp/commander}}>
+<$list filter="[<currentTiddler>addsuffix[$suffix$]] -[<currentTiddler>]" variable="newTitle">
+<$list filter="[<newTitle>]  -[has[title]]" variable="ignore">
+  <$action-setfield      $tiddler=<<currentTiddler>> title=<<newTitle>> />
+  <$action-deletetiddler $tiddler=<<currentTiddler>> />
+</$list>
+</$list>
+</$list>
+</$list>
+\end
+
+\define removeSuffix-from-tiltle-bulk(suffix)
+<$list filter="[<__suffix__>] -Empty" variable=null>
+<$list filter={{$:/temp/commander}}>
+ <$list filter="[<currentTiddler>removesuffix[$suffix$]] -[<currentTiddler>]" variable="newTitle">
+ <$list filter="[<newTitle>]  -[has[title]]" variable="ignore">
+  <$action-setfield      $tiddler=<<currentTiddler>> title=<<newTitle>> />
+  <$action-deletetiddler $tiddler=<<currentTiddler>> />
+ </$list>
+ </$list>
+ </$list>
+</$list>
+\end

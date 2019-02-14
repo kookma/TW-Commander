@@ -1,0 +1,16 @@
+caption: Delete tiddlers selectively
+created: 20190212122708307
+creator: Mohammad
+modified: 20190214213347823
+modifier: Mohammad
+tags: $:/tags/Commander/TiddlerOps
+title: $:/commander/ui/tiddlerops/delete-all-tiddlers-selectively
+type: text/vnd.tiddlywiki
+
+<span style="color:red;">Delete Tiddlers Selectively</span><br>
+
+<div style="font-size:small; padding-left:20px;">
+<$macrocall $name="delete-tiddlers-selective-bulk" />
+</div>
+
+

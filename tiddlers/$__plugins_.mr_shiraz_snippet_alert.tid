@@ -1,0 +1,10 @@
+caption: Alert
+created: 20180905115529625
+creator: Mohammad
+modified: 20190214213348027
+modifier: Mohammad
+tags: $:/tags/TextEditor/Snippet
+title: $:/plugins/.mr/shiraz/snippet/alert
+type: text/vnd.tiddlywiki
+
+<<alert type text:"" width:"100">>

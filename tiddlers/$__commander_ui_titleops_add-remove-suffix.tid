@@ -1,0 +1,34 @@
+caption: Add remove suffix
+created: 20190212143434676
+creator: Mohammad
+modified: 20190214213347816
+modifier: Mohammad
+tags: $:/tags/Commander/TitleOps
+title: $:/commander/ui/titleops/add-remove-suffix
+type: text/vnd.tiddlywiki
+
+<div style="padding-left:20px;">
+<$edit-text
+tiddler="$:/temp/commander/title-suffix"
+tag="input"
+default=""
+class="cm-txt-area"
+placeholder="suffix"
+/> &nbsp; 
+<span style="color:purple;font-size:small;">
+<$button> Add suffix
+<$macrocall 
+ $name="addSuffix-to-tiltle-bulk" 
+ suffix={{$:/temp/commander/title-suffix}} 
+/>
+</$button> &nbsp; 
+<$button> Remove suffix
+<$macrocall 
+ $name="removeSuffix-from-tiltle-bulk" 
+ suffix={{$:/temp/commander/title-suffix}} 
+/>
+</$button>
+</span>
+</div>
+
+

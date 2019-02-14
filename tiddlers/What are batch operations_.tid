@@ -1,0 +1,29 @@
+created: 20190213084150601
+modified: 20190214213348046
+tags: Home
+title: What are batch operations?
+type: text/vnd.tiddlywiki
+
+Making the same changes to large numbers of tiddlers in TW5 can be repetetive and time consuming.
+
+* Batch operations work on groups of tiddlers at the same time and make changes 'in bulk', in one go.
+
+* Batch operations operate on groups of tiddlers that share matching criteria.
+
+* Tiddlers which share  a common tag, a common field, a word in their title, or were  created on the same day, month or year are all candidates for batch operations.
+
+As a result batch operations can save users a great deal of time but, because they work on several tiddlers at once, the price of a mistake is multiplied! Back-up your wiki!
+
+!! Types of Batch operations :
+# Rename tiddlers
+#* use  a totally new name
+#* add a suffix/prefix to title
+#* add prefix to title
+#* replace part of title
+#* add ordinal number to title 
+#* Copy tiddlers (make duplicates)
+# Add/remove tag or any field
+# Change/replace the content of any field
+# Create multiple empty tiddlers (for lectures or a slideshow) with common properties (tag, field, part of text,...)
+# Capability to undo an operation at least one step back
+# Capability to get user confirmation before doing an operation

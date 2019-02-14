@@ -1,0 +1,34 @@
+created: 20190212063435548
+creator: Mohammad
+modified: 20190214213347884
+modifier: Mohammad
+tags: $:/tags/Macro
+title: $:/commander/macro/tag-operation
+type: text/vnd.tiddlywiki
+
+\define add-new-tag-bulk(newTag)
+<$list filter={{$:/temp/commander}}>
+<$fieldmangler>
+<$action-sendmessage $message="tm-add-tag" $param=<<__newTag__>> />
+</$fieldmangler>
+</$list>
+\end
+
+\define remove-old-tag-bulk(oldTag)
+<$list filter="[subfilter{$:/temp/commander}tag[$oldTag$]]">
+<$fieldmangler>
+<$action-sendmessage $message="tm-remove-tag" $param=<<__oldTag__>> >
+</$fieldmangler>
+</$list>
+\end
+
+
+\define replace-tag-bulk(oldTag, newTag)
+<$list filter="[subfilter{$:/temp/commander}tag[$oldTag$]]">
+<$fieldmangler>
+<$action-sendmessage $message="tm-add-tag" $param="""$newTag$""" />
+<$action-sendmessage $message="tm-remove-tag" $param="""$oldTag$""">> >
+</$fieldmangler>
+</$list>
+\end
+

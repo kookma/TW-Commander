@@ -1,0 +1,26 @@
+caption: Add remove tags
+created: 20190212063924640
+creator: Mohammad
+modified: 20190214213347836
+modifier: Mohammad
+tags: $:/tags/Commander/TagOps
+title: $:/commander/ui/tagops/add-remove-tags
+type: text/vnd.tiddlywiki
+
+<div style="padding-left:20px;">
+<$edit-text
+tiddler="$:/temp/commander/tag-add-remove"
+tag="input"
+default=""
+class="cm-txt-area"
+placeholder="tag"
+/> 
+<span style="color:green;font-size:small;">
+<$button> Add New Tag
+<$macrocall $name="add-new-tag-bulk" newTag={{$:/temp/commander/tag-add-remove}} />
+</$button></span> &nbsp; 
+<span style="color:red;font-size:small;">
+<$button> Remove Old Tag
+<$macrocall $name="remove-old-tag-bulk" oldTag={{$:/temp/commander/tag-add-remove}} />
+</$button></span>
+</div>

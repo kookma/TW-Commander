@@ -1,0 +1,16 @@
+created: 20190212055219117
+creator: Mohammad
+modified: 20190214213347849
+modifier: Mohammad
+tags: 
+title: $:/commander/ui/search
+type: text/vnd.tiddlywiki
+
+Search via [[Filter expression|https://tiddlywiki.com/prerelease/#Filters:Filters%20%5B%5BFilter%20Expression%5D%5D%20%5B%5BFilter%20Syntax%5D%5D%20%5B%5BFilter%20Operators%5D%5D%20%5B%5BFilter%20Parameter%5D%5D%20%5B%5BFilter%20Run%5D%5D%20%5B%5BFilter%20Step%5D%5D%20%5B%5BFilter%20Whitespace%5D%5D]]
+
+<div class="tc-search tc-advanced-search">
+<$edit-text tiddler="$:/temp/commander" type="search" tag="input" focus={{$:/commander/config/AutoFocus}}/>
+<$list filter="[tag[$:/tags/Commander/Search/FilterButton]]">
+<$transclude/>
+</$list>
+</div>

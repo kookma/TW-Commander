@@ -1,0 +1,17 @@
+created: 20190214134058522
+creator: Mohammad
+modified: 20190214213348081
+modifier: Mohammad
+tags: note manual
+title: How to Create Commander Filter
+type: text/vnd.tiddlywiki
+
+* Create a tiddler
+* Name it as `$:/commander/filters/name`, where `name` is whatever you like, but give it a meaningful name.
+* Tag it with `$:/tags/Commander/Filter`
+* Add a `filter` field and put your filter there
+* Add a description to be shown in the search filter dropdown menu.
+
+See current filters <<tag $:/tags/Commander/Filter>>
+
+<<alert info "You can simply duplicate one of the existing filters and modify it as you like">>

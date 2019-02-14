@@ -1,0 +1,14 @@
+created: 20190213220111217
+creator: Mohammad
+modified: 20190214213347946
+modifier: Mohammad
+tags: change
+title: 14th February 2019
+type: text/vnd.tiddlywiki
+
+* New: bulk tiddler creation using templates
+* New: remove fields using drop down menu
+* New: preset search filter added
+* New: save search filter added
+* Fixed: empty suffix/prefix does not delete tiddlers anymore
+* Fixed: prevent all overwrittings (issue: you cannot force overwriting)

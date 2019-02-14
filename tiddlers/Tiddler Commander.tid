@@ -1,0 +1,28 @@
+created: 20190211154235793
+creator: Mohammad
+modified: 20190214213348052
+modifier: Mohammad
+title: Tiddler Commander
+type: text/vnd.tiddlywiki
+
+{{commander/readme}}
+
+!!This project aims to provide examples of code which can carry out common batch operations in Tiddlywiki 5.
+
+It aims to provide, for educational purposes, working demos and example code with practical explanations for many TW5 batch operations.
+
+It aims to produce a utility tool, [[Tiddler Commander|$:/Commander]], which will bring these TW5 batch operations together in one place and which users can put to work on their own wikis.
+
+*[[What are batch operations?]]
+*[[Index of TW5 batch operations]]
+*[[How can you help?]]
+
+I want to keep this project minimal, easy to work with and simple to understand.
+
+''WARNING - High Risk of Data Loss!''
+
+Please be aware that this project is still in beta! Back-up your wiki first!
+
+Do not use any of the tools or examples illustrated here on valuable, irreplaceable or unbacked-up wikis! 
+
+Back-up your wiki before using these tools. They are provided as educational reference examples only and are used at your own risk! 

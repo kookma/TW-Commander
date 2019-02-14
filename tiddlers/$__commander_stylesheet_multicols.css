@@ -1,0 +1,12 @@
+.flex-grid {
+  display: flex;
+}
+.col{
+  flex:1; 
+}
+
+@media (max-width: 800px) {
+  .flex-grid {
+    display: block;
+  }
+}

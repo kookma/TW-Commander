@@ -1,0 +1,48 @@
+caption: Commander
+created: 20190210155829503
+creator: Mohammad
+modified: 20190214213347772
+modifier: Mohammad
+tags: $:/tags/SideBar
+title: $:/Commander-Tiddlers
+type: text/vnd.tiddlywiki
+
+\define olist(filter,prefix:"",class:"",subtype:"li",emptyMessage:"No tiddler found")
+  <ol class="$class$" style="padding-bottom:10px;padding-top:10px;">
+    <$list filter="$filter$" emptyMessage=<<__emptyMessage__>>>
+    <$set name="myTitle" value={{!!title}}>
+    <$subtype$>
+      <$link to=<<myTitle>> >
+          <$text text={{{ [<myTitle>removeprefix[$prefix$]] ~[<myTitle>]}}}/>
+      </$link>
+    </$subtype$>
+    </$set>
+    </$list>
+  </ol>
+\end
+
+
+<!-- olist is a customized list-links to let remove prefix from title -->
+
+; ''Operations'' 
+<<olist "[all[shadows+tiddlers]search:title:casesensitive[commander/ui]sort[]]" class:"alert-primary" prefix:"$:/commander/">>
+
+
+; ''Macros''
+<<olist "[all[shadows+tiddlers]search:title:casesensitive[commander/macro]sort[]]" class:"alert-success" prefix:"$:/commander/">>
+
+
+;''Stylesheets'' 
+<<olist "[all[shadows+tiddlers]search:title:casesensitive[commander/stylesheet]sort[]]" class:"alert-warning" prefix:"$:/commander/">>
+ 
+; ''Temp and State'' 
+<<olist "[all[shadows+tiddlers]search:title[$:/temp/commander]sort[]]" class:"alert-secondary" prefix:"$:/temp/">>
+<<olist "[all[shadows+tiddlers]search:title[$:/state/commander]sort[]]" class:"alert-secondary" prefix:"$:/state/commander">>
+
+
+; ''All'' 
+<<olist "[all[shadows+tiddlers]search:title[$:/commander]]" class:"alert-secondary" prefix:"$:/commander">>
+ 
+
+---
+Total number of tiddlers: <b><$count filter="[search:title[commander]]"/></b>

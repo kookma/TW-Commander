@@ -1,0 +1,20 @@
+caption: Pouri
+created: 20190213200338381
+creator: Mohammad
+modified: 20190214213347862
+modifier: Mohammad
+tags: pretty $:/tags/Commander/Template
+title: $:/commander/template/pretty
+type: text/vnd.tiddlywiki
+version: beta
+
+! Heading
+This is pretty
+
+```
+sample code
+```
+
+!!! Footnotes
+# one
+# two

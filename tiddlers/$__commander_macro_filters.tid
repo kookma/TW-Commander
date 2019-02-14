@@ -1,0 +1,18 @@
+created: 20190214142032323
+creator: Mohammad
+modified: 20190214213347890
+modifier: Mohammad
+tags: $:/tags/Macro
+title: $:/commander/macro/filters
+type: text/vnd.tiddlywiki
+
+\define create-new-filter(description:"Empty")
+<$list filter="[<__description__>] -Empty" variable="ignore">
+<$action-createtiddler 
+    $basetitle="$:/commander/filters/yourFilter"
+    tags="$:/tags/Commander/Filter"
+    description=<<__description__>>
+    filter={{$:/temp/commander}}
+  /> 
+</$list>
+\end

@@ -1,0 +1,20 @@
+created: 20180821095049685
+creator: Mohammad
+modified: 20190214213348032
+modifier: Mohammad
+tags: $:/tags/Macro
+title: $:/plugins/.mr/shiraz/macro/alerts
+type: text/vnd.tiddlywiki
+
+\define alert(type:"primary" text:"", width:"100%", class:"")
+<div class="alert alert-$type$ $class$" style="width:$width$;">
+$text$
+</div>
+\end
+
+\define alert-leftbar(type:"primary" text:"", width:"100%")
+<div class="alert bg-transparent leftbar border-$type$" style="width:$width$;">
+$text$
+</div>
+\end
+<pre><$view/></pre>

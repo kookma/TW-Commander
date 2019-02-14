@@ -1,0 +1,14 @@
+created: 20190214132946159
+creator: Mohammad
+modified: 20190214213347847
+modifier: Mohammad
+tags: $:/tags/Commander/Search/FilterButton
+title: $:/commander/ui/search/filter-button/clear
+type: text/vnd.tiddlywiki
+
+<$reveal state="$:/temp/commander" type="nomatch" text="">
+<$button class="tc-btn-invisible" tooltip="clear search box">
+<$action-setfield $tiddler="$:/temp/commander" $field="text" $value=""/>
+{{$:/core/images/close-button}}
+</$button>
+</$reveal>

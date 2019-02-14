@@ -1,0 +1,21 @@
+created: 20190214180230680
+creator: Mohammad
+modified: 20190214213347780
+modifier: Mohammad
+tags: $:/tags/Macro
+title: $:/.mr/Utility
+type: text/vnd.tiddlywiki
+
+\define article(myTag)
+<$list filter="[tag[$myTag$]!sort[title]]">
+
+<h3><$link to=<<currentTiddler>>><$text text=<<currentTiddler>> /></$link></h3>
+
+<$transclude/>
+
+</$list>
+\end
+
+!!Description
+;article
+:populates tiddlers based on tag to create an article

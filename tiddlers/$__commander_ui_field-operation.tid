@@ -1,0 +1,10 @@
+caption: Field
+created: 20190212061551615
+modified: 20190214213347860
+tags: $:/tags/Commander
+title: $:/commander/ui/field-operation
+type: text/vnd.tiddlywiki
+
+<div style="padding-left:20px;">
+<<tabs "[all[shadows+tiddlers]tag[$:/tags/Commander/FieldOps]!has[draft.of]]" "$:/commander/ui/title-operation" class:"tc-vertical cm-tab-colorful">>
+</div>

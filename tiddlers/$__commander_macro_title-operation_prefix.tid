@@ -1,0 +1,33 @@
+created: 20190212122742891
+creator: Mohammad
+modified: 20190214213347880
+modifier: Mohammad
+tags: $:/tags/Macro
+title: $:/commander/macro/title-operation/prefix
+type: text/vnd.tiddlywiki
+
+\define addPrefix-to-tiltle-bulk(prefix:"Empty")
+<$list filter="[<__prefix__>] -Empty" variable=null>
+<$list filter={{$:/temp/commander}}>
+<$list filter="[<currentTiddler>addprefix[$prefix$]] -[<currentTiddler>]" variable="newTitle">
+<$list filter="[<newTitle>]  -[has[title]]" variable="ignore">
+  <$action-setfield      $tiddler=<<currentTiddler>> title=<<newTitle>> />
+  <$action-deletetiddler $tiddler=<<currentTiddler>> />
+</$list>
+</$list>
+</$list>
+</$list>
+\end
+
+\define removePrefix-from-tiltle-bulk(prefix)
+<$list filter="[<__prefix__>] -Empty" variable=null>
+<$list filter={{$:/temp/commander}}>
+<$list filter="[<currentTiddler>removeprefix[$prefix$]]   -[<currentTiddler>]" variable="newTitle">
+<$list filter="[<newTitle>]  -[has[title]]" variable="ignore">
+  <$action-setfield      $tiddler=<<currentTiddler>> title=<<newTitle>> />
+  <$action-deletetiddler $tiddler=<<currentTiddler>> />
+</$list>  
+</$list>
+</$list>
+</$list>
+\end

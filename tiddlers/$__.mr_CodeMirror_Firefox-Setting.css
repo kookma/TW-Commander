@@ -1,0 +1,5 @@
+/*Adjust the font of Codemirror on FF browser*/
+.CodeMirror {
+font-family: Consolas, monospace;
+font-size: 15px;
+}

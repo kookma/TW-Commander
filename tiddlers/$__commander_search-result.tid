@@ -1,0 +1,18 @@
+caption: Items found
+created: 20190212060411316
+modified: 20190214213347876
+tags: 
+title: $:/commander/search-result
+type: text/vnd.tiddlywiki
+
+<div class="alert-warning" style="padding:10px;">
+
+<$reveal state="$:/temp/commander" type="nomatch" text="">
+<$set name="resultCount" value="""<$count filter={{$:/temp/commander}}/>""">
+<div class="tc-search-results">
+<span style="font-style:italic; font-size:small;"><<resultCount>> matches</span><br>
+<$list filter={{$:/temp/commander}} template="$:/core/ui/ListItemTemplate"/>
+</div>
+</$set>
+</$reveal>
+</div>

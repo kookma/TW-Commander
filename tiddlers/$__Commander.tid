@@ -1,0 +1,18 @@
+created: 20190212051316149
+creator: Mohammad
+icon: $:/core/images/list
+modified: 20190214213347774
+modifier: Mohammad
+title: $:/Commander
+type: text/vnd.tiddlywiki
+
+<span style="font-style:oblique;color:red;">This tool is still being developed. It is for demonstration purposes only, using the test data provided on this site only. Do not use this tool, Tiddler Commander, on your own valuable, irreplaceable or un-backed-up data .</span>
+
+
+{{$:/commander/ui/search}}
+
+<<tabs "[all[shadows+tiddlers]tag[$:/tags/Commander]!has[draft.of]]" "$:/commander/ui/title-operation" class:"cm-tab-colorful">>
+
+
+---
+<<slider-ii title:"$:/commander/search-result">>

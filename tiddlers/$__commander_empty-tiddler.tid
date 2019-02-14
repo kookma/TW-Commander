@@ -1,0 +1,15 @@
+created: 20190214041521389
+creator: Mohammad
+modified: 20190214213347732
+modifier: Mohammad
+tags: 
+title: $:/commander/empty-tiddler
+type: text/vnd.tiddlywiki
+
+This tiddler is used to represents the system fields like
+
+* title
+* tags
+* text
+* creator
+* modifier

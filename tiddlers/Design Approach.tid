@@ -1,0 +1,9 @@
+created: 20190212053902707
+modified: 20190214213347929
+tags: idea
+title: Design Approach
+type: text/vnd.tiddlywiki
+
+* Use the advanced search mechanism
+* Use a modular approach
+** component can be added if tagged appropriately

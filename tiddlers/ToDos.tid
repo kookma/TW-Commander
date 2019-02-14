@@ -1,0 +1,30 @@
+created: 20180615032251583
+creator: Mohammad
+modified: 20190214213348048
+modifier: Mohammad
+tags: $:/tags/SideBar
+title: ToDos
+type: text/vnd.tiddlywiki
+
+<div style="float:right;"><$button>
+<$action-sendmessage $message="tm-new-tiddler" title=<<now format:"DDth MMM YYYY">> tags="task" text=""/>
+<span style="color:blue;">''New Task''</span>
+</$button></div>
+
+! Outstanding tasks
+//Drag the tasks to re-order them//
+
+<<list-tagged-draggable tag:"task" subFilter:"!has[draft.of]!tag[done]" itemTemplate:"$:/.mr/TaskManagementDraggableTemplate" emptyMessage:"You don't have any active tasks">>
+
+! Completed tasks
+
+//(Listed in reverse order of completion)//
+
+<$list filter="[!has[draft.of]tag[task]tag[done]sort[created]] -[[ToDos]]">
+<$checkbox tag="done">
+<span style="color:green">{{!!title}}<$link to={{!!title}}></$link></span>
+<div style="background-color:#ffffcc44">
+<$transclude tiddler=<<currentTiddler>> filed="text" mode="block"/>
+</div>
+</$checkbox>
+</$list>

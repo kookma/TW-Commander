@@ -1,0 +1,11 @@
+caption: Add remove fields
+created: 20190212101014417
+creator: Mohammad
+modified: 20190214213347858
+modifier: Mohammad
+tags: $:/tags/Commander/FieldOps
+title: $:/commander/ui/fieldops/add-remove-fields
+type: text/vnd.tiddlywiki
+
+{{$:/commander/ui/fieldops/add-remove-fields/add}}
+{{$:/commander/ui/fieldops/add-remove-fields/remove}}

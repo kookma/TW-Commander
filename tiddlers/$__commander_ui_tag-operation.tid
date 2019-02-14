@@ -1,0 +1,10 @@
+caption: Tag
+created: 20190212051852003
+modified: 20190214213347838
+tags: $:/tags/Commander
+title: $:/commander/ui/tag-operation
+type: text/vnd.tiddlywiki
+
+<div style="padding-left:20px;">
+<<tabs "[all[shadows+tiddlers]tag[$:/tags/Commander/TagOps]!has[draft.of]]" "$:/commander/ui/title-operation" class:"tc-vertical cm-tab-colorful">>
+</div>
