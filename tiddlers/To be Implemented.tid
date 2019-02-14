@@ -1,6 +1,6 @@
 created: 20190212145030950
 creator: Mohammad
-modified: 20190214213348050
+modified: 20190214221210995
 modifier: Mohammad
 tags: task
 title: To be Implemented
@@ -11,3 +11,5 @@ type: text/vnd.tiddlywiki
 * Change replace the content of fileds
 * Replace part of title (need string operation)
 * Add alog to show what happened!
+* Search and replcae in tiddlers contents
+* Search and replace part of title
