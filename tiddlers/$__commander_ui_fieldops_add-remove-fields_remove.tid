@@ -1,7 +1,7 @@
 caption: Add remove fields
 created: 20190214045945010
 creator: Mohammad
-modified: 20190214213347853
+modified: 20190215010807367
 modifier: Mohammad
 title: $:/commander/ui/fieldops/add-remove-fields/remove
 type: text/vnd.tiddlywiki
@@ -10,7 +10,7 @@ type: text/vnd.tiddlywiki
 <$button> Remove old field
 <$macrocall $name="remove-old-field-bulk" oldField={{$:/temp/commander/field-remove}} />
 </$button></span>
-<$list filter="[subfilter{$:/temp/commander}fields[]limit[1]]" variable="dummy">
+<$list filter="[subfilter{$:/temp/commander/field-remove-filter}]  +[limit[1]]" variable="dummy">
 <$select tiddler="$:/temp/commander/field-remove" default=<<dummy>>>
 <$list filter="[subfilter{$:/temp/commander/field-remove-filter}]" >
 <option><$view field="title"/></option>
