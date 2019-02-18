@@ -199,7 +199,11 @@ Error message and password prompt
 
 <li>$:/commander/macro/title-operation/prefix</li>
 
-<li>$:/commander/macro/title-operation/remove-cahrs</li>
+<li>$:/commander/macro/title-operation/remove-cahrs-bks</li>
+
+<li>$:/commander/macro/title-operation/remove-cahrs-end</li>
+
+<li>$:/commander/macro/title-operation/remove-cahrs-start</li>
 
 <li>$:/commander/macro/title-operation/suffix</li>
 
@@ -210,6 +214,8 @@ Error message and password prompt
 <li>$:/commander/stylesheet/flex-col</li>
 
 <li>$:/commander/stylesheet/multicols</li>
+
+<li>$:/commander/stylesheet/select-width</li>
 
 <li>$:/commander/stylesheet/tabs</li>
 
@@ -459,11 +465,15 @@ Error message and password prompt
 
 <li>18th February 2019</li>
 
+<li>b</li>
+
 <li>Beta Release</li>
 
 <li>Beta Releasexx</li>
 
 <li>Bugs</li>
+
+<li>c</li>
 
 <li>Change Log</li>
 
@@ -472,6 +482,8 @@ Error message and password prompt
 <li>commander/authors</li>
 
 <li>commander/readme</li>
+
+<li>d</li>
 
 <li>Design Approach</li>
 
@@ -494,6 +506,8 @@ Error message and password prompt
 <li>Naming Tags</li>
 
 <li>Naming Tiddlers</li>
+
+<li>New Tiddler</li>
 
 <li>Not Overwritting</li>
 
@@ -1013,7 +1027,7 @@ exports.run = function(regtext, subtext, text) {
 \end
 </pre>
 </div>
-<div created="20190217085920396" creator="Mohammad" modified="20190218103840227" modifier="Mohammad" tags="$:/tags/Macro" title="$:/commander/macro/title-operation/remove-cahrs">
+<div created="20190217085920396" creator="Mohammad" modified="20190218190316881" modifier="Mohammad" title="$:/commander/macro/title-operation/remove-cahrs-bks">
 <pre>\define remove-from-begining-tiltle-bulk(n:&quot;0&quot;)
 n: $n$
 &lt;$list filter=&quot;[&lt;__n__&gt;] -0&quot; variable=null&gt;
@@ -1041,6 +1055,76 @@ n: $n$
 &lt;/$list&gt;
 &lt;/$list&gt;
 \end</pre>
+</div>
+<div created="20190218190318901" creator="Mohammad" modified="20190218215453031" modifier="Mohammad" tags="$:/tags/Macro" title="$:/commander/macro/title-operation/remove-cahrs-end">
+<pre>\define suffix-actions2()
+&lt;$list filter=&quot;[subfilter{$:/temp/commander}] +[prefix&lt;sfx&gt;]&quot; variable=&quot;item&quot;&gt;
+ &lt;$action-setfield      $tiddler=&lt;&lt;item&gt;&gt; title=&lt;&lt;sfx&gt;&gt; /&gt;
+  &lt;$action-deletetiddler $tiddler=&lt;&lt;item&gt;&gt; /&gt;
+&lt;/$list&gt;
+\end
+
+
+\define makelink2() [[$(newTitle)$]]
+
+\define generate-suffixes2(n:&quot;0&quot;)
+&lt;$list filter=&quot;[&lt;__n__&gt;] -0&quot; variable=null&gt;
+&lt;$list filter=&quot;[subfilter{$:/temp/commander}] +[!is[missing]]&quot; variable=&quot;item&quot;&gt;
+&lt;$list filter=&quot;&quot;&quot;[&lt;item&gt;split[]butlast[$n$]join[]trim[]]&quot;&quot;&quot; variable=&quot;newTitle&quot;&gt;
+&lt;$text text=&lt;&lt;makelink2&gt;&gt;/&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+\end
+
+\define remove-from-end-tiltle-bulk(num:&quot;0&quot;)
+&lt;$vars n=&lt;&lt;__num__&gt;&gt; &gt;
+&lt;$wikify text=&quot;&quot;&quot;&lt;&lt;generate-suffixes2 n:&quot;$num$&quot;&gt;&gt;&quot;&quot;&quot; 
+ name=&quot;outputs&quot; output=&quot;formattedtext&quot; 
+ mode=&quot;block&quot;&gt;
+ &lt;$list filter=&quot;[subfilter&lt;outputs&gt;]&quot; variable=&quot;sfx&quot;&gt;
+&lt;$list filter=&quot;[subfilter{$:/temp/commander}] +[prefix&lt;sfx&gt;limit[2]count[]regexp[2]]&quot; emptyMessage=&lt;&lt;suffix-actions2&gt;&gt; variable=&quot;cnt&quot;&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$wikify&gt;
+&lt;/$vars&gt;
+\end
+</pre>
+</div>
+<div created="20190218214608685" creator="Mohammad" modified="20190218214626607" modifier="Mohammad" tags="$:/tags/Macro" title="$:/commander/macro/title-operation/remove-cahrs-start">
+<pre>\define suffix-actions()
+&lt;$list filter=&quot;[subfilter{$:/temp/commander}] +[suffix&lt;sfx&gt;]&quot; variable=&quot;item&quot;&gt;
+ &lt;$action-setfield      $tiddler=&lt;&lt;item&gt;&gt; title=&lt;&lt;sfx&gt;&gt; /&gt;
+  &lt;$action-deletetiddler $tiddler=&lt;&lt;item&gt;&gt; /&gt;
+&lt;/$list&gt;
+\end
+
+
+\define makelink() [[$(newTitle)$]]
+
+\define generate-suffixes(n:&quot;0&quot;)
+&lt;$list filter=&quot;[&lt;__n__&gt;] -0&quot; variable=null&gt;
+&lt;$list filter=&quot;[subfilter{$:/temp/commander}] +[!is[missing]]&quot; variable=&quot;item&quot;&gt;
+&lt;$list filter=&quot;&quot;&quot;[&lt;item&gt;split[]rest[$n$]join[]trim[]]&quot;&quot;&quot; variable=&quot;newTitle&quot;&gt;
+&lt;$text text=&lt;&lt;makelink&gt;&gt;/&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+\end
+
+\define remove-from-begining-tiltle-bulk(num:&quot;0&quot;)
+&lt;$vars n=&lt;&lt;__num__&gt;&gt; &gt;
+&lt;$wikify text=&quot;&quot;&quot;&lt;&lt;generate-suffixes n:&quot;$num$&quot;&gt;&gt;&quot;&quot;&quot; 
+ name=&quot;outputs&quot; output=&quot;formattedtext&quot; 
+ mode=&quot;block&quot;&gt;
+ &lt;$list filter=&quot;[subfilter&lt;outputs&gt;]&quot; variable=&quot;sfx&quot;&gt;
+&lt;$list filter=&quot;[subfilter{$:/temp/commander}] +[suffix&lt;sfx&gt;limit[2]count[]regexp[2]]&quot; emptyMessage=&lt;&lt;suffix-actions&gt;&gt; variable=&quot;cnt&quot;&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$wikify&gt;
+&lt;/$vars&gt;
+\end
+</pre>
 </div>
 <div created="20190212143639636" creator="Mohammad" modified="20190218103811932" modifier="Mohammad" tags="$:/tags/Macro" title="$:/commander/macro/title-operation/suffix">
 <pre>\define addSuffix-to-tiltle-bulk(suffix)
@@ -1070,14 +1154,14 @@ n: $n$
 \end
 </pre>
 </div>
-<div caption="Items found" created="20190212060411316" creator="Mohammad" modified="20190218105817404" modifier="Mohammad" tags="" title="$:/commander/search-result">
+<div caption="Items found" created="20190212060411316" creator="Mohammad" modified="20190218200504781" modifier="Mohammad" tags="" title="$:/commander/search-result">
 <pre>&lt;div class=&quot;alert-warning&quot; style=&quot;padding:10px;&quot;&gt;
 
 &lt;$reveal state=&quot;$:/temp/commander&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt;
-&lt;$set name=&quot;resultCount&quot; value=&quot;&quot;&quot;&lt;$count filter=&quot;[subfilter[{$:/temp/commander}] +[!is[missing]]&quot; /&gt;&quot;&quot;&quot;&gt;
+&lt;$set name=&quot;resultCount&quot; value=&quot;&quot;&quot;&lt;$count filter=&quot;[subfilter{$:/temp/commander}] +[!is[missing]]&quot; /&gt;&quot;&quot;&quot;&gt;
 &lt;div class=&quot;tc-search-results&quot;&gt;
 &lt;span style=&quot;font-style:italic; font-size:small;&quot;&gt;&lt;&lt;resultCount&gt;&gt; matches&lt;/span&gt;&lt;br&gt;
-&lt;$list filter=&quot;[subfilter[{$:/temp/commander}] +[!is[missing]]&quot; template=&quot;$:/core/ui/ListItemTemplate&quot;/&gt;
+&lt;$list filter=&quot;[subfilter{$:/temp/commander}] +[!is[missing]]&quot; template=&quot;$:/core/ui/ListItemTemplate&quot;/&gt;
 &lt;/div&gt;
 &lt;/$set&gt;
 &lt;/$reveal&gt;
@@ -1114,6 +1198,11 @@ n: $n$
   }
 }
 </pre>
+</div>
+<div created="20190218214027079" creator="Mohammad" modified="20190218214207640" modifier="Mohammad" tags="$:/tags/Stylesheet" title="$:/commander/stylesheet/select-width" type="text/css">
+<pre>.cm-sl{
+  width:8ch;
+}</pre>
 </div>
 <div created="20190212114811859" creator="Mohammad" modified="20190216115608762" modifier="Mohammad" tags="$:/tags/Stylesheet" title="$:/commander/stylesheet/tabs" type="text/css">
 <pre>/* .cm-tab-colorful  .tc-tab-buttons button {color:blue;} */
@@ -1533,14 +1622,14 @@ Warning: These operation may overwritte existing tiddlers
 &lt;/div&gt;
 </pre>
 </div>
-<div caption="Add remove chars" created="20190217092719245" creator="Mohammad" modified="20190218093856755" modifier="Mohammad" tags="$:/tags/Commander/TitleOps" title="$:/commander/ui/titleops/add-remove-chars">
-<pre>\define rngcat() [range[0,$(minchars)$]] -0
+<div caption="Add remove chars" created="20190217092719245" creator="Mohammad" modified="20190218220108921" modifier="Mohammad" tags="$:/tags/Commander/TitleOps" title="$:/commander/ui/titleops/add-remove-chars">
+<pre>\define rngcat() [range[0,$(minchars)$]] -0 
 
 Number of characters
-&lt;$select tiddler=&quot;$:/temp/commander/title-remove-chars&quot;  default=&quot;0&quot;&gt;
-&lt;$list filter=&quot;&quot;&quot;[subfilter{$:/temp/commander}] +[length[]] +[minall[]] +[subtract[1]]&quot;&quot;&quot; variable=&quot;minchars&quot;&gt; 
-&lt;$list filter=&lt;&lt;rngcat&gt;&gt; emptyMessage=&quot;Empty&quot;&gt; sss ffff
-&lt;option value=&lt;&lt;currentTiddler&gt;&gt;&gt;min: &lt;&lt;minchars&gt;&gt; &lt;$view field='title'/&gt;&lt;/option&gt;
+&lt;$select tiddler=&quot;$:/temp/commander/title-remove-chars&quot;  default=&quot;0&quot; class=&quot;cm-sl&quot;&gt;
+&lt;$list filter=&quot;&quot;&quot;[subfilter{$:/temp/commander}] +[length[]] +[minall[]] +[subtract[1]] -Infinity&quot;&quot;&quot; variable=&quot;minchars&quot;&gt;
+&lt;$list filter=&lt;&lt;rngcat&gt;&gt; &gt;
+&lt;option value=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$view field='title'/&gt;&lt;/option&gt;
 &lt;/$list&gt;
 &lt;/$list&gt;
 &lt;/$select&gt;&amp;nbsp; 
@@ -1549,19 +1638,19 @@ Number of characters
 &lt;$button&gt; Remove chars from start
 &lt;$macrocall 
  $name=&quot;remove-from-begining-tiltle-bulk&quot; 
- n={{$:/temp/commander/title-remove-chars}} 
+ num={{$:/temp/commander/title-remove-chars}} 
 /&gt;
 &lt;/$button&gt;
 &lt;br&gt;
 &lt;$button&gt; Remove chars from end
 &lt;$macrocall 
  $name=&quot;remove-from-end-tiltle-bulk&quot; 
- n={{$:/temp/commander/title-remove-chars}} 
+ num={{$:/temp/commander/title-remove-chars}} 
 /&gt;
 &lt;/$button&gt;
 &lt;/span&gt;
 
-
+&lt;&lt;alert info &quot;Tobe removed: Works on Non-Overwriting basis.&quot;&gt;&gt;
 </pre>
 </div>
 <div caption="Add remove prefix" created="20190212141758567" creator="Mohammad" modified="20190216160421957" modifier="Mohammad" tags="$:/tags/Commander/TitleOps" title="$:/commander/ui/titleops/add-remove-prefix">
@@ -10735,7 +10824,7 @@ details &gt; div {
 }
 </pre>
 </div>
-<div created="20181010162537613" creator="Mohammad" description="Toggle field handling in view mode" list-after="$:/core/ui/ViewTemplate/tags" modified="20190218104601498" modifier="Mohammad" tags="kookma" title="$:/plugins/.mr/shiraz/viewtemplate/view-fields">
+<div created="20181010162537613" creator="Mohammad" description="Toggle field handling in view mode" list-after="$:/core/ui/ViewTemplate/tags" modified="20190218201013862" modifier="Mohammad" tags="kookma" title="$:/plugins/.mr/shiraz/viewtemplate/view-fields">
 <pre>\define lingo-base() $:/language/EditTemplate/
 \define config-title()
 $:/config/EditTemplateFields/Visibility/$(currentField)$
@@ -11627,10 +11716,10 @@ exports.hljs = hljs;</pre>
 <div created="20190212112851652" modified="20190212112854841" title="$:/state/plugin-info--1284604328-$:/plugins/wikilabs/link-to-tabs--1981748087">
 <pre>contents</pre>
 </div>
-<div created="20190212050956480" creator="Mohammad" modified="20190217172147628" modifier="Mohammad" title="$:/state/showeditpreview">
+<div created="20190212050956480" creator="Mohammad" modified="20190218204026747" modifier="Mohammad" title="$:/state/showeditpreview">
 <pre>no</pre>
 </div>
-<div created="20190212053007404" creator="Mohammad" modified="20190218103743186" modifier="Mohammad" title="$:/state/sidebar">
+<div created="20190212053007404" creator="Mohammad" modified="20190218214018257" modifier="Mohammad" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
 <div created="20190212050830280" modified="20190212081225552" title="$:/state/tab--1498284803">
@@ -11639,13 +11728,13 @@ exports.hljs = hljs;</pre>
 <div created="20190214125834194" creator="Mohammad" modified="20190214125834194" modifier="Mohammad" title="$:/state/tab--1626517444">
 <pre>$:/commander/ui/titleops/add-remove-prefix</pre>
 </div>
-<div created="20190212112541745" creator="Mohammad" modified="20190218105830530" modifier="Mohammad" title="$:/state/tab--1790025794">
-<pre>$:/commander/ui/tagops/add-remove-tags</pre>
+<div created="20190212112541745" creator="Mohammad" modified="20190218200809672" modifier="Mohammad" title="$:/state/tab--1790025794">
+<pre>$:/commander/ui/tagops/replace-tags</pre>
 </div>
 <div created="20190212045910509" modified="20190212045910509" title="$:/state/tab--1963855381">
 <pre>$:/themes/tiddlywiki/vanilla/themetweaks</pre>
 </div>
-<div created="20190212144034305" creator="Mohammad" modified="20190218110051330" modifier="Mohammad" title="$:/state/tab--2002155392">
+<div created="20190212144034305" creator="Mohammad" modified="20190218214310327" modifier="Mohammad" title="$:/state/tab--2002155392">
 <pre>$:/commander/ui/titleops/add-remove-chars</pre>
 </div>
 <div created="20190214052517916" creator="Mohammad" modified="20190214052521419" modifier="Mohammad" title="$:/state/tab--38982095">
@@ -11657,8 +11746,8 @@ exports.hljs = hljs;</pre>
 <div created="20190212080422717" modified="20190212080422717" title="$:/state/tab--697582678">
 <pre>$:/core/ui/ControlPanel/Settings/CodeMirror</pre>
 </div>
-<div created="20190214040138342" creator="Mohammad" modified="20190218105833817" modifier="Mohammad" title="$:/state/tab-1337856798">
-<pre>$:/commander/ui/fieldops/add-remove-fields</pre>
+<div created="20190214040138342" creator="Mohammad" modified="20190218200833104" modifier="Mohammad" title="$:/state/tab-1337856798">
+<pre>$:/commander/ui/fieldops/set-field-value</pre>
 </div>
 <div created="20190212132242046" creator="Mohammad" modified="20190214050401143" modifier="Mohammad" title="$:/state/tab-1452923485">
 <pre>$:/commander/ui/tiddlerops/create-bulk-tiddlers</pre>
@@ -11675,22 +11764,22 @@ exports.hljs = hljs;</pre>
 <div created="20190216114951752" creator="Mohammad" modified="20190216115002120" modifier="Mohammad" title="$:/state/tab-522721553">
 <pre>$:/commander/ui/titleops/add-remove-prefix</pre>
 </div>
-<div created="20190212061049504" creator="Mohammad" modified="20190218110047906" modifier="Mohammad" title="$:/state/tab-607722857">
+<div created="20190212061049504" creator="Mohammad" modified="20190218215805344" modifier="Mohammad" title="$:/state/tab-607722857">
 <pre>$:/commander/ui/title-operation</pre>
 </div>
 <div created="20190212051649677" modified="20190212051923880" title="$:/state/tab-791620041">
 <pre>$:/commander/ui/tag-operation</pre>
 </div>
-<div created="20190212133040845" creator="Mohammad" modified="20190218104350201" modifier="Mohammad" title="$:/state/tab-926729940">
-<pre>$:/commander/ui/tiddlerops/create-bulk-tiddlers</pre>
+<div created="20190212133040845" creator="Mohammad" modified="20190218215714670" modifier="Mohammad" title="$:/state/tab-926729940">
+<pre>$:/commander/ui/tiddlerops/delete-all-tiddlers-at-once</pre>
 </div>
 <div created="20190214140921473" creator="Mohammad" modified="20190214141430576" modifier="Mohammad" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Tags</pre>
 </div>
-<div created="20190212045551130" creator="Mohammad" modified="20190218110111754" modifier="Mohammad" title="$:/state/tab/sidebar--595412856">
-<pre>$:/Commander-Tiddlers</pre>
+<div created="20190212045551130" creator="Mohammad" modified="20190218220117214" modifier="Mohammad" title="$:/state/tab/sidebar--595412856">
+<pre>$:/plugins/ajh/favorites/SideBar</pre>
 </div>
-<div created="20190212050923429" creator="Mohammad" modified="20190218104601498" modifier="Mohammad" title="$:/state/toggle-view-fields">
+<div created="20190212050923429" creator="Mohammad" modified="20190218201013862" modifier="Mohammad" title="$:/state/toggle-view-fields">
 <pre>hide</pre>
 </div>
 <div created="20190212150615218" creator="M" modified="20190212150616505" modifier="Mohamma" title="$:/status/UserName">
@@ -11711,11 +11800,11 @@ exports.hljs = hljs;</pre>
 <div created="20190213194119340" creator="Mohammad" list="$:/commander/ui/tiddlerops/create-bulk-tiddlers $:/commander/ui/tiddlerops/create-bulk-tiddlers-using-templates $:/commander/ui/tiddlerops/delete-all-tiddlers-selectively $:/commander/ui/tiddlerops/delete-all-tiddlers-at-once" modified="20190213194126403" modifier="Mohammad" title="$:/tags/Commander/TiddlerOps">
 <pre></pre>
 </div>
-<div created="20190214150640158" creator="Mohammad" modified="20190217172346832" modifier="Mohammad" title="$:/temp/advancedsearch">
-<pre>$:/temp/commander/title-remove-chars</pre>
+<div created="20190214150640158" creator="Mohammad" modified="20190218203036583" modifier="Mohammad" title="$:/temp/advancedsearch">
+<pre>$:/temp/commander</pre>
 </div>
-<div created="20190214151329172" creator="Mohammad" modified="20190218105838146" modifier="Mohammad" title="$:/temp/commander">
-<pre></pre>
+<div created="20190214151329172" creator="Mohammad" modified="20190218214225271" modifier="Mohammad" title="$:/temp/commander">
+<pre>[tag[xx]]</pre>
 </div>
 <div created="20190214071002666" creator="Mohammad" modified="20190218104200089" modifier="Mohammad" title="$:/temp/commander/field-add">
 <pre>uh</pre>
@@ -11753,17 +11842,17 @@ exports.hljs = hljs;</pre>
 <div created="20190214071611579" creator="Mohammad" modified="20190217171932484" modifier="Mohammad" title="$:/temp/commander/tiddler-base-tag">
 <pre>xx</pre>
 </div>
-<div created="20190214071553805" creator="Mohammad" modified="20190218104356035" modifier="Mohammad" title="$:/temp/commander/tiddler-base-title">
-<pre>se</pre>
+<div created="20190214071553805" creator="Mohammad" modified="20190218200900384" modifier="Mohammad" title="$:/temp/commander/tiddler-base-title">
+<pre>oh4</pre>
 </div>
-<div created="20190214073935119" creator="Mohammad" modified="20190218104035867" modifier="Mohammad" title="$:/temp/commander/title-prefix">
-<pre>abg</pre>
+<div created="20190214073935119" creator="Mohammad" modified="20190218214259620" modifier="Mohammad" title="$:/temp/commander/title-prefix">
+<pre>6789</pre>
 </div>
-<div created="20190217094334814" creator="Mohammad" modified="20190218101808506" modifier="Mohammad" title="$:/temp/commander/title-remove-chars">
+<div created="20190217094334814" creator="Mohammad" modified="20190218214234432" modifier="Mohammad" title="$:/temp/commander/title-remove-chars">
 <pre>1</pre>
 </div>
-<div created="20190214073910078" creator="Mohammad" modified="20190218104046092" modifier="Mohammad" title="$:/temp/commander/title-suffix">
-<pre>1</pre>
+<div created="20190214073910078" creator="Mohammad" modified="20190218211038481" modifier="Mohammad" title="$:/temp/commander/title-suffix">
+<pre>+1wert</pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
 <pre>{
@@ -11810,16 +11899,16 @@ exports.hljs = hljs;</pre>
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1280&quot;
+            &quot;text&quot;: &quot;1368&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;1024&quot;
+            &quot;text&quot;: &quot;912&quot;
         }
     }
 }</pre>
 </div>
-<div created="20190214120345424" creator="Mohammad" modified="20190218110056010" modifier="Mohammad" title="$:/temp/search">
+<div created="20190214120345424" creator="Mohammad" modified="20190218220207591" modifier="Mohammad" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.20-prerelease">
@@ -11966,13 +12055,14 @@ exports.hljs = hljs;</pre>
 * Fixed: prevent all overwrittings (issue: you cannot force overwriting)
 </pre>
 </div>
-<div created="20190218105856918" creator="Mohammad" modified="20190218110044034" modifier="Mohammad" tags="change" title="18th February 2019">
+<div created="20190218105856918" creator="Mohammad" modified="20190218220218215" modifier="Mohammad" tags="change" title="18th February 2019">
 <pre>* Fixed: handling missing tiddlers added
-* New: remove chars from the title us added
+* New: remove chars from the title was added
 * Fixed: a specified height is used in ui to prevent collapsing
-
-* ''bugs''
-** //remove chars overwrite tiddlers//</pre>
+</pre>
+</div>
+<div created="20190218215718348" creator="Mohammad" modified="20190218215813407" modifier="Mohammad" tags="xx" title="b">
+<pre></pre>
 </div>
 <div created="20190212150046333" creator="Mohammad" modified="20190214042218081" modifier="Mohammad" tags="warning" title="Beta Release">
 <pre> &lt;div class=&quot;flex-grid&quot;&gt;
@@ -12010,6 +12100,9 @@ exports.hljs = hljs;</pre>
 <pre>* Add prefix will create a new tiddler eventhough it is not existed! (when used tiddlername not filter)
 * Add better templates</pre>
 </div>
+<div created="20190218215731745" creator="Mohammad" modified="20190218215919231" modifier="Mohammad" tags="xx" title="c">
+<pre></pre>
+</div>
 <div created="20190212144737901" creator="Mohammad" modified="20190214180404075" modifier="Mohammad" tags="task" title="Change Log">
 <pre>''Changes''
 &lt;&lt;article change&gt;&gt;
@@ -12024,6 +12117,9 @@ exports.hljs = hljs;</pre>
 </div>
 <div created="20190212050942506" creator="Mohammad" modified="20190214170108080" modifier="Mohammad" tags="" title="commander/readme">
 <pre>&lt;&lt;dbadge Tiddlywiki 5.1.18+ primary&gt;&gt; &lt;&lt;dbadge License MIT success&gt;&gt; &lt;&lt;dbadge Release 1.0alpha warning&gt;&gt; &lt;&lt;dbadge Status &quot;in progress&quot; danger&gt;&gt;</pre>
+</div>
+<div created="20190218215745884" creator="Mohammad" modified="20190218215813408" modifier="Mohammad" tags="xx" title="d">
+<pre></pre>
 </div>
 <div created="20190212053902707" modified="20190212054436300" tags="idea" title="Design Approach">
 <pre>* Use the advanced search mechanism
@@ -12161,6 +12257,11 @@ Use the prefix `$:/tags/Commander/` and the title case word depending to the sub
 ** Field operation: `$:/commander/ui/fieldops/name`
 ** Tiddler operation: `$:/commander/ui/tiddlerops/name`
 * Template: `$:/commander/template/name`</pre>
+</div>
+<div created="20190218203143779" creator="Mohammad" modified="20190218210719250" modifier="Mohammad" tags="" title="New Tiddler">
+<pre>&lt;$button&gt;Do it
+&lt;&lt;remove-from-begining-tiltle-bulk 1&gt;&gt;
+&lt;/$button&gt;</pre>
 </div>
 <div created="20190214120018228" creator="Mohammad" modified="20190214120213677" modifier="Mohammad" tags="note" title="Not Overwritting">
 <pre>```
