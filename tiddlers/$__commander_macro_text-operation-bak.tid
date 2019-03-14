@@ -1,0 +1,39 @@
+created: 20190222145643442
+creator: Mohammad
+modified: 20190314165949417
+modifier: Mohammad
+tags: trash
+title: $:/commander/macro/text-operation-bak
+type: text/vnd.tiddlywiki
+
+\define search-replace-in-tiddler-text(searchValue,replaceValue,tidName,caseSensitive)
+<$list filter="[<__searchValue__>!search::words[\]]">
+<$list filter="[<__tidName__>search:text[$searchValue$]]">
+<$list filter="[<__searchValue__>addprefix[\b]addsuffix[\b]]" variable="wholeString">
+<$wikify name="newText" 
+text="""
+<$macrocall $name="regexpsub"
+searchValue=<<wholeString>>
+replaceValue=<<__replaceValue__>>
+sourceText={{$tidName$!!text}}
+caseSensitive=<<__caseSensitive__>> />
+""">
+<$action-setfield $tiddler="""$tidName$""" $field="text" $value=<<newText>> />
+</$wikify>
+</$list>
+</$list>
+</$list>
+\end
+
+
+\define search-replace-in-text-bulk(oldText, newText, caseSensitivity:"insensitive")
+<$list filter="[subfilter{$:/temp/commander}] +[!is[missing]]">
+  <$macrocall $name="search-replace-in-tiddler-text"
+  searchValue=<<__oldText__>>
+  replaceValue=<<__newText__>>
+  caseSensitive=<<__caseSensitivity__>>
+  tidName=<<currentTiddler>> />
+</$list>
+\end
+
+

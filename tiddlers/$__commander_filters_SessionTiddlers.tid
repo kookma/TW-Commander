@@ -1,7 +1,7 @@
 created: 20190214135831279
 description: {{$:/language/Filters/SessionTiddlers}}
 filter: [haschanged[]]
-modified: 20190214213347901
+modified: 20190314165949752
 tags: $:/tags/Commander/Filter
 title: $:/commander/filters/SessionTiddlers
 type: text/vnd.tiddlywiki

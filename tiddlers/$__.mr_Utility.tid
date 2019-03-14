@@ -1,13 +1,13 @@
 created: 20190214180230680
 creator: Mohammad
-modified: 20190214213347780
+modified: 20190314165949124
 modifier: Mohammad
 tags: $:/tags/Macro
 title: $:/.mr/Utility
 type: text/vnd.tiddlywiki
 
 \define article(myTag)
-<$list filter="[tag[$myTag$]!sort[title]]">
+<$list filter="[tag[$myTag$]!sort[modified]]">
 
 <h3><$link to=<<currentTiddler>>><$text text=<<currentTiddler>> /></$link></h3>
 

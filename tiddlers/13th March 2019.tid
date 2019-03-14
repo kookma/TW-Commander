@@ -1,0 +1,16 @@
+created: 20190313081628107
+creator: Mohammad
+modified: 20190314165951132
+modifier: Mohammad
+tags: change
+title: 13th March 2019
+type: text/vnd.tiddlywiki
+
+* New : Inspect
+** View selected tiddler with their fileds
+** Scroll in selected tiddlers
+** Edit selected tiddlers including all fields
+** Scroll in selected tiddlers while editing
+
+Acknowledgement:
+Special thanks goes to ''Ton Gerner'' for his great script on view fileds.

@@ -1,0 +1,22 @@
+/*.tc-sidebar-lists .tc-tab-buttons button {
+    cursor: pointer;
+    font-size: 13px;
+    line-height: 1;
+    padding: 0 5px 5px 2px;
+    text-align: center;
+    color: #9a9a9a;
+    -webkit-transition: color .1s ease-in;
+    transition: color .1s ease-in;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #e0e0e0;
+    margin-right: 30px;
+}*/
+
+.tc-sidebar-lists .tc-tab-buttons button.tc-tab-selected {
+    background: none;
+    border: none;
+    border-bottom: solid 1px #737373 !important;
+    font-weight: bold;
+    color: #DB4C3F !important;
+}

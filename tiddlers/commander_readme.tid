@@ -1,9 +1,9 @@
 created: 20190212050942506
 creator: Mohammad
-modified: 20190214213347931
+modified: 20190314165951719
 modifier: Mohammad
 tags: 
 title: commander/readme
 type: text/vnd.tiddlywiki
 
-<<dbadge Tiddlywiki 5.1.18+ primary>> <<dbadge License MIT success>> <<dbadge Release 1.0alpha warning>> <<dbadge Status "in progress" danger>>
+<<dbadge Tiddlywiki 5.1.18+ primary>> <<dbadge License MIT success>> <<dbadge Release "0.1 beta" warning>> <<dbadge Status "in progress" danger>>

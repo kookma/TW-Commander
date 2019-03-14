@@ -1,0 +1,46 @@
+caption: Create tiddlers
+created: 20190212132049725
+creator: Mohammad
+modified: 20190314165950532
+modifier: Mohammad
+tags: trash
+title: $:/commander/ui/tiddlerops/create-bulk-tiddlers-bak
+type: text/vnd.tiddlywiki
+
+<span style="color:blue;">Create bulk tiddlers</span><br>
+
+<div style="font-size:small; padding-left:20px;">
+
+Base title 
+<$edit-text 
+ tiddler="$:/temp/commander/tiddler-base-title" 
+ tag="input" 
+ placeholder="base title" 
+ class="cm-txt-area"/> &nbsp;
+Tags
+<$edit-text 
+ tiddler="$:/temp/commander/tiddler-base-tag" 
+ tag="input" 
+ placeholder="tags" 
+ class="cm-txt-area"
+/> &nbsp;
+
+Number of tiddlers  
+<$select tiddler="$:/temp/commander/tiddler-base-number"  default='1'>
+<$list filter='1 2 3 4 [range[5,50, 5]] [range[60,100,10]] [range[200,500,100]]'>
+<option value=<<currentTiddler>>><$view field='title'/></option>
+</$list>
+</$select>
+
+
+<$button> Create tiddlers
+<$macrocall $name="bulk-tiddler-creator"
+baseTitle={{$:/temp/commander/tiddler-base-title}}
+baseTags={{$:/temp/commander/tiddler-base-tag}}
+numberTiddler={{$:/temp/commander/tiddler-base-number}}
+/>
+</$button>
+</div>
+
+
+

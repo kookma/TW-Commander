@@ -1,0 +1,13 @@
+caption: Snr
+created: 20190220210055713
+creator: Mohammad
+modified: 20190314165949847
+modifier: Mohammad
+tags: $:/tags/Commander
+title: $:/commander/ui/snr-operation
+type: text/vnd.tiddlywiki
+
+Search and replcae in tiddler fields!
+
+<<tabs "[all[shadows+tiddlers]tag[$:/tags/Commander/SnrOps]!has[draft.of]]" class:"tc-vertical cm-tab-colorful cm-tab-wd">>
+

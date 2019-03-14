@@ -1,16 +1,13 @@
 caption: Delete tiddlers silently
 created: 20190213155027060
 creator: Mohammad
-modified: 20190214213347825
+modified: 20190314165950487
 modifier: Mohammad
-tags: $:/tags/Commander/TiddlerOps
+tags: trash
 title: $:/commander/ui/tiddlerops/delete-all-tiddlers-at-once
 type: text/vnd.tiddlywiki
 
-<span style="color:red;">Warning: Delete Tiddlers Silently!</span><br>
-
-<div style="font-size:small; padding-left:20px;">
-
+<span style="color:red;">Warning: Delete all tiddlers silently!</span>
 <$reveal state="$:/temp/commander" type="nomatch" text="">
 <$button popup=<<qualify "$:/state/commander/DeleteDropdown">> >
 Delete tiddlers
@@ -20,21 +17,19 @@ Delete tiddlers
 <$reveal state=<<qualify "$:/state/commander/DeleteDropdown">> type="popup" position="belowleft" animate="yes">
 <div class="tc-block-dropdown-wrapper">
 <div class="tc-block-dropdown tc-edit-type-dropdown">
-<div class="tc-dropdown-item-plain">
 <$set name="resultCount" value="""<$count filter={{$:/temp/commander}}/>""">
+<div class="tc-dropdown-item-plain">
 Are you sure you wish to delete <<resultCount>> tiddler(s)?
-</$set>
 </div>
 <div class="tc-dropdown-item-plain">
-<$button class="tc-btn">
+<$button class="tc-btn">Delete these tiddlers
 <$macrocall $name="delete-tiddlers-at-once-bulk"/>
-Delete these tiddlers
 </$button>
 </div>
+</$set>
 </div>
 </div>
 </$reveal>
 
-</div>
 
 

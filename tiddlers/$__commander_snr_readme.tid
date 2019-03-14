@@ -1,0 +1,22 @@
+created: 20190212050942506
+creator: Mohammad
+modified: 20190314165949253
+modifier: Mohammad
+tags: 
+title: $:/commander/snr/readme
+type: text/vnd.tiddlywiki
+
+* SNR
+<<<
+This is a simple script, search-n-replace (''SNR'') to search in tiddler contents (including all fields) for a search-Value and replace them with replace-Value. SNR supports regexp pattern to make search.
+<<<
+
+* UI
+<<<
+To use SNR  simply put the below command in an empty tiddler.
+
+```
+<<snr-ui>>
+```
+This will create the SNR user interface (UI).
+<<<

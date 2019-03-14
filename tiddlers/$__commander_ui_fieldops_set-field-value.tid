@@ -1,32 +1,36 @@
 caption: Set field value
 created: 20190212120609737
-modified: 20190214213347851
+creator: Mohammad
+modified: 20190314165950005
+modifier: Mohammad
 tags: $:/tags/Commander/FieldOps
 title: $:/commander/ui/fieldops/set-field-value
 type: text/vnd.tiddlywiki
 
-<div style="padding-left:20px;">
-<$edit-text
-tiddler="$:/temp/commander/field-name"
-tag="input"
-default=""
-class="cm-txt-area"
-placeholder="field name"
-/> &nbsp; 
-<$edit-text
+Field name &nbsp;
+<$select class="cm-select-wd" tiddler="$:/temp/commander/field-name" default=<<dummy>>>
+<$list filter="[subfilter{$:/state/commander/set-field-value/fields}]" >
+<option><$view field="title"/></option>
+</$list>
+</$select> &nbsp; 
+<$checkbox 
+ tiddler="$:/state/commander/set-field-value/fields" 
+ field="text" 
+ checked="[[$:/temp/commander/selected-titles]indexes[]fields[]sort[]] -tags -title" 
+ unchecked="[[$:/temp/commander/selected-titles]indexes[]fields[]sort[]] -[[$:/commander/empty-tiddler]fields[]]"
+> Include system fields?</$checkbox>
+
+Field value &nbsp;<$edit-text
 tiddler="$:/temp/commander/field-value"
 tag="input"
 default=""
 class="cm-txt-area"
-placeholder="field value"
-/> &nbsp; 
-<span style="color:purple;font-size:small;">
+placeholder=" field value"
+/>  &nbsp; 
 <$button> Set field value
 <$macrocall 
- $name="set-field-value-create-bulk" 
+ $name="set-field-value-bulk" 
  fieldName={{$:/temp/commander/field-name}} 
  fieldValue={{$:/temp/commander/field-value}} 
 />
 </$button>
-</span>
-</div>

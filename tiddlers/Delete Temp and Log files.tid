@@ -1,0 +1,13 @@
+created: 20190303121451999
+creator: Mohammad
+modified: 20190314165951684
+modifier: Mohammad
+tags: idea
+title: Delete Temp and Log files
+type: text/vnd.tiddlywiki
+
+Commander creates a lot of log files and it will cause wiki get heavy one mechanism is to
+
+* Count log tiddlers
+** Solution I: Delete the last one if number of log tiddlers exceeds certain max-limits and then create a new log tiddler
+** Solution II: Delete all previous log tiddlers and start again

@@ -1,32 +1,29 @@
-caption: Add or remove prefix
+caption: Add remove prefix
 created: 20190212141758567
 creator: Mohammad
-modified: 20190215155714841
+modified: 20190314165950406
 modifier: Mohammad
 tags: $:/tags/Commander/TitleOps
 title: $:/commander/ui/titleops/add-remove-prefix
 type: text/vnd.tiddlywiki
 
-<div style="padding-left:20px;">
 <$edit-text
 tiddler="$:/temp/commander/title-prefix"
 tag="input"
 default=""
 class="cm-txt-area"
-placeholder="prefix"
+placeholder=" prefix"
 /> &nbsp; 
-<span style="color:purple;font-size:small;">
 <$button> Add prefix
 <$macrocall 
  $name="addPrefix-to-tiltle-bulk" 
  prefix={{$:/temp/commander/title-prefix}} 
 />
-</$button> &nbsp; 
+</$button>
 <$button> Remove prefix
 <$macrocall 
  $name="removePrefix-from-tiltle-bulk" 
  prefix={{$:/temp/commander/title-prefix}} 
 />
 </$button>
-</span>
-</div>
+

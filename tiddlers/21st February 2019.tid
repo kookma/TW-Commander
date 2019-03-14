@@ -1,0 +1,11 @@
+created: 20190220212440784
+creator: Mohammad
+modified: 20190314165951078
+modifier: Mohammad
+tags: change
+title: 21st February 2019
+type: text/vnd.tiddlywiki
+
+* Search and replcae in tiddler text filed
+** This is in progress feature
+** This does not support the whole words, casesensitive search and replace

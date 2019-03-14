@@ -1,0 +1,11 @@
+created: 20190301113257931
+creator: Mohammad
+modified: 20190314165951635
+modifier: Mohammad
+tags: manual task
+title: How to Add Remove Fields
+type: text/vnd.tiddlywiki
+
+Tiddler filtered by Commander can be proccessed for adding/removing fields
+
+The adding fields uses a non-overwriting mechanism, so any tiddler in the list has already the new field will be ignored.

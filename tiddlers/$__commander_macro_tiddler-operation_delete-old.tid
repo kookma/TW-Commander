@@ -1,0 +1,36 @@
+created: 20190303063538563
+creator: Mohammad
+modified: 20190314165949367
+modifier: Mohammad
+tags: trash
+title: $:/commander/macro/tiddler-operation/delete-old
+type: text/vnd.tiddlywiki
+
+\define log-delete-at-once(msg:"Tiddler deleted")
+<$list filter="[subfilter{$:/temp/commander}] +[!is[missing]]" variable="Item">
+<$action-setfield $tiddler={{$:/state/commander/log-tiddler}} $index=<<Item>> $value="$msg$" />
+</$list>
+\end
+
+\define log-delete-selectively(item, msg:"Tiddler deleted")
+<$action-setfield $tiddler={{$:/state/commander/log-tiddler}} $index=<<__item__>> $value="$msg$" />
+\end
+
+\define delete-tiddlers-at-once-bulk()
+<$list filter="[subfilter{$:/temp/commander}] +[count[]] -0" variable="ignore">
+<<create-log-tiddler "delete-tiddler-at-once">>
+<<log-delete-at-once>>
+<$action-deletetiddler $filter={{$:/temp/commander}} />
+</$list>
+\end
+
+\define delete-tiddlers-selective-bulk()
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[count[]] -0" variable="ignore">
+<<create-log-tiddler "delete-tiddler-selectively">>
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]]" variable="Item">
+<$action-deletetiddler $tiddler=<<Item>> />
+<$macrocall $name="log-delete-selectively" item=<<Item>> />
+</$list>
+<<title-selection-reset>>
+</$list>
+\end

@@ -1,30 +1,31 @@
 caption: Replace tags
 created: 20190212080523588
 creator: Mohammad
-modified: 20190214213347834
+modified: 20190314165949813
 modifier: Mohammad
 tags: $:/tags/Commander/TagOps
 title: $:/commander/ui/tagops/replace-tags
 type: text/vnd.tiddlywiki
 
-<div style="padding-left:20px;">
+<span style="display:inline-block;width:8ch;">Old tag &nbsp;</span>
+<$select class="cm-select-wd" tiddler="$:/temp/commander/replace-tags/old" default=<<dummy>>>
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]tags[]sort[]]" >
+<option><$view field="title"/></option>
+</$list>
+</$select>
+
+<span style="display:inline-block;width:8ch;">New tag &nbsp;</span>
 <$edit-text
-tiddler="$:/temp/commander/tag-old"
+tiddler="$:/temp/commander/replace-tags/new"
 tag="input"
 default=""
 class="cm-txt-area"
-placeholder="old tag"
-/> &nbsp; 
-<$edit-text
-tiddler="$:/temp/commander/tag-new"
-tag="input"
-default=""
-class="cm-txt-area"
-placeholder="new tag"
-/> &nbsp; 
-<span style="color:purple;font-size:small;">
+placeholder=" new tag"
+/>
+
 <$button> Replace tags
-<$macrocall $name="replace-tag-bulk" oldTag={{$:/temp/commander/tag-old}} newTag={{$:/temp/commander/tag-new}} />
+<$macrocall $name="replace-tag-bulk" 
+oldTag={{$:/temp/commander/replace-tags/old}} 
+newTag={{$:/temp/commander/replace-tags/new}} />
 </$button>
-</span>
-</div>
+

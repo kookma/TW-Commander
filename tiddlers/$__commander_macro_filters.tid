@@ -1,6 +1,6 @@
 created: 20190214142032323
 creator: Mohammad
-modified: 20190214213347890
+modified: 20190314165949607
 modifier: Mohammad
 tags: $:/tags/Macro
 title: $:/commander/macro/filters
@@ -12,7 +12,7 @@ type: text/vnd.tiddlywiki
     $basetitle="$:/commander/filters/yourFilter"
     tags="$:/tags/Commander/Filter"
     description=<<__description__>>
-    filter={{$:/temp/commander}}
+    filter={{$:/temp/commander/search-box}}
   /> 
 </$list>
 \end

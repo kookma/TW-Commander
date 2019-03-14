@@ -1,0 +1,11 @@
+caption: Search and replace
+created: 20190220211138573
+creator: Mohammad
+icon: $:/core/images/gitter
+modified: 20190314165950567
+modifier: Mohammad
+tags: $:/tags/Commander/SnrOps
+title: $:/commander/ui/textops/replace-text
+type: text/vnd.tiddlywiki
+
+<<snr-ui>>

@@ -1,33 +1,47 @@
 created: 20190212143639636
 creator: Mohammad
-modified: 20190214213347878
+modified: 20190314165949285
 modifier: Mohammad
 tags: $:/tags/Macro
 title: $:/commander/macro/title-operation/suffix
 type: text/vnd.tiddlywiki
 
-\define addSuffix-to-tiltle-bulk(suffix)
+\define log-changeSuffix(message, oldTitle, newTitle)
+<$macrocall $name="log-add-single-operation" msg="""$message$. New title [[$newTitle$]]""" tidItem=<<__oldTitle__>> />
+\end
+
+\define addSuffix-to-tiltle-bulk(suffix:"Empty")
 <$list filter="[<__suffix__>] -Empty" variable=null>
-<$list filter={{$:/temp/commander}}>
-<$list filter="[<currentTiddler>addsuffix[$suffix$]] -[<currentTiddler>]" variable="newTitle">
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[count[]] -0" variable="ignore">
+<<create-log-tiddler "addSufffix-to-tiltle-bulk">>
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[!is[missing]]">
+<$list filter="""[<currentTiddler>addsuffix[$suffix$]] -[<currentTiddler>]""" variable="newTitle">
 <$list filter="[<newTitle>]  -[has[title]]" variable="ignore">
   <$action-setfield      $tiddler=<<currentTiddler>> title=<<newTitle>> />
   <$action-deletetiddler $tiddler=<<currentTiddler>> />
+  <$macrocall $name=log-changeSuffix message="title suffix: `$suffix$` added" oldTitle=<<currentTiddler>> newTitle=<<newTitle>> />
 </$list>
+</$list>
+<$macrocall $name="compSelective-reset" tiddler="$:/temp/commander/selected-titles" filter="[subfilter{$:/temp/commander}] +[!is[missing]]" />
 </$list>
 </$list>
 </$list>
 \end
 
-\define removeSuffix-from-tiltle-bulk(suffix)
+\define removeSuffix-from-tiltle-bulk(suffix:"Empty")
 <$list filter="[<__suffix__>] -Empty" variable=null>
-<$list filter={{$:/temp/commander}}>
- <$list filter="[<currentTiddler>removesuffix[$suffix$]] -[<currentTiddler>]" variable="newTitle">
- <$list filter="[<newTitle>]  -[has[title]]" variable="ignore">
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[count[]] -0" variable="ignore">
+<<create-log-tiddler "removeSuffix-from-tiltle-bulk">>
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[!is[missing]]">
+<$list filter="""[<currentTiddler>removesuffix[$suffix$]] -[<currentTiddler>]""" variable="newTitle">
+<$list filter="[<newTitle>]  -[has[title]]" variable="ignore">
   <$action-setfield      $tiddler=<<currentTiddler>> title=<<newTitle>> />
   <$action-deletetiddler $tiddler=<<currentTiddler>> />
- </$list>
- </$list>
- </$list>
+  <$macrocall $name=log-changeSuffix message="title suffix: `$suffix$` removed" oldTitle=<<currentTiddler>> newTitle=<<newTitle>> />
+</$list>
+</$list>
+<$macrocall $name="compSelective-reset" tiddler="$:/temp/commander/selected-titles" filter="[subfilter{$:/temp/commander}] +[!is[missing]]" />
+</$list>
+</$list>
 </$list>
 \end

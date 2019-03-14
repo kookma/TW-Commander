@@ -1,0 +1,11 @@
+caption: Delete tiddlers
+created: 20190227210417305
+creator: Mohammad
+modified: 20190314165950504
+modifier: Mohammad
+tags: trash
+title: $:/commander/ui/tiddlerops/delete-all-tiddlers
+type: text/vnd.tiddlywiki
+
+{{$:/commander/ui/tiddlerops/delete-all-tiddlers-at-once}}
+{{$:/commander/ui/tiddlerops/delete-all-tiddlers-selectively}}

@@ -1,0 +1,24 @@
+created: 20190314125335909
+creator: Mohammad
+modified: 20190314165951110
+modifier: Mohammad
+tags: change
+title: 14th March 2019
+type: text/vnd.tiddlywiki
+
+<<alert danger """
+''Critical change'': Tiddler Commander search now needs two steps
+
+* Enter a filter expression in the filter search box
+* Click the search icon right of search box to apply the search criteria to enable Commander batch operation^^1^^
+""">>
+* FIXED: Search and Select tiddlers now are seated together
+* NEW: numberof tiddlers matches and selected are shown
+* New: Help tab was added
+* New: Clear search box will clear selected selections
+* New: Select none in `Select tiddlers` will clear selected tiddlers
+
+<small>
+
+# The reason is, when filter search is changed, the selected tiddlers are still there! So, it needs to clear the previous selection on new search criteria!
+</small>

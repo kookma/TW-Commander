@@ -1,0 +1,25 @@
+created: 20190221175433410
+creator: Mohammad
+modified: 20190314165951592
+modifier: Mohammad
+tags: trash
+title: list-of-all-log-tiddlers
+type: text/vnd.tiddlywiki
+
+<$button>Create one
+<<create-log-tiddler>>
+</$button>
+<$button actions=<<delete-all-log-tiddlers>>>Delete log</$button>
+
+Log-tiddler: {{$:/state/commander/log-tiddler}}
+
+---
+<ol>
+<$list filter="[all[tiddlers+shadows]tag[$:/tags/Commander/LogOps]]">
+<li>
+<$link to=<<currentTiddler>> >
+<$text text=<<currentTiddler>>/>
+</$link>
+</li>
+</$list>
+</ol>

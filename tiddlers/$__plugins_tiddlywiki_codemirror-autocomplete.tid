@@ -1,9 +1,9 @@
 author: JeremyRuston
-created: 20190214213348004
+created: 20190314165950612
 dependents: 
 description: CodeMirror AddOn: Autocompletion
 list: readme
-modified: 20190214213348004
+modified: 20190314165950612
 plugin-type: plugin
 title: $:/plugins/tiddlywiki/codemirror-autocomplete
 type: application/json

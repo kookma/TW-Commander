@@ -1,0 +1,21 @@
+caption: What is Commander
+created: 20190314134238047
+creator: Mohammad
+modified: 20190314165949647
+modifier: Mohammad
+tags: $:/tags/Commander/Help
+title: $:/commander/help/what-is-commander
+type: text/vnd.tiddlywiki
+
+Tiddler Commander, in short ''Commander'' is a unique tool for batch operation on tiddlers. Commander has the below features
+
+
+* Bulk tiddler creation/deletion
+* Tag operation (add, remove, replace)
+* Field operation (add, remove, set value)
+* ''SNR'', search and replace in all fields including text, tags, title, and common fields)
+* ''Inspect'', to inspect bunch of tiddlers in one place, scroll among them and edit all fields, tag, common fields (title is an exception!)
+* log, create a log of all operations
+* Search, //save and load// any combination of filter search
+
+Tiddler Commander is a Swiss Knife. It will be a useful tools both for developers and users.

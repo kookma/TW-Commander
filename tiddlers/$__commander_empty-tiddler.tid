@@ -1,15 +1,10 @@
-created: 20190214041521389
+created: 20190309033436758
 creator: Mohammad
-modified: 20190214213347732
+modified: 20190314165949056
 modifier: Mohammad
 tags: 
 title: $:/commander/empty-tiddler
 type: text/vnd.tiddlywiki
 
-This tiddler is used to represents the system fields like
-
-* title
-* tags
-* text
-* creator
-* modifier
+Dont delete. 
+This EMPTY tiddler is part of Tiddler Commander.

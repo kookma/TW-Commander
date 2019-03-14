@@ -1364,7 +1364,7 @@ They are different
  field={{$:/state/commander/snr/select-tiddler/field}} 
 /&gt;</pre>
 </div>
-<div created="20190214160253135" creator="Mohammad" description="Developed by Mark S" modified="20190307152358106" modifier="Mohammad" module-type="macro" tags="snr" title="$:/commander/macro/snr/regexpsub.js" type="application/javascript">
+<div created="20190214160253135" creator="Mohammad" description="Developed by Mark S" modified="20190314165323992" modifier="Mohammad" module-type="macro" tags="snr" title="$:/commander/macro/snr/regexpsub.js" type="application/javascript">
 <pre>/*\
 title: $:/commander/macro/snr/regexpsub.js
 type: application/javascript
@@ -1407,7 +1407,7 @@ exports.run = function(searchValue, replaceValue, sourceText, flags = &quot;gi&q
 	
 	return sourceText.replace(searchText,replaceValue);
 
-  } catch { return &quot;ERROR IN REG EXPRESSION. YOU MAY NEED TO ESCAPE VALUES&quot;; }
+  } catch(err) { return &quot;ERROR IN REG EXPRESSION. YOU MAY NEED TO ESCAPE VALUES&quot;; }
   
   };
 
@@ -12942,8 +12942,8 @@ exports.hljs = hljs;</pre>
 <div created="20190307211609298" creator="Mohammad" modified="20190307211738770" modifier="Mohammad" title="$:/state/editpreviewtype">
 <pre>$:/core/ui/EditTemplate/body/preview/output</pre>
 </div>
-<div created="20190307192058876" creator="Mohammad" modified="20190314124354352" modifier="Mohammad" title="$:/state/showeditpreview">
-<pre>yes</pre>
+<div created="20190307192058876" creator="Mohammad" modified="20190314163948621" modifier="Mohammad" title="$:/state/showeditpreview">
+<pre>no</pre>
 </div>
 <div created="20190307161031418" creator="Mohammad" modified="20190314134746831" modifier="Mohammad" title="$:/state/sidebar">
 <pre>yes</pre>
@@ -12951,8 +12951,8 @@ exports.hljs = hljs;</pre>
 <div created="20190314050246384" creator="Mohammad" modified="20190314134655424" modifier="Mohammad" title="$:/state/tab--1157664553">
 <pre>$:/commander/help/what-is-commander</pre>
 </div>
-<div created="20190307153049496" creator="Mohammad" modified="20190314113234339" modifier="Mohammad" title="$:/state/tab--1498284803">
-<pre>$:/core/ui/AdvancedSearch/Filter</pre>
+<div created="20190307153049496" creator="Mohammad" modified="20190314165200783" modifier="Mohammad" title="$:/state/tab--1498284803">
+<pre>$:/core/ui/AdvancedSearch/Standard</pre>
 </div>
 <div created="20190307155245182" creator="Mohammad" modified="20190314133019562" modifier="Mohammad" title="$:/state/tab--1790025794">
 <pre>$:/commander/ui/tagops/replace-tags</pre>
@@ -12996,7 +12996,7 @@ exports.hljs = hljs;</pre>
 <div created="20190307155300597" creator="Mohammad" modified="20190314121024070" modifier="Mohammad" title="$:/state/tab-926729940">
 <pre>$:/commander/ui/tiddlerops/create-tiddlers</pre>
 </div>
-<div created="20190307153134467" creator="Mohammad" modified="20190314135231975" modifier="Mohammad" title="$:/state/tab/sidebar--595412856">
+<div created="20190307153134467" creator="Mohammad" modified="20190314164021983" modifier="Mohammad" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
 <div created="20190309033606220" creator="Mohammad" modified="20190309061230464" modifier="Mohammad" title="$:/state/toggle-view-fields">
@@ -13005,7 +13005,7 @@ exports.hljs = hljs;</pre>
 <div created="20190212150615218" creator="M" modified="20190212150616505" modifier="Mohamma" title="$:/status/UserName">
 <pre>Mohammad</pre>
 </div>
-<div list="[[Release Candidate]] $:/Commander [[Change Log]]" title="$:/StoryList">
+<div created="20190314163936468" creator="Mohammad" list="$:/AdvancedSearch $:/commander/macro/snr/regexpsub.js [[Release Candidate]] $:/Commander [[Change Log]]" modified="20190314163942621" modifier="Mohammad" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190212062925887" creator="Mohammad" list="$:/commander/ui/tiddler-operation $:/commander/ui/title-operation $:/commander/ui/tag-operation $:/commander/ui/field-operation $:/commander/ui/snr-operation $:/commander/ui/inspection $:/commander/ui/setting $:/commander/ui/help" modified="20190314050130205" modifier="Mohammad" tags="" title="$:/tags/Commander">
@@ -13023,8 +13023,8 @@ exports.hljs = hljs;</pre>
 <div created="20190213194119340" creator="Mohammad" list="$:/commander/ui/tiddlerops/create-bulk-tiddlers-bak $:/commander/ui/tiddlerops/create-tiddlers $:/commander/ui/tiddlerops/duplicate-tiddlers $:/commander/ui/tiddlerops/delete-all-tiddlers-selectively-old $:/commander/ui/tiddlerops/delete-all-tiddlers-at-once" modified="20190303133128179" modifier="Mohammad" tags="" title="$:/tags/Commander/TiddlerOps">
 <pre></pre>
 </div>
-<div created="20190307210358352" creator="Mohammad" modified="20190314130839365" modifier="Mohammad" title="$:/temp/advancedsearch">
-<pre>[tag[$:/tags/Macro]]</pre>
+<div created="20190307210358352" creator="Mohammad" modified="20190314165152252" modifier="Mohammad" title="$:/temp/advancedsearch">
+<pre>regexpsub</pre>
 </div>
 <div created="20190307155635237" creator="Mohammad" modified="20190314123353100" modifier="Mohammad" title="$:/temp/commander">
 <pre>[tag[xx]]</pre>
@@ -13053,7 +13053,7 @@ exports.hljs = hljs;</pre>
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///G:/TW/TW-Commander/commander-V2.html&quot;
+            &quot;text&quot;: &quot;file:///home/mark/TiddlyWikiProjects/TW-Commander/index.html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -13073,7 +13073,7 @@ exports.hljs = hljs;</pre>
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/G:/TW/TW-Commander/commander-V2.html&quot;
+            &quot;text&quot;: &quot;/home/mark/TiddlyWikiProjects/TW-Commander/index.html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -13085,17 +13085,17 @@ exports.hljs = hljs;</pre>
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1536&quot;
+            &quot;text&quot;: &quot;1366&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;864&quot;
+            &quot;text&quot;: &quot;768&quot;
         }
     }
 }</pre>
 </div>
-<div created="20190307213731140" creator="Mohammad" modified="20190314131822857" modifier="Mohammad" title="$:/temp/search">
-<pre>Index of TW5 batch operations</pre>
+<div created="20190307213731140" creator="Mohammad" modified="20190314163936466" modifier="Mohammad" title="$:/temp/search">
+<pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.20-prerelease">
 <pre>{

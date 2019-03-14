@@ -1,12 +1,12 @@
 created: 20190214141644228
 creator: Mohammad
-modified: 20190214213347843
+modified: 20190314165949883
 modifier: Mohammad
 tags: $:/tags/Commander/Search/FilterButton
 title: $:/commander/ui/search/filter-button/save
 type: text/vnd.tiddlywiki
 
-<$reveal state="$:/temp/commander" type="nomatch" text="">
+<$reveal state="$:/temp/commander/search-box" type="nomatch" text="">
 <$button class="tc-btn-invisible" tooltip="save current search" popup=<<qualify "$:/state/commander/SaveDropdown">> >
 {{$:/core/images/file}}
 </$button>

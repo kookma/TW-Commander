@@ -1,0 +1,14 @@
+caption: Inspect
+created: 20190313080119081
+creator: Mohammad
+modified: 20190314165949961
+modifier: Mohammad
+tags: $:/tags/Commander/InspectOps
+title: $:/commander/ui/inspectops/Inspection
+type: text/vnd.tiddlywiki
+
+<$macrocall 
+ $name=compInspect
+ filter="[[$:/temp/commander/selected-titles]indexes[]sort[]]"
+ stateTiddler="temp/commander"
+/>

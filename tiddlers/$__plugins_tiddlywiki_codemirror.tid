@@ -1,9 +1,9 @@
 author: JeremyRuston
-created: 20190214213348012
+created: 20190314165950628
 dependents: 
 description: CodeMirror _Editor
 list: readme usage keyboard license
-modified: 20190214213348012
+modified: 20190314165950628
 plugin-type: plugin
 title: $:/plugins/tiddlywiki/codemirror
 type: application/json

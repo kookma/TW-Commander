@@ -1,32 +1,46 @@
 created: 20190212122742891
 creator: Mohammad
-modified: 20190214213347880
+modified: 20190314165949354
 modifier: Mohammad
 tags: $:/tags/Macro
 title: $:/commander/macro/title-operation/prefix
 type: text/vnd.tiddlywiki
 
+\define log-changePrefix(message, oldTitle, newTitle)
+<$macrocall $name="log-add-single-operation" msg="""$message$. New title [[$newTitle$]]""" tidItem=<<__oldTitle__>> />
+\end
+
 \define addPrefix-to-tiltle-bulk(prefix:"Empty")
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[count[]] -0" variable="ignore">
 <$list filter="[<__prefix__>] -Empty" variable=null>
-<$list filter={{$:/temp/commander}}>
-<$list filter="[<currentTiddler>addprefix[$prefix$]] -[<currentTiddler>]" variable="newTitle">
+<<create-log-tiddler "addPrefix-to-tiltle-bulk">>
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[!is[missing]]">
+<$list filter="""[<currentTiddler>addprefix[$prefix$]] -[<currentTiddler>]""" variable="newTitle">
 <$list filter="[<newTitle>]  -[has[title]]" variable="ignore">
   <$action-setfield      $tiddler=<<currentTiddler>> title=<<newTitle>> />
   <$action-deletetiddler $tiddler=<<currentTiddler>> />
+  <$macrocall $name=log-changePrefix message="title prefix: `$prefix$` added" oldTitle=<<currentTiddler>> newTitle=<<newTitle>> />
 </$list>
+</$list>
+<<title-selection-reset>>
 </$list>
 </$list>
 </$list>
 \end
 
-\define removePrefix-from-tiltle-bulk(prefix)
+\define removePrefix-from-tiltle-bulk(prefix:"Empty")
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[count[]] -0" variable="ignore">
 <$list filter="[<__prefix__>] -Empty" variable=null>
-<$list filter={{$:/temp/commander}}>
-<$list filter="[<currentTiddler>removeprefix[$prefix$]]   -[<currentTiddler>]" variable="newTitle">
+<<create-log-tiddler "removePrefix-from-tiltle-bulk">>
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[!is[missing]]">
+<$list filter="""[<currentTiddler>removeprefix[$prefix$]]   -[<currentTiddler>]""" variable="newTitle">
 <$list filter="[<newTitle>]  -[has[title]]" variable="ignore">
   <$action-setfield      $tiddler=<<currentTiddler>> title=<<newTitle>> />
   <$action-deletetiddler $tiddler=<<currentTiddler>> />
+  <$macrocall $name=log-changePrefix message="title prefix: `$prefix$` removed" oldTitle=<<currentTiddler>> newTitle=<<newTitle>> />
 </$list>  
+</$list>
+<<title-selection-reset>>
 </$list>
 </$list>
 </$list>

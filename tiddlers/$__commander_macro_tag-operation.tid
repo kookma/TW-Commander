@@ -1,34 +1,57 @@
 created: 20190212063435548
 creator: Mohammad
-modified: 20190214213347884
+modified: 20190314165949432
 modifier: Mohammad
 tags: $:/tags/Macro
 title: $:/commander/macro/tag-operation
 type: text/vnd.tiddlywiki
 
-\define add-new-tag-bulk(newTag)
-<$list filter={{$:/temp/commander}}>
+\define add-new-tag-bulk(newTag:"Empty")
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[count[]] -0" variable="ignore">
+<$list filter="[<__newTag__>] -Empty" variable=null>
+<<create-log-tiddler "add-new-tag-bulk">>
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[!is[missing]] -[<__newTag__>tagging[]]">
 <$fieldmangler>
 <$action-sendmessage $message="tm-add-tag" $param=<<__newTag__>> />
 </$fieldmangler>
+<$macrocall $name="log-add-single-operation" msg="""new tag `$newTag$` added""" tidItem=<<currentTiddler>> />
+</$list>
+<<title-selection-reset>>
+</$list>
 </$list>
 \end
 
-\define remove-old-tag-bulk(oldTag)
-<$list filter="[subfilter{$:/temp/commander}tag[$oldTag$]]">
+\define remove-old-tag-bulk(oldTag:"Empty")
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[count[]] -0" variable=ignore>
+<$list filter="[<__oldTag__>] -Empty" variable=null>
+<<create-log-tiddler "remove-old-tag-bulk">>
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[!is[missing]] +[tag<__oldTag__>]">
 <$fieldmangler>
-<$action-sendmessage $message="tm-remove-tag" $param=<<__oldTag__>> >
+<$action-sendmessage $message="tm-remove-tag" $param=<<__oldTag__>> />
 </$fieldmangler>
+<$macrocall $name="log-add-single-operation" msg="""old tag `$oldTag$` removed""" tidItem=<<currentTiddler>> />
+</$list>
+<<title-selection-reset>>
+</$list>
 </$list>
 \end
 
 
-\define replace-tag-bulk(oldTag, newTag)
-<$list filter="[subfilter{$:/temp/commander}tag[$oldTag$]]">
+\define replace-tag-bulk(oldTag:"Empty", newTag:"Empty")
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[count[]] -0" variable="ignore">
+<$list filter="[<__oldTag__>] -Empty" variable=null>
+<$list filter="[<__newTag__>] -Empty" variable=null>
+<<create-log-tiddler "replace-tag-bulk">>
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[!is[missing]] +[<__oldTag__>tagging[]]">
 <$fieldmangler>
-<$action-sendmessage $message="tm-add-tag" $param="""$newTag$""" />
-<$action-sendmessage $message="tm-remove-tag" $param="""$oldTag$""">> >
+<$action-sendmessage $message="tm-add-tag" $param=<<__newTag__>> />
+<$action-sendmessage $message="tm-remove-tag" $param=<<__oldTag__>>  />
 </$fieldmangler>
+<$macrocall $name="log-add-single-operation" msg="""tag `$oldTag$` replaced with `$newTag$`""" tidItem=<<currentTiddler>> />
+</$list>
+<<title-selection-reset>>
+</$list>
+</$list>
 </$list>
 \end
 

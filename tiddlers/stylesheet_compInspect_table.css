@@ -1,0 +1,13 @@
+/*compInspect table*/
+.ci-table
+{border-collapse: collapse;}
+
+.ci-table .leftcol{
+width:20%;
+vertical-align: top;
+text-align: right;
+background-color:#f0f0f0;
+}
+.ci-table .rightcol{
+width:650px;
+}

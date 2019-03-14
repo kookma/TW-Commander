@@ -1,0 +1,20 @@
+caption: Warning
+created: 20190314050138754
+creator: Mohammad
+modified: 20190314165949663
+modifier: Mohammad
+tags: $:/tags/Commander/Help
+title: $:/commander/help/warning
+type: text/vnd.tiddlywiki
+
+<<alert danger """''Warning''
+This tool is still being developed. It is for demonstration purposes only, using the test data provided on this site only. Do not use this tool, Tiddler Commander, on your own valuable, irreplaceable or un-backed-up data .
+""">>
+
+<<alert primary """''Note i:''
+Tiddler Commander is a very powerful tool can change any tiddler. Make sure what you are doing!
+""">>
+
+<<alert warning """''Note ii''
+Tiddler Commander uses two step selection. It uses a search box to filter tiddlers and the uses a selective list of fitered tiddlers for batch operation!
+""">>

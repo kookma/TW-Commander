@@ -1,26 +1,30 @@
-caption: Add or remove tags
+caption: Add remove tags
 created: 20190212063924640
 creator: Mohammad
-modified: 20190215155806140
+modified: 20190314165949827
 modifier: Mohammad
 tags: $:/tags/Commander/TagOps
 title: $:/commander/ui/tagops/add-remove-tags
 type: text/vnd.tiddlywiki
 
-<div style="padding-left:20px;">
 <$edit-text
-tiddler="$:/temp/commander/tag-add-remove"
+tiddler="$:/temp/commander/tag-add-remove/new"
 tag="input"
 default=""
 class="cm-txt-area"
-placeholder="tag"
-/> 
-<span style="color:green;font-size:small;">
-<$button> Add New Tag
-<$macrocall $name="add-new-tag-bulk" newTag={{$:/temp/commander/tag-add-remove}} />
-</$button></span> &nbsp; 
-<span style="color:red;font-size:small;">
-<$button> Remove Old Tag
-<$macrocall $name="remove-old-tag-bulk" oldTag={{$:/temp/commander/tag-add-remove}} />
-</$button></span>
-</div>
+placeholder=" new tag"
+/> &nbsp;
+<$button> Add new tag
+<$macrocall $name="add-new-tag-bulk" newTag={{$:/temp/commander/tag-add-remove/new}} />
+</$button>
+
+<$button> Remove old tag
+<$macrocall $name="remove-old-tag-bulk" oldTag={{$:/temp/commander/tag-add-remove/old}} />
+</$button>
+&nbsp;
+<$select class="cm-select-wd" tiddler="$:/temp/commander/tag-add-remove/old" default=<<dummy>>>
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]tags[]sort[]]" >
+<option><$view field="title"/></option>
+</$list>
+</$select>
+

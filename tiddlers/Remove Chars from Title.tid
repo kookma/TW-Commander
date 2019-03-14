@@ -1,0 +1,17 @@
+created: 20190220161823757
+creator: Mohammad
+modified: 20190314165951867
+modifier: Mohammad
+tags: task manual
+title: Remove Chars from Title
+type: text/vnd.tiddlywiki
+
+!! Mechanism
+
+<<docit>>
+
+* It recieve the list of tiddlers
+* It create a new list of titles by removing chars and stores it in a variable
+* It then checks if any new title is existed
+** If existed, it ignore the operation
+** If not existed, it create the new tiddler with new title and remove the old one

@@ -1,0 +1,24 @@
+caption: Delete tiddlers
+created: 20190302032400902
+creator: Mohammad
+modified: 20190314165950474
+modifier: Mohammad
+tags: trash
+title: $:/commander/ui/tiddlerops/delete-all-tiddlers-selectively BCK
+type: text/vnd.tiddlywiki
+
+<span style="color:red;">Delete tiddlers selectively</span>
+<$macrocall $name="compConfirmDelete"
+countFilter="[[$:/temp/commander/delete-selective]indexes[]]"
+actionMacro="delete-tiddlers-selective-bulk"
+stateTiddler="$:/state/commander/SelectiveDeleteDropdown"
+/>
+
+<div style="font-size:small; padding-left:20px;" class="cm-box-sdel">
+<$list filter="[subfilter{$:/temp/commander}] +[!is[missing]] +[limit[1]]" variable="null">
+<$macrocall $name=compSelective
+filter="[subfilter{$:/temp/commander}] +[!is[missing]]"
+tiddler="$:/temp/commander/delete-selective"
+/>
+</$list>
+</div>

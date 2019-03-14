@@ -1,0 +1,29 @@
+.snr-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.snr-column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1
+}
+
+.snr-double-column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 2
+}
+
+@media screen and (min-width: 800px) {
+  .snr-column {
+    flex: 1
+  }
+
+  .snr-double-column {
+    flex: 2
+  }
+}

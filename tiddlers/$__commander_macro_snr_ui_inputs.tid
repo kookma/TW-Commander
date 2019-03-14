@@ -1,0 +1,54 @@
+created: 20190306203626597
+creator: Mohammad
+modified: 20190314165949462
+modifier: Mohammad
+tags: $:/tags/Macro
+title: $:/commander/macro/snr/ui/inputs
+type: text/vnd.tiddlywiki
+
+\define snr-ui-inputs()
+<form class="snr-form">
+  <fieldset>
+   <legend>Search and Replace</legend>
+
+<div class="item">
+<label>Tiddler title</label>
+<$select tiddler="$:/state/commander/snr/select-tiddler" default="" class="snr-textbox">
+<option value="">None</option>
+
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]sort[]]" >
+<option value=<<currentTiddler>>><$text text=<<currentTiddler>>/></option>
+</$list>
+</$select>
+</div>
+
+<div class="item">
+<label>Field name</label>
+<$select tiddler="$:/state/commander/snr/select-tiddler/field" default="text">
+<$list filter="[{$:/state/commander/snr/select-tiddler}fields[]]">
+<option value=<<currentTiddler>>>field: <$text text=<<currentTiddler>>/></option>
+</$list>
+</$select>
+</div>
+
+<div class="item">
+<label>Search text</label>
+<$edit-text 
+   tiddler="$:/state/commander/snr/replace-text" 
+   tag="input" 
+   default="" 
+   placeholder=" text to replace"
+ class="snr-textbox"/>
+</div>
+<div class="item">
+<label>Replace with </label>
+<$edit-text 
+   tiddler="$:/state/commander/snr/replace-text-with" 
+   tag="input" 
+   default="" 
+   placeholder=" new text"
+   class="snr-textbox"/>
+</div>
+</fieldset>
+</form>
+\end

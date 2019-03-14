@@ -1,0 +1,42 @@
+created: 20190307104654008
+creator: Mohammad
+modified: 20190314165949238
+modifier: Mohammad
+tags: 
+title: $:/commander/snr/usage
+type: text/vnd.tiddlywiki
+
+!! Setup UI
+<<<
+Simply put the below command inside an empty tiddler
+
+```
+<<replace-text-ui>>
+```
+<<<
+
+!! How to use?
+<<<
+* Enter a search filter in ''Filter search'' box like `[tag[myTag]]`
+* From ''Filter title'' drop down menu select a tiddler
+* From ''Field name'' drop down menu select a tiddler field like `text`
+* In the ''Search text'' type the search term for example `this`
+* In the ''Replace with'' type the term you want to replace with like `that`
+*Check the ''Differences'' and if you are satisfied with the result, press the `Replace?` button
+<<<
+
+!! Special characters
+<<<
+As `SNR` uses ''regexp'' pattern to make search and replace, when special characters are used in the ''Search text'' box, they shall be escaped among them are `*`, `+`, `[`, ...
+To use these characters do like below
+
+```
+\[ \* \+
+```
+<<<
+
+!! Warning
+<<<
+* SNR replace the contents of tiddlers. //The action can not be undone//. So always make a backup before performing any replace action
+* It is not possible to selectively replace some occurrences and ignore some others in one run! That means you cannot skip some occurrences. 
+<<<

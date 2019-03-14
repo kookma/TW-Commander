@@ -1,6 +1,6 @@
 created: 20180615032251583
 creator: Mohammad
-modified: 20190214213348048
+modified: 20190314165952105
 modifier: Mohammad
 tags: $:/tags/SideBar
 title: ToDos
@@ -14,13 +14,13 @@ type: text/vnd.tiddlywiki
 ! Outstanding tasks
 //Drag the tasks to re-order them//
 
-<<list-tagged-draggable tag:"task" subFilter:"!has[draft.of]!tag[done]" itemTemplate:"$:/.mr/TaskManagementDraggableTemplate" emptyMessage:"You don't have any active tasks">>
+<<list-tagged-draggable tag:"task" subFilter:"!has[draft.of]!tag[done]" itemTemplate:"$:/plugins/.mr/shiraz/template/task-management-draggable" emptyMessage:"You don't have any active tasks">>
 
 ! Completed tasks
 
 //(Listed in reverse order of completion)//
 
-<$list filter="[!has[draft.of]tag[task]tag[done]sort[created]] -[[ToDos]]">
+<$list filter="[!has[draft.of]tag[task]tag[done]!sort[created]] -[[ToDos]]">
 <$checkbox tag="done">
 <span style="color:green">{{!!title}}<$link to={{!!title}}></$link></span>
 <div style="background-color:#ffffcc44">

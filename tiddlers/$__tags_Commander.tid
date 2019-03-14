@@ -1,8 +1,9 @@
 created: 20190212062925887
 creator: Mohammad
-list: $:/commander/ui/title-operation $:/commander/ui/tag-operation $:/commander/ui/field-operation $:/commander/ui/tiddler-operation $:/commander/ui/setting
-modified: 20190214213347969
+list: $:/commander/ui/tiddler-operation $:/commander/ui/title-operation $:/commander/ui/tag-operation $:/commander/ui/field-operation $:/commander/ui/snr-operation $:/commander/ui/inspection $:/commander/ui/setting $:/commander/ui/help
+modified: 20190314165951238
 modifier: Mohammad
+tags: 
 title: $:/tags/Commander
 type: text/vnd.tiddlywiki
 

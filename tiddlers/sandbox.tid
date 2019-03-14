@@ -1,0 +1,36 @@
+created: 20190219045915516
+creator: Mohammad
+modified: 20190314165951855
+modifier: Mohammad
+tags: 
+title: sandbox
+type: text/vnd.tiddlywiki
+
+\define check(newTitle,title)
+<$action-createtiddler $basetitle=<<__newTitle__>> tags="uu" $savetitle="temp"/>
+<$tiddler tiddler="temp">
+<$list filter="[<__title__>fields[]]" variable=fieldName>
+<$action-setfield $field=<<__fieldName__>> $value={{{[<__title__>get[<fieldName>]]}}} />
+</$tiddler>
+</$list>
+\end
+
+
+
+\define clone(oldTitle, newTitle)
+<$tiddler tiddler=<<__newTitle__>> >
+ <$action-setfield  
+   $tiddler=<<__oldTitle__>> 
+   title=<<currentTiddler>>   />   
+ <$list filter="[<oldTitle>fields[]]" variable=fld>
+ <$action-setfield field=<<fld>> value=
+</$tiddler>
+\end
+
+
+<$button>Do it
+<<check a>>
+</$button>
+
+<<list-links "[tag[uu]]">>
+

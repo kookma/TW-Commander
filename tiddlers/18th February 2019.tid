@@ -1,0 +1,11 @@
+created: 20190218105856918
+creator: Mohammad
+modified: 20190314165951100
+modifier: Mohammad
+tags: change
+title: 18th February 2019
+type: text/vnd.tiddlywiki
+
+* Fixed: handling missing tiddlers added
+* New: remove chars from the title was added
+* Fixed: a specified height is used in ui to prevent collapsing

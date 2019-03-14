@@ -1,7 +1,7 @@
 caption: Commander
 created: 20190210155829503
 creator: Mohammad
-modified: 20190214213347772
+modified: 20190314165949087
 modifier: Mohammad
 tags: $:/tags/SideBar
 title: $:/Commander-Tiddlers
@@ -23,17 +23,14 @@ type: text/vnd.tiddlywiki
 
 
 <!-- olist is a customized list-links to let remove prefix from title -->
+; ''Macros''
+<<olist "[all[shadows+tiddlers]search:title:casesensitive[commander/macro]sort[]] -[tag[trash]]" class:"alert-warning" prefix:"$:/commander/">>
 
 ; ''Operations'' 
-<<olist "[all[shadows+tiddlers]search:title:casesensitive[commander/ui]sort[]]" class:"alert-primary" prefix:"$:/commander/">>
-
-
-; ''Macros''
-<<olist "[all[shadows+tiddlers]search:title:casesensitive[commander/macro]sort[]]" class:"alert-success" prefix:"$:/commander/">>
-
+<<olist "[all[shadows+tiddlers]search:title:casesensitive[commander/ui]sort[]] -[tag[trash]] -[search:title[$:/temp]] -[search:title[$:/state]]" class:"alert-info" prefix:"$:/commander/">>
 
 ;''Stylesheets'' 
-<<olist "[all[shadows+tiddlers]search:title:casesensitive[commander/stylesheet]sort[]]" class:"alert-warning" prefix:"$:/commander/">>
+<<olist "[all[shadows+tiddlers]search:title:casesensitive[commander/stylesheet]sort[]] -[tag[trash]]" class:"alert-danger" prefix:"$:/commander/">>
  
 ; ''Temp and State'' 
 <<olist "[all[shadows+tiddlers]search:title[$:/temp/commander]sort[]]" class:"alert-secondary" prefix:"$:/temp/">>
@@ -41,7 +38,7 @@ type: text/vnd.tiddlywiki
 
 
 ; ''All'' 
-<<olist "[all[shadows+tiddlers]search:title[$:/commander]]" class:"alert-secondary" prefix:"$:/commander">>
+<<olist "[all[shadows+tiddlers]search:title[$:/commander]]" class:"alert-info" prefix:"$:/commander">>
  
 
 ---

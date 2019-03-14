@@ -1,0 +1,26 @@
+created: 20190314090306849
+creator: Mohammad
+modified: 20190314165949635
+modifier: Mohammad
+tags: trash
+title: $:/commander/macro/check-new-filter-search
+type: text/vnd.tiddlywiki
+
+\define gt() 
+$(fsm)$ $(slm)$ +[nsort[]last[1]remove[$(slm)$]]
+\end
+
+\define check-new-filter-search()
+<$set name=slm  tiddler="$:/temp/commander/selected-titles" field="modified">
+<$set name=fsm  tiddler="$:/temp/commander" field="modified">
+<$list filter=<<gt>> emptyMessage="no">
+yes
+</$list>
+</$set>
+</$set>
+\end
+
+> <<check-new-filter-search>>
+
+!!Remark
+This small code checks if a new filter search has been entered. It compare the date of modification of the tiddler store the filter search with the date of modification of tiddler stores selected tiddlers.

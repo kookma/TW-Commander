@@ -1,0 +1,6 @@
+ .box05 {display: flex;
+ flex-direction: column;
+ } /*this is a flex container */
+
+.item05 {padding:5px; margin-bottom:2px;}
+ 

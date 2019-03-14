@@ -7,3 +7,6 @@
     color: #DB4C3F !important;
 }
 
+.cm-tab-wd  .tc-tab-buttons button{
+    width:170px;
+}

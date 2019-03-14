@@ -1,0 +1,9 @@
+created: 20180307153530187
+creator: Mohammad
+modified: 20190314165950690
+modifier: Mohammad
+tags: 
+title: $:/plugins/.mr/shiraz/template/task-management-draggable
+type: text/vnd.tiddlywiki
+
+<$checkbox tag="done"> <$link to={{!!title}}><$view field="title"/></$link></$checkbox>

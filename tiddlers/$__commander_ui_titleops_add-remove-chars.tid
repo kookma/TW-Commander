@@ -1,0 +1,35 @@
+caption: Remove chars
+created: 20190217092719245
+creator: Mohammad
+modified: 20190314165950421
+modifier: Mohammad
+tags: $:/tags/Commander/TitleOps
+title: $:/commander/ui/titleops/add-remove-chars
+type: text/vnd.tiddlywiki
+
+\define rngcat() [range[0,$(minchars)$]] -0 
+
+Number of characters
+<$select tiddler="$:/temp/commander/title-remove-chars"  default="0" class="cm-sl">
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[!is[missing]] +[length[]] +[minall[]] +[subtract[1]] -Infinity" variable="minchars">
+<$list filter=<<rngcat>> >
+<option value=<<currentTiddler>>><$view field='title'/></option>
+</$list>
+</$list>
+</$select>&nbsp; 
+
+<$button> First n chars
+<$macrocall 
+ $name="remove-chars-from-begining-tiltle-bulk" 
+ num={{$:/temp/commander/title-remove-chars}} 
+/>
+</$button>
+&nbsp; 
+<$button> Last n chars
+<$macrocall 
+ $name="remove-chars-from-end-tiltle-bulk" 
+ num={{$:/temp/commander/title-remove-chars}} 
+/>
+</$button>
+
+

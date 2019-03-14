@@ -1,0 +1,43 @@
+created: 20190308151331101
+creator: Mohammad
+modified: 20190314165951557
+modifier: Mohammad
+tags: $:/tags/Macro
+title: macro/compInspect
+type: text/vnd.tiddlywiki
+
+\define compInspect(filter, stateTiddler:"thisTiddler")
+<$set name="state" 
+      value={{{ [[$:/state/compInspect/]addsuffix<__stateTiddler__>] }}}
+>
+<$vars
+   slStateTid={{{ [<state>addsuffix[/]addsuffix[selectState-tiddler]] }}}
+   rvStateTid={{{ [<state>addsuffix[/]addsuffix[revealState-tiddler]] }}}
+   chStateTid={{{ [<state>addsuffix[/]addsuffix[checkboxState-tiddler]] }}}
+>
+
+Select tiddler &nbsp;<$macrocall $name=compSelect filter=<<__filter__>> stateTiddler=<<slStateTid>> />
+&nbsp;&nbsp;
+<$macrocall $name="check-common-fields" stateTiddler=<<chStateTid>> />
+&nbsp;&nbsp;
+<$reveal stateTitle=<<rvStateTid>> type="nomatch" text="edit">
+<$button class="tc-btn-invisible" setTitle=<<rvStateTid>> setTo="edit" tooltip="edit tiddler">{{$:/core/images/edit-button}}</$button>
+<$macrocall $name=compInspect-show-preview tiddler={{{ [<slStateTid>get[text]] }}}  commonFields={{{ [<chStateTid>get[text]] }}}/>
+</$reveal>
+<$reveal stateTitle=<<rvStateTid>> type="match" text="edit">
+<$button class="tc-btn-invisible" setTitle=<<rvStateTid>> setTo="" tooltip="confirm changes">{{$:/core/images/done-button}}</$button>
+<$macrocall $name=compInspect-edit-preview tiddler={{{ [<slStateTid>get[text]] }}}  commonFields={{{ [<chStateTid>get[text]] }}}/>
+</$reveal>
+
+</$vars>
+</$set>
+\end
+
+\define check-common-fields(stateTiddler)
+<$checkbox 
+ tiddler=<<__stateTiddler__>>
+ field="text" 
+ checked="" 
+ unchecked="created creator modified modifier"
+> Include common fields?</$checkbox>
+\end

@@ -1,10 +1,10 @@
 author: JeremyRuston
 core-version: >=5.0.0
-created: 20190214213347986
+created: 20190314165951430
 dependents: 
 description: Tools for exploring the internals of TiddlyWiki
 list: readme
-modified: 20190214213347986
+modified: 20190314165951430
 plugin-type: plugin
 title: $:/plugins/tiddlywiki/internals
 type: application/json

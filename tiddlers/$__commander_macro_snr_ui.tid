@@ -1,0 +1,21 @@
+created: 20190306133310512
+creator: Mohammad
+modified: 20190314165949478
+modifier: Mohammad
+tags: $:/tags/Macro
+title: $:/commander/macro/snr/ui
+type: text/vnd.tiddlywiki
+
+\define snr-ui()
+
+<div class="snr-row">
+<div class="snr-double-column">
+<<snr-ui-inputs>>
+</div>
+<div class="snr-column">
+<<snr-regexp-flags>>   
+</div>
+</div>
+<<snr-ui-show-diffs>>
+<<snr-actions>>
+\end
