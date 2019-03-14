@@ -189,6 +189,8 @@ Error message and password prompt
 
 <li>$:/commander/help/warning</li>
 
+<li>$:/commander/help/what-is-commander</li>
+
 <li>$:/commander/macro/check-new-filter-search</li>
 
 <li>$:/commander/macro/field-operation</li>
@@ -1048,6 +1050,20 @@ Tiddler Commander is a very powerful tool can change any tiddler. Make sure what
 &lt;&lt;alert warning &quot;&quot;&quot;''Note ii''
 Tiddler Commander uses two step selection. It uses a search box to filter tiddlers and the uses a selective list of fitered tiddlers for batch operation!
 &quot;&quot;&quot;&gt;&gt;</pre>
+</div>
+<div caption="What is Commander" created="20190314134238047" creator="Mohammad" modified="20190314134727495" modifier="Mohammad" tags="$:/tags/Commander/Help" title="$:/commander/help/what-is-commander">
+<pre>Tiddler Commander, in short ''Commander'' is a unique tool for batch operation on tiddlers. Commander has the below features
+
+
+* Bulk tiddler creation/deletion
+* Tag operation (add, remove, replace)
+* Field operation (add, remove, set value)
+* ''SNR'', search and replace in all fields including text, tags, title, and common fields)
+* ''Inspect'', to inspect bunch of tiddlers in one place, scroll among them and edit all fields, tag, common fields (title is an exception!)
+* log, create a log of all operations
+* Search, //save and load// any combination of filter search
+
+Tiddler Commander is a Swiss Knife. It will be a useful tools both for developers and users.</pre>
 </div>
 <div created="20190314090306849" creator="Mohammad" modified="20190314105424277" modifier="Mohammad" tags="trash" title="$:/commander/macro/check-new-filter-search">
 <pre>\define gt() 
@@ -12875,7 +12891,7 @@ exports.hljs = hljs;</pre>
 <div created="20190301143756644" creator="Mohammad" modified="20190302032548178" modifier="Mohammad" title="$:/state-reveal-$:/commander/ui/search-result-607722857">
 <pre>no</pre>
 </div>
-<div created="20190314085642562" creator="Mohammad" modified="20190314131144787" modifier="Mohammad" title="$:/state-reveal-$:/commander/ui/tiddler-selection-607722857">
+<div created="20190314085642562" creator="Mohammad" modified="20190314134757963" modifier="Mohammad" title="$:/state-reveal-$:/commander/ui/tiddler-selection-607722857">
 <pre>no</pre>
 </div>
 <div created="20190303052119483" creator="Mohammad" modified="20190314085453810" modifier="Mohammad" title="$:/state-reveal-$:/commander/ui/title-selection-607722857">
@@ -12911,8 +12927,8 @@ exports.hljs = hljs;</pre>
 <div created="20190307153615401" creator="Mohammad" modified="20190307155802389" modifier="Mohammad" title="$:/state/commander/snr/search-filter">
 <pre>[search:title[snr/sample]]</pre>
 </div>
-<div created="20190307153622401" creator="Mohammad" modified="20190314123644491" modifier="Mohammad" title="$:/state/commander/snr/select-tiddler">
-<pre></pre>
+<div created="20190307153622401" creator="Mohammad" modified="20190314133143205" modifier="Mohammad" title="$:/state/commander/snr/select-tiddler">
+<pre>myTid001</pre>
 </div>
 <div created="20190307153705128" creator="Mohammad" modified="20190307162339698" modifier="Mohammad" title="$:/state/commander/snr/select-tiddler/field">
 <pre>text</pre>
@@ -12929,17 +12945,17 @@ exports.hljs = hljs;</pre>
 <div created="20190307192058876" creator="Mohammad" modified="20190314124354352" modifier="Mohammad" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190307161031418" creator="Mohammad" modified="20190314091128455" modifier="Mohammad" title="$:/state/sidebar">
+<div created="20190307161031418" creator="Mohammad" modified="20190314134746831" modifier="Mohammad" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
-<div created="20190314050246384" creator="Mohammad" modified="20190314124904944" modifier="Mohammad" title="$:/state/tab--1157664553">
-<pre>$:/commander/help/warning</pre>
+<div created="20190314050246384" creator="Mohammad" modified="20190314134655424" modifier="Mohammad" title="$:/state/tab--1157664553">
+<pre>$:/commander/help/what-is-commander</pre>
 </div>
 <div created="20190307153049496" creator="Mohammad" modified="20190314113234339" modifier="Mohammad" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Filter</pre>
 </div>
-<div created="20190307155245182" creator="Mohammad" modified="20190314121036551" modifier="Mohammad" title="$:/state/tab--1790025794">
-<pre>$:/commander/ui/tagops/add-remove-tags</pre>
+<div created="20190307155245182" creator="Mohammad" modified="20190314133019562" modifier="Mohammad" title="$:/state/tab--1790025794">
+<pre>$:/commander/ui/tagops/replace-tags</pre>
 </div>
 <div created="20190307155240556" creator="Mohammad" modified="20190314121031143" modifier="Mohammad" title="$:/state/tab--2002155392">
 <pre>$:/commander/ui/titleops/add-remove-suffix</pre>
@@ -12971,8 +12987,8 @@ exports.hljs = hljs;</pre>
 <div created="20190307160722571" creator="Mohammad" modified="20190307160722571" modifier="Mohammad" title="$:/state/tab-564084655">
 <pre>$:/commander/ui/textops/replace-text</pre>
 </div>
-<div created="20190307155244220" creator="Mohammad" modified="20190314131016477" modifier="Mohammad" title="$:/state/tab-607722857">
-<pre>$:/commander/ui/tiddler-operation</pre>
+<div created="20190307155244220" creator="Mohammad" modified="20190314134232836" modifier="Mohammad" title="$:/state/tab-607722857">
+<pre>$:/commander/ui/help</pre>
 </div>
 <div created="20190307162957265" creator="Mohammad" modified="20190307162957265" modifier="Mohammad" title="$:/state/tab-771503266">
 <pre>$:/commander/setting/delete-all-temp-tiddlers</pre>
@@ -12980,8 +12996,8 @@ exports.hljs = hljs;</pre>
 <div created="20190307155300597" creator="Mohammad" modified="20190314121024070" modifier="Mohammad" title="$:/state/tab-926729940">
 <pre>$:/commander/ui/tiddlerops/create-tiddlers</pre>
 </div>
-<div created="20190307153134467" creator="Mohammad" modified="20190314131012285" modifier="Mohammad" title="$:/state/tab/sidebar--595412856">
-<pre>$:/plugins/ajh/favorites/SideBar</pre>
+<div created="20190307153134467" creator="Mohammad" modified="20190314135231975" modifier="Mohammad" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/Open</pre>
 </div>
 <div created="20190309033606220" creator="Mohammad" modified="20190309061230464" modifier="Mohammad" title="$:/state/toggle-view-fields">
 <pre>hide</pre>
@@ -12998,7 +13014,7 @@ exports.hljs = hljs;</pre>
 <div created="20190214141441444" creator="Mohammad" list="$:/commander/filters/Test $:/commander/filters/Drafts $:/commander/filters/Orphans $:/commander/filters/Missing $:/commander/filters/StoryList $:/commander/filters/RecentSystemTiddlers $:/commander/filters/RecentTiddlers $:/commander/filters/SessionTiddlers" modified="20190214141530623" modifier="Mohammad" title="$:/tags/Commander/Filter">
 <pre></pre>
 </div>
-<div created="20190314124855909" creator="Mohammad" list="$:/commander/help/quick-tutorial $:/commander/help/snr $:/commander/help/warning" modified="20190314124855909" modifier="Mohammad" title="$:/tags/Commander/Help">
+<div created="20190314124855909" creator="Mohammad" list="$:/commander/help/what-is-commander $:/commander/help/quick-tutorial $:/commander/help/snr $:/commander/help/warning" modified="20190314134707671" modifier="Mohammad" title="$:/tags/Commander/Help">
 <pre></pre>
 </div>
 <div created="20190214140337889" creator="Mohammad" list="$:/commander/ui/search/filter-button/search $:/commander/ui/search/filter-button/dropdown $:/commander/ui/search/filter-button/clear $:/commander/ui/search/filter-button/save" modified="20190314112112978" modifier="Mohammad" title="$:/tags/Commander/Search/FilterButton">
@@ -13016,8 +13032,10 @@ exports.hljs = hljs;</pre>
 <div created="20190314114449903" creator="Mohammad" modified="20190314123350454" modifier="Mohammad" title="$:/temp/commander/search-box">
 <pre>[tag[xx]]</pre>
 </div>
-<div created="20190314085809210" creator="Mohammad" modified="20190314123644491" modifier="Mohammad" title="$:/temp/commander/selected-titles" type="application/json">
-<pre>{}</pre>
+<div created="20190314085809210" creator="Mohammad" modified="20190314133140027" modifier="Mohammad" title="$:/temp/commander/selected-titles" type="application/json">
+<pre>{
+    &quot;myTid001&quot;: &quot;selected&quot;
+}</pre>
 </div>
 <div created="20190314113415496" creator="Mohammad" modified="20190314123644492" modifier="Mohammad" title="$:/temp/commander/selected-titles-comp-selective">
 <pre>show</pre>
@@ -13076,8 +13094,8 @@ exports.hljs = hljs;</pre>
     }
 }</pre>
 </div>
-<div created="20190307213731140" creator="Mohammad" modified="20190314131047807" modifier="Mohammad" title="$:/temp/search">
-<pre>readm</pre>
+<div created="20190307213731140" creator="Mohammad" modified="20190314131822857" modifier="Mohammad" title="$:/temp/search">
+<pre>Index of TW5 batch operations</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.20-prerelease">
 <pre>{
