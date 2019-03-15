@@ -1,12 +1,15 @@
 # TW-Commander
 A tiddler toolkit for Tiddlywiki 5
 
-Demo: https://kookma.github.io/TW-Commander/
+## Project code and demo
+* [GitHub demo page](https://github.com/kookma/TW-Commander)
+* [GitHub code page](https://github.com/kookma/TW-Commander)
 
 
-# Background
-
-Ref: https://groups.google.com/d/msg/tiddlywiki/BxJsWuae-Uc/JapAx4mtBgAJ
+## Tiddler Commander at Tiddlywiki Google forum
+* [Initial announcement](https://groups.google.com/d/msg/tiddlywiki/BxJsWuae-Uc/JapAx4mtBgAJ)
+* [Beta releases](https://groups.google.com/d/msg/tiddlywiki/w9Bv-WulKw8/CYf9D4H6BgAJ)
+* [Release candidate](https://groups.google.com/d/msg/tiddlywiki/Zw3F3iRtggA/qX2uWiBJBgAJ)
 
 I am thinking on having a Tiddler Commander to do the below jobs in one place.
 
