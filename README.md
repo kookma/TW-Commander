@@ -27,11 +27,3 @@ A bunch of tiddlers is a group of tiddlers meet some criteria like having a comm
 * Create empty bulk tiddlers (for lecture or slideshow) having common properties (tag, field, part of text,...)
 * Capability to undo the operation at least one step
 * Capability to get the user confirmation before doing the operation
-
-I want to have this minimal, simple to work and simple to understand.
-
-//I Know Most of These Tools are Already Developed// and I need to collect the best of them.
-
-I appreciate to have your comments/opinion on this tool. I appreciate who knows or has these tools to share them.
-
-As there are expert Tiddliwikians in this forum, I appreciate if anybody else can help, manage or do the job.
