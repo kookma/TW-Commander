@@ -1,8 +1,0 @@
-created: 20190214135246552
-description: {{$:/language/Filters/StoryList}}
-filter: [list[$:/StoryList]] -$:/AdvancedSearch
-modified: 20190314165949734
-tags: $:/tags/Commander/Filter
-title: $:/commander/filters/StoryList
-type: text/vnd.tiddlywiki
-

@@ -1,8 +1,0 @@
-created: 20190214135950458
-description: {{$:/language/Filters/RecentSystemTiddlers}}
-filter: [has[modified]!sort[modified]limit[50]]
-modified: 20190314165949784
-tags: $:/tags/Commander/Filter
-title: $:/commander/filters/RecentSystemTiddlers
-type: text/vnd.tiddlywiki
-

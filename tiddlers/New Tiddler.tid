@@ -1,9 +1,0 @@
-created: 20190309155138668
-creator: Mohammad
-modified: 20190314165951916
-modifier: Mohammad
-tags: 
-title: New Tiddler
-type: text/vnd.tiddlywiki
-
-{{$:/state/commander/set-field-value/fields}}

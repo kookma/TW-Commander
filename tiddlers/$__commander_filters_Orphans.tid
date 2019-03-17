@@ -1,8 +1,0 @@
-created: 20190214135426497
-description: {{$:/language/Filters/Orphans}}
-filter: [all[orphans]sort[title]]
-modified: 20190314165949799
-tags: $:/tags/Commander/Filter
-title: $:/commander/filters/Orphans
-type: text/vnd.tiddlywiki
-
