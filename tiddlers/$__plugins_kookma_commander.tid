@@ -4,7 +4,7 @@ created: 20190315120806011
 creator: Mohammad
 description: Tiddler Commander
 list: readme license authors
-modified: 20190317164034709
+modified: 20190317171539536
 modifier: Mohammad
 plugin-type: plugin
 title: $:/plugins/kookma/commander
@@ -297,18 +297,6 @@ version: 0.0.14
             "tags": "$:/tags/Macro",
             "modified": "20190212061921249",
             "created": "20190212061854110"
-        },
-        "$:/plugins/kookma/commander/macro/snr/regexpsub.js": {
-            "text": "/*\\\ntitle: $:/plugins/kookma/commander/macro/snr/regexpsub.js\ntype: application/javascript\nmodule-type: macro\n\nMake regular expression substitutions\n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\"use strict\";\n\nexports.name = \"regexpsub\";\n\nexports.params = [\n\t{name: \"searchValue\"},\n\t{name: \"replaceValue\"},\n\t{name: \"sourceText\"},\n\t{name: \"flags\"},\n    {name: \"wholeWords\"}\n];\n\n/*\nRun the macro\n*/\nexports.run = function(searchValue, replaceValue, sourceText, flags = \"gi\", wholeWords = \"characters\") {\n  \n  try {\n  \n\tvar searchText;\n    if(wholeWords.toLowerCase() === 'words'){\n    searchText = \"\\\\b\" + searchValue + \"\\\\b\";\n    } else{\n    searchText = searchValue;\n    }\n    searchText = new RegExp(searchText, flags);\n\n\t\n\treturn sourceText.replace(searchText,replaceValue);\n\n  } catch { return \"ERROR IN REG EXPRESSION. YOU MAY NEED TO ESCAPE VALUES\"; }\n  \n  };\n\n})();\n",
-            "type": "application/javascript",
-            "title": "$:/plugins/kookma/commander/macro/snr/regexpsub.js",
-            "tags": "snr",
-            "module-type": "macro",
-            "modifier": "Mohammad",
-            "modified": "20190307152358106",
-            "description": "Developed by Mark S",
-            "creator": "Mohammad",
-            "created": "20190214160253135"
         },
         "$:/plugins/kookma/commander/macro/snr/replace-text": {
             "text": "\\define nothing-to-replace(tiddler, field)  \n<$diff-text source={{{ [<__tiddler__>get<__field__>] }}} dest={{{ [<__tiddler__>get<__field__>] }}} />\n\\end\n\n\\define replace-text(tiddler:\"\",field:\"text\",replace:\"\",replaceWith:\"\",flags:\"\", wholeWords:\"\")\n\\whitespace trim\n<$wikify name=\"source\" text=\"\"\"<$view tiddler=<<__tiddler__>> field=<<__field__>> mode=\"block\" format=\"text\"/>\"\"\">\n<$wikify name=\"result\" \n  text=\"\"\"<$macrocall $name=\"regexpsub\" $type=\"text/plain\" \n     sourceText=<<source>> \n     searchValue=<<__replace__>> \n     replaceValue=<<__replaceWith__>> \n     flags=<<__flags__>> \n     wholeWords=<<__wholeWords__>> />\"\"\" \n     >\n<$text text=<<result>>/>\n</$wikify>\n</$wikify>\n\\end\n\n\\define replace-text-diff(tiddler:\"\", field:\"text\", replace, replaceWith, flags:\"\", wholeWords:\"\")\n<$list filter=\"[<__tiddler__>get<__field__>minlength[1]]\" variable=null emptyMessage=\"No tiddler selected\">\n<$list filter=\"[<__replace__>minlength[1]]\" variable=null emptyMessage=<<nothing-to-replace \"\"\"$tiddler$\"\"\" \"\"\"$field$\"\"\">> >\n\n<$wikify name=\"result\" \n  text=\"\"\"<$macrocall $name=\"replace-text\" \n     tiddler=<<__tiddler__>> field=<<__field__>> \n     replace=<<__replace__>> \n     replaceWith=<<__replaceWith__>> \n     flags=<<__flags__>>\n     wholeWords=<<__wholeWords__>> />\"\"\"\n  >\n<$diff-text source={{{ [<__tiddler__>get<__field__>] }}} dest=<<result>> />\n</$wikify>\n\n</$list>\n</$list>\n\\end\n\n\\define replace-text-button(tiddler:\"\", field:\"text\", replace:\"\", replaceWith:\"\", flags:\"\", wholeWords:\"\")\n\\whitespace trim\n<$list filter=\"[<__tiddler__>get<__field__>minlength[1]]\" variable=null>\n<$list filter=\"[<__replace__>minlength[1]]\" variable=null>\n<$wikify name=\"result\" \n  text=\"\"\"<$macrocall $name=\"replace-text\" \n     tiddler=<<__tiddler__>> \n     field=<<__field__>> \n     replace=<<__replace__>> \n     replaceWith=<<__replaceWith__>> \n     flags=<<__flags__>>\n     wholeWords=<<__wholeWords__>> />\"\"\"\n  >\n<$reveal type=\"nomatch\" default=\"title\" text=<<__field__>> >\n <$action-setfield $tiddler=<<__tiddler__>> $field=<<__field__>> $value=<<result>>/>\n</$reveal>\n<$reveal type=\"match\" default=\"title\" text=<<__field__>> >\n <$action-setfield $tiddler=<<__tiddler__>> $field=<<__field__>> $value=<<result>>/>\n <$action-deletetiddler $tiddler=<<__tiddler__>> />\n</$reveal>\n</$wikify>\n</$list>\n</$list>\n\\end\n",
@@ -866,6 +854,18 @@ version: 0.0.14
             "tags": "$:/tags/Stylesheet",
             "modifier": "Mohammad",
             "modified": "20190317085149339"
+        },
+        "$:/plugins/kookma/commander/macro/snr/regexpsub.js": {
+            "created": "20190214160253135",
+            "creator": "Mohammad",
+            "text": "/*\\\ntitle: $:/plugins/kookma/commander/macro/snr/regexpsub.js\ntype: application/javascript\nmodule-type: macro\n\nMake regular expression substitutions\n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\"use strict\";\n\nexports.name = \"regexpsub\";\n\nexports.params = [\n\t{name: \"searchValue\"},\n\t{name: \"replaceValue\"},\n\t{name: \"sourceText\"},\n\t{name: \"flags\"},\n    {name: \"wholeWords\"}\n];\n\n/*\nRun the macro\n*/\nexports.run = function(searchValue, replaceValue, sourceText, flags = \"gi\", wholeWords = \"characters\") {\n  \n  try {\n  \n\tvar searchText;\n    if(wholeWords.toLowerCase() === 'words'){\n    searchText = \"\\\\b\" + searchValue + \"\\\\b\";\n    } else{\n    searchText = searchValue;\n    }\n    searchText = new RegExp(searchText, flags);\n\n\t\n\treturn sourceText.replace(searchText,replaceValue);\n\n  } \n  catch(err) { \n    return \"ERROR IN REG EXPRESSION. YOU MAY NEED TO ESCAPE VALUES\"; \n  }\n  \n  };\n\n})();\n",
+            "type": "application/javascript",
+            "title": "$:/plugins/kookma/commander/macro/snr/regexpsub.js",
+            "tags": "snr",
+            "module-type": "macro",
+            "modifier": "Mohammad",
+            "modified": "20190317171519161",
+            "description": "Developed by Mark S"
         }
     }
 }
