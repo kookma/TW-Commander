@@ -9,7 +9,7 @@ modifier: Mohammad
 plugin-type: plugin
 title: $:/plugins/kookma/commander
 type: application/json
-version: 0.0.11
+version: 0.0.14
 
 {
     "tiddlers": {
@@ -219,15 +219,6 @@ version: 0.0.11
             "created": "20190314134238047",
             "caption": "What is Commander"
         },
-        "$:/plugins/kookma/commander/macro/compConfirmDelete": {
-            "text": "\\define compConfirmDelete(\nbtnLabel:\"Delete these tiddlers\", \nconfirmMessage:\"Are you sure you wish to delete\", \nstateTiddler:\"\"\ncountFilter:\"\", \nactionMacro:\"\")\n<$set name=resultCount value={{{ [subfilter<__countFilter__>count[]] }}} >\n<$reveal type=\"gt\" text=\"0\" default=<<resultCount>> >\n<$button popup=<<qualify \"\"\"$stateTiddler$\"\"\">> >$btnLabel$</$button>\n</$reveal>\n\n<$reveal state=<<qualify \"\"\"$stateTiddler$\"\"\">> type=\"popup\" position=\"belowleft\" animate=\"yes\">\n<div class=\"tc-block-dropdown-wrapper\">\n<div class=\"tc-block-dropdown tc-edit-type-dropdown\">\n<div class=\"tc-dropdown-item-plain\">\n$confirmMessage$ <<resultCount>> tiddler(s)?\n\n</div>\n<div class=\"tc-dropdown-item-plain\">\n<$button class=\"tc-btn\">\n<$macrocall $name=<<__actionMacro__>> />\n$btnLabel$\n</$button>\n</div>\n</div>\n</div>\n</$reveal>\n</$set>\n\\end",
-            "title": "$:/plugins/kookma/commander/macro/compConfirmDelete",
-            "tags": "$:/tags/Macro",
-            "modifier": "Mohammad",
-            "modified": "20190314225909341",
-            "creator": "Mohammad",
-            "created": "20190301145916990"
-        },
         "$:/plugins/kookma/commander/macro/compInspect": {
             "text": "\\define compInspect(filter, stateTiddler:\"thisTiddler\")\n<$set name=\"state\" \n      value={{{ [[$:/state/compInspect/]addsuffix<__stateTiddler__>] }}}\n>\n<$vars\n   slStateTid={{{ [<state>addsuffix[/]addsuffix[selectState-tiddler]] }}}\n   rvStateTid={{{ [<state>addsuffix[/]addsuffix[revealState-tiddler]] }}}\n   chStateTid={{{ [<state>addsuffix[/]addsuffix[checkboxState-tiddler]] }}}\n>\n\nSelect tiddler &nbsp;<$macrocall $name=compSelect filter=<<__filter__>> stateTiddler=<<slStateTid>> />\n&nbsp;&nbsp;\n<$macrocall $name=\"check-common-fields\" stateTiddler=<<chStateTid>> />\n&nbsp;&nbsp;\n<$reveal stateTitle=<<rvStateTid>> type=\"nomatch\" text=\"edit\">\n<$button class=\"tc-btn-invisible\" setTitle=<<rvStateTid>> setTo=\"edit\" tooltip=\"edit tiddler\">{{$:/core/images/edit-button}}</$button>\n<$macrocall $name=compInspect-show-preview tiddler={{{ [<slStateTid>get[text]] }}}  commonFields={{{ [<chStateTid>get[text]] }}}/>\n</$reveal>\n<$reveal stateTitle=<<rvStateTid>> type=\"match\" text=\"edit\">\n<$button class=\"tc-btn-invisible\" setTitle=<<rvStateTid>> setTo=\"\" tooltip=\"confirm changes\">{{$:/core/images/done-button}}</$button>\n<$macrocall $name=compInspect-edit-preview tiddler={{{ [<slStateTid>get[text]] }}}  commonFields={{{ [<chStateTid>get[text]] }}}/>\n</$reveal>\n\n</$vars>\n</$set>\n\\end\n\n\\define check-common-fields(stateTiddler)\n<$checkbox \n tiddler=<<__stateTiddler__>>\n field=\"text\" \n checked=\"\" \n unchecked=\"created creator modified modifier\"\n> Include common fields?</$checkbox>\n\\end",
             "title": "$:/plugins/kookma/commander/macro/compInspect",
@@ -236,15 +227,6 @@ version: 0.0.11
             "modified": "20190314145449116",
             "creator": "Mohammad",
             "created": "20190308151331101"
-        },
-        "$:/plugins/kookma/commander/macro/compInspect/edit-fileds": {
-            "text": "\\define lingo-base() $:/language/EditTemplate/\n\\define config-title()\n$:/config/EditTemplateFields/Visibility/$(currentField)$\n\\end\n\n\\define config-filter()\n[[hide]] -[title{$(config-title)$}] \n\\end\n\n\\define new-field()\n<$vars name={{$:/temp/newfieldname}}>\n<$reveal type=\"nomatch\" text=\"\" default=<<name>>>\n<$button>\n<$action-sendmessage $message=\"tm-add-field\"\n$name=<<name>>\n$value={{$:/temp/newfieldvalue}}/>\n<$action-deletetiddler $tiddler=\"$:/temp/newfieldname\"/>\n<$action-deletetiddler $tiddler=\"$:/temp/newfieldvalue\"/>\n<<lingo Fields/Add/Button>>\n</$button>\n</$reveal>\n<$reveal type=\"match\" text=\"\" default=<<name>>>\n<$button>\n<<lingo Fields/Add/Button>>\n</$button>\n</$reveal>\n</$vars>\n\\end\n\n\\define compInspect-edit-fileds(commonFields:\"\")\n\n<div class=\"tc-edit-fields\">\n<table class=\"tc-edit-fields\">\n<tbody>\n<$list filter=\"[all[current]fields[]] +[sort[title]]\" variable=\"currentField\">\n<$list filter=<<config-filter>> variable=\"temp\">\n<tr class=\"tc-edit-field\">\n<td class=\"tc-edit-field-name\">\n<$text text=<<currentField>>/>:</td>\n<td class=\"tc-edit-field-value\">\n<$edit-text tiddler=<<currentTiddler>> field=<<currentField>> placeholder={{$:/language/EditTemplate/Fields/Add/Value/Placeholder}}/>\n</td>\n<td class=\"tc-edit-field-remove\">\n<$button class=\"tc-btn-invisible\" tooltip={{$:/language/EditTemplate/Field/Remove/Hint}} aria-label={{$:/language/EditTemplate/Field/Remove/Caption}}>\n<$action-deletefield $field=<<currentField>>/>\n{{$:/core/images/delete-button}}\n</$button>\n</td>\n</tr>\n</$list>\n</$list>\n\n\n<$list filter=\"created creator modified modifier -[enlist<__commonFields__>]\" variable=\"currentField\">\n<tr class=\"tc-edit-field\">\n<td class=\"tc-edit-field-name\">\n<$text text=<<currentField>>/>:</td>\n<td class=\"tc-edit-field-value\">\n<$edit-text tiddler=<<currentTiddler>> field=<<currentField>> placeholder={{$:/language/EditTemplate/Fields/Add/Value/Placeholder}}/>\n</td>\n<td class=\"tc-edit-field-remove\">\n<$button class=\"tc-btn-invisible\" tooltip={{$:/language/EditTemplate/Field/Remove/Hint}} aria-label={{$:/language/EditTemplate/Field/Remove/Caption}}>\n<$action-deletefield $field=<<currentField>>/>\n{{$:/core/images/delete-button}}\n</$button>\n</td>\n</tr>\n</$list>\n\n\n\n\n</tbody>\n</table>\n</div>\n\n<$fieldmangler>\n<div class=\"tc-edit-field-add\">\n<em class=\"tc-edit\">\n<<lingo Fields/Add/Prompt>>\n</em>\n<span class=\"tc-edit-field-add-name\">\n<$edit-text tiddler=\"$:/temp/newfieldname\" tag=\"input\" default=\"\" placeholder={{$:/language/EditTemplate/Fields/Add/Name/Placeholder}} focusPopup=<<qualify \"$:/state/popup/field-dropdown\">> class=\"tc-edit-texteditor tc-popup-handle\"/>\n</span>\n<$button popup=<<qualify \"$:/state/popup/field-dropdown\">> class=\"tc-btn-invisible tc-btn-dropdown\" tooltip={{$:/language/EditTemplate/Field/Dropdown/Hint}} aria-label={{$:/language/EditTemplate/Field/Dropdown/Caption}}>{{$:/core/images/down-arrow}}</$button>\n<$reveal state=<<qualify \"$:/state/popup/field-dropdown\">> type=\"nomatch\" text=\"\" default=\"\">\n<div class=\"tc-block-dropdown tc-edit-type-dropdown\">\n<$linkcatcher to=\"$:/temp/newfieldname\">\n<div class=\"tc-dropdown-item\">\n<<lingo Fields/Add/Dropdown/User>>\n</div>\n<$list filter=\"[!is[shadow]!is[system]fields[]search:title{$:/temp/newfieldname}sort[]] -created -creator -draft.of -draft.title -modified -modifier -tags -text -title -type\"  variable=\"currentField\">\n<$link to=<<currentField>>>\n<<currentField>>\n</$link>\n</$list>\n<div class=\"tc-dropdown-item\">\n<<lingo Fields/Add/Dropdown/System>>\n</div>\n<$list filter=\"[fields[]search:title{$:/temp/newfieldname}sort[]] -[!is[shadow]!is[system]fields[]]\" variable=\"currentField\">\n<$link to=<<currentField>>>\n<<currentField>>\n</$link>\n</$list>\n</$linkcatcher>\n</div>\n</$reveal>\n<span class=\"tc-edit-field-add-value\">\n<$edit-text tiddler=\"$:/temp/newfieldvalue\" tag=\"input\" default=\"\" placeholder={{$:/language/EditTemplate/Fields/Add/Value/Placeholder}} class=\"tc-edit-texteditor\"/>\n</span>\n<span class=\"tc-edit-field-add-button\">\n<$macrocall $name=\"new-field\"/>\n</span>\n</div>\n</$fieldmangler>\n\\end",
-            "title": "$:/plugins/kookma/commander/macro/compInspect/edit-fileds",
-            "tags": "$:/tags/Macro",
-            "modifier": "Mohammad",
-            "modified": "20190314145449118",
-            "creator": "Mohammad",
-            "created": "20190313061511585"
         },
         "$:/plugins/kookma/commander/macro/compInspect/edit-preview": {
             "text": "\\define compInspect-edit-preview(tiddler, commonFields:\"\")\n<div class=\"tc-edit-fields\">\n<table class=\"tc-edit-fields\">\n<tbody>\n<tr class=\"tc-edit-field\"><td class=\"tc-edit-field-name\">title:</td>\n<td class=\"tc-edit-field-value\"><$link to=<<__tiddler__>> ><$text text=<<__tiddler__>> /></$link></td>\n</tr>\n<tr class=\"tc-edit-field\"><td class=\"tc-edit-field-name\">tags:</td>\n<td class=\"tc-edit-field-value\"><$macrocall $name=compInspect-get-field tiddler=<<__tiddler__>>  field=\"tags\" /></td>\n</tr>\n<tr class=\"tc-edit-field\"><td class=\"tc-edit-field-name\">text:</td>\n<td class=\"tc-edit-field-value\"><$macrocall $name=compInspect-get-field tiddler=<<__tiddler__>>  field=\"text\" tag=\"textarea\" /></td>\n</tr>\n</tbody>\n</table>\n</div>\n\n<$tiddler tiddler=<<__tiddler__>> >\n<$macrocall $name=\"compInspect-edit-fileds\" commonFields=<<__commonFields__>> />\n</$tiddler>\n\\end\n\n\\define compInspect-get-field(tiddler, field, tag:\"input\") \n<$edit-text class=\"tc-edit-texteditor\" tiddler=<<__tiddler__>> field=<<__field__>> tag=<<__tag__>> default=\"\" placeholder={{$:/language/EditTemplate/Body/Placeholder}}/>\n\\end",
@@ -263,15 +245,6 @@ version: 0.0.11
             "modified": "20190314145449121",
             "creator": "Mohammad",
             "created": "20190308070953891"
-        },
-        "$:/plugins/kookma/commander/macro/compSelect": {
-            "text": "\\define compSelect(filter:\"\", stateTiddler:\"\", default:\"\", class:\"\", showButtons:\"show\")\n<$select tiddler=<<__stateTiddler__>> default=<<__default__>> class=<<__class__>> >\n<option value=\"\">None</option>\n<$list filter=<<__filter__>> variable=item>\n<option value=<<item>>><$text text=<<item>> /></option>\n</$list>\n</$select>\n<$reveal type=\"match\" text=\"show\" default=<<__showButtons__>> >\n<$vars myfilter=<<__filter__>> mystateTiddler=<<__stateTiddler__>> myitem={{{ [<__stateTiddler__>get[text]] }}} >\n<$button actions=<<cs-prev-item>> >prev</$button>\n<$button actions=<<cs-next-item>> >next</$button>\n</$vars>\n</$reveal>\n\\end\n\n\\define cs-prev-item()\n<$list filter=\"[subfilter<myfilter>] +[before<myitem>]\" variable=\"prev-item\" >\n<$action-setfield $tiddler=<<mystateTiddler>> text=<<prev-item>> />\n</$list>\n\\end\n\n\\define cs-next-item()\n<$list filter=\"[subfilter<myfilter>] +[after<myitem>]\" variable=\"next-item\" >\n<$action-setfield $tiddler=<<mystateTiddler>> text=<<next-item>> />\n</$list>\n\\end",
-            "title": "$:/plugins/kookma/commander/macro/compSelect",
-            "tags": "$:/tags/Macro",
-            "modifier": "Mohammad",
-            "modified": "20190314145331203",
-            "creator": "Mohammad",
-            "created": "20190308070713468"
         },
         "$:/plugins/kookma/commander/macro/compSelective": {
             "text": "\\define compSelective(filter,tiddler)\n<$vars stateTid=<<state-tiddler-title \"\"\"$tiddler$\"\"\">>  >\n<$reveal type=\"nomatch\" state=<<stateTid>> text=\"hide\">\n<$button set=<<stateTid>> setTo=\"hide\"> Select all\n<$action-setfield $tiddler=<<__tiddler__>> $field=\"text\" $value=\"{}\"/>\n<$list filter=<<__filter__>> variable=\"Item\">\n<$action-setfield $tiddler=<<__tiddler__>> $index=<<Item>> $value=\"selected\"/>\n</$list>\n</$button>\n</$reveal>\n\n<$reveal type=\"match\" state=<<stateTid>> text=\"hide\">\n<$button set=<<stateTid>> setTo=\"show\"> Select none\n<$action-setfield $tiddler=<<__tiddler__>> $field=\"text\" $value=\"{}\"/>\n<!-- Clear SNR selection -->\n<$action-setfield $tiddler=\"$:/state/commander/snr/select-tiddler\" $field=\"text\" $value=\"\"/>\n<!-- Clear Inspect selection -->\n<$action-setfield $tiddler=\"$:/state/compInspect/temp/commander/selectState-tiddler\" $field=\"text\" $value=\"\"/>\n</$button>\n</$reveal>\n</$vars>\n<br>\n<i><$count filter=\"[<__tiddler__>indexes[]]\" /> selected</i>&nbsp;<$macrocall $name=\"display\" label=\"Show filter in use\" text={{$:/temp/commander}} />\n<br>\n<$list filter=\"[subfilter<__filter__>] +[sort[title]]\" variable=\"Item\">\n<$checkbox tiddler=<<__tiddler__>> index=<<Item>> checked=\"selected\">&nbsp;<$link to=<<Item>>><$text text=<<Item>> /></$link></$checkbox><br>\n</$list>\n\n\n\\end\n\n\\define state-tiddler-title(tiddler)  $tiddler$-comp-selective\n\n\\define compSelective-reset(filter, tiddler)\n<$action-setfield $tiddler=<<__tiddler__>> $field=\"text\" $value=\"{}\"/>\n<$action-setfield $tiddler=<<state-tiddler-title \"\"\"$tiddler$\"\"\">> $field=\"text\" $value=\"\"/>\n\\end",
@@ -324,15 +297,6 @@ version: 0.0.11
             "tags": "$:/tags/Macro",
             "modified": "20190212061921249",
             "created": "20190212061854110"
-        },
-        "$:/plugins/kookma/commander/macro/snr-operation": {
-            "text": "\\define regexp-flags()\n{{$:/state/commander/snr/gm}}{{$:/state/commander/snr/case-sensitive}}\n\\end\n\n\\define snr-ui-show-diffs()\n<form class=\"snr-form\" style=\"width:100%;\">\n  <fieldset>\n   <legend style=\"color:#FF0000;\">Differences</legend>\nTiddler: <$link to={{$:/state/commander/snr/select-tiddler}}><$text text={{$:/state/commander/snr/select-tiddler}}/></$link>\n\n<$wikify name=flags text=<<regexp-flags>> >\n\n<$macrocall $name=\"replace-text-diff\" \n tiddler={{$:/state/commander/snr/select-tiddler}} \n field={{$:/state/commander/snr/select-tiddler/field}} \n replace={{$:/state/commander/snr/replace-text}} \n replaceWith={{$:/state/commander/snr/replace-text-with}} \n flags=<<flags>> \n wholeWords={{$:/state/commander/snr/whole-words}}\n/>\n\n</$wikify>\n</fieldset>\n</form>\n\\end\n\n\n\n\n\\define snr-check-diffs(tiddler:\"\", field:\"\")\n\\whitespace trim\n<$wikify name=flags text=<<regexp-flags>> >\n<$wikify name=\"result\" text=\"\"\"\n<$macrocall $name=\"replace-text\" \n tiddler=<<__tiddler__>>\n field=<<__field__>>\n replace={{$:/state/commander/snr/replace-text}} \n replaceWith={{$:/state/commander/snr/replace-text-with}} \n flags=<<flags>> \n wholeWords={{$:/state/commander/snr/whole-words}}\n/>\"\"\">\n<$reveal type=\"match\" text={{{ [<__tiddler__>get<__field__>] }}} default=<<result>> >\nsame\n</$reveal>\n<$reveal type=\"nomatch\" text={{{ [<__tiddler__>get<__field__>] }}} default=<<result>> >\ndifferent\n</$reveal>\n</$wikify>\n</$wikify>\n\\end\n\n\n\\define search-replace-in-tiddler-field(tiddler:\"\",field:\"\",replace:\"\",replaceWith:\"\")\n<$wikify name=ss text=<<snr-check-diffs \"\"\"$tiddler$\"\"\" \"\"\"$field$\"\"\">> >\n<$list filter=\"[<ss>] -same\" variable=ignore>\n\n<$wikify name=flags text=<<regexp-flags>> >\n<$macrocall $name=\"replace-text-button\" \n tiddler=<<__tiddler__>> \n field=<<__field__>>\n replace=<<__replace__>>\n replaceWith=<<__replaceWith__>> \n flags=<<flags>> \n wholeWords={{$:/state/commander/snr/whole-words}}\n/>\n<$macrocall $name=\"log-add-single-operation\" msg=\"\"\"`$field$` field has been changed\"\"\" tidItem=<<__tiddler__>> />\n\n</$wikify>\n</$list>\n</$wikify>\n\\end\n\n\n\\define search-replace-in-field-bulk()\n<$list filter=\"[[$:/temp/commander/selected-titles]indexes[]] +[count[]] -0\" variable=\"ignore\">\n<<create-log-tiddler \"SNR operation\">>\n<$list filter=\"[[$:/temp/commander/selected-titles]indexes[]] +[!is[missing]]\">\n  <$macrocall \n    $name=\"search-replace-in-tiddler-field\"\n    tiddler=<<currentTiddler>> \n    field={{$:/state/commander/snr/select-tiddler/field}} \n    replace={{$:/state/commander/snr/replace-text}} \n    replaceWith={{$:/state/commander/snr/replace-text-with}}   \n  />\n</$list>\n</$list>\n\\end\n\n\\define search-replace-in-field-single-tiddler()\n<<create-log-tiddler \"SNR operation\">>\n  <$macrocall \n    $name=\"search-replace-in-tiddler-field\"\n    tiddler={{$:/state/commander/snr/select-tiddler}}\n    field={{$:/state/commander/snr/select-tiddler/field}} \n    replace={{$:/state/commander/snr/replace-text}} \n    replaceWith={{$:/state/commander/snr/replace-text-with}}   \n  />\n\\end\n\n\\define snr-actions()\n<$button actions=<<search-replace-in-field-single-tiddler>> tooltip=\"search and replace in a single tiddler\">\nReplace?\n</$button>&nbsp;\n<$button actions=<<search-replace-in-field-bulk>> tooltip=\"search and replace in all selected tiddlers\">\nReplace all?\n</$button>\n\\end",
-            "title": "$:/plugins/kookma/commander/macro/snr-operation",
-            "tags": "$:/tags/Macro",
-            "modifier": "Mohammad",
-            "modified": "20190314212227304",
-            "creator": "Mohammad",
-            "created": "20190307164924193"
         },
         "$:/plugins/kookma/commander/macro/snr/regexpsub.js": {
             "text": "/*\\\ntitle: $:/plugins/kookma/commander/macro/snr/regexpsub.js\ntype: application/javascript\nmodule-type: macro\n\nMake regular expression substitutions\n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\"use strict\";\n\nexports.name = \"regexpsub\";\n\nexports.params = [\n\t{name: \"searchValue\"},\n\t{name: \"replaceValue\"},\n\t{name: \"sourceText\"},\n\t{name: \"flags\"},\n    {name: \"wholeWords\"}\n];\n\n/*\nRun the macro\n*/\nexports.run = function(searchValue, replaceValue, sourceText, flags = \"gi\", wholeWords = \"characters\") {\n  \n  try {\n  \n\tvar searchText;\n    if(wholeWords.toLowerCase() === 'words'){\n    searchText = \"\\\\b\" + searchValue + \"\\\\b\";\n    } else{\n    searchText = searchValue;\n    }\n    searchText = new RegExp(searchText, flags);\n\n\t\n\treturn sourceText.replace(searchText,replaceValue);\n\n  } catch { return \"ERROR IN REG EXPRESSION. YOU MAY NEED TO ESCAPE VALUES\"; }\n  \n  };\n\n})();\n",
@@ -474,16 +438,6 @@ version: 0.0.11
             "creator": "Mohammad",
             "created": "20190308134702363"
         },
-        "$:/plugins/kookma/commander/stylesheet/select-width": {
-            "text": ".cm-sl{\n  width:8ch;\n}\n\n.cm-select-wd{\n  min-width:15ch;\n}\n",
-            "type": "text/css",
-            "title": "$:/plugins/kookma/commander/stylesheet/select-width",
-            "tags": "$:/tags/Stylesheet",
-            "modifier": "Mohammad",
-            "modified": "20190314215432211",
-            "creator": "Mohammad",
-            "created": "20190218214027079"
-        },
         "$:/plugins/kookma/commander/stylesheet/snr/flexbox": {
             "text": ".snr-row {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  width: 100%;\n}\n.snr-column {\n  display: flex;\n  flex-direction: column;\n  flex-basis: 100%;\n  flex: 1\n}\n\n.snr-double-column {\n  display: flex;\n  flex-direction: column;\n  flex-basis: 100%;\n  flex: 2\n}\n\n@media screen and (min-width: 800px) {\n  .snr-column {\n    flex: 1\n  }\n\n  .snr-double-column {\n    flex: 2\n  }\n}",
             "type": "text/css",
@@ -533,26 +487,6 @@ version: 0.0.11
             "creator": "Mohammad",
             "created": "20190212061551615",
             "caption": "Field"
-        },
-        "$:/plugins/kookma/commander/ui/fieldops/add-remove-fields": {
-            "text": "<$edit-text\ntiddler=\"$:/temp/commander/field-add\"\ntag=\"input\"\ndefault=\"\"\nclass=\"cm-txt-area\"\nplaceholder=\" new field\"\n/> \n<$button> Add new field\n<$macrocall $name=\"add-new-field-bulk\" newField={{$:/temp/commander/field-add}} />\n</$button>\n\n<$button> Remove old field\n<$macrocall $name=\"remove-old-field-bulk\" oldField={{$:/temp/commander/field-remove}} />\n</$button>\n<$select class=\"cm-select-wd\" tiddler=\"$:/temp/commander/field-remove\" default=<<dummy>>>\n<$list filter=\"[subfilter{$:/state/commander/add-remove-fields/fields}]\" >\n<option><$view field=\"title\"/></option>\n</$list>\n</$select> &nbsp; \n<$checkbox \n tiddler=\"$:/state/commander/add-remove-fields/fields\" \n field=\"text\" \n checked=\"[[$:/temp/commander/selected-titles]indexes[]fields[]sort[]] -title -tags\" \n unchecked=\"[[$:/temp/commander/selected-titles]indexes[]fields[]sort[]] -[[$:/plugins/kookma/commander/empty-tiddler]fields[]]\"\n> Include system fields?</$checkbox>\n\n\n",
-            "title": "$:/plugins/kookma/commander/ui/fieldops/add-remove-fields",
-            "tags": "$:/tags/Commander/FieldOps",
-            "modifier": "Mohammad",
-            "modified": "20190315063335306",
-            "creator": "Mohammad",
-            "created": "20190314051054548",
-            "caption": "Add remove fields"
-        },
-        "$:/plugins/kookma/commander/ui/fieldops/set-field-value": {
-            "text": "Field name &nbsp;\n<$select class=\"cm-select-wd\" tiddler=\"$:/temp/commander/field-name\" default=<<dummy>>>\n<$list filter=\"[subfilter{$:/state/commander/set-field-value/fields}]\" >\n<option><$view field=\"title\"/></option>\n</$list>\n</$select> &nbsp; \n<$checkbox \n tiddler=\"$:/state/commander/set-field-value/fields\" \n field=\"text\" \n checked=\"[[$:/temp/commander/selected-titles]indexes[]fields[]sort[]] -tags -title\" \n unchecked=\"[[$:/temp/commander/selected-titles]indexes[]fields[]sort[]] -[[$:/plugins/kookma/commander/empty-tiddler]fields[]]\"\n> Include system fields?</$checkbox>\n\nField value &nbsp;<$edit-text\ntiddler=\"$:/temp/commander/field-value\"\ntag=\"input\"\ndefault=\"\"\nclass=\"cm-txt-area\"\nplaceholder=\" field value\"\n/>  &nbsp; \n<$button> Set field value\n<$macrocall \n $name=\"set-field-value-bulk\" \n fieldName={{$:/temp/commander/field-name}} \n fieldValue={{$:/temp/commander/field-value}} \n/>\n</$button>",
-            "title": "$:/plugins/kookma/commander/ui/fieldops/set-field-value",
-            "tags": "$:/tags/Commander/FieldOps",
-            "modifier": "Mohammad",
-            "modified": "20190315064944798",
-            "creator": "Mohammad",
-            "created": "20190212120609737",
-            "caption": "Set field value"
         },
         "$:/plugins/kookma/commander/ui/help": {
             "text": "<<tabs \"[all[shadows+tiddlers]tag[$:/tags/Commander/Help]!has[draft.of]]\" class:\"tc-vertical cm-tab-colorful cm-tab-wd\">>\n\n\n",
@@ -662,26 +596,6 @@ version: 0.0.11
             "created": "20190212051852003",
             "caption": "Tag"
         },
-        "$:/plugins/kookma/commander/ui/tagops/add-remove-tags": {
-            "text": "<$edit-text\ntiddler=\"$:/temp/commander/tag-add-remove/new\"\ntag=\"input\"\ndefault=\"\"\nclass=\"cm-txt-area\"\nplaceholder=\" new tag\"\n/> &nbsp;\n<$button> Add new tag\n<$macrocall $name=\"add-new-tag-bulk\" newTag={{$:/temp/commander/tag-add-remove/new}} />\n</$button>\n\n<$button> Remove old tag\n<$macrocall $name=\"remove-old-tag-bulk\" oldTag={{$:/temp/commander/tag-add-remove/old}} />\n</$button>\n&nbsp;\n<$select class=\"cm-select-wd\" tiddler=\"$:/temp/commander/tag-add-remove/old\" default=<<dummy>>>\n<$list filter=\"[[$:/temp/commander/selected-titles]indexes[]tags[]sort[]]\" >\n<option><$view field=\"title\"/></option>\n</$list>\n</$select>\n\n",
-            "title": "$:/plugins/kookma/commander/ui/tagops/add-remove-tags",
-            "tags": "$:/tags/Commander/TagOps",
-            "modifier": "Mohammad",
-            "modified": "20190314084019717",
-            "creator": "Mohammad",
-            "created": "20190212063924640",
-            "caption": "Add remove tags"
-        },
-        "$:/plugins/kookma/commander/ui/tagops/replace-tags": {
-            "text": "<span style=\"display:inline-block;width:8ch;\">Old tag &nbsp;</span>\n<$select class=\"cm-select-wd\" tiddler=\"$:/temp/commander/replace-tags/old\" default=<<dummy>>>\n<$list filter=\"[[$:/temp/commander/selected-titles]indexes[]tags[]sort[]]\" >\n<option><$view field=\"title\"/></option>\n</$list>\n</$select>\n\n<span style=\"display:inline-block;width:8ch;\">New tag &nbsp;</span>\n<$edit-text\ntiddler=\"$:/temp/commander/replace-tags/new\"\ntag=\"input\"\ndefault=\"\"\nclass=\"cm-txt-area\"\nplaceholder=\" new tag\"\n/>\n\n<$button> Replace tags\n<$macrocall $name=\"replace-tag-bulk\" \noldTag={{$:/temp/commander/replace-tags/old}} \nnewTag={{$:/temp/commander/replace-tags/new}} />\n</$button>\n\n",
-            "title": "$:/plugins/kookma/commander/ui/tagops/replace-tags",
-            "tags": "$:/tags/Commander/TagOps",
-            "modifier": "Mohammad",
-            "modified": "20190314084019717",
-            "creator": "Mohammad",
-            "created": "20190212080523588",
-            "caption": "Replace tags"
-        },
         "$:/plugins/kookma/commander/ui/textops/replace-text": {
             "text": "<<snr-ui>>",
             "title": "$:/plugins/kookma/commander/ui/textops/replace-text",
@@ -732,36 +646,6 @@ version: 0.0.11
             "creator": "Mohammad",
             "created": "20190212051704536",
             "caption": "Title"
-        },
-        "$:/plugins/kookma/commander/ui/titleops/add-remove-chars": {
-            "text": "\\define rngcat() [range[0,$(minchars)$]] -0 \n\nNumber of characters\n<$select tiddler=\"$:/temp/commander/title-remove-chars\"  default=\"0\" class=\"cm-sl\">\n<$list filter=\"[[$:/temp/commander/selected-titles]indexes[]] +[!is[missing]] +[length[]] +[minall[]] +[subtract[1]] -Infinity\" variable=\"minchars\">\n<$list filter=<<rngcat>> >\n<option value=<<currentTiddler>>><$view field='title'/></option>\n</$list>\n</$list>\n</$select>&nbsp; \n\n<$button> First n chars\n<$macrocall \n $name=\"remove-chars-from-begining-tiltle-bulk\" \n num={{$:/temp/commander/title-remove-chars}} \n/>\n</$button>\n&nbsp; \n<$button> Last n chars\n<$macrocall \n $name=\"remove-chars-from-end-tiltle-bulk\" \n num={{$:/temp/commander/title-remove-chars}} \n/>\n</$button>\n\n\n",
-            "title": "$:/plugins/kookma/commander/ui/titleops/add-remove-chars",
-            "tags": "$:/tags/Commander/TitleOps",
-            "modifier": "Mohammad",
-            "modified": "20190314084019717",
-            "creator": "Mohammad",
-            "created": "20190217092719245",
-            "caption": "Remove chars"
-        },
-        "$:/plugins/kookma/commander/ui/titleops/add-remove-prefix": {
-            "text": "<$edit-text\ntiddler=\"$:/temp/commander/title-prefix\"\ntag=\"input\"\ndefault=\"\"\nclass=\"cm-txt-area\"\nplaceholder=\" prefix\"\n/> &nbsp; \n<$button> Add prefix\n<$macrocall \n $name=\"addPrefix-to-tiltle-bulk\" \n prefix={{$:/temp/commander/title-prefix}} \n/>\n</$button>\n<$button> Remove prefix\n<$macrocall \n $name=\"removePrefix-from-tiltle-bulk\" \n prefix={{$:/temp/commander/title-prefix}} \n/>\n</$button>\n\n",
-            "title": "$:/plugins/kookma/commander/ui/titleops/add-remove-prefix",
-            "tags": "$:/tags/Commander/TitleOps",
-            "modifier": "Mohammad",
-            "modified": "20190309032552818",
-            "creator": "Mohammad",
-            "created": "20190212141758567",
-            "caption": "Add remove prefix"
-        },
-        "$:/plugins/kookma/commander/ui/titleops/add-remove-suffix": {
-            "text": "<$edit-text\ntiddler=\"$:/temp/commander/title-suffix\"\ntag=\"input\"\ndefault=\"\"\nclass=\"cm-txt-area\"\nplaceholder=\" suffix\"\n/> &nbsp; \n<$button> Add suffix\n<$macrocall \n $name=\"addSuffix-to-tiltle-bulk\" \n suffix={{$:/temp/commander/title-suffix}} \n/>\n</$button>\n<$button> Remove suffix\n<$macrocall \n $name=\"removeSuffix-from-tiltle-bulk\" \n suffix={{$:/temp/commander/title-suffix}} \n/>\n</$button>\n\n",
-            "title": "$:/plugins/kookma/commander/ui/titleops/add-remove-suffix",
-            "tags": "$:/tags/Commander/TitleOps",
-            "modifier": "Mohammad",
-            "modified": "20190309032626080",
-            "creator": "Mohammad",
-            "created": "20190212143434676",
-            "caption": "Add remove suffix"
         },
         "$:/plugins/kookma/commander/utility": {
             "text": "\\define display(label,text)\n<$set name=\"stateTid\" value=\"$:/temp/commander/display/popup/$label$\" >\n<$button popup=<<stateTid>> class=\"tc-btn-invisible\"><span style=\"text-decoration: underline\">$label$</span></$button>\n<$reveal type=\"nomatch\" text=\"\" default=\"\" state=<<stateTid>> animate=\"yes\">\n<span style=\"color:blue;\"><$text text=<<__text__>> /></span></$reveal>\n</$set>\n\\end\n\n\\define is-filterSeearch-newer-than-selectedTitles(TidA, TidB)\n<$set name=\"tidAMod\" value={{{ [[$TidA$]get[modified]] }}}>\n<$set name=\"tidBMod\" value={{{ [[$TidB$]get[modified]] }}}>\n<$set name=\"tidAText\" value={{{ [[$TidA$]get[text]] }}}>\n<$set name=\"tidBText\" value={{{ [[$TidB$]get[text]] }}}>\n<$list filter=\"[<__TidB__>get[text]minlength[1]]\" variable=ignore>\n<$reveal type=\"nomatch\" default=<<tidAText>> text=<<tidBText>>>\n<$list filter=\"[<tidAMod>] [<tidBMod>] +[nsort[]last[1]removesuffix<tidBMod>]\">\nA new filter search has been detected, click on the search button to apply it.\n</$list>\n</$reveal>\n</$list>\n</$set>\n</$set>\n</$set>\n</$set>\n\\end\n\n!!Remarks\n;is-filterSeearch-newer-than-selectedTitles\n* Checks `TidA` and `TidB` for modified date and text\n* If They are not empty, then\n** checks if the text of two are equal, if not\n** checks to see if `TidB` is newer or not\n** if newer shows a message, to apply the new search filter\n* Note\n** `TidA=\"$:/temp/commander\"`\n** `TidB=\"$:/temp/commander/search-box\"`\n* is-filterSeearch-newer-than-selectedTitles is called from $:/plugins/kookma/commander/ui/search\n\n;display\n* gets a label and a text\n* create an inline label\n* on click label, the text is displayed as temporary popup\n* losing focus, the text goes hidden\n* this macro is used in customized compSelective to show the active filter",
@@ -828,16 +712,6 @@ version: 0.0.11
             "created": "20190213200338381",
             "caption": "Pouri"
         },
-        "$:/plugins/kookma/commander/ui/tiddlerops/create-tiddlers": {
-            "created": "20190213193004029",
-            "creator": "Mohammad",
-            "text": "Base title &nbsp;\n<$edit-text \n tiddler=\"$:/temp/commander/tiddler-base-title\" \n tag=\"input\" \n default=\"\"\n placeholder=\" base title\" \n class=\"cm-txt-area\"/> &nbsp;\nTags &nbsp;\n<$edit-text \n tiddler=\"$:/temp/commander/tiddler-base-tags\" \n tag=\"input\" \n default=\"\"\n placeholder=\" tags\" \n class=\"cm-txt-area\"\n/> \n\n&nbsp;\n<$checkbox \n tiddler=\"$:/state/commander/tiddler-template-status\" \n field=\"text\" \n checked=\"use-template\" \n unchecked=\"no-template\"\n> Use template?</$checkbox> &nbsp;\n<$reveal type=\"match\" text=\"use-template\" default={{$:/state/commander/tiddler-template-status}}>\nTemplate\n<$select tiddler=\"$:/temp/commander/template-newtiddler\"  default='base'>\n<$list filter='[all[shadows+tiddlers]tag[$:/tags/Commander/Template]]'>\n<option value=<<currentTiddler>> >\n<$view field=\"caption\"><$view field=\"title\"/></$view>\n</option>\n</$list>\n</$select>\n</$reveal>\n\nNumber of tiddlers  &nbsp;\n<$select tiddler=\"$:/temp/commander/tiddler-base-number\"  default='1'>\n<$list filter='1 2 3 4 [range[5,50, 5]] [range[60,100,10]]'>\n<option value=<<currentTiddler>>><$view field='title'/></option>\n</$list>\n</$select>\n\n<$reveal type=\"match\" text=\"use-template\" default={{$:/state/commander/tiddler-template-status}}>\n<$button> Create tiddlers\n<$macrocall $name=\"bulk-tiddler-with-template-creator\"\nbaseTitle={{$:/temp/commander/tiddler-base-title}}\nbaseTags={{$:/temp/commander/tiddler-base-tags}}\nnumberTiddler={{$:/temp/commander/tiddler-base-number}}\ntemplate={{$:/temp/commander/template-newtiddler}}\n/> </$button>\n</$reveal>\n\n<$reveal type=\"match\" text=\"no-template\" default={{$:/state/commander/tiddler-template-status}}>\n<$button> Create tiddlers\n<$macrocall $name=\"bulk-tiddler-creator\"\nbaseTitle={{$:/temp/commander/tiddler-base-title}}\nbaseTags={{$:/temp/commander/tiddler-base-tags}}\nnumberTiddler={{$:/temp/commander/tiddler-base-number}}\n/>\n</$button>\n</$reveal>\n",
-            "title": "$:/plugins/kookma/commander/ui/tiddlerops/create-tiddlers",
-            "tags": "$:/tags/Commander/TiddlerOps",
-            "modifier": "Mohammad",
-            "modified": "20190315172600169",
-            "caption": "Create tiddlers"
-        },
         "$:/plugins/kookma/commander/ui/snr-operation": {
             "created": "20190220210055713",
             "creator": "Mohammad",
@@ -856,6 +730,142 @@ version: 0.0.11
             "list": "$:/plugins/kookma/commander/ui/tiddlerops/create-tiddlers $:/plugins/kookma/commander/ui/tiddlerops/delete-tiddlers",
             "modified": "20190315175806394",
             "modifier": "Mohammad"
+        },
+        "$:/plugins/kookma/commander/stylesheet/select-width": {
+            "created": "20190218214027079",
+            "creator": "Mohammad",
+            "text": ".cm-sl{\n  width:8ch;\n}\n\n.cm-select-wd{\n  min-width:15ch;\n}\n",
+            "type": "text/css",
+            "title": "$:/plugins/kookma/commander/stylesheet/select-width",
+            "tags": "$:/tags/Stylesheet",
+            "modifier": "Mohammad",
+            "modified": "20190317075458285"
+        },
+        "$:/plugins/kookma/commander/macro/snr-operation": {
+            "created": "20190307164924193",
+            "creator": "Mohammad",
+            "text": "\\define regexp-flags()\n{{$:/state/commander/snr/gm}}{{$:/state/commander/snr/case-sensitive}}\n\\end\n\n\\define snr-ui-show-diffs()\n<form class=\"snr-form\" style=\"width:100%;\">\n  <fieldset>\n   <legend style=\"color:#FF0000;\">Differences</legend>\nTiddler: <$link to={{$:/state/commander/snr/select-tiddler}}><$text text={{$:/state/commander/snr/select-tiddler}}/></$link>\n\n<$wikify name=flags text=<<regexp-flags>> >\n\n<$macrocall $name=\"replace-text-diff\" \n tiddler={{$:/state/commander/snr/select-tiddler}} \n field={{$:/state/commander/snr/select-tiddler/field}} \n replace={{$:/state/commander/snr/replace-text}} \n replaceWith={{$:/state/commander/snr/replace-text-with}} \n flags=<<flags>> \n wholeWords={{$:/state/commander/snr/whole-words}}\n/>\n\n</$wikify>\n</fieldset>\n</form>\n\\end\n\n\n\n\n\\define snr-check-diffs(tiddler:\"\", field:\"\")\n\\whitespace trim\n<$wikify name=flags text=<<regexp-flags>> >\n<$wikify name=\"result\" text=\"\"\"\n<$macrocall $name=\"replace-text\" \n tiddler=<<__tiddler__>>\n field=<<__field__>>\n replace={{$:/state/commander/snr/replace-text}} \n replaceWith={{$:/state/commander/snr/replace-text-with}} \n flags=<<flags>> \n wholeWords={{$:/state/commander/snr/whole-words}}\n/>\"\"\">\n<$reveal type=\"match\" text={{{ [<__tiddler__>get<__field__>] }}} default=<<result>> >\nsame\n</$reveal>\n<$reveal type=\"nomatch\" text={{{ [<__tiddler__>get<__field__>] }}} default=<<result>> >\ndifferent\n</$reveal>\n</$wikify>\n</$wikify>\n\\end\n\n\n\\define search-replace-in-tiddler-field(tiddler:\"\",field:\"\",replace:\"\",replaceWith:\"\")\n<$wikify name=ss text=<<snr-check-diffs \"\"\"$tiddler$\"\"\" \"\"\"$field$\"\"\">> >\n<$list filter=\"[<ss>] -same\" variable=ignore>\n\n<$wikify name=flags text=<<regexp-flags>> >\n<$macrocall $name=\"replace-text-button\" \n tiddler=<<__tiddler__>> \n field=<<__field__>>\n replace=<<__replace__>>\n replaceWith=<<__replaceWith__>> \n flags=<<flags>> \n wholeWords={{$:/state/commander/snr/whole-words}}\n/>\n<$macrocall $name=\"log-add-single-operation\" msg=\"\"\"`$field$` field has been changed\"\"\" tidItem=<<__tiddler__>> />\n\n</$wikify>\n</$list>\n</$wikify>\n\\end\n\n\n\\define search-replace-in-field-bulk()\n<$list filter=\"[[$:/temp/commander/selected-titles]indexes[]] +[count[]] -0\" variable=\"ignore\">\n<<create-log-tiddler \"SNR operation\">>\n<$list filter=\"[[$:/temp/commander/selected-titles]indexes[]] +[!is[missing]]\">\n  <$macrocall \n    $name=\"search-replace-in-tiddler-field\"\n    tiddler=<<currentTiddler>> \n    field={{$:/state/commander/snr/select-tiddler/field}} \n    replace={{$:/state/commander/snr/replace-text}} \n    replaceWith={{$:/state/commander/snr/replace-text-with}}   \n  />\n</$list>\n</$list>\n\\end\n\n\\define search-replace-in-field-single-tiddler()\n<<create-log-tiddler \"SNR operation\">>\n  <$macrocall \n    $name=\"search-replace-in-tiddler-field\"\n    tiddler={{$:/state/commander/snr/select-tiddler}}\n    field={{$:/state/commander/snr/select-tiddler/field}} \n    replace={{$:/state/commander/snr/replace-text}} \n    replaceWith={{$:/state/commander/snr/replace-text-with}}   \n  />\n\\end\n\n\\define snr-actions()\n<$button actions=<<search-replace-in-field-single-tiddler>> tooltip=\"search and replace in a single tiddler\" class=\"cm-btn\">\nReplace?\n</$button>&nbsp;\n<$button actions=<<search-replace-in-field-bulk>> tooltip=\"search and replace in all selected tiddlers\" class=\"cm-btn\">\nReplace all?\n</$button>\n\\end",
+            "title": "$:/plugins/kookma/commander/macro/snr-operation",
+            "tags": "$:/tags/Macro",
+            "modifier": "Mohammad",
+            "modified": "20190317081731019"
+        },
+        "$:/plugins/kookma/commander/ui/fieldops/set-field-value": {
+            "created": "20190212120609737",
+            "creator": "Mohammad",
+            "text": "Field name &nbsp;\n<$select class=\"cm-select-wd\" tiddler=\"$:/temp/commander/field-name\" default=<<dummy>>>\n<$list filter=\"[subfilter{$:/state/commander/set-field-value/fields}]\" >\n<option><$view field=\"title\"/></option>\n</$list>\n</$select> &nbsp; \n<$checkbox \n tiddler=\"$:/state/commander/set-field-value/fields\" \n field=\"text\" \n checked=\"[[$:/temp/commander/selected-titles]indexes[]fields[]sort[]] -tags -title\" \n unchecked=\"[[$:/temp/commander/selected-titles]indexes[]fields[]sort[]] -[[$:/plugins/kookma/commander/empty-tiddler]fields[]]\"\n> Include system fields?</$checkbox>\n\nField value &nbsp;<$edit-text\ntiddler=\"$:/temp/commander/field-value\"\ntag=\"input\"\ndefault=\"\"\nclass=\"cm-txt-area\"\nplaceholder=\" field value\"\n/>  &nbsp; \n<$button class=\"cm-btn\"> Set field value\n<$macrocall \n $name=\"set-field-value-bulk\" \n fieldName={{$:/temp/commander/field-name}} \n fieldValue={{$:/temp/commander/field-value}} \n/>\n</$button>",
+            "title": "$:/plugins/kookma/commander/ui/fieldops/set-field-value",
+            "tags": "$:/tags/Commander/FieldOps",
+            "modifier": "Mohammad",
+            "modified": "20190317081439306",
+            "caption": "Set field value"
+        },
+        "$:/plugins/kookma/commander/ui/fieldops/add-remove-fields": {
+            "created": "20190314051054548",
+            "creator": "Mohammad",
+            "text": "<$edit-text\ntiddler=\"$:/temp/commander/field-add\"\ntag=\"input\"\ndefault=\"\"\nclass=\"cm-txt-area\"\nplaceholder=\" new field\"\n/> \n<$button class=\"cm-btn\"> Add new field\n<$macrocall $name=\"add-new-field-bulk\" newField={{$:/temp/commander/field-add}} />\n</$button>\n\n<$button class=\"cm-btn\"> Remove old field\n<$macrocall $name=\"remove-old-field-bulk\" oldField={{$:/temp/commander/field-remove}} />\n</$button>\n<$select class=\"cm-select-wd\" tiddler=\"$:/temp/commander/field-remove\" default=<<dummy>>>\n<$list filter=\"[subfilter{$:/state/commander/add-remove-fields/fields}]\" >\n<option><$view field=\"title\"/></option>\n</$list>\n</$select> &nbsp; \n<$checkbox \n tiddler=\"$:/state/commander/add-remove-fields/fields\" \n field=\"text\" \n checked=\"[[$:/temp/commander/selected-titles]indexes[]fields[]sort[]] -title -tags\" \n unchecked=\"[[$:/temp/commander/selected-titles]indexes[]fields[]sort[]] -[[$:/plugins/kookma/commander/empty-tiddler]fields[]]\"\n> Include system fields?</$checkbox>\n\n\n",
+            "title": "$:/plugins/kookma/commander/ui/fieldops/add-remove-fields",
+            "tags": "$:/tags/Commander/FieldOps",
+            "modifier": "Mohammad",
+            "modified": "20190317081419411",
+            "caption": "Add remove fields"
+        },
+        "$:/plugins/kookma/commander/ui/tagops/replace-tags": {
+            "created": "20190212080523588",
+            "creator": "Mohammad",
+            "text": "<span style=\"display:inline-block;width:8ch;\">Old tag &nbsp;</span>\n<$select class=\"cm-select-wd\" tiddler=\"$:/temp/commander/replace-tags/old\" default=<<dummy>>>\n<$list filter=\"[[$:/temp/commander/selected-titles]indexes[]tags[]sort[]]\" >\n<option><$view field=\"title\"/></option>\n</$list>\n</$select>\n\n<span style=\"display:inline-block;width:8ch;\">New tag &nbsp;</span>\n<$edit-text\ntiddler=\"$:/temp/commander/replace-tags/new\"\ntag=\"input\"\ndefault=\"\"\nclass=\"cm-txt-area\"\nplaceholder=\" new tag\"\n/>\n\n<$button class=\"cm-btn\"> Replace tags\n<$macrocall $name=\"replace-tag-bulk\" \noldTag={{$:/temp/commander/replace-tags/old}} \nnewTag={{$:/temp/commander/replace-tags/new}} />\n</$button>\n\n",
+            "title": "$:/plugins/kookma/commander/ui/tagops/replace-tags",
+            "tags": "$:/tags/Commander/TagOps",
+            "modifier": "Mohammad",
+            "modified": "20190317081345762",
+            "caption": "Replace tags"
+        },
+        "$:/plugins/kookma/commander/ui/tagops/add-remove-tags": {
+            "created": "20190212063924640",
+            "creator": "Mohammad",
+            "text": "<$edit-text\ntiddler=\"$:/temp/commander/tag-add-remove/new\"\ntag=\"input\"\ndefault=\"\"\nclass=\"cm-txt-area\"\nplaceholder=\" new tag\"\n/> &nbsp;\n<$button class=\"cm-btn\"> Add new tag\n<$macrocall $name=\"add-new-tag-bulk\" newTag={{$:/temp/commander/tag-add-remove/new}} />\n</$button>\n\n<$button class=\"cm-btn\"> Remove old tag\n<$macrocall $name=\"remove-old-tag-bulk\" oldTag={{$:/temp/commander/tag-add-remove/old}} />\n</$button>\n&nbsp;\n<$select class=\"cm-select-wd\" tiddler=\"$:/temp/commander/tag-add-remove/old\" default=<<dummy>>>\n<$list filter=\"[[$:/temp/commander/selected-titles]indexes[]tags[]sort[]]\" >\n<option><$view field=\"title\"/></option>\n</$list>\n</$select>\n\n",
+            "title": "$:/plugins/kookma/commander/ui/tagops/add-remove-tags",
+            "tags": "$:/tags/Commander/TagOps",
+            "modifier": "Mohammad",
+            "modified": "20190317081325667",
+            "caption": "Add remove tags"
+        },
+        "$:/plugins/kookma/commander/ui/titleops/add-remove-suffix": {
+            "created": "20190212143434676",
+            "creator": "Mohammad",
+            "text": "<$edit-text\ntiddler=\"$:/temp/commander/title-suffix\"\ntag=\"input\"\ndefault=\"\"\nclass=\"cm-txt-area\"\nplaceholder=\" suffix\"\n/> &nbsp; \n<$button class=\"cm-btn\"> Add suffix\n<$macrocall \n $name=\"addSuffix-to-tiltle-bulk\" \n suffix={{$:/temp/commander/title-suffix}} \n/>\n</$button>\n<$button class=\"cm-btn\"> Remove suffix\n<$macrocall \n $name=\"removeSuffix-from-tiltle-bulk\" \n suffix={{$:/temp/commander/title-suffix}} \n/>\n</$button>\n\n",
+            "title": "$:/plugins/kookma/commander/ui/titleops/add-remove-suffix",
+            "tags": "$:/tags/Commander/TitleOps",
+            "modifier": "Mohammad",
+            "modified": "20190317081300595",
+            "caption": "Add remove suffix"
+        },
+        "$:/plugins/kookma/commander/ui/titleops/add-remove-prefix": {
+            "created": "20190212141758567",
+            "creator": "Mohammad",
+            "text": "<$edit-text\ntiddler=\"$:/temp/commander/title-prefix\"\ntag=\"input\"\ndefault=\"\"\nclass=\"cm-txt-area\"\nplaceholder=\" prefix\"\n/> &nbsp; \n<$button class=\"cm-btn\"> Add prefix\n<$macrocall \n $name=\"addPrefix-to-tiltle-bulk\" \n prefix={{$:/temp/commander/title-prefix}} \n/>\n</$button>\n<$button class=\"cm-btn\"> Remove prefix\n<$macrocall \n $name=\"removePrefix-from-tiltle-bulk\" \n prefix={{$:/temp/commander/title-prefix}} \n/>\n</$button>\n\n",
+            "title": "$:/plugins/kookma/commander/ui/titleops/add-remove-prefix",
+            "tags": "$:/tags/Commander/TitleOps",
+            "modifier": "Mohammad",
+            "modified": "20190317081240691",
+            "caption": "Add remove prefix"
+        },
+        "$:/plugins/kookma/commander/ui/titleops/add-remove-chars": {
+            "created": "20190217092719245",
+            "creator": "Mohammad",
+            "text": "\\define rngcat() [range[0,$(minchars)$]] -0 \n\nNumber of characters\n<$select tiddler=\"$:/temp/commander/title-remove-chars\"  default=\"0\" class=\"cm-sl\">\n<$list filter=\"[[$:/temp/commander/selected-titles]indexes[]] +[!is[missing]] +[length[]] +[minall[]] +[subtract[1]] -Infinity\" variable=\"minchars\">\n<$list filter=<<rngcat>> >\n<option value=<<currentTiddler>>><$view field='title'/></option>\n</$list>\n</$list>\n</$select>&nbsp; \n\n<$button class=\"cm-btn\"> First n chars\n<$macrocall \n $name=\"remove-chars-from-begining-tiltle-bulk\" \n num={{$:/temp/commander/title-remove-chars}} \n/>\n</$button>\n<$button class=\"cm-btn\"> Last n chars\n<$macrocall \n $name=\"remove-chars-from-end-tiltle-bulk\" \n num={{$:/temp/commander/title-remove-chars}} \n/>\n</$button>\n\n\n",
+            "title": "$:/plugins/kookma/commander/ui/titleops/add-remove-chars",
+            "tags": "$:/tags/Commander/TitleOps",
+            "modifier": "Mohammad",
+            "modified": "20190317081216442",
+            "caption": "Remove chars"
+        },
+        "$:/plugins/kookma/commander/macro/compConfirmDelete": {
+            "created": "20190301145916990",
+            "creator": "Mohammad",
+            "text": "\\define compConfirmDelete(\nbtnLabel:\"Delete these tiddlers\", \nconfirmMessage:\"Are you sure you wish to delete\", \nstateTiddler:\"\"\ncountFilter:\"\", \nactionMacro:\"\")\n<$set name=resultCount value={{{ [subfilter<__countFilter__>count[]] }}} >\n<$reveal type=\"gt\" text=\"0\" default=<<resultCount>> >\n<$button popup=<<qualify \"\"\"$stateTiddler$\"\"\">> class=\"cm-btn\">$btnLabel$</$button>\n</$reveal>\n\n<$reveal state=<<qualify \"\"\"$stateTiddler$\"\"\">> type=\"popup\" position=\"belowleft\" animate=\"yes\">\n<div class=\"tc-block-dropdown-wrapper\">\n<div class=\"tc-block-dropdown tc-edit-type-dropdown\">\n<div class=\"tc-dropdown-item-plain\">\n$confirmMessage$ <<resultCount>> tiddler(s)?\n\n</div>\n<div class=\"tc-dropdown-item-plain\">\n<$button class=\"cm-btn\">\n<$macrocall $name=<<__actionMacro__>> />\n$btnLabel$\n</$button>\n</div>\n</div>\n</div>\n</$reveal>\n</$set>\n\\end",
+            "title": "$:/plugins/kookma/commander/macro/compConfirmDelete",
+            "tags": "$:/tags/Macro",
+            "modifier": "Mohammad",
+            "modified": "20190317081030129"
+        },
+        "$:/plugins/kookma/commander/ui/tiddlerops/create-tiddlers": {
+            "created": "20190213193004029",
+            "creator": "Mohammad",
+            "text": "Base title &nbsp;\n<$edit-text \n tiddler=\"$:/temp/commander/tiddler-base-title\" \n tag=\"input\" \n default=\"\"\n placeholder=\" base title\" \n class=\"cm-txt-area\"/> &nbsp;\nTags &nbsp;\n<$edit-text \n tiddler=\"$:/temp/commander/tiddler-base-tags\" \n tag=\"input\" \n default=\"\"\n placeholder=\" tags\" \n class=\"cm-txt-area\"\n/> \n\n&nbsp;\n<$checkbox \n tiddler=\"$:/state/commander/tiddler-template-status\" \n field=\"text\" \n checked=\"use-template\" \n unchecked=\"no-template\"\n> Use template?</$checkbox> &nbsp;\n<$reveal type=\"match\" text=\"use-template\" default={{$:/state/commander/tiddler-template-status}}>\nTemplate\n<$select tiddler=\"$:/temp/commander/template-newtiddler\"  default='base'>\n<$list filter='[all[shadows+tiddlers]tag[$:/tags/Commander/Template]]'>\n<option value=<<currentTiddler>> >\n<$view field=\"caption\"><$view field=\"title\"/></$view>\n</option>\n</$list>\n</$select>\n</$reveal>\n\nNumber of tiddlers  &nbsp;\n<$select tiddler=\"$:/temp/commander/tiddler-base-number\"  default='1'>\n<$list filter='[range[1,19, 1]] [range[20,50, 5]] [range[60,100,10]]'>\n<option value=<<currentTiddler>>><$view field='title'/></option>\n</$list>\n</$select>\n\n<$reveal type=\"match\" text=\"use-template\" default={{$:/state/commander/tiddler-template-status}}>\n<$button class=\"cm-btn\"> Create tiddlers\n<$macrocall $name=\"bulk-tiddler-with-template-creator\"\nbaseTitle={{$:/temp/commander/tiddler-base-title}}\nbaseTags={{$:/temp/commander/tiddler-base-tags}}\nnumberTiddler={{$:/temp/commander/tiddler-base-number}}\ntemplate={{$:/temp/commander/template-newtiddler}}\n/> </$button>\n</$reveal>\n\n<$reveal type=\"match\" text=\"no-template\" default={{$:/state/commander/tiddler-template-status}}>\n<$button class=\"cm-btn\"> Create tiddlers\n<$macrocall $name=\"bulk-tiddler-creator\"\nbaseTitle={{$:/temp/commander/tiddler-base-title}}\nbaseTags={{$:/temp/commander/tiddler-base-tags}}\nnumberTiddler={{$:/temp/commander/tiddler-base-number}}\n/>\n</$button>\n</$reveal>\n",
+            "title": "$:/plugins/kookma/commander/ui/tiddlerops/create-tiddlers",
+            "tags": "$:/tags/Commander/TiddlerOps",
+            "modifier": "Mohammad",
+            "modified": "20190317081102849",
+            "caption": "Create tiddlers"
+        },
+        "$:/plugins/kookma/commander/macro/compInspect/edit-fileds": {
+            "created": "20190313061511585",
+            "creator": "Mohammad",
+            "text": "\\define lingo-base() $:/language/EditTemplate/\n\\define config-title()\n$:/config/EditTemplateFields/Visibility/$(currentField)$\n\\end\n\n\\define config-filter()\n[[hide]] -[title{$(config-title)$}] \n\\end\n\n\\define new-field()\n<$vars name={{$:/temp/newfieldname}}>\n<$reveal type=\"nomatch\" text=\"\" default=<<name>>>\n<$button class=\"cm-btn\">\n<$action-sendmessage $message=\"tm-add-field\"\n$name=<<name>>\n$value={{$:/temp/newfieldvalue}}/>\n<$action-deletetiddler $tiddler=\"$:/temp/newfieldname\"/>\n<$action-deletetiddler $tiddler=\"$:/temp/newfieldvalue\"/>\n<<lingo Fields/Add/Button>>\n</$button>\n</$reveal>\n<$reveal type=\"match\" text=\"\" default=<<name>>>\n<$button class=\"cm-btn\">\n<<lingo Fields/Add/Button>>\n</$button>\n</$reveal>\n</$vars>\n\\end\n\n\\define compInspect-edit-fileds(commonFields:\"\")\n\n<div class=\"tc-edit-fields\">\n<table class=\"tc-edit-fields\">\n<tbody>\n<$list filter=\"[all[current]fields[]] +[sort[title]]\" variable=\"currentField\">\n<$list filter=<<config-filter>> variable=\"temp\">\n<tr class=\"tc-edit-field\">\n<td class=\"tc-edit-field-name\">\n<$text text=<<currentField>>/>:</td>\n<td class=\"tc-edit-field-value\">\n<$edit-text tiddler=<<currentTiddler>> field=<<currentField>> placeholder={{$:/language/EditTemplate/Fields/Add/Value/Placeholder}}/>\n</td>\n<td class=\"tc-edit-field-remove\">\n<$button class=\"tc-btn-invisible\" tooltip={{$:/language/EditTemplate/Field/Remove/Hint}} aria-label={{$:/language/EditTemplate/Field/Remove/Caption}}>\n<$action-deletefield $field=<<currentField>>/>\n{{$:/core/images/delete-button}}\n</$button>\n</td>\n</tr>\n</$list>\n</$list>\n\n\n<$list filter=\"created creator modified modifier -[enlist<__commonFields__>]\" variable=\"currentField\">\n<tr class=\"tc-edit-field\">\n<td class=\"tc-edit-field-name\">\n<$text text=<<currentField>>/>:</td>\n<td class=\"tc-edit-field-value\">\n<$edit-text tiddler=<<currentTiddler>> field=<<currentField>> placeholder={{$:/language/EditTemplate/Fields/Add/Value/Placeholder}}/>\n</td>\n<td class=\"tc-edit-field-remove\">\n<$button class=\"tc-btn-invisible\" tooltip={{$:/language/EditTemplate/Field/Remove/Hint}} aria-label={{$:/language/EditTemplate/Field/Remove/Caption}}>\n<$action-deletefield $field=<<currentField>>/>\n{{$:/core/images/delete-button}}\n</$button>\n</td>\n</tr>\n</$list>\n\n\n\n\n</tbody>\n</table>\n</div>\n\n<$fieldmangler>\n<div class=\"tc-edit-field-add\">\n<em class=\"tc-edit\">\n<<lingo Fields/Add/Prompt>>\n</em>\n<span class=\"tc-edit-field-add-name\">\n<$edit-text tiddler=\"$:/temp/newfieldname\" tag=\"input\" default=\"\" placeholder={{$:/language/EditTemplate/Fields/Add/Name/Placeholder}} focusPopup=<<qualify \"$:/state/popup/field-dropdown\">> class=\"tc-edit-texteditor tc-popup-handle\"/>\n</span>\n<$button popup=<<qualify \"$:/state/popup/field-dropdown\">> class=\"tc-btn-invisible tc-btn-dropdown\" tooltip={{$:/language/EditTemplate/Field/Dropdown/Hint}} aria-label={{$:/language/EditTemplate/Field/Dropdown/Caption}}>{{$:/core/images/down-arrow}}</$button>\n<$reveal state=<<qualify \"$:/state/popup/field-dropdown\">> type=\"nomatch\" text=\"\" default=\"\">\n<div class=\"tc-block-dropdown tc-edit-type-dropdown\">\n<$linkcatcher to=\"$:/temp/newfieldname\">\n<div class=\"tc-dropdown-item\">\n<<lingo Fields/Add/Dropdown/User>>\n</div>\n<$list filter=\"[!is[shadow]!is[system]fields[]search:title{$:/temp/newfieldname}sort[]] -created -creator -draft.of -draft.title -modified -modifier -tags -text -title -type\"  variable=\"currentField\">\n<$link to=<<currentField>>>\n<<currentField>>\n</$link>\n</$list>\n<div class=\"tc-dropdown-item\">\n<<lingo Fields/Add/Dropdown/System>>\n</div>\n<$list filter=\"[fields[]search:title{$:/temp/newfieldname}sort[]] -[!is[shadow]!is[system]fields[]]\" variable=\"currentField\">\n<$link to=<<currentField>>>\n<<currentField>>\n</$link>\n</$list>\n</$linkcatcher>\n</div>\n</$reveal>\n<span class=\"tc-edit-field-add-value\">\n<$edit-text tiddler=\"$:/temp/newfieldvalue\" tag=\"input\" default=\"\" placeholder={{$:/language/EditTemplate/Fields/Add/Value/Placeholder}} class=\"tc-edit-texteditor\"/>\n</span>\n<span class=\"tc-edit-field-add-button\">\n<$macrocall $name=\"new-field\"/>\n</span>\n</div>\n</$fieldmangler>\n\\end",
+            "title": "$:/plugins/kookma/commander/macro/compInspect/edit-fileds",
+            "tags": "$:/tags/Macro",
+            "modifier": "Mohammad",
+            "modified": "20190317085037429"
+        },
+        "$:/plugins/kookma/commander/macro/compSelect": {
+            "created": "20190308070713468",
+            "creator": "Mohammad",
+            "text": "\\define compSelect(filter:\"\", stateTiddler:\"\", default:\"\", class:\"\", showButtons:\"show\")\n<$select tiddler=<<__stateTiddler__>> default=<<__default__>> class=<<__class__>> >\n<option value=\"\">None</option>\n<$list filter=<<__filter__>> variable=item>\n<option value=<<item>>><$text text=<<item>> /></option>\n</$list>\n</$select>\n<$reveal type=\"match\" text=\"show\" default=<<__showButtons__>> >\n<$vars myfilter=<<__filter__>> mystateTiddler=<<__stateTiddler__>> myitem={{{ [<__stateTiddler__>get[text]] }}} >\n<$button actions=<<cs-prev-item>> class=\"cm-btn\"> prev </$button>\n<$button actions=<<cs-next-item>> class=\"cm-btn\"> next </$button>\n</$vars>\n</$reveal>\n\\end\n\n\\define cs-prev-item()\n<$list filter=\"[subfilter<myfilter>] +[before<myitem>]\" variable=\"prev-item\" >\n<$action-setfield $tiddler=<<mystateTiddler>> text=<<prev-item>> />\n</$list>\n\\end\n\n\\define cs-next-item()\n<$list filter=\"[subfilter<myfilter>] +[after<myitem>]\" variable=\"next-item\" >\n<$action-setfield $tiddler=<<mystateTiddler>> text=<<next-item>> />\n</$list>\n\\end",
+            "title": "$:/plugins/kookma/commander/macro/compSelect",
+            "tags": "$:/tags/Macro",
+            "modifier": "Mohammad",
+            "modified": "20190317084203286"
+        },
+        "$:/plugins/kookma/commander/stylesheet/buttons": {
+            "created": "20190317080436103",
+            "creator": "Mohammad",
+            "text": ".cm-btn{\n font-size:0.85em;\n font-size:300;\n color: #666666;\n background-color: #d8d8d8;\n padding: 3px 8px 3px 8px;\n border: 1px solid #a1a1a1;\n}\n",
+            "type": "text/css",
+            "title": "$:/plugins/kookma/commander/stylesheet/buttons",
+            "tags": "$:/tags/Stylesheet",
+            "modifier": "Mohammad",
+            "modified": "20190317085149339"
         }
     }
 }
