@@ -1,9 +1,9 @@
 author: JeremyRuston
-created: 20190317164034632
+created: 20190324225734842
 dependents: 
 description: CodeMirror Mode: CSS Highlighting
 list: readme
-modified: 20190317164034632
+modified: 20190324225734842
 plugin-type: plugin
 title: $:/plugins/tiddlywiki/codemirror-mode-css
 type: application/json

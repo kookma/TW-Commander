@@ -1,9 +1,9 @@
 author: JeremyRuston
-created: 20190317164034617
+created: 20190324225734830
 dependents: 
 description: CodeMirror AddOn: Search and Replace
 list: readme
-modified: 20190317164034618
+modified: 20190324225734830
 plugin-type: plugin
 title: $:/plugins/tiddlywiki/codemirror-search-replace
 type: application/json

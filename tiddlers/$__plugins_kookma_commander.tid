@@ -4,12 +4,12 @@ created: 20190315120806011
 creator: Mohammad
 description: Tiddler Commander
 list: readme license authors
-modified: 20190317171539536
+modified: 20190324225734909
 modifier: Mohammad
 plugin-type: plugin
 title: $:/plugins/kookma/commander
 type: application/json
-version: 0.0.14
+version: 0.0.15
 
 {
     "tiddlers": {
@@ -199,26 +199,6 @@ version: 0.0.14
             "created": "20190314084511720",
             "caption": "Search-n-Replace"
         },
-        "$:/plugins/kookma/commander/help/warning": {
-            "text": "<<alert primary \"\"\"''Note i:''\nTiddler Commander is a very powerful tool, it can change any field in any tiddler. Make sure what you are doing!\n\"\"\">>\n\n<<alert warning \"\"\"''Note ii''\nTiddler Commander uses two steps tiddler selection. It uses a search box to filter possible tiddlers and then uses a selective list of fitered tiddlers for batch operation!\n\"\"\">>\n\n<<alert danger \"\"\"''Warning''\nThis tool is still being developed. It is for demonstration purposes only. Before this tool, `Tiddler Commander`, on your own valuable, irreplaceable data, backup them.\n\"\"\">>\n\n",
-            "title": "$:/plugins/kookma/commander/help/warning",
-            "tags": "$:/tags/Commander/Help",
-            "modifier": "Mohammad",
-            "modified": "20190315085916511",
-            "creator": "Mohammad",
-            "created": "20190314050138754",
-            "caption": "Warning"
-        },
-        "$:/plugins/kookma/commander/help/what-is-commander": {
-            "text": "Tiddler Commander, in short ''Commander'' is a unique tool for batch operations on tiddlers. Commander has the below features\n\n* Bulk tiddler creation/deletion\n* Tag operation: add, remove, replace\n* Field operation: add, remove, set field value\n* ''SNR'', search and replace in all fields including text, tags, title, and common fields\n* ''Inspect'', to review and inspect tiddlers in one place, scroll among them and edit all fields (including common fields), tags, text (title is an exception!)\n* log, create logs of all operations\n* Search, //save and load// any combination of filter search\n",
-            "title": "$:/plugins/kookma/commander/help/what-is-commander",
-            "tags": "$:/tags/Commander/Help",
-            "modifier": "Mohammad",
-            "modified": "20190315074737059",
-            "creator": "Mohammad",
-            "created": "20190314134238047",
-            "caption": "What is Commander"
-        },
         "$:/plugins/kookma/commander/macro/compInspect": {
             "text": "\\define compInspect(filter, stateTiddler:\"thisTiddler\")\n<$set name=\"state\" \n      value={{{ [[$:/state/compInspect/]addsuffix<__stateTiddler__>] }}}\n>\n<$vars\n   slStateTid={{{ [<state>addsuffix[/]addsuffix[selectState-tiddler]] }}}\n   rvStateTid={{{ [<state>addsuffix[/]addsuffix[revealState-tiddler]] }}}\n   chStateTid={{{ [<state>addsuffix[/]addsuffix[checkboxState-tiddler]] }}}\n>\n\nSelect tiddler &nbsp;<$macrocall $name=compSelect filter=<<__filter__>> stateTiddler=<<slStateTid>> />\n&nbsp;&nbsp;\n<$macrocall $name=\"check-common-fields\" stateTiddler=<<chStateTid>> />\n&nbsp;&nbsp;\n<$reveal stateTitle=<<rvStateTid>> type=\"nomatch\" text=\"edit\">\n<$button class=\"tc-btn-invisible\" setTitle=<<rvStateTid>> setTo=\"edit\" tooltip=\"edit tiddler\">{{$:/core/images/edit-button}}</$button>\n<$macrocall $name=compInspect-show-preview tiddler={{{ [<slStateTid>get[text]] }}}  commonFields={{{ [<chStateTid>get[text]] }}}/>\n</$reveal>\n<$reveal stateTitle=<<rvStateTid>> type=\"match\" text=\"edit\">\n<$button class=\"tc-btn-invisible\" setTitle=<<rvStateTid>> setTo=\"\" tooltip=\"confirm changes\">{{$:/core/images/done-button}}</$button>\n<$macrocall $name=compInspect-edit-preview tiddler={{{ [<slStateTid>get[text]] }}}  commonFields={{{ [<chStateTid>get[text]] }}}/>\n</$reveal>\n\n</$vars>\n</$set>\n\\end\n\n\\define check-common-fields(stateTiddler)\n<$checkbox \n tiddler=<<__stateTiddler__>>\n field=\"text\" \n checked=\"\" \n unchecked=\"created creator modified modifier\"\n> Include common fields?</$checkbox>\n\\end",
             "title": "$:/plugins/kookma/commander/macro/compInspect",
@@ -297,24 +277,6 @@ version: 0.0.14
             "tags": "$:/tags/Macro",
             "modified": "20190212061921249",
             "created": "20190212061854110"
-        },
-        "$:/plugins/kookma/commander/macro/snr/replace-text": {
-            "text": "\\define nothing-to-replace(tiddler, field)  \n<$diff-text source={{{ [<__tiddler__>get<__field__>] }}} dest={{{ [<__tiddler__>get<__field__>] }}} />\n\\end\n\n\\define replace-text(tiddler:\"\",field:\"text\",replace:\"\",replaceWith:\"\",flags:\"\", wholeWords:\"\")\n\\whitespace trim\n<$wikify name=\"source\" text=\"\"\"<$view tiddler=<<__tiddler__>> field=<<__field__>> mode=\"block\" format=\"text\"/>\"\"\">\n<$wikify name=\"result\" \n  text=\"\"\"<$macrocall $name=\"regexpsub\" $type=\"text/plain\" \n     sourceText=<<source>> \n     searchValue=<<__replace__>> \n     replaceValue=<<__replaceWith__>> \n     flags=<<__flags__>> \n     wholeWords=<<__wholeWords__>> />\"\"\" \n     >\n<$text text=<<result>>/>\n</$wikify>\n</$wikify>\n\\end\n\n\\define replace-text-diff(tiddler:\"\", field:\"text\", replace, replaceWith, flags:\"\", wholeWords:\"\")\n<$list filter=\"[<__tiddler__>get<__field__>minlength[1]]\" variable=null emptyMessage=\"No tiddler selected\">\n<$list filter=\"[<__replace__>minlength[1]]\" variable=null emptyMessage=<<nothing-to-replace \"\"\"$tiddler$\"\"\" \"\"\"$field$\"\"\">> >\n\n<$wikify name=\"result\" \n  text=\"\"\"<$macrocall $name=\"replace-text\" \n     tiddler=<<__tiddler__>> field=<<__field__>> \n     replace=<<__replace__>> \n     replaceWith=<<__replaceWith__>> \n     flags=<<__flags__>>\n     wholeWords=<<__wholeWords__>> />\"\"\"\n  >\n<$diff-text source={{{ [<__tiddler__>get<__field__>] }}} dest=<<result>> />\n</$wikify>\n\n</$list>\n</$list>\n\\end\n\n\\define replace-text-button(tiddler:\"\", field:\"text\", replace:\"\", replaceWith:\"\", flags:\"\", wholeWords:\"\")\n\\whitespace trim\n<$list filter=\"[<__tiddler__>get<__field__>minlength[1]]\" variable=null>\n<$list filter=\"[<__replace__>minlength[1]]\" variable=null>\n<$wikify name=\"result\" \n  text=\"\"\"<$macrocall $name=\"replace-text\" \n     tiddler=<<__tiddler__>> \n     field=<<__field__>> \n     replace=<<__replace__>> \n     replaceWith=<<__replaceWith__>> \n     flags=<<__flags__>>\n     wholeWords=<<__wholeWords__>> />\"\"\"\n  >\n<$reveal type=\"nomatch\" default=\"title\" text=<<__field__>> >\n <$action-setfield $tiddler=<<__tiddler__>> $field=<<__field__>> $value=<<result>>/>\n</$reveal>\n<$reveal type=\"match\" default=\"title\" text=<<__field__>> >\n <$action-setfield $tiddler=<<__tiddler__>> $field=<<__field__>> $value=<<result>>/>\n <$action-deletetiddler $tiddler=<<__tiddler__>> />\n</$reveal>\n</$wikify>\n</$list>\n</$list>\n\\end\n",
-            "title": "$:/plugins/kookma/commander/macro/snr/replace-text",
-            "tags": "$:/tags/Macro",
-            "modifier": "Mohammad",
-            "modified": "20190307192826532",
-            "creator": "Mohammad",
-            "created": "20190227134610136"
-        },
-        "$:/plugins/kookma/commander/macro/snr/ui": {
-            "text": "\\define snr-ui()\n\n<div class=\"snr-row\">\n<div class=\"snr-double-column\">\n<<snr-ui-inputs>>\n</div>\n<div class=\"snr-column\">\n<<snr-regexp-flags>>   \n</div>\n</div>\n<<snr-ui-show-diffs>>\n<<snr-actions>>\n\\end\n",
-            "title": "$:/plugins/kookma/commander/macro/snr/ui",
-            "tags": "$:/tags/Macro",
-            "modifier": "Mohammad",
-            "modified": "20190307185104618",
-            "creator": "Mohammad",
-            "created": "20190306133310512"
         },
         "$:/plugins/kookma/commander/macro/snr/ui/inputs": {
             "text": "\\define snr-ui-inputs()\n<form class=\"snr-form\">\n  <fieldset>\n   <legend>Search and Replace</legend>\n\n<div class=\"item\">\n<label>Tiddler title</label>\n<$select tiddler=\"$:/state/commander/snr/select-tiddler\" default=\"\" class=\"snr-textbox\">\n<option value=\"\">None</option>\n\n<$list filter=\"[[$:/temp/commander/selected-titles]indexes[]sort[]]\" >\n<option value=<<currentTiddler>>><$text text=<<currentTiddler>>/></option>\n</$list>\n</$select>\n</div>\n\n<div class=\"item\">\n<label>Field name</label>\n<$select tiddler=\"$:/state/commander/snr/select-tiddler/field\" default=\"text\">\n<$list filter=\"[{$:/state/commander/snr/select-tiddler}fields[]]\">\n<option value=<<currentTiddler>>>field: <$text text=<<currentTiddler>>/></option>\n</$list>\n</$select>\n</div>\n\n<div class=\"item\">\n<label>Search text</label>\n<$edit-text \n   tiddler=\"$:/state/commander/snr/replace-text\" \n   tag=\"input\" \n   default=\"\" \n   placeholder=\" text to replace\"\n class=\"snr-textbox\"/>\n</div>\n<div class=\"item\">\n<label>Replace with </label>\n<$edit-text \n   tiddler=\"$:/state/commander/snr/replace-text-with\" \n   tag=\"input\" \n   default=\"\" \n   placeholder=\" new text\"\n   class=\"snr-textbox\"/>\n</div>\n</fieldset>\n</form>\n\\end",
@@ -583,17 +545,6 @@ version: 0.0.14
             "creator": "Mohammad",
             "created": "20190212051852003",
             "caption": "Tag"
-        },
-        "$:/plugins/kookma/commander/ui/textops/replace-text": {
-            "text": "<<snr-ui>>",
-            "title": "$:/plugins/kookma/commander/ui/textops/replace-text",
-            "tags": "$:/tags/Commander/SnrOps",
-            "modifier": "Mohammad",
-            "modified": "20190307162252778",
-            "icon": "$:/core/images/gitter",
-            "creator": "Mohammad",
-            "created": "20190220211138573",
-            "caption": "Search and replace"
         },
         "$:/plugins/kookma/commander/ui/tiddler-operation": {
             "text": "<<tabs \"[all[shadows+tiddlers]tag[$:/tags/Commander/TiddlerOps]!has[draft.of]]\" class:\"tc-vertical cm-tab-colorful cm-tab-wd\">>\n",
@@ -866,6 +817,74 @@ version: 0.0.14
             "modifier": "Mohammad",
             "modified": "20190317171519161",
             "description": "Developed by Mark S"
+        },
+        "$:/plugins/kookma/commander/help/warning": {
+            "text": "<<alert primary \"\"\"''Note i:''\nTiddler Commander is a very powerful tool, it can change any field in any tiddler. Make sure what you are doing!\n\"\"\">>\n\n<<alert warning \"\"\"''Note ii''\nTiddler Commander uses two steps tiddler selection. It uses a search box to filter possible tiddlers and then uses a selective list of fitered tiddlers for batch operation!\n\"\"\">>\n\n<<alert info \"\"\"''Note iii''\n//Commander do not perform operation on shadow tiddlers//, unless they are overriden. Because shadow tiddlers aren’t stored as ''real'' tiddlers. They are intentionally excluded from most operations by default so that they don’t clutter filters made by users unless explicitly required. \n\"\"\">>\n\n<<alert danger \"\"\"''Warning''\nThis tool is still being developed. It is for demonstration purposes only. Before this tool, `Tiddler Commander`, on your own valuable, irreplaceable data, backup them.\n\"\"\">>\n\n",
+            "title": "$:/plugins/kookma/commander/help/warning",
+            "tags": "$:/tags/Commander/Help",
+            "modifier": "Mohammad",
+            "modified": "20190323203452964",
+            "creator": "Mohammad",
+            "created": "20190314050138754",
+            "caption": "Warning"
+        },
+        "$:/plugins/kookma/commander/help/what-is-commander": {
+            "text": "Tiddler Commander, in short ''Commander'' is a unique tool for batch operations on tiddlers. Commander has the below features\n\n* Bulk tiddler creation/deletion\n* Tag operation: add, remove, replace\n* Field operation: add, remove, set field value\n* ''SNR'', search and replace in all fields including text, tags, title, and common fields\n* ''Inspect'', to review and inspect tiddlers in one place, scroll among them and edit all fields (including common fields), tags, text (title is an exception!)\n* log, create logs of all operations\n* Search, //save and load// any combination of filter search\n\n<<alert warning \"''Note'': //Commander will not work on shadow tiddlers//, unless they are overriden! Because shadow tiddlers aren’t stored as ''real'' tiddlers. They are intentionally excluded from most operations by default so that they don’t clutter filters made by users unless explicitly required.\">>",
+            "title": "$:/plugins/kookma/commander/help/what-is-commander",
+            "tags": "$:/tags/Commander/Help",
+            "modifier": "Mohammad",
+            "modified": "20190323203625811",
+            "creator": "Mohammad",
+            "created": "20190314134238047",
+            "caption": "What is Commander"
+        },
+        "$:/plugins/kookma/commander/macro/snr/ui": {
+            "text": "\\define snr-ui()\n\n<div class=\"snr-row\">\n<div class=\"snr-double-column\">\n<<snr-ui-inputs>>\n</div>\n<div class=\"snr-column\">\n<<snr-regexp-flags>>   \n</div>\n</div>\n<<snr-ui-show-diffs>>\n<<snr-actions>>\n\\end\n",
+            "title": "$:/plugins/kookma/commander/macro/snr/ui",
+            "tags": "$:/tags/Macro",
+            "modifier": "Mohammad",
+            "modified": "20190307185104618",
+            "creator": "Mohammad",
+            "created": "20190306133310512"
+        },
+        "$:/plugins/kookma/commander/setting/snr": {
+            "created": "20190324051157188",
+            "creator": "Mohammad",
+            "text": "<<snr-difftext-cleanup>>\n<div style=\"padding-left:25px;font-size:0.9em\">\n\nThe cleanup attribute determines which optional post-processing should be applied to the diffs:\n\n* none: no cleanup is performed\n* semantic (default): rewrites the diffs for human readability\n* efficient: rewrites the diffs to minimise the number of operations for subsequent processing\n</div>",
+            "title": "$:/plugins/kookma/commander/setting/snr",
+            "tags": "$:/tags/Commander/Setting",
+            "modifier": "Mohammad",
+            "modified": "20190324053417842",
+            "caption": "Snr setting"
+        },
+        "$:/plugins/kookma/commander/ui/textops/replace-text": {
+            "text": "<<snr-ui>>",
+            "title": "$:/plugins/kookma/commander/ui/textops/replace-text",
+            "tags": "$:/tags/Commander/SnrOps",
+            "modifier": "Mohammad",
+            "modified": "20190324052012224",
+            "icon": "$:/core/images/gitter",
+            "creator": "Mohammad",
+            "created": "20190220211138573",
+            "caption": "Search and replace"
+        },
+        "$:/plugins/kookma/commander/macro/snr/ui/setting": {
+            "created": "20190324052145002",
+            "creator": "Mohammad",
+            "text": "\\define snr-difftext-cleanup()\n\n<form class=\"snr-form\">\n<fieldset>\n<legend>Difftext cleanup</legend>\n\n<$radio\n  tiddler=\"$:/state/commander/snr/setting/cleanup\" \n  field=\"text\" \n  value=\"none\">&nbsp; none\n</$radio><br>\n\n<$radio\n  tiddler=\"$:/state/commander/snr/setting/cleanup\" \n  field=\"text\" \n  value=\"semantic\">&nbsp; semantic\n</$radio><br>\n\n<$radio\n  tiddler=\"$:/state/commander/snr/setting/cleanup\" \n  field=\"text\" \n  value=\"efficient\">&nbsp; efficient \n</$radio>\n\n</fieldset>\n</form>\n\\end",
+            "title": "$:/plugins/kookma/commander/macro/snr/ui/setting",
+            "tags": "$:/tags/Macro",
+            "modifier": "Mohammad",
+            "modified": "20190324053838682"
+        },
+        "$:/plugins/kookma/commander/macro/snr/replace-text": {
+            "created": "20190227134610136",
+            "creator": "Mohammad",
+            "text": "\\define nothing-to-replace(tiddler, field)  \n<$diff-text source={{{ [<__tiddler__>get<__field__>] }}} dest={{{ [<__tiddler__>get<__field__>] }}} />\n\\end\n\n\\define replace-text(tiddler:\"\",field:\"text\",replace:\"\",replaceWith:\"\",flags:\"\", wholeWords:\"\")\n\\whitespace trim\n<$wikify name=\"source\" text=\"\"\"<$view tiddler=<<__tiddler__>> field=<<__field__>> mode=\"block\" format=\"text\"/>\"\"\">\n<$wikify name=\"result\" \n  text=\"\"\"<$macrocall $name=\"regexpsub\" $type=\"text/plain\" \n     sourceText=<<source>> \n     searchValue=<<__replace__>> \n     replaceValue=<<__replaceWith__>> \n     flags=<<__flags__>> \n     wholeWords=<<__wholeWords__>> />\"\"\" \n     >\n<$text text=<<result>>/>\n</$wikify>\n</$wikify>\n\\end\n\n\\define replace-text-diff(tiddler:\"\", field:\"text\", replace, replaceWith, flags:\"\", wholeWords:\"\")\n<$list filter=\"[<__tiddler__>get<__field__>minlength[1]]\" variable=null emptyMessage=\"No tiddler selected\">\n<$list filter=\"[<__replace__>minlength[1]]\" variable=null emptyMessage=<<nothing-to-replace \"\"\"$tiddler$\"\"\" \"\"\"$field$\"\"\">> >\n\n<$wikify name=\"result\" \n  text=\"\"\"<$macrocall $name=\"replace-text\" \n     tiddler=<<__tiddler__>> field=<<__field__>> \n     replace=<<__replace__>> \n     replaceWith=<<__replaceWith__>> \n     flags=<<__flags__>>\n     wholeWords=<<__wholeWords__>> />\"\"\"\n  >\n<$diff-text source={{{ [<__tiddler__>get<__field__>] }}} dest=<<result>> cleanup={{$:/state/commander/snr/setting/cleanup}}/>\n</$wikify>\n\n</$list>\n</$list>\n\\end\n\n\\define replace-text-button(tiddler:\"\", field:\"text\", replace:\"\", replaceWith:\"\", flags:\"\", wholeWords:\"\")\n\\whitespace trim\n<$list filter=\"[<__tiddler__>get<__field__>minlength[1]]\" variable=null>\n<$list filter=\"[<__replace__>minlength[1]]\" variable=null>\n<$wikify name=\"result\" \n  text=\"\"\"<$macrocall $name=\"replace-text\" \n     tiddler=<<__tiddler__>> \n     field=<<__field__>> \n     replace=<<__replace__>> \n     replaceWith=<<__replaceWith__>> \n     flags=<<__flags__>>\n     wholeWords=<<__wholeWords__>> />\"\"\"\n  >\n<$reveal type=\"nomatch\" default=\"title\" text=<<__field__>> >\n <$action-setfield $tiddler=<<__tiddler__>> $field=<<__field__>> $value=<<result>>/>\n</$reveal>\n<$reveal type=\"match\" default=\"title\" text=<<__field__>> >\n <$action-setfield $tiddler=<<__tiddler__>> $field=<<__field__>> $value=<<result>>/>\n <$action-deletetiddler $tiddler=<<__tiddler__>> />\n</$reveal>\n</$wikify>\n</$list>\n</$list>\n\\end\n",
+            "title": "$:/plugins/kookma/commander/macro/snr/replace-text",
+            "tags": "$:/tags/Macro",
+            "modifier": "Mohammad",
+            "modified": "20190324053727065"
         }
     }
 }

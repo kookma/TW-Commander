@@ -1,9 +1,9 @@
 author: JeremyRuston
-created: 20190317164034655
+created: 20190324225734865
 dependents: 
 description: CodeMirror AddOn: Close Brackets
 list: readme
-modified: 20190317164034655
+modified: 20190324225734865
 plugin-type: plugin
 title: $:/plugins/tiddlywiki/codemirror-closebrackets
 type: application/json
