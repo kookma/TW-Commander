@@ -2,7 +2,7 @@
 A tiddler toolkit for Tiddlywiki 5
 
 ## Project code and demo
-* [GitHub demo page](https://github.com/kookma/TW-Commander)
+* [GitHub demo page](https://github.com/kookma/TW-Commander) [DOES NOT WORK, download the index.html and open in a browser]
 * [GitHub code page](https://github.com/kookma/TW-Commander)
 
 
