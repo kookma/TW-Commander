@@ -33,6 +33,12 @@ As a result batch operations can save users a great deal of time but, because th
 * Inspect tiddlers
 
 ## Installation
-There different ways to install Tiddler Commander
 
-* copy and paste 
+Eeasy way single file (packaged version, see [manual installation](https://tiddlywiki.com/#Manually%20installing%20a%20plugin))
+
+* download the `commander.tid` and drag and drop to your wiki, or
+* open the demo and drag the plugin from demo page and drop into your wiki
+
+Client-Server installation (separate files)
+* for node.js (server version) download the commander folder from source folder and paste in your Tiddlywiki plugins folder
+* for local installation put the commander folder into your local plugins folder under your wiki folder
