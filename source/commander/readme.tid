@@ -1,0 +1,18 @@
+created: 20190212050942506
+modified: 20190728185820174
+tags: 
+title: $:/plugins/kookma/commander/readme
+type: text/vnd.tiddlywiki
+
+For help and instruction on usage, open [[Commander| $:/plugins/kookma/commander/help/ui]] help tab.
+
+!! References
+; Project code and demo
+* [[GitHub demo page|https://github.com/kookma/TW-Commander]] (does not work)
+* [[Tiddlyspot demo page|http://commander.tiddlyspot.com/]]
+* [[GitHub code page|https://github.com/kookma/TW-Commander]]
+
+;Tiddler Commander at Tiddlywiki Google forum
+* [[Initial announcement|https://groups.google.com/d/msg/tiddlywiki/BxJsWuae-Uc/JapAx4mtBgAJ]]
+* [[Beta releases|https://groups.google.com/d/msg/tiddlywiki/w9Bv-WulKw8/CYf9D4H6BgAJ]]
+* [[Release candidate|https://groups.google.com/d/msg/tiddlywiki/Zw3F3iRtggA/qX2uWiBJBgAJ]]

@@ -1,0 +1,55 @@
+created: 20190212063435548
+modified: 20190731063626579
+tags: $:/tags/Macro
+title: $:/plugins/kookma/commander/tag/macros/add-remove-replace
+type: text/vnd.tiddlywiki
+
+\define add-new-tag-bulk(newTag:"Empty")
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[count[]] -0" variable="ignore">
+<$list filter="[<__newTag__>] -Empty" variable=null>
+<<create-log-tiddler "add-new-tag-bulk">>
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]!is[missing]!tag<__newTag__>]">
+<$fieldmangler>
+<$action-sendmessage $message="tm-add-tag" $param=<<__newTag__>> />
+</$fieldmangler>
+<$macrocall $name="log-add-single-operation" msg="""new tag `$newTag$` added""" tidItem=<<currentTiddler>> />
+</$list>
+<<title-selection-reset>>
+</$list>
+</$list>
+\end
+
+\define remove-old-tag-bulk(oldTag:"Empty")
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[count[]] -0" variable=ignore>
+<$list filter="[<__oldTag__>] -Empty" variable=null>
+<<create-log-tiddler "remove-old-tag-bulk">>
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]!is[missing]tag<__oldTag__>]">
+<$fieldmangler>
+<$action-sendmessage $message="tm-remove-tag" $param=<<__oldTag__>> />
+</$fieldmangler>
+<$macrocall $name="log-add-single-operation" msg="""old tag `$oldTag$` removed""" tidItem=<<currentTiddler>> />
+</$list>
+<<title-selection-reset>>
+</$list>
+</$list>
+\end
+
+
+\define replace-tag-bulk(oldTag:"Empty", newTag:"Empty")
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[count[]] -0" variable="ignore">
+<$list filter="[<__oldTag__>] -Empty" variable=null>
+<$list filter="[<__newTag__>] -Empty" variable=null>
+<<create-log-tiddler "replace-tag-bulk">>
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]!is[missing]tag<__oldTag__>]">
+<$fieldmangler>
+<$action-sendmessage $message="tm-add-tag" $param=<<__newTag__>> />
+<$action-sendmessage $message="tm-remove-tag" $param=<<__oldTag__>>  />
+</$fieldmangler>
+<$macrocall $name="log-add-single-operation" msg="""tag `$oldTag$` replaced with `$newTag$`""" tidItem=<<currentTiddler>> />
+</$list>
+<<title-selection-reset>>
+</$list>
+</$list>
+</$list>
+\end
+

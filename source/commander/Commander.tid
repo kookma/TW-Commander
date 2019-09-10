@@ -1,0 +1,13 @@
+created: 20190212051316149
+icon: $:/plugins/kookma/commander/images/file-alt
+modified: 20190728184835933
+title: $:/Commander
+type: text/vnd.tiddlywiki
+
+{{$:/plugins/kookma/commander/search/ui}}
+<<commander-slider title:"$:/plugins/kookma/commander/search/selection">>
+
+<<tabs "[all[shadows+tiddlers]tag[$:/tags/Commander]!has[draft.of]]" default:"$:/plugins/kookma/commander/tiddler/ui">>
+
+---
+<<commander-slider title:"$:/plugins/kookma/commander/log/ui">>

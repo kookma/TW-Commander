@@ -1,0 +1,12 @@
+caption: Inspect
+created: 20190313080119081
+modified: 20190728184415183
+tags: $:/tags/Commander/InspectOps
+title: $:/plugins/kookma/commander/inspect/uicomp/Inspection
+type: text/vnd.tiddlywiki
+
+<$macrocall 
+ $name=compInspect
+ filter="[[$:/temp/commander/selected-titles]indexes[]sort[]]"
+ stateTiddler="temp/commander"
+/>

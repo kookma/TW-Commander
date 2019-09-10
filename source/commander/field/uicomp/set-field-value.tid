@@ -1,0 +1,39 @@
+caption: Set field value
+created: 20190212120609737
+list-after: $:/plugins/kookma/commander/field/uicomp/add-remove-fields
+modified: 20190728184415236
+tags: $:/tags/Commander/FieldOps
+title: $:/plugins/kookma/commander/field/uicomp/set-field-value
+type: text/vnd.tiddlywiki
+
+Field name &nbsp;
+<$select class="cmd-select-wd" 
+ tiddler="$:/temp/commander/field-name" 
+ default="" 
+>
+<$list filter="[subfilter{$:/state/commander/set-field-value/fields}] ~[[$:/temp/commander/selected-titles]indexes[]fields[]sort[]] -tags -title" >
+<option><$view field="title"/></option>
+</$list>
+</$select> &nbsp; 
+<$checkbox 
+ tiddler="$:/state/commander/set-field-value/fields" 
+ field="text" 
+ checked="[[$:/temp/commander/selected-titles]indexes[]fields[]sort[]]" 
+ unchecked="[[$:/temp/commander/selected-titles]indexes[]fields[]sort[]] -[[$:/temp/commander/selected-titles]fields[]]"
+ default="[[$:/temp/commander/selected-titles]indexes[]fields[]sort[]]"
+> Include system fields?</$checkbox>
+
+Field value &nbsp;<$edit-text
+tiddler="$:/temp/commander/field-value"
+tag="input"
+default=""
+class="cmd-txt-area"
+placeholder=" field value"
+/>  &nbsp; 
+<$button class="cmd-btn"> Set field value
+<$macrocall 
+ $name="set-field-value-bulk" 
+ fieldName={{$:/temp/commander/field-name}} 
+ fieldValue={{$:/temp/commander/field-value}} 
+/>
+</$button>

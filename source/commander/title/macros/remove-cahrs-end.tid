@@ -1,0 +1,42 @@
+created: 20190218190318901
+modified: 20190907181526112
+tags: $:/tags/Macro
+title: $:/plugins/kookma/commander/title/macros/remove-cahrs-end
+type: text/vnd.tiddlywiki
+
+\define suffix-actions2()
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[prefix<sfx>]" variable="item">
+  <$action-sendmessage $message="tm-rename-tiddler" from=<<item>> to=<<sfx>> />
+  <$macrocall $name="log-add-single-operation" msg="""characters removed from end. New title [[$(sfx)$]]""" tidItem=<<item>> />
+</$list>
+\end
+
+
+\define makelink2() [[$(newTitle)$]]
+
+\define generate-suffixes2(n:"0")
+<$list filter="[<__n__>] -0" variable=null>
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[!is[missing]]" variable="item">
+<$list filter="""[<item>split[]butlast[$n$]join[]trim[]]""" variable="newTitle">
+<$text text=<<makelink2>>/>
+</$list>
+</$list>
+</$list>
+\end
+
+\define remove-chars-from-end-tiltle-bulk(num:"0")
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[count[]] -0" variable="ignore">
+<$list filter="[<__num__>] -0" variable=null>
+<<create-log-tiddler "remove-chars-from-end-tiltle-bulk">>
+<$vars n=<<__num__>> >
+<$wikify text="""<<generate-suffixes2 n:"$num$">>""" name="outputs">
+ <$list filter="[subfilter<outputs>]" variable="sfx">
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[prefix<sfx>limit[2]count[]regexp[2]]" emptyMessage=<<suffix-actions2>> variable="cnt">
+</$list>
+</$list>
+</$wikify>
+</$vars>
+<<title-selection-reset>>
+</$list>
+</$list>
+\end

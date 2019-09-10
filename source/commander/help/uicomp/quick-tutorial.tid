@@ -1,0 +1,30 @@
+caption: Quick tutorial
+created: 20190314050138754
+list-after: $:/plugins/kookma/commander/help/uicomp/what-is-commander
+modified: 20190728184415207
+tags: $:/tags/Commander/Help
+title: $:/plugins/kookma/commander/help/uicomp/quick-tutorial
+type: text/vnd.tiddlywiki
+
+# Use ''Search via filter'' to list possible tiddlers
+#* example: `[tag[xx]]` finds all tiddlers tagged with //xx//
+#* example: `[prefix[tt]` finds all tiddlers have title started with //tt//
+#* example: `[has[draft.of]sort[title]]` finds all draft tiddlers
+
+# Use ''Select tiddlers'' for the resulting list to identify which specific tiddlers to do a batch operation on
+#* this step lets you to do a batch operation on selected tiddlers NOT all filtered by ''Filter search''!
+#* it is possible to select/deselect all tiddlers from ''Filter search'' result at once!
+# From ''Batch operations tabs'' select the batch operation you wish to perform on selected tiddlers
+#* example: title, tag, and field operations
+#* example: Snr operation
+#* example: Inspect operation
+
+* Notes:
+** Multiple batch operations can be done on the same set (unless you change something in the search criteria)
+** Sometimes it is useful to use an intermediate batch to help, like tag tiddlers with a "working" tag, using multiple searches, then then use the "working" tag to apply a batch operation to
+
+<<commander-alert """''Note'': For good operation a tiddler width of 800px is recommended. You can also use //Sidebar layout// as `Fluid story`. """>>
+
+
+!!! Footenote
+# [[Use filter expression|https://tiddlywiki.com/prerelease/#Filters:Filters%20%5B%5BFilter%20Expression%5D%5D%20%5B%5BFilter%20Syntax%5D%5D%20%5B%5BFilter%20Operators%5D%5D%20%5B%5BFilter%20Parameter%5D%5D%20%5B%5BFilter%20Run%5D%5D%20%5B%5BFilter%20Step%5D%5D%20%5B%5BFilter%20Whitespace%5D%5D]]

@@ -1,0 +1,11 @@
+created: 20190303055230230
+modified: 20190728184415375
+tags: $:/tags/Macro
+title: $:/plugins/kookma/commander/macros/selection
+type: text/vnd.tiddlywiki
+
+\define title-selection-reset()
+<$macrocall $name="compSelective-reset" 
+tiddler="$:/temp/commander/selected-titles" 
+filter="[subfilter{$:/temp/commander}] +[!is[missing]]" />
+\end

@@ -1,0 +1,16 @@
+caption: Select tiddlers
+created: 20190725144912018
+modified: 20190728184415357
+tags: 
+title: $:/plugins/kookma/commander/search/selection
+type: text/vnd.tiddlywiki
+
+<div style="font-size:small; border-left:0.5px dotted grey;padding-left:10px;">
+<$list filter="[subfilter{$:/temp/commander}] +[!is[missing]] +[limit[1]]" variable="null">
+<$macrocall $name=compSelective
+filter="[subfilter{$:/temp/commander}] +[!is[missing]]"
+tiddler="$:/temp/commander/selected-titles"
+/>
+</$list>
+</div>
+

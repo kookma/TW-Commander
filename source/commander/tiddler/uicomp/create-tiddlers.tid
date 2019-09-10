@@ -1,0 +1,71 @@
+caption: Create tiddlers
+created: 20190213193004029
+modified: 20190728184415288
+tags: $:/tags/Commander/TiddlerOps
+title: $:/plugins/kookma/commander/tiddler/uicomp/create-tiddlers
+type: text/vnd.tiddlywiki
+
+<span style="display:inline-block;width:10ch;">Base title &nbsp;</span>
+<$edit-text 
+ tiddler="$:/temp/commander/tiddler-base-title" 
+ tag="input" 
+ default=""
+ placeholder=" base title" 
+ class="cmd-txt-area"/> &nbsp;
+<br>
+
+<span style="display:inline-block;width:10ch;">Tags &nbsp;</span>
+<$edit-text 
+ tiddler="$:/temp/commander/tiddler-base-tags" 
+ tag="input" 
+ default=""
+ placeholder=" tags" 
+ class="cmd-txt-area"
+/> 
+
+
+<$checkbox 
+ tiddler="$:/state/commander/tiddler-template-status" 
+ field="text" 
+ checked="use-template" 
+ unchecked="no-template"
+ default="no-template"
+> Use template?</$checkbox> &nbsp;
+<$reveal type="match" text="use-template" default={{$:/state/commander/tiddler-template-status}}>
+Template
+<$select tiddler="$:/temp/commander/template-newtiddler"  
+ default="$:/plugins/kookma/commander/template/base">
+<$list filter='[all[shadows+tiddlers]tag[$:/tags/Commander/Template]]'>
+<option value=<<currentTiddler>> >
+<$view field="caption"><$view field="title"/></$view>
+</option>
+</$list>
+</$select>
+</$reveal>
+
+Number of tiddlers  &nbsp;
+<$select tiddler="$:/temp/commander/tiddler-base-number"  default='1'>
+<$list filter='[range[1,19, 1]] [range[20,50, 5]] [range[60,100,10]]'>
+<option value=<<currentTiddler>>><$view field='title'/></option>
+</$list>
+</$select>
+
+<$reveal type="match" text="use-template" default={{$:/state/commander/tiddler-template-status}}>
+<$button class="cmd-btn"> Create tiddlers
+<$macrocall $name="bulk-tiddler-with-template-creator"
+baseTitle={{$:/temp/commander/tiddler-base-title}}
+baseTags={{$:/temp/commander/tiddler-base-tags}}
+numberTiddler={{$:/temp/commander/tiddler-base-number}}
+template={{$:/temp/commander/template-newtiddler}}
+/> </$button>
+</$reveal>
+
+<$reveal type="nomatch" text="use-template" default={{$:/state/commander/tiddler-template-status}}>
+<$button class="cmd-btn"> Create tiddlers
+<$macrocall $name="bulk-tiddler-creator"
+baseTitle={{$:/temp/commander/tiddler-base-title}}
+baseTags={{$:/temp/commander/tiddler-base-tags}}
+numberTiddler={{$:/temp/commander/tiddler-base-number}}
+/>
+</$button>
+</$reveal>
