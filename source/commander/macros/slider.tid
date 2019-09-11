@@ -5,7 +5,7 @@ title: $:/plugins/kookma/commander/macros/slider
 type: text/vnd.tiddlywiki
 
 \define commander-slider(title)
-<$set name="revealState" value=<<qualify "$:/state-reveal-$title$">>>
+<$set name="revealState" value=<<qualify "$:/state/reveal/$title$">>>
 <h2>
   <$reveal type="nomatch" state=<<revealState>> text="yes">
     <$button class="tc-btn-invisible tc-tiddlylink" set=<<revealState>> setTo="yes">
