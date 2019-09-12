@@ -36,7 +36,7 @@ As a result batch operations can save users a great deal of time but, because th
 
 Eeasy way single file (packaged version, see [manual installation](https://tiddlywiki.com/#Manually%20installing%20a%20plugin))
 
-* download the `commander.tid` and drag and drop to your wiki, or
+* download the `commander.tid` from packaged folder and drag and drop to your wiki, or
 * open the demo and drag the plugin from demo page and drop into your wiki
 
 Client-Server installation (separate files)
