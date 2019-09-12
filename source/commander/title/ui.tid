@@ -1,15 +1,15 @@
 caption: Title
 created: 20190212051704536
 list-after: $:/plugins/kookma/commander/tiddler/ui
-modified: 20190728184415270
+modified: 20190912052341168
 tags: $:/tags/Commander
 title: $:/plugins/kookma/commander/title/ui
 type: text/vnd.tiddlywiki
-
-Warning: These operation may overwritte existing tiddlers
 
 <<tabs 
 tabsList:"[all[shadows+tiddlers]tag[$:/tags/Commander/TitleOps]!has[draft.of]]" 
 default:"$:/plugins/kookma/commander/title/uicomp/add-remove-chars"
 class:"tc-vertical cmd-tab-colorful cmd-tab-wd">>
 
+<!-- relink checkbox for renaming title -->
+{{$:/plugins/kookma/commander/config/relink}}

@@ -1,5 +1,5 @@
 created: 20190306191714819
-modified: 20190728184415314
+modified: 20190912051831502
 tags: $:/tags/Stylesheet
 title: $:/plugins/kookma/commander/stylesheet/snr/form
 type: text/css
@@ -28,6 +28,7 @@ type: text/css
 .cmd-snr-form .item input { display:inline-block; }
 .cmd-snr-form .item select { display:inline-block; }
 
-
+/* only for relink checkbox on renaming tiddler */
+.cmd-snr-form .item-relink { padding: 2px; margin:2px; }
 
      

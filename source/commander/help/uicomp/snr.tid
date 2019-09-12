@@ -1,7 +1,7 @@
 caption: Search-n-Replace
 created: 20190307104654008
-list-after: $:/plugins/kookma/commander/help/uicomp/batch-operation
-modified: 20190907183328746
+list-after: $:/plugins/kookma/commander/help/uicomp/relink
+modified: 20190912053039887
 tags: $:/tags/Commander/Help
 title: $:/plugins/kookma/commander/help/uicomp/snr
 type: text/vnd.tiddlywiki
