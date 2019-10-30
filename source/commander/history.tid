@@ -1,8 +1,14 @@
 created: 20190629100628757
-modified: 20190912055342073
+modified: 20191030082225791
 tags: 
 title: $:/plugins/kookma/commander/history
 type: text/vnd.tiddlywiki
+
+!! 1.4.0 --  issues fixed
+<<<
+; 30th October, 2019
+* [FIXED] issue in compSelective as it sorted the results. Now the sort filter operator removed.
+<<<
 
 !! 1.3.0 --  integration with relink plugin
 <<<

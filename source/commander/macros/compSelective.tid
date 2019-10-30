@@ -1,5 +1,5 @@
 created: 20190301133121124
-modified: 20190728184415383
+modified: 20191030081848996
 tags: $:/tags/Macro
 title: $:/plugins/kookma/commander/macros/compSelective
 type: text/vnd.tiddlywiki
@@ -28,7 +28,7 @@ type: text/vnd.tiddlywiki
 <br>
 <i><$count filter="[<__tiddler__>indexes[]]" /> selected</i>&nbsp;<$macrocall $name="display" label="Show filter in use" text={{$:/temp/commander}} />
 <br>
-<$list filter="[subfilter<__filter__>] +[sort[title]]" variable="Item">
+<$list filter=<<__filter__>> variable="Item">
 <$checkbox tiddler=<<__tiddler__>> index=<<Item>> checked="selected">&nbsp;<$link to=<<Item>>><$text text=<<Item>> /></$link></$checkbox><br>
 </$list>
 
