@@ -11,16 +11,16 @@ Field name &nbsp;
  tiddler="$:/temp/commander/field-name" 
  default="" 
 >
-<$list filter="[subfilter{$:/state/commander/set-field-value/fields}] ~[[$:/temp/commander/selected-titles]indexes[]fields[]sort[]] -tags -title" >
+<$list filter="[subfilter{$:/state/commander/set-field-value/fields}] ~[subfilter{$:/plugins/kookma/commander/config/Targets}fields[]sort[]] -tags -title" >
 <option><$view field="title"/></option>
 </$list>
 </$select> &nbsp; 
 <$checkbox 
  tiddler="$:/state/commander/set-field-value/fields" 
  field="text" 
- checked="[[$:/temp/commander/selected-titles]indexes[]fields[]sort[]]" 
- unchecked="[[$:/temp/commander/selected-titles]indexes[]fields[]sort[]] -[[$:/temp/commander/selected-titles]fields[]]"
- default="[[$:/temp/commander/selected-titles]indexes[]fields[]sort[]]"
+ checked="[subfilter{$:/plugins/kookma/commander/config/Targets}fields[]sort[]]" 
+ unchecked="[subfilter{$:/plugins/kookma/commander/config/Targets}fields[]sort[]] -[[$:/temp/commander/selected-titles]fields[]]"
+ default="[subfilter{$:/plugins/kookma/commander/config/Targets}fields[]sort[]]"
 > Include system fields?</$checkbox>
 
 Field value &nbsp;<$edit-text

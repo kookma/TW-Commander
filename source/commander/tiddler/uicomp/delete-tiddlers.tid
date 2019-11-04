@@ -6,7 +6,7 @@ tags: $:/tags/Commander/TiddlerOps
 title: $:/plugins/kookma/commander/tiddler/uicomp/delete-tiddlers
 type: text/vnd.tiddlywiki
 
-<$set name=numTids value={{{[[$:/temp/commander/selected-titles]indexes[]count[]] }}}>
+<$set name=numTids value={{{[subfilter{$:/plugins/kookma/commander/config/Targets}count[]] }}}>
 <$reveal type="match" text="0" default=<<numTids>> >
 No tiddlers is selected for deleteion!
 </$reveal>
@@ -17,7 +17,7 @@ Note that, the delete operation cannot be undone!!
 </$set>
 
 <$macrocall $name="compConfirmAction"
-countFilter="[[$:/temp/commander/selected-titles]indexes[]]"
+countFilter={{$:/plugins/kookma/commander/config/Targets}}
 actionMacro="delete-tiddlers-selective-bulk"
 stateTiddler="$:/state/commander/SelectiveDeleteDropdown"
 />
