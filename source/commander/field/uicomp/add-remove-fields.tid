@@ -20,7 +20,7 @@ placeholder=" new field"
 <$macrocall $name="remove-old-field-bulk" oldField={{$:/temp/commander/field-remove}} />
 </$button>
 <$select class="cmd-select-wd" tiddler="$:/temp/commander/field-remove" default=<<dummy>>>
-<$list filter="[[$:/temp/commander/selected-titles]indexes[]fields[]sort[]] -title -tags" >
+<$list filter="[subfilter{$:/plugins/kookma/commander/config/Targets}fields[]sort[]] -title -tags" >
 <option><$view field="title"/></option>
 </$list>
 </$select>

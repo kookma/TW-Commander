@@ -9,7 +9,7 @@ type: text/vnd.tiddlywiki
 
 Number of characters
 <$select tiddler="$:/temp/commander/title-remove-chars"  default="0" class="cmd-sl">
-<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[!is[missing]] +[length[]] +[minall[]] +[subtract[1]] -Infinity" variable="minchars">
+<$list filter="[subfilter{$:/plugins/kookma/commander/config/Targets}] +[!is[missing]] +[length[]] +[minall[]] +[subtract[1]] -Infinity" variable="minchars">
 <$list filter=<<rngcat>> >
 <option value=<<currentTiddler>>><$view field='title'/></option>
 </$list>

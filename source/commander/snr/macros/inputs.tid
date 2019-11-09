@@ -13,7 +13,7 @@ type: text/vnd.tiddlywiki
 <label>Tiddler title</label>
 <$select tiddler="$:/state/commander/snr/select-tiddler" default="" class="cmd-snr-textbox">
 <option value="">None</option>
-<$list filter="[[$:/temp/commander/selected-titles]indexes[]sort[]]" >
+<$list filter="[subfilter{$:/plugins/kookma/commander/config/Targets}sort[]]" >
 <option value=<<currentTiddler>>><$text text=<<currentTiddler>>/></option>
 </$list>
 </$select>

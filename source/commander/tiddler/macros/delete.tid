@@ -9,9 +9,9 @@ type: text/vnd.tiddlywiki
 \end
 
 \define delete-tiddlers-selective-bulk()
-<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[count[]] -0" variable="ignore">
+<$list filter="[subfilter{$:/plugins/kookma/commander/config/Targets}] +[count[]] -0" variable="ignore">
 <<create-log-tiddler "delete-tiddler-selectively">>
-<$list filter="[[$:/temp/commander/selected-titles]indexes[]]" variable="Item">
+<$list filter={{$:/plugins/kookma/commander/config/Targets}} variable="Item">
 <$action-deletetiddler $tiddler=<<Item>> />
 <$macrocall $name="log-delete-selectively" item=<<Item>> />
 </$list>

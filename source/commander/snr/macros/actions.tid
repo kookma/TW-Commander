@@ -81,9 +81,9 @@ different
 \end
 
 \define search-replace-in-field-bulk()
-<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[count[]] -0" variable="ignore">
+<$list filter="[subfilter{$:/plugins/kookma/commander/config/Targets}] +[count[]] -0" variable="ignore">
 <<create-log-tiddler "SNR operation">>
-<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[!is[missing]]">
+<$list filter="[subfilter{$:/plugins/kookma/commander/config/Targets}] +[!is[missing]]">
   <$macrocall 
     $name="search-replace-in-tiddler-field"
     tiddler=<<currentTiddler>> 
@@ -112,7 +112,7 @@ Replace?
 </$button>&nbsp;
 <!-- replace in bulk tiddler with confirmation -->
 <$macrocall $name="compConfirmAction"
-countFilter="[[$:/temp/commander/selected-titles]indexes[]]"
+countFilter={{$:/plugins/kookma/commander/config/Targets}}
 actionMacro="search-replace-in-field-bulk"
 stateTiddler="$:/state/commander/SelectiveReplaceAllDropdown"
 confirmMessage="Are you sure you wish to replace text in" 

@@ -10,9 +10,9 @@ type: text/vnd.tiddlywiki
 
 \define addSuffix-to-tiltle-bulk(suffix:"Empty")
 <$list filter="[<__suffix__>] -Empty" variable=null>
-<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[count[]] -0" variable="ignore">
+<$list filter="[subfilter{$:/plugins/kookma/commander/config/Targets}] +[count[]] -0" variable="ignore">
 <<create-log-tiddler "addSufffix-to-tiltle-bulk">>
-<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[!is[missing]]">
+<$list filter="[subfilter{$:/plugins/kookma/commander/config/Targets}] +[!is[missing]]">
 <$list filter="""[<currentTiddler>addsuffix[$suffix$]] -[<currentTiddler>]""" variable="newTitle">
 <$list filter="[<newTitle>]  -[has[title]]" variable="ignore">
   <$action-sendmessage $message="tm-rename-tiddler" from=<<currentTiddler>> to=<<newTitle>> />
@@ -27,9 +27,9 @@ type: text/vnd.tiddlywiki
 
 \define removeSuffix-from-tiltle-bulk(suffix:"Empty")
 <$list filter="[<__suffix__>] -Empty" variable=null>
-<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[count[]] -0" variable="ignore">
+<$list filter="[subfilter{$:/plugins/kookma/commander/config/Targets}] +[count[]] -0" variable="ignore">
 <<create-log-tiddler "removeSuffix-from-tiltle-bulk">>
-<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[!is[missing]]">
+<$list filter="[subfilter{$:/plugins/kookma/commander/config/Targets}] +[!is[missing]]">
 <$list filter="""[<currentTiddler>removesuffix[$suffix$]] -[<currentTiddler>]""" variable="newTitle">
 <$list filter="[<newTitle>]  -[has[title]]" variable="ignore">
   <$action-sendmessage $message="tm-rename-tiddler" from=<<currentTiddler>> to=<<newTitle>> />

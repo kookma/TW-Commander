@@ -7,6 +7,6 @@ type: text/vnd.tiddlywiki
 
 <$macrocall 
  $name=compInspect
- filter="[[$:/temp/commander/selected-titles]indexes[]sort[]]"
+ filter="[subfilter{$:/plugins/kookma/commander/config/Targets}sort[]]"
  stateTiddler="temp/commander"
 />
