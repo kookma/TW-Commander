@@ -5,7 +5,7 @@ tags: $:/tags/Commander/Search/FilterButton
 title: $:/plugins/kookma/commander/search/filter-button/save
 type: text/vnd.tiddlywiki
 
-<$reveal state="$:/temp/commander/search-box" type="nomatch" text="">
+<$reveal state="$:/temp/commander" type="nomatch" text="">
 <$button class="tc-btn-invisible" tooltip="save current search" popup=<<qualify "$:/state/commander/SaveDropdown">> >
 {{$:/core/images/file}}
 </$button>
@@ -22,7 +22,7 @@ tag="input"
 default=""
 class="cmd-txt-area"
 placeholder="description for new filter"
-/> 
+/>
 
 <$button class="tc-btn"> Save new filter
 <$macrocall $name="create-new-filter" description={{$:/temp/commander/save-new-filter}} />
