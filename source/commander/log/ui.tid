@@ -5,6 +5,7 @@ tags:
 title: $:/plugins/kookma/commander/log/ui
 type: text/vnd.tiddlywiki
 
+\import [all[shadows+tiddlers]tag[$:/tags/Commander/Macro]]
 <div class="alert-info" style="padding:5px;font-size:0.90em;">
 <$button class="tc-btn-invisible tc-tiddlylink" actions=<<delete-all-log-tiddlers>>>Clear log</$button>
 <$set name="resultCount" value="""<$count filter="[tag[$:/tags/Commander/LogOps]]" />""">

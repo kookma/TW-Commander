@@ -6,6 +6,7 @@ tags: $:/tags/Commander/Help
 title: $:/plugins/kookma/commander/help/uicomp/warning
 type: text/vnd.tiddlywiki
 
+\import [all[shadows+tiddlers]tag[$:/tags/Commander/Macro]]
 ;Note i
 :Tiddler Commander is a very powerful tool, it can change any field in any tiddler.// Make sure what you are doing//!
 

@@ -5,6 +5,7 @@ tags: $:/tags/Commander/Help
 title: $:/plugins/kookma/commander/help/uicomp/what-is-commander
 type: text/vnd.tiddlywiki
 
+\import [all[shadows+tiddlers]tag[$:/tags/Commander/Macro]]
 !! What is Tiddler Commander?
 
 Tiddler Commander, in short ''Commander'' is a unique tool for batch operations on tiddlers. Commander has the below features

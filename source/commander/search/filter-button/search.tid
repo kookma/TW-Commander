@@ -5,6 +5,7 @@ tags: $:/tags/Commander/Search/FilterButton
 title: $:/plugins/kookma/commander/search/filter-button/search
 type: text/vnd.tiddlywiki
 
+\import [all[shadows+tiddlers]tag[$:/tags/Commander/Macro]]
 <$reveal state="$:/temp/commander/search-box" type="nomatch" text="">
 <$button class="tc-btn-invisible" tooltip="apply filter search">
 <$action-setfield $tiddler="$:/temp/commander" $field="text" $value={{$:/temp/commander/search-box}} />

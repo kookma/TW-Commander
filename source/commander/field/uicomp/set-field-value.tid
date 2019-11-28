@@ -6,6 +6,7 @@ tags: $:/tags/Commander/FieldOps
 title: $:/plugins/kookma/commander/field/uicomp/set-field-value
 type: text/vnd.tiddlywiki
 
+\import [all[shadows+tiddlers]tag[$:/tags/Commander/Macro]]
 Field name &nbsp;
 <$select class="cmd-select-wd" 
  tiddler="$:/temp/commander/field-name" 
