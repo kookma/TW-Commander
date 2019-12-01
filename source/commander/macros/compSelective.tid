@@ -26,7 +26,7 @@ type: text/vnd.tiddlywiki
 </$reveal>
 </$vars>
 <br>
-<i><$count filter="[<__tiddler__>indexes[]]" /> selected</i>&nbsp;<$macrocall $name="display" label="Show filter in use" text={{$:/temp/commander}} />
+<i><$count filter={{$:/plugins/kookma/commander/config/Targets}} /> selected</i>&nbsp;<$macrocall $name="display" label="Show filter in use" text={{$:/temp/commander}} />
 <br>
 <$list filter=<<__filter__>> variable="Item">
 <$checkbox tiddler=<<__tiddler__>> index=<<Item>> checked="selected">&nbsp;<$link to=<<Item>>><$text text=<<Item>> /></$link></$checkbox><br>
