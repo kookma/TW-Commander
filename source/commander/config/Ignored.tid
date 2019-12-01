@@ -1,0 +1,3 @@
+title: $:/plugins/kookma/commander/config/Ignored
+
+[all[shadows+tiddlers]] -[[$:/temp/commander/selected-titles]indexes[]]
