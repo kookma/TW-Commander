@@ -5,6 +5,7 @@ tags: $:/tags/Commander/TitleOps
 title: $:/plugins/kookma/commander/title/uicomp/add-remove-chars
 type: text/vnd.tiddlywiki
 
+\import [all[shadows+tiddlers]tag[$:/tags/Commander/Macro]]
 \define rngcat() [range[0,$(minchars)$]] -0 
 
 Number of characters

@@ -4,6 +4,7 @@ tags:
 title: $:/plugins/kookma/commander/history
 type: text/vnd.tiddlywiki
 
+\import [all[shadows+tiddlers]tag[$:/tags/Commander/Macro]]
 !! 1.4.0 --  issues fixed
 <<<
 ; 30th October, 2019

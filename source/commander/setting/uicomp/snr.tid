@@ -5,6 +5,7 @@ tags: $:/tags/Commander/Setting
 title: $:/plugins/kookma/commander/setting/uicomp/snr
 type: text/vnd.tiddlywiki
 
+\import [all[shadows+tiddlers]tag[$:/tags/Commander/Macro]]
 <<snr-difftext-cleanup>>
 <div style="padding-left:25px;font-size:0.9em">
 

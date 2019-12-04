@@ -6,6 +6,7 @@ tags: $:/tags/Commander/TiddlerOps
 title: $:/plugins/kookma/commander/tiddler/uicomp/delete-tiddlers
 type: text/vnd.tiddlywiki
 
+\import [all[shadows+tiddlers]tag[$:/tags/Commander/Macro]]
 <$set name=numTids value={{{[subfilter{$:/plugins/kookma/commander/config/Targets}count[]] }}}>
 <$reveal type="match" text="0" default=<<numTids>> >
 No tiddlers is selected for deleteion!
