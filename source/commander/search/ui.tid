@@ -1,16 +1,26 @@
 caption: Commander filter search
 created: 20190212055219117
-modified: 20190728184415354
+modified: 20200103171705658
 tags: 
 title: $:/plugins/kookma/commander/search/ui
 type: text/vnd.tiddlywiki
 
+\import $:/plugins/kookma/commander/macros/definition
+
 <div class="tc-search tc-advanced-search">
-Search via filter &nbsp;<$edit-text tiddler="$:/temp/commander" type="search" tag="input" default="" placeholder="filter search e.g. [tag[myTag]]" focus={{$:/plugins/kookma/commander/config/AutoFocus}}/>
+Search via filter &nbsp;<$edit-text tiddler=<<searchbox>> type="search" tag="input" default="" placeholder="filter search e.g. [tag[myTag]]" focus={{$:/plugins/kookma/commander/config/AutoFocus}}/>
 <$list filter="[all[shadows+tiddlers]tag[$:/tags/Commander/Search/FilterButton]]">
 <$transclude/>
 </$list>
 <br>
-<small style="margin-left:17ch;"><i><$count filter="[subfilter{$:/temp/commander}has[title]]"/> matches
-</i></small>
+<$vars sfilter={{{ [<searchbox>get[text]] }}} >
+<small style="margin-left:17ch;"><i><$count filter="[subfilter<sfilter>has[title]]" /> matches </i></small>
+</$vars>
+<!-- pending xx 
+&nbsp; 
+<span style="color:red;">
+<$macrocall $name=is-filterSeearch-newer-than-selectedTitles
+TidB="xx$:/temp/commander/search-box"
+TidA="$:/temp/commander"/></span>
 </div>
+-->

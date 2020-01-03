@@ -1,15 +1,14 @@
 caption: Replace tags
 created: 20190212080523588
 list-after: $:/plugins/kookma/commander/tag/uicomp/add-remove-tags
-modified: 20190728184415304
+modified: 20200103165226122
 tags: $:/tags/Commander/TagOps
 title: $:/plugins/kookma/commander/tag/uicomp/replace-tags
 type: text/vnd.tiddlywiki
 
-\import [all[shadows+tiddlers]tag[$:/tags/Commander/Macro]]
 <span style="display:inline-block;width:8ch;">Old tag &nbsp;</span>
 <$select class="cmd-select-wd" tiddler="$:/temp/commander/replace-tags/old" default=<<dummy>>>
-<$list filter="[subfilter{$:/plugins/kookma/commander/config/Targets}tags[]sort[]]" >
+<$list filter="[subfilter<searchfilter>!is[missing]tags[]sort[]]-[<workingTag>]" >
 <option><$view field="title"/></option>
 </$list>
 </$select>

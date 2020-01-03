@@ -1,11 +1,10 @@
 caption: Add remove tags
 created: 20190212063924640
-modified: 20190728184415307
+modified: 20200103165148263
 tags: $:/tags/Commander/TagOps
 title: $:/plugins/kookma/commander/tag/uicomp/add-remove-tags
 type: text/vnd.tiddlywiki
 
-\import [all[shadows+tiddlers]tag[$:/tags/Commander/Macro]]
 <$edit-text
 tiddler="$:/temp/commander/tag-add-remove/new"
 tag="input"
@@ -22,7 +21,7 @@ placeholder=" new tag"
 </$button>
 &nbsp;
 <$select class="cmd-select-wd" tiddler="$:/temp/commander/tag-add-remove/old" default=<<dummy>>>
-<$list filter="[subfilter{$:/plugins/kookma/commander/config/Targets}tags[]sort[]]" >
+<$list filter="[subfilter<searchfilter>!is[missing]tags[]sort[]]-[<workingTag>]" >
 <option><$view field="title"/></option>
 </$list>
 </$select>

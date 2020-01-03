@@ -1,7 +1,7 @@
 created: 20190214141452091
 description: Temporary and state tiddlers
 filter: [prefix[$:/temp]] [prefix[$:/state]]
-modified: 20190728184415214
+modified: 20200102171317291
 tags: $:/tags/Commander/Filter
 title: $:/plugins/kookma/commander/filters/temp-and-state
 type: text/vnd.tiddlywiki

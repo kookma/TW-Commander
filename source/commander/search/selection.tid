@@ -1,16 +1,20 @@
 caption: Select tiddlers
 created: 20190725144912018
-modified: 20190728184415357
-tags: 
+modified: 20200103171430668
+tags: show-content
 title: $:/plugins/kookma/commander/search/selection
 type: text/vnd.tiddlywiki
 
-<div style="font-size:small; border-left:0.5px dotted grey;padding-left:10px;">
-<$list filter="[subfilter{$:/temp/commander}] +[!is[missing]] +[limit[1]]" variable="null">
-<$macrocall $name=compSelective
-filter="[subfilter{$:/temp/commander}] +[!is[missing]]"
-tiddler="$:/temp/commander/selected-titles"
-/>
+<$reveal type="nomatch" stateTitle=<<selectiveOps>> stateField="text" text="yes" tag="div" class="kk-commander-tiddler-list  kk-commander-columns3">
+<$list filter="[subfilter<filtertext>!is[missing]]"><$link/><br></$list>
+</$reveal>
+<$reveal type="match" stateTitle=<<selectiveOps>> stateField="text" text="yes" tag="div" class="kk-commander-tiddler-list  kk-commander-columns3">
+<$list filter="[subfilter<filtertext>!is[missing]]">
+<$checkbox tag=<<workingTag>>> <$link/></$checkbox><br>
 </$list>
-</div>
+</$reveal>
 
+<!-- Description
+This tiddler implement interface to selectivly add tiddlers for commander operations.
+Each selected tiddler gets a working tag
+-->

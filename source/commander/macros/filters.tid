@@ -1,16 +1,16 @@
 created: 20190214142032323
-modified: 20190728184415380
-tags: $:/tags/Commander/Macro
+modified: 20200102171256318
+tags: $:/tags/Macro
 title: $:/plugins/kookma/commander/macros/filters
 type: text/vnd.tiddlywiki
 
 \define create-new-filter(description:"Empty")
 <$list filter="[<__description__>] -Empty" variable="ignore">
-<$action-createtiddler
+<$action-createtiddler 
     $basetitle="$:/plugins/kookma/commander/filters/yourFilter"
     tags="$:/tags/Commander/Filter"
     description=<<__description__>>
-    filter={{$:/temp/commander}}
-  />
+    filter={{$:/temp/commander/search-box}}
+  /> 
 </$list>
 \end
