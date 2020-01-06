@@ -1,0 +1,8 @@
+created: 20190214135950458
+description: {{$:/language/Filters/RecentSystemTiddlers}}
+filter: [has[modified]!sort[modified]limit[50]]
+modified: 20200102171317359
+tags: $:/tags/Commander/Filter
+title: $:/plugins/kookma/commander/filters/RecentSystemTiddlers
+type: text/vnd.tiddlywiki
+

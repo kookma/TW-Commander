@@ -1,0 +1,19 @@
+created: 20190308134702363
+modified: 20200105152017826
+tags: $:/tags/Stylesheet
+title: $:/plugins/kookma/commander/stylesheet/compInspect/table
+type: text/css
+
+/*compInspect table*/
+.cmd-ci-table
+{border-collapse: collapse;}
+
+.cmd-ci-table .leftcol{
+width:20%;
+vertical-align: top;
+text-align: right;
+background-color:#f0f0f0;
+}
+.cmd-ci-table .rightcol{
+width:650px;
+}

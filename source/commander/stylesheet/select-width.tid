@@ -1,0 +1,13 @@
+created: 20190218214027079
+modified: 20200106175146113
+tags: $:/tags/Stylesheet
+title: $:/plugins/kookma/commander/stylesheet/select-width
+type: text/css
+
+.cmd-sl{
+  width:8ch;
+}
+
+.cmd-select-wd{
+  min-width:25ch;
+}

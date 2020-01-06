@@ -1,0 +1,49 @@
+created: 20190212101155537
+modified: 20200106170626320
+tags: $:/tags/Commander/Macro show-content
+title: $:/plugins/kookma/commander/field/macros/add-remove-set
+type: text/vnd.tiddlywiki
+
+\define add-new-field-bulk(newField:"")
+<$list filter="[subfilter<searchfilter>!is[missing]limit[1]]" variable=ignore><!--check if filter is empty -->
+<$list filter="[<__newField__>!is[blank]]">
+<<create-log-tiddler "add-new-field-bulk">>
+<$list filter="[subfilter<searchfilter>]+[!is[missing]]-[has:field[$newField$]]">
+<$fieldmangler>
+<$action-sendmessage $message="tm-add-field" $param=<<__newField__>> />
+</$fieldmangler>
+<$macrocall $name="log-add-single-operation" msg="""new field `$newField$` added""" tidItem=<<currentTiddler>> />
+</$list>
+</$list>
+</$list>
+\end
+
+
+\define remove-old-field-bulk(oldField:"")
+<$list filter="[subfilter<searchfilter>!is[missing]limit[1]]" variable=ignore><!--check if filter is empty -->
+<$list filter="[<__oldField__>!is[blank]]">
+<<create-log-tiddler "remove-old-field-bulk">>
+<$list filter="[subfilter<searchfilter>]+[!is[missing]]+[has:field[$oldField$]]">
+<$fieldmangler>
+<$action-sendmessage $message="tm-remove-field" $param=<<__oldField__>> />
+</$fieldmangler>
+<$macrocall $name="log-add-single-operation" msg="""old field `$oldField$` removed""" tidItem=<<currentTiddler>> />
+</$list>
+</$list>
+</$list>
+\end
+
+\define set-field-value-bulk(fieldName:"Empty", fieldValue:"Empty")
+<$list filter="[subfilter<searchfilter>!is[missing]limit[1]]" variable=ignore><!--check if filter is empty -->
+<$list filter="[<__fieldName__>!is[blank]]"  variable=null>
+<$list filter="[<__fieldValue__>!is[blank]]" variable=null>
+<<create-log-tiddler "set-field-value-create-bulk">>
+<$list filter="[subfilter<searchfilter>]+[has:field[$fieldName$]]-[$fieldName$[$fieldValue$]]">
+<$action-setfield $field=<<__fieldName__>> $value=<<__fieldValue__>> />
+<$macrocall $name="log-add-single-operation" msg="""field `$fieldName$` got a value""" tidItem=<<currentTiddler>> />
+</$list>
+</$list>
+</$list>
+</$list>
+\end
+
