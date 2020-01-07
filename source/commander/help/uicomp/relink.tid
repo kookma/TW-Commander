@@ -1,0 +1,26 @@
+caption: Relink on rename
+created: 20190912052826269
+list-after: $:/plugins/kookma/commander/help/uicomp/batch-operation
+modified: 20200107061521948
+tags: $:/tags/Commander/Help
+title: $:/plugins/kookma/commander/help/uicomp/relink
+type: text/vnd.tiddlywiki
+
+!! Relink on rename
+<<<
+When Tiddler Commander is used to rename bulk tiddlers in operation like
+
+* Title operation
+** add/remove prefix
+** add/remove suffix
+** remove chars from the begining or end of title
+* ~SnR
+** Search and replace in tiddlers title
+
+It is possible to update all links to title. This includes //tags// and //list//. If [[Relink|https://flibbles.github.io/tw5-relink/]] plugin is installed, then not only title will be updated in //tags// and //list// fields but also in all filters, transclusions, text field and evrywhere.
+<<<
+
+!! How to integrate with //Relink//?
+<<<
+Simply install the [[Relink|https://flibbles.github.io/tw5-relink/]] plugin and it will be appeared as an option when Tiddler Commander title operations including SnR are performed!
+<<<

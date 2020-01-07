@@ -1,7 +1,9 @@
 created: 20200106164439016
-modified: 20200106173025690
+modified: 20200107144825052
 tags: 
 title: $:/plugins/kookma/commander/config/systemfields
 type: text/vnd.tiddlywiki
 
-title text tags created type modified
+title text tags 
+created modified craetor modifier 
+type bag revision

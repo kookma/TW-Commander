@@ -1,7 +1,7 @@
 caption: Replace tags
 created: 20190212080523588
 list-after: $:/plugins/kookma/commander/tag/uicomp/add-remove-tags
-modified: 20200106174902385
+modified: 20200107150644191
 tags: $:/tags/Commander/TagOps show-content
 title: $:/plugins/kookma/commander/tag/uicomp/replace-tags
 type: text/vnd.tiddlywiki
@@ -19,8 +19,7 @@ default=""
 class="cmd-txt-area"
 placeholder=" new tag"
 />
-
-<$button class="cmd-btn"> Replace tag
+<$button class="cmd-btn cmd-btn-wd"> Replace tag
 <$macrocall $name="replace-tag-bulk" 
 oldTag={{$:/temp/commander/replace-tags/old}} 
 newTag={{$:/temp/commander/replace-tags/new}} />
