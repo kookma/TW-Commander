@@ -6,7 +6,6 @@ tags: $:/tags/Commander/Help
 title: $:/plugins/kookma/commander/help/uicomp/quick-tutorial
 type: text/vnd.tiddlywiki
 
-\import [all[shadows+tiddlers]tag[$:/tags/Commander/Macro]]
 # Use ''Search via filter'' to list possible tiddlers
 #* example: `[tag[xx]]` finds all tiddlers tagged with //xx//
 #* example: `[prefix[tt]` finds all tiddlers have title started with //tt//

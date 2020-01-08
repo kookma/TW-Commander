@@ -1,6 +1,6 @@
 created: 20190212122742891
 modified: 20190907181223398
-tags: $:/tags/Commander/Macro
+tags: $:/tags/Macro
 title: $:/plugins/kookma/commander/title/macros/prefix
 type: text/vnd.tiddlywiki
 
@@ -9,10 +9,10 @@ type: text/vnd.tiddlywiki
 \end
 
 \define addPrefix-to-tiltle-bulk(prefix:"Empty")
-<$list filter="[subfilter{$:/plugins/kookma/commander/config/Targets}] +[count[]] -0" variable="ignore">
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[count[]] -0" variable="ignore">
 <$list filter="[<__prefix__>] -Empty" variable=null>
 <<create-log-tiddler "addPrefix-to-tiltle-bulk">>
-<$list filter="[subfilter{$:/plugins/kookma/commander/config/Targets}] +[!is[missing]]">
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[!is[missing]]">
 <$list filter="""[<currentTiddler>addprefix[$prefix$]] -[<currentTiddler>]""" variable="newTitle">
 <$list filter="[<newTitle>]  -[has[title]]" variable="ignore">
   <$action-sendmessage $message="tm-rename-tiddler" from=<<currentTiddler>> to=<<newTitle>> />
@@ -26,10 +26,10 @@ type: text/vnd.tiddlywiki
 \end
 
 \define removePrefix-from-tiltle-bulk(prefix:"Empty")
-<$list filter="[subfilter{$:/plugins/kookma/commander/config/Targets}] +[count[]] -0" variable="ignore">
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[count[]] -0" variable="ignore">
 <$list filter="[<__prefix__>] -Empty" variable=null>
 <<create-log-tiddler "removePrefix-from-tiltle-bulk">>
-<$list filter="[subfilter{$:/plugins/kookma/commander/config/Targets}] +[!is[missing]]">
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[!is[missing]]">
 <$list filter="""[<currentTiddler>removeprefix[$prefix$]]   -[<currentTiddler>]""" variable="newTitle">
 <$list filter="[<newTitle>]  -[has[title]]" variable="ignore">
   <$action-sendmessage $message="tm-rename-tiddler" from=<<currentTiddler>> to=<<newTitle>> />

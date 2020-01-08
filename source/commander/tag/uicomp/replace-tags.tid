@@ -6,10 +6,9 @@ tags: $:/tags/Commander/TagOps
 title: $:/plugins/kookma/commander/tag/uicomp/replace-tags
 type: text/vnd.tiddlywiki
 
-\import [all[shadows+tiddlers]tag[$:/tags/Commander/Macro]]
 <span style="display:inline-block;width:8ch;">Old tag &nbsp;</span>
 <$select class="cmd-select-wd" tiddler="$:/temp/commander/replace-tags/old" default=<<dummy>>>
-<$list filter="[subfilter{$:/plugins/kookma/commander/config/Targets}tags[]sort[]]" >
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]tags[]sort[]]" >
 <option><$view field="title"/></option>
 </$list>
 </$select>

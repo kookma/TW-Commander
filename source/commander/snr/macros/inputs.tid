@@ -1,6 +1,6 @@
 created: 20190306203626597
 modified: 20190912051600363
-tags: $:/tags/Commander/Macro
+tags: $:/tags/Macro
 title: $:/plugins/kookma/commander/snr/macros/inputs
 type: text/vnd.tiddlywiki
 
@@ -13,7 +13,7 @@ type: text/vnd.tiddlywiki
 <label>Tiddler title</label>
 <$select tiddler="$:/state/commander/snr/select-tiddler" default="" class="cmd-snr-textbox">
 <option value="">None</option>
-<$list filter="[subfilter{$:/plugins/kookma/commander/config/Targets}sort[]]" >
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]sort[]]" >
 <option value=<<currentTiddler>>><$text text=<<currentTiddler>>/></option>
 </$list>
 </$select>

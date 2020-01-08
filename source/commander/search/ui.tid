@@ -6,11 +6,15 @@ title: $:/plugins/kookma/commander/search/ui
 type: text/vnd.tiddlywiki
 
 <div class="tc-search tc-advanced-search">
-Search via filter &nbsp;<$edit-text tiddler="$:/temp/commander" type="search" tag="input" default="" placeholder="filter search e.g. [tag[myTag]]" focus={{$:/plugins/kookma/commander/config/AutoFocus}}/>
+Search via filter &nbsp;<$edit-text tiddler="$:/temp/commander/search-box" type="search" tag="input" default="" placeholder="filter search e.g. [tag[myTag]]" focus={{$:/plugins/kookma/commander/config/AutoFocus}}/>
 <$list filter="[all[shadows+tiddlers]tag[$:/tags/Commander/Search/FilterButton]]">
 <$transclude/>
 </$list>
 <br>
-<small style="margin-left:17ch;"><i><$count filter="[subfilter{$:/temp/commander}has[title]]"/> matches
+<small style="margin-left:17ch;"><i><$count filter="[subfilter{$:/temp/commander/search-box}has[title]]"/> matches &nbsp; 
+<span style="color:red;">
+<$macrocall $name=is-filterSeearch-newer-than-selectedTitles
+TidB="$:/temp/commander/search-box"
+TidA="$:/temp/commander"/></span>
 </i></small>
 </div>

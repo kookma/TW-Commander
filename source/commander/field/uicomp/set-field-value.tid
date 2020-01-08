@@ -6,22 +6,21 @@ tags: $:/tags/Commander/FieldOps
 title: $:/plugins/kookma/commander/field/uicomp/set-field-value
 type: text/vnd.tiddlywiki
 
-\import [all[shadows+tiddlers]tag[$:/tags/Commander/Macro]]
 Field name &nbsp;
 <$select class="cmd-select-wd" 
  tiddler="$:/temp/commander/field-name" 
  default="" 
 >
-<$list filter="[subfilter{$:/state/commander/set-field-value/fields}] ~[subfilter{$:/plugins/kookma/commander/config/Targets}fields[]sort[]] -tags -title" >
+<$list filter="[subfilter{$:/state/commander/set-field-value/fields}] ~[[$:/temp/commander/selected-titles]indexes[]fields[]sort[]] -tags -title" >
 <option><$view field="title"/></option>
 </$list>
 </$select> &nbsp; 
 <$checkbox 
  tiddler="$:/state/commander/set-field-value/fields" 
  field="text" 
- checked="[subfilter{$:/plugins/kookma/commander/config/Targets}fields[]sort[]]" 
- unchecked="[subfilter{$:/plugins/kookma/commander/config/Targets}fields[]sort[]] -[[$:/temp/commander/selected-titles]fields[]]"
- default="[subfilter{$:/plugins/kookma/commander/config/Targets}fields[]sort[]]"
+ checked="[[$:/temp/commander/selected-titles]indexes[]fields[]sort[]]" 
+ unchecked="[[$:/temp/commander/selected-titles]indexes[]fields[]sort[]] -[[$:/temp/commander/selected-titles]fields[]]"
+ default="[[$:/temp/commander/selected-titles]indexes[]fields[]sort[]]"
 > Include system fields?</$checkbox>
 
 Field value &nbsp;<$edit-text

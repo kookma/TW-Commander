@@ -1,6 +1,6 @@
 created: 20190307164924193
 modified: 20190728184415345
-tags: $:/tags/Commander/Macro
+tags: $:/tags/Macro
 title: $:/plugins/kookma/commander/snr/macros/actions
 type: text/vnd.tiddlywiki
 
@@ -81,9 +81,9 @@ different
 \end
 
 \define search-replace-in-field-bulk()
-<$list filter="[subfilter{$:/plugins/kookma/commander/config/Targets}] +[count[]] -0" variable="ignore">
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[count[]] -0" variable="ignore">
 <<create-log-tiddler "SNR operation">>
-<$list filter="[subfilter{$:/plugins/kookma/commander/config/Targets}] +[!is[missing]]">
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[!is[missing]]">
   <$macrocall 
     $name="search-replace-in-tiddler-field"
     tiddler=<<currentTiddler>> 
@@ -112,7 +112,7 @@ Replace?
 </$button>&nbsp;
 <!-- replace in bulk tiddler with confirmation -->
 <$macrocall $name="compConfirmAction"
-countFilter={{$:/plugins/kookma/commander/config/Targets}}
+countFilter="[[$:/temp/commander/selected-titles]indexes[]]"
 actionMacro="search-replace-in-field-bulk"
 stateTiddler="$:/state/commander/SelectiveReplaceAllDropdown"
 confirmMessage="Are you sure you wish to replace text in" 

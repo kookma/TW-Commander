@@ -5,7 +5,6 @@ tags: $:/tags/Commander/FieldOps
 title: $:/plugins/kookma/commander/field/uicomp/add-remove-fields
 type: text/vnd.tiddlywiki
 
-\import [all[shadows+tiddlers]tag[$:/tags/Commander/Macro]]
 <$edit-text
 tiddler="$:/temp/commander/field-add"
 tag="input"
@@ -21,7 +20,7 @@ placeholder=" new field"
 <$macrocall $name="remove-old-field-bulk" oldField={{$:/temp/commander/field-remove}} />
 </$button>
 <$select class="cmd-select-wd" tiddler="$:/temp/commander/field-remove" default=<<dummy>>>
-<$list filter="[subfilter{$:/plugins/kookma/commander/config/Targets}fields[]sort[]] -title -tags" >
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]fields[]sort[]] -title -tags" >
 <option><$view field="title"/></option>
 </$list>
 </$select>

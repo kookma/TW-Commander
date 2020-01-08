@@ -1,14 +1,14 @@
 created: 20190212101155537
 modified: 20190728184415244
-tags: $:/tags/Commander/Macro
+tags: $:/tags/Macro
 title: $:/plugins/kookma/commander/field/macros/add-remove-set
 type: text/vnd.tiddlywiki
 
 \define add-new-field-bulk(newField:"Empty")
-<$list filter="[subfilter{$:/plugins/kookma/commander/config/Targets}] +[count[]] -0" variable="ignore">
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[count[]] -0" variable="ignore">
 <$list filter="[<__newField__>] -Empty">
 <<create-log-tiddler "add-new-field-bulk">>
-<$list filter="[subfilter{$:/plugins/kookma/commander/config/Targets}] +[!is[missing]] -[has:field[$newField$]]">
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[!is[missing]] -[has:field[$newField$]]">
 <$fieldmangler>
 <$action-sendmessage $message="tm-add-field" $param=<<__newField__>> />
 </$fieldmangler>
@@ -20,10 +20,10 @@ type: text/vnd.tiddlywiki
 \end
 
 \define remove-old-field-bulk(oldField:"Empty")
-<$list filter="[subfilter{$:/plugins/kookma/commander/config/Targets}] +[count[]] -0" variable="ignore">
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[count[]] -0" variable="ignore">
 <$list filter="[<__oldField__>] -Empty">
 <<create-log-tiddler "remove-old-field-bulk">>
-<$list filter="[subfilter{$:/plugins/kookma/commander/config/Targets}] +[!is[missing]] +[has:field[$oldField$]]">
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[!is[missing]] +[has:field[$oldField$]]">
 <$fieldmangler>
 <$action-sendmessage $message="tm-remove-field" $param=<<__oldField__>> />
 </$fieldmangler>
@@ -35,11 +35,11 @@ type: text/vnd.tiddlywiki
 \end
 
 \define set-field-value-bulk(fieldName:"Empty", fieldValue:"Empty")
-<$list filter="[subfilter{$:/plugins/kookma/commander/config/Targets}] +[count[]] -0" variable="ignore">
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[count[]] -0" variable="ignore">
 <$list filter="[<__fieldName__>] -Empty">
 <$list filter="[<__fieldValue__>] -Empty">
 <<create-log-tiddler "set-field-value-create-bulk">>
-<$list filter="[subfilter{$:/plugins/kookma/commander/config/Targets}] +[!is[missing]] -[$fieldName$[$fieldValue$]]">
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[!is[missing]] -[$fieldName$[$fieldValue$]]">
 <$action-setfield $field=<<__fieldName__>> $value=<<__fieldValue__>> />
 <$macrocall $name="log-add-single-operation" msg="""field `$fieldName$` got a value""" tidItem=<<currentTiddler>> />
 </$list>

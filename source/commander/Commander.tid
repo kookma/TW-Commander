@@ -4,7 +4,6 @@ modified: 20190728184835933
 title: $:/Commander
 type: text/vnd.tiddlywiki
 
-\import [all[shadows+tiddlers]tag[$:/tags/Commander/Macro]]
 {{$:/plugins/kookma/commander/search/ui}}
 <<commander-slider title:"$:/plugins/kookma/commander/search/selection">>
 

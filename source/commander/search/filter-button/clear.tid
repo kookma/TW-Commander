@@ -5,8 +5,9 @@ tags: $:/tags/Commander/Search/FilterButton
 title: $:/plugins/kookma/commander/search/filter-button/clear
 type: text/vnd.tiddlywiki
 
-<$reveal state="$:/temp/commander" type="nomatch" text="">
+<$reveal state="$:/temp/commander/search-box" type="nomatch" text="">
 <$button class="tc-btn-invisible" tooltip="clear search box and selected tiddlers">
+<$action-setfield $tiddler="$:/temp/commander/search-box" $field="text" $value=""/>
 <$action-setfield $tiddler="$:/temp/commander" $field="text" $value=""/>
 <$action-setfield $tiddler="$:/temp/commander/selected-titles" $field="text" $value="{}"/>
 <$action-setfield $tiddler="$:/state/commander/snr/select-tiddler" $field="text" $value=""/><!-- SNR selection -->

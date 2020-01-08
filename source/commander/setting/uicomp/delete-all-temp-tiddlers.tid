@@ -6,7 +6,6 @@ tags: $:/tags/Commander/Setting
 title: $:/plugins/kookma/commander/setting/uicomp/delete-all-temp-tiddlers
 type: text/vnd.tiddlywiki
 
-\import [all[shadows+tiddlers]tag[$:/tags/Commander/Macro]]
 \define delete-all-temps()
 <$action-deletetiddler $filter="[search:title[$:/temp/commander/]]" />
 \end

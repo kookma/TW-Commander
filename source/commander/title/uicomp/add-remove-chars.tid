@@ -5,12 +5,11 @@ tags: $:/tags/Commander/TitleOps
 title: $:/plugins/kookma/commander/title/uicomp/add-remove-chars
 type: text/vnd.tiddlywiki
 
-\import [all[shadows+tiddlers]tag[$:/tags/Commander/Macro]]
 \define rngcat() [range[0,$(minchars)$]] -0 
 
 Number of characters
 <$select tiddler="$:/temp/commander/title-remove-chars"  default="0" class="cmd-sl">
-<$list filter="[subfilter{$:/plugins/kookma/commander/config/Targets}] +[!is[missing]] +[length[]] +[minall[]] +[subtract[1]] -Infinity" variable="minchars">
+<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[!is[missing]] +[length[]] +[minall[]] +[subtract[1]] -Infinity" variable="minchars">
 <$list filter=<<rngcat>> >
 <option value=<<currentTiddler>>><$view field='title'/></option>
 </$list>

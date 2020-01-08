@@ -6,7 +6,6 @@ tags: $:/tags/Commander/TitleOps
 title: $:/plugins/kookma/commander/title/uicomp/add-remove-prefix
 type: text/vnd.tiddlywiki
 
-\import [all[shadows+tiddlers]tag[$:/tags/Commander/Macro]]
 <$edit-text
 tiddler="$:/temp/commander/title-prefix"
 tag="input"
