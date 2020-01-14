@@ -1,15 +1,13 @@
 created: 20200102195320611
 description: some macro are not used REMOVE THEM
-modified: 20200107153408985
+modified: 20200106164544591
 tags: show-content $:/tags/Commander/Macro
 title: $:/plugins/kookma/commander/macros/definition
 type: text/vnd.tiddlywiki
 
-\define tempPath()        $:/temp/commander
+\define searchbox()    xx$:/temp/commander/search-box
+\define workingTag()   $:/tags/Commander/Working
+\define selectiveOps() xx$:/temp/commander/selective-operation
+\define logtidpath()   xx$:/temp/commander/logs/tid
 
-\define searchboxTid()    $(tempPath)$/search-box
-\define selectiveOpsTid() $(tempPath)$/selective-operation
-
-
-\define workingTag()      $:/tags/Commander/Working
-\define systemFieldsTid() $:/plugins/kookma/commander/config/systemfields
+\define systemFields() $:/plugins/kookma/commander/config/systemfields

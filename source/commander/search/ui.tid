@@ -1,6 +1,6 @@
 caption: Commander filter search
 created: 20190212055219117
-modified: 20200107141307496
+modified: 20200106143652064
 tags: task
 title: $:/plugins/kookma/commander/search/ui
 type: text/vnd.tiddlywiki
@@ -8,12 +8,12 @@ type: text/vnd.tiddlywiki
 \import $:/plugins/kookma/commander/macros/definition
 <!-- above statement is not required and only prevent this tiddler overwritten when this is opened by its own -->
 <div class="tc-search tc-advanced-search">
-Search via filter &nbsp;<$edit-text tiddler=<<searchboxTid>> type="search" tag="input" default="" placeholder="filter search e.g. [tag[myTag]]" focus={{$:/plugins/kookma/commander/config/AutoFocus}}/>
+Search via filter &nbsp;<$edit-text tiddler=<<searchbox>> type="search" tag="input" default="" placeholder="filter search e.g. [tag[myTag]]" focus={{$:/plugins/kookma/commander/config/AutoFocus}}/>
 <$list filter="[all[shadows+tiddlers]tag[$:/tags/Commander/Search/FilterButton]!has[draft.of]]">
 <$transclude/>
 </$list>
 <br>
-<$vars sfilter={{{ [<searchboxTid>get[text]] }}} >
+<$vars sfilter={{{ [<searchbox>get[text]] }}} >
 <small style="margin-left:17ch;"><i><$count filter="[subfilter<sfilter>has[title]]" /> matches </i></small>
 </$vars>
 <!-- pending xx 

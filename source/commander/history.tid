@@ -1,30 +1,15 @@
 created: 20190629100628757
-modified: 20200107152843186
+modified: 20200106172849149
 tags: 
 title: $:/plugins/kookma/commander/history
 type: text/vnd.tiddlywiki
 
-!! 2.0.2
-; Jan 7th, 2020
-* [NEW] The //Set Field Value// is smart to ignore tiddlers have not such field
-* [NEW] The //Replcae tag// is smart to ignore tiddlers have not such tag
-* [NEW] Rename field operation has been added
-* [FIXED] Inspect take cares of current search filter! It does not show tiddler from previous search and selection.
-* [NEW]
-
-!! 2.0.1
-; Jan 6th, 2020
+!! 2.0.0
+; Jan 5th, 2020
 * [NEW] commander-slider macro with default to open or closed behaviour
 * [NEW] the select tiddler is default to open
 * [NEW] the new field macro takes care of uppercase words and spaces. Spaces are converted to underscore(_) 
 * [NEW] set field value ONLY set new values to tiddler has the selected filed.
-
-!! 2.0.0
-; Jan 5th, 2020
-: A rewrite of commander 1.x, with the below objectives
-* [PLANED] Optimization the code and readability
-* [PLANED] Selective and non selective operation
-* [PLANED] Better documentation
 
 !! 1.4.0 --  issues fixed
 <<<

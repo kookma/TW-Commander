@@ -1,5 +1,5 @@
 created: 20190308151331101
-modified: 20200107061208241
+modified: 20200106061841535
 tags: show-content $:/tags/Commander/Macro
 title: $:/plugins/kookma/commander/compInspect/main
 type: text/vnd.tiddlywiki
@@ -18,11 +18,11 @@ Select tiddler &nbsp;<$macrocall $name=compSelect filter=<<__filter__>> stateTid
 &nbsp;&nbsp;
 <$reveal stateTitle=<<rvStateTid>> type="nomatch" text="edit">
 <$button class="tc-btn-invisible" setTitle=<<rvStateTid>> setTo="edit" tooltip="edit tiddler">{{$:/core/images/edit-button}}</$button>
-<$macrocall $name=compInspect-show-preview tiddler={{{ [<slStateTid>get[text]]+[subfilter<__filter__>] }}}  commonFields={{{ [<chStateTid>get[text]] }}}/>
+<$macrocall $name=compInspect-show-preview tiddler={{{ [<slStateTid>get[text]] }}}  commonFields={{{ [<chStateTid>get[text]] }}}/>
 </$reveal>
 <$reveal stateTitle=<<rvStateTid>> type="match" text="edit">
 <$button class="tc-btn-invisible" setTitle=<<rvStateTid>> setTo="" tooltip="confirm changes">{{$:/core/images/done-button}}</$button>
-<$macrocall $name=compInspect-edit-preview tiddler={{{ [<slStateTid>get[text]]+[subfilter<__filter__>] }}}  commonFields={{{ [<chStateTid>get[text]] }}}/>
+<$macrocall $name=compInspect-edit-preview tiddler={{{ [<slStateTid>get[text]] }}}  commonFields={{{ [<chStateTid>get[text]] }}}/>
 </$reveal>
 
 </$vars>

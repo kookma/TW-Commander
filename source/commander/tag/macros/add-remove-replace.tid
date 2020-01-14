@@ -1,5 +1,5 @@
 created: 20190212063435548
-modified: 20200107051135918
+modified: 20200106082120962
 tags: $:/tags/Commander/Macro show-content
 title: $:/plugins/kookma/commander/tag/macros/add-remove-replace
 type: text/vnd.tiddlywiki
@@ -35,21 +35,19 @@ type: text/vnd.tiddlywiki
 \end
 
 
-\define replace-tag-bulk(oldTag:"", newTag:"")
+\define replace-tag-bulk(oldTag:"Empty", newTag:"Empty")
 <$list filter="[subfilter<searchfilter>!is[missing]limit[1]]" variable=ignore>
-<$list filter="[<__oldTag__>!is[blank]]" variable=null>
-<$list filter="[<__newTag__>!is[blank]]" variable=null>
+<$list filter="[<__oldTag__>] -Empty" variable=null>
+<$list filter="[<__newTag__>] -Empty" variable=null>
 <<create-log-tiddler "replace-tag-bulk">>
-<$list filter="[subfilter<searchfilter>]">
-<$list filter="[<currentTiddler>tag<__oldTag__>]" variable=ignore
-  emptyMessage="""<$macrocall $name="log-add-single-operation" msg="//has not tag `$oldTag$`. Operation ignored.//" tidItem=<<currentTiddler>> /> """>
+<$list filter="[subfilter<searchfilter>!is[missing]tag<__oldTag__>]">
 <$fieldmangler>
 <$action-sendmessage $message="tm-add-tag" $param=<<__newTag__>> />
 <$action-sendmessage $message="tm-remove-tag" $param=<<__oldTag__>>  />
 </$fieldmangler>
 <$macrocall $name="log-add-single-operation" msg="""tag `$oldTag$` replaced with `$newTag$`""" tidItem=<<currentTiddler>> />
 </$list>
-</$list>
+<<title-selection-reset>>
 </$list>
 </$list>
 </$list>
