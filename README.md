@@ -42,3 +42,4 @@ Eeasy way single file (packaged version, see [manual installation](https://tiddl
 Client-Server installation (separate files)
 * for node.js (server version) download the commander folder from source folder and paste in your Tiddlywiki plugins folder
 * for local installation put the commander folder into your local plugins folder under your wiki folder
+ 
