@@ -1,7 +1,8 @@
 caption: Tiddler
 created: 20190212125319261
-modified: 20190728184415290
-tags: $:/tags/Commander
+list-before: $:/plugins/kookma/commander/title/ui
+modified: 20200109112518669
+tags: $:/tags/Commander show-content
 title: $:/plugins/kookma/commander/tiddler/ui
 type: text/vnd.tiddlywiki
 

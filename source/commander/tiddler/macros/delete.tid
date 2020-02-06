@@ -1,6 +1,6 @@
 created: 20190215195221625
-modified: 20190728184415293
-tags: $:/tags/Macro
+modified: 20200106144908277
+tags: show-content $:/tags/Commander/Macro
 title: $:/plugins/kookma/commander/tiddler/macros/delete
 type: text/vnd.tiddlywiki
 
@@ -9,12 +9,11 @@ type: text/vnd.tiddlywiki
 \end
 
 \define delete-tiddlers-selective-bulk()
-<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[count[]] -0" variable="ignore">
+<$list filter="[subfilter<searchfilter>limit[1]]" variable="ignore"><!-- at least searchfilter shall return one tiddler-->
 <<create-log-tiddler "delete-tiddler-selectively">>
-<$list filter="[[$:/temp/commander/selected-titles]indexes[]]" variable="Item">
+<$list filter="[subfilter<searchfilter>]" variable="Item">
 <$action-deletetiddler $tiddler=<<Item>> />
 <$macrocall $name="log-delete-selectively" item=<<Item>> />
 </$list>
-<<title-selection-reset>>
 </$list>
 \end

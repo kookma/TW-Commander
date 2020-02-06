@@ -1,6 +1,6 @@
 created: 20190315092752816
-modified: 20190728184415371
-tags: $:/tags/Macro
+modified: 20200112050525776
+tags: task $:/tags/Commander/Macro show-content
 title: $:/plugins/kookma/commander/macros/utility
 type: text/vnd.tiddlywiki
 
@@ -40,7 +40,7 @@ A new filter search has been detected, click on the search button to apply it.
 * Note
 ** `TidA="$:/temp/commander"`
 ** `TidB="$:/temp/commander/search-box"`
-* is-filterSeearch-newer-than-selectedTitles is called from $:/plugins/kookma/commander/ui/search
+* is-filterSeearch-newer-than-selectedTitles is called from $:/plugins/kookma/commander/search/ui
 
 ;display
 * gets a label and a text

@@ -1,7 +1,7 @@
-created: 20190308144706094
-modified: 20190728184415253
-tags: $:/tags/Macro
-title: $:/plugins/kookma/commander/compInspect/edit-preview
+created: 20200115050859257
+modified: 20200115074621707
+tags: show-content $:/tags/Commander/Macro
+title: $:/plugins/kookma/commander/inspect/comp/edit-preview
 type: text/vnd.tiddlywiki
 
 \define compInspect-edit-preview(tiddler, commonFields:"")
@@ -12,7 +12,7 @@ type: text/vnd.tiddlywiki
 <td class="tc-edit-field-value"><$link to=<<__tiddler__>> ><$text text=<<__tiddler__>> /></$link></td>
 </tr>
 <tr class="tc-edit-field"><td class="tc-edit-field-name">tags:</td>
-<td class="tc-edit-field-value"><$macrocall $name=compInspect-get-field tiddler=<<__tiddler__>>  field="tags" /></td>
+<td class="tc-edit-field-value">{{$tiddler$||$:/core/ui/EditTemplate/tags}}</td>
 </tr>
 <tr class="tc-edit-field"><td class="tc-edit-field-name">text:</td>
 <td class="tc-edit-field-value"><$macrocall $name=compInspect-get-field tiddler=<<__tiddler__>>  field="text" tag="textarea" /></td>

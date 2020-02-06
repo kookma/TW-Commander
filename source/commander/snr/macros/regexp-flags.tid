@@ -1,6 +1,6 @@
 created: 20190306182052441
-modified: 20190728184415340
-tags: $:/tags/Macro
+modified: 20200115084438009
+tags: show-content $:/tags/Commander/Macro
 title: $:/plugins/kookma/commander/snr/macros/regexp-flags
 type: text/vnd.tiddlywiki
 
@@ -24,7 +24,20 @@ type: text/vnd.tiddlywiki
   unchecked="characters"
 />&nbsp; whole words<br>
 
+<$checkbox 
+  tiddler="$:/state/commander/snr/unicode" 
+  field="text" 
+  checked="u" 
+  unchecked=""
+/>&nbsp; unicode<br>
+
 <br>
+
+<$radio
+  tiddler="$:/state/commander/snr/gm" 
+  field="text" 
+  value="">&nbsp; first match 
+</$radio><br>
 
 <$radio
   tiddler="$:/state/commander/snr/gm" 
@@ -41,7 +54,7 @@ type: text/vnd.tiddlywiki
 <$radio
   tiddler="$:/state/commander/snr/gm" 
   field="text" 
-  value="">&nbsp; first match 
+  value="mg">&nbsp; global multiline mode
 </$radio>
 
 </fieldset>

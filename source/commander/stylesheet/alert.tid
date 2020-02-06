@@ -1,5 +1,5 @@
 created: 20190725161822490
-modified: 20190728184415326
+modified: 20200113150854099
 tags: $:/tags/Stylesheet
 title: $:/plugins/kookma/commander/stylesheet/alert
 type: text/css
@@ -10,7 +10,8 @@ type: text/css
   margin-bottom: 1rem;
   border: 1px dotted gray;
   border-radius: 0.25rem;
-  color: #856404;
-  background-color: #fff3cd;
-  border-color: #ffeeba;
+  color: #0c5460;
+  background-color: #d1ecf1;
+  border-color: #bee5eb;
+	
 }

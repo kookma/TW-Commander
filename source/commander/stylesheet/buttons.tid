@@ -1,9 +1,10 @@
 created: 20190317080436103
-modified: 20190728184415324
+modified: 20200109032921272
 tags: $:/tags/Stylesheet
 title: $:/plugins/kookma/commander/stylesheet/buttons
 type: text/css
 
+/**
 .cmd-btn{
  font-size:0.85em;
  font-size:300;
@@ -11,4 +12,9 @@ type: text/css
  background-color: #d8d8d8;
  padding: 3px 8px 3px 8px;
  border: 1px solid #a1a1a1;
+}
+**/
+
+.cmd-btn-wd{
+	width:20ch;
 }

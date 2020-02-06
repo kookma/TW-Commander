@@ -1,7 +1,7 @@
 created: 20190308070953891
-modified: 20190728184415249
-tags: $:/tags/Macro
-title: $:/plugins/kookma/commander/compInspect/show-preview
+modified: 20200113152143900
+tags: show-content $:/tags/Commander/Macro
+title: $:/plugins/kookma/commander/inspect/comp/show-preview
 type: text/vnd.tiddlywiki
 
 \define compInspect-show-preview(tiddler, commonFields:"")

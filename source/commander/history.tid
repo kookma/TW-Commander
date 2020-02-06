@@ -1,50 +1,107 @@
 created: 20190629100628757
-modified: 20191030082225791
+modified: 20200206065542246
 tags: 
 title: $:/plugins/kookma/commander/history
 type: text/vnd.tiddlywiki
 
+!! 2.0.8
+; Feb 6th, 2020
+* [FIXED] Commander shows results from its temporary tiddlers. This fix excluded all tiddlers started with `$:/temp/commander` prefix
+
+!! 2.0.7
+; Jan 17th, 2020
+* [NEW] Export tiddler supports logging
+* [NEW] Documentation added to demo
+* [NEW] Search filters can be edited from Settings tab.
+
+!! 2.0.6
+; Jan 15th, 2020
+* [NEW] Export tiddler supports multiple export tags
+* [NEW] Inspect tiddler has got the standard tag-picker to manupulate tags in edit mode
+
+
+!! 2.0.5
+; Jan 13th, 2020
+* [NEW] Custom export button
+* [NEW] add a export tag to exported tiddlers (the main tiddlers remain intact)
+* [NEW] input the desired filename for exported tiddlers
+
+
+!! 2.0.4
+; Jan 10th, 2020
+* [NEW] Commander search can do combined search (both filter and standard search)
+* [NEW] The minimum length of keywords can be set through setting tab
+
+
+!! 2.0.3
+; Jan 9th, 2020
+* [NEW] The template tiddler has got an edit button to directly edit it from create tiddler tab
+* [NEW] The create bulk tiddler can add multiple fileds at the same time
+* [NEW] The new add fields can add multiple fields at the same time
+* [FIXED] The new tiddler macros check the inputs (e.g. baseTitle not empty) before performing any operation
+
+!! 2.0.2
+; Jan 7th, 2020
+* [NEW] The //Set Field Value// is smart to ignore tiddlers have not such field
+* [NEW] The //Replcae tag// is smart to ignore tiddlers have not such tag
+* [NEW] Rename field operation has been added
+* [FIXED] Inspect take cares of current search filter! It does not show tiddler from previous search and selection.
+
+!! 2.0.1
+; Jan 6th, 2020
+* [NEW] commander-slider macro with default to open or closed behaviour
+* [NEW] the select tiddler is default to open
+* [NEW] the new field macro takes care of uppercase words and spaces. Spaces are converted to underscore(_) 
+* [NEW] set field value ONLY set new values to tiddler has the selected filed.
+
+!! 2.0.0
+; Jan 5th, 2020
+: A rewrite of commander 1.x, with the below objectives
+* [PLANED] Optimization the code and readability
+* [PLANED] Selective and non selective operation
+* [PLANED] Better documentation
+
 !! 1.4.0 --  issues fixed
-<<<
+
 ; 30th October, 2019
 * [FIXED] issue in compSelective as it sorted the results. Now the sort filter operator removed.
-<<<
+
 
 !! 1.3.0 --  integration with relink plugin
-<<<
+
 ; 12th September, 2019
 * [NEW] all renaming tiddlers operation supports update titles in //list//, //tags//
 * [NEW] if [[relink|https://flibbles.github.io/tw5-relink/]] is installed Commander will use it to update tile in all tiddlers fields, links, transclusions, filters.
 * [FIXED] Help was improved to address relinking
-<<<
+
 
 !! 1.2.4 --  new rename method
-<<<
+
 ; 7th September, 2019
 * [NEW] use `tm-rename-tiddler` for handling tiddler renaming
-<<<
+
 
 !! 1.2.3 --  issues fixed
-<<<
+
 ; 16th August 2019
 * [FIXED] the description for button under Tools sidebar menu
-<<<
+
 
 !! 1.2.2 --  issues fixed
-<<<
+
 ; 31st July 2019
 * [FIXED] the tag operation issue has beed fixed
 * [FIXED] filters for replace tag, add-remove tag have been updated. Instead of `[<__oldTag__>tagging]]` the new `tag<__oldTag__>` has been used. Seems there is bugs with old filter.
-<<<
+
 
 !! 1.2.1 --  issues fixed
-<<<
+
 ; 27th July 2019
 * [FIXED] minore issue in set field value
-<<<
+
 
 !! 1.2.0 --  new release
-<<<
+
 ; 24th July 2019
 * [NEW] button added to page control
 * [NEW] add new filter for delete TEMP and STATE
@@ -53,57 +110,58 @@ type: text/vnd.tiddlywiki
 * [FIXED] correct search UI buttons order
 * [FIXED] improved documentation, new sections have been added
 * [FIXED] the tab colors removed
-<<<
+
 
 !! 1.1.2 -- final release
-<<<
+
 ; 29th June 2019
 * [FIXED] add license, readme, history
 * [FIXED] add $:/Commander to list of plugin tiddlers
-<<<
+
 
 !! 1.1.1 -- release candidate
-<<<
+
 ; 5th April 2019
 * [FIXED] All `!important` from css have been removed. 
 * [FIXED] New css prefix is used for all css. This is `cmd-` stands for commander
 * [FIXED]: Help tab extended to cover this partially
 * [NEW] SNR, replace all button has got confirmation! before action you need to confirm replace all.
 * [NEW] The component compConfirmDelete renamed to compConfirmAction to cope with more use cases!
-<<<
+
 
 
 !! 31st March 2019
-<<<
+
 ; Big change: Tiddler Commander development moved to ~ThirdFlow
 # NEW: Under Thirdflow, a realease and a demo is created on each update
 # NEW: Release number is now started from 1.0.0 as this is a stable plugin
 # FIXED: Based on Mario comments the CSS prefixes changed to cmd- to prevent conflict with the current prefixes
-<<<
+
 
 !! 24th March 2019
-<<<
+
 * New: Difftetx cleanup setting added. Now it is possible to select among //none//, //semantic// and //efficient//  optional post-processing should be applied to the diffs processing.
 * Added: Help on shadow tiddlers processing
 * Fixed: Minor issues fixed
-<<<
+
 
 !! 17th March 2019
-<<<
+
 ; Commander 0.0.14
 * New button style
 ** all components were also updated
 * Change the range in create tiddlers from 1:1:19, 20:5:50, and 50:100
-<<<
+
 
 !! 14th March 2019
-<<<
-<<commander-alert """
+
 ''Critical change'': Tiddler Commander search now needs two steps
 
 * Enter a filter expression in the filter search box
 * Click the search icon right of search box to apply the search criteria to enable Commander batch operation^^1^^
-""">>
+
+---
+
 * FIXED: Search and Select tiddlers now are seated together
 * NEW: numberof tiddlers matches and selected are shown
 * New: Help tab was added
@@ -114,10 +172,10 @@ type: text/vnd.tiddlywiki
 
 # The reason is, when filter search is changed, the selected tiddlers are still there! So, it needs to clear the previous selection on new search criteria!
 </small>
-<<<
+
 
 !! 13th March 2019
-<<<
+
 * New : Inspect
 ** View selected tiddler with their fileds
 ** Scroll in selected tiddlers
@@ -126,18 +184,18 @@ type: text/vnd.tiddlywiki
 
 Acknowledgement:
 Special thanks goes to ''Ton Gerner'' for his great script on view fileds.
-<<<
+
 
 !! 8th March 2019
-<<<
+
 * New search-n-replace (SNR) added
 * SNR can search and replace not only in a single tiddler but also in bulk of tiddlers
 * Several issues fixed
 * Logging is active for all operatiosn
-<<<
+
 
 !! 3rd March 2019
-<<<
+
 * New: selective operation
 ** select all/ select none/ optionally select tiddlers
 * New: logging all operations
@@ -145,26 +203,26 @@ Special thanks goes to ''Ton Gerner'' for his great script on view fileds.
 * New: old fields, old tags are selected from a drop down list
 
 * Text operation disabled and will be added in the next update. It is still buggy
-<<<
+
 
 !! 28th February 2019
-<<<
+
 *NEW- create bulk tiddlers and bulk tiddlers with template has been merged in one tab
-<<<
+
 
 !! 24th February 2019
-<<<
+
 * Search and replace 
 ** works for changing characters, words, ...
 ** retains formatting
 ** cannot distiguish whole words (you need to add spaces around the word)
 
 Many thanks to BTC for his great help in this part.
-<<<
+
 
 
 !! 22nd February 2019
-<<<
+
 * Logging
 ** Commander logs some operations
 *** Create tiddlers
@@ -179,43 +237,43 @@ Many thanks to BTC for his great help in this part.
 
 * Main issues
 ** Search and replace in tiddlers remove formatting 
-<<<
+
 
 
 !! 21st February 2019
-<<<
+
 * Search and replcae in tiddler text filed
 ** This is in progress feature
 ** This does not support the whole words, casesensitive search and replace
-<<<
+
 
 !! 18th February 2019
-<<<
+
 * Fixed: handling missing tiddlers added
 * New: remove chars from the title was added
 * Fixed: a specified height is used in ui to prevent collapsing
-<<<
+
 
 !! 14th February 2019
-<<<
+
 * New: bulk tiddler creation using templates
 * New: remove fields using drop down menu
 * New: preset search filter added
 * New: save search filter added
 * Fixed: empty suffix/prefix does not delete tiddlers anymore
 * Fixed: prevent all overwrittings (issue: you cannot force overwriting)
-<<<
+
 
 !! 13th February 2019
-<<<
+
 * Fixed: remove suffix not working
 * New: bulk tiddler created has got new name format
 * New: added range and select widgets for "create bulk tiddlers"
 * New: added delete tiddlers at once operation
-<<<
+
 
 !! 12th February 2019
-<<<
+
 * Title operation
 ** add/remove prefix
 ** add/remove suffix
@@ -231,4 +289,4 @@ Many thanks to BTC for his great help in this part.
 * Tids (Tiddler operation)
 ** delete tiddlers
 ** create bulk tiddlers
-<<<
+

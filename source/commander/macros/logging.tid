@@ -1,6 +1,6 @@
 created: 20190221163406469
-modified: 20190728184415378
-tags: $:/tags/Macro
+modified: 20200112074905447
+tags: task $:/tags/Commander/Macro show-content
 title: $:/plugins/kookma/commander/macros/logging
 type: text/vnd.tiddlywiki
 
@@ -20,7 +20,7 @@ caption=<<__msg__>>
 \end
 
 \define log-add-single-operation(msg:"commander operation", tidItem:"no item")
-<$action-setfield $tiddler={{$:/state/commander/log-tiddler}} $index=<<__tidItem__>> $value="""$msg$""" />
+<$action-setfield $tiddler={{$:/state/commander/log-tiddler}} $index=<<__tidItem__>> $value=<<__msg__>> />
 \end
 
 

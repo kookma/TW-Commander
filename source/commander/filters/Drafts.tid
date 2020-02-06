@@ -1,7 +1,7 @@
 created: 20190214135512125
 description: {{$:/language/Filters/Drafts}}
 filter: [has[draft.of]sort[title]]
-modified: 20190728184415233
+modified: 20200102171317272
 tags: $:/tags/Commander/Filter
 title: $:/plugins/kookma/commander/filters/Drafts
 type: text/vnd.tiddlywiki

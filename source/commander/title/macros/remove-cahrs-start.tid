@@ -1,11 +1,11 @@
 created: 20190218214608685
-modified: 20190907181618430
-tags: $:/tags/Macro
+modified: 20200112164410886
+tags: show-content $:/tags/Commander/Macro
 title: $:/plugins/kookma/commander/title/macros/remove-cahrs-start
 type: text/vnd.tiddlywiki
 
 \define suffix-actions()
-<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[suffix<sfx>]" variable="item">
+<$list filter="[subfilter<searchfilter>]+[suffix<sfx>]" variable="item">
   <$action-sendmessage $message="tm-rename-tiddler" from=<<item>> to=<<sfx>> />
   <$macrocall $name="log-add-single-operation" msg="""characters removed from start. New title [[$(sfx)$]]""" tidItem=<<item>> />
 </$list>
@@ -16,7 +16,7 @@ type: text/vnd.tiddlywiki
 
 \define generate-suffixes(n:"0")
 <$list filter="[<__n__>] -0" variable=null>
-<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[has[title]]" variable="item">
+<$list filter="[subfilter<searchfilter>has[title]]" variable="item">
 <$list filter="""[<item>split[]rest[$n$]join[]trim[]]""" variable="newTitle">
 <$text text=<<makelink>>/>
 </$list>
@@ -25,19 +25,18 @@ type: text/vnd.tiddlywiki
 \end
 
 \define remove-chars-from-begining-tiltle-bulk(num:"0")
-<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[count[]] -0" variable="ignore">
+<$list filter="[subfilter<searchfilter>!is[missing]limit[1]]" variable=ignore><!--check if filter is empty -->
 <$list filter="[<__num__>] -0" variable=null>
 <<create-log-tiddler "remove-chars-from-begining-tiltle-bulk">>
 <$vars n=<<__num__>> >
 <$wikify text="""<<generate-suffixes n:"$num$">>""" name="outputs">
  <$list filter="[subfilter<outputs>]" variable="sfx">
- <$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[suffix<sfx>limit[2]count[]regexp[2]]" 
+ <$list filter="[subfilter<searchfilter>]+[suffix<sfx>limit[2]count[]regexp[2]]" 
     emptyMessage=<<suffix-actions>> variable="cnt">
  </$list>
  </$list>
 </$wikify>
 </$vars>
-<<title-selection-reset>>
 </$list>
 </$list>
 \end

@@ -1,8 +1,8 @@
 caption: Search and replace
 created: 20190220211138573
 icon: $:/core/images/gitter
-modified: 20190728184415328
-tags: $:/tags/Commander/SnrOps
+modified: 20200107072126171
+tags: $:/tags/Commander/SnrOps show-content
 title: $:/plugins/kookma/commander/snr/uicomp/replace-text
 type: text/vnd.tiddlywiki
 

@@ -1,11 +1,11 @@
 created: 20190307164924193
-modified: 20190728184415345
-tags: $:/tags/Macro
+modified: 20200116063814512
+tags: show-content $:/tags/Commander/Macro
 title: $:/plugins/kookma/commander/snr/macros/actions
 type: text/vnd.tiddlywiki
 
 \define regexp-flags()
-{{$:/state/commander/snr/gm}}{{$:/state/commander/snr/case-sensitive}}
+{{$:/state/commander/snr/gm}}{{$:/state/commander/snr/case-sensitive}}{{$:/state/commander/snr/unicode}}
 \end
 
 \define snr-ui-show-diffs()
@@ -81,9 +81,9 @@ different
 \end
 
 \define search-replace-in-field-bulk()
-<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[count[]] -0" variable="ignore">
+<$list filter="[subfilter<searchfilter>!is[missing]limit[1]]" variable=ignore><!--check if filter is empty -->
 <<create-log-tiddler "SNR operation">>
-<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[!is[missing]]">
+<$list filter="[subfilter<searchfilter>!is[missing]]" >
   <$macrocall 
     $name="search-replace-in-tiddler-field"
     tiddler=<<currentTiddler>> 
@@ -112,7 +112,7 @@ Replace?
 </$button>&nbsp;
 <!-- replace in bulk tiddler with confirmation -->
 <$macrocall $name="compConfirmAction"
-countFilter="[[$:/temp/commander/selected-titles]indexes[]]"
+countFilter=<<searchfilter>>
 actionMacro="search-replace-in-field-bulk"
 stateTiddler="$:/state/commander/SelectiveReplaceAllDropdown"
 confirmMessage="Are you sure you wish to replace text in" 

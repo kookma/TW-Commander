@@ -1,37 +1,40 @@
 caption: Create tiddlers
 created: 20190213193004029
-modified: 20190728184415288
-tags: $:/tags/Commander/TiddlerOps
+modified: 20200116064113164
+tags: $:/tags/Commander/TiddlerOps show-content
 title: $:/plugins/kookma/commander/tiddler/uicomp/create-tiddlers
 type: text/vnd.tiddlywiki
 
-<span style="display:inline-block;width:10ch;">Base title &nbsp;</span>
+<label class="kk-cmd-label">Base title</label>
 <$edit-text 
  tiddler="$:/temp/commander/tiddler-base-title" 
- tag="input" 
- default=""
+ tag="input" default=""
  placeholder=" base title" 
- class="cmd-txt-area"/> &nbsp;
-<br>
+ class="cmd-txt-area"/><br>
 
-<span style="display:inline-block;width:10ch;">Tags &nbsp;</span>
+<label class="kk-cmd-label">Tags</label>
 <$edit-text 
  tiddler="$:/temp/commander/tiddler-base-tags" 
- tag="input" 
- default=""
+ tag="input" default=""
  placeholder=" tags" 
  class="cmd-txt-area"
 /> 
+
+<!-- add interface for adding fields -->
+<$macrocall $name="add-more-fields-selective-ui"
+  datafieldsTid="$:/temp/commander/tiddler/datafields/createTiddler"
+  stateTiddler="$:/state/commander/tiddler-addfields-status" />
 
 
 <$checkbox 
  tiddler="$:/state/commander/tiddler-template-status" 
  field="text" 
- checked="use-template" 
- unchecked="no-template"
- default="no-template"
-> Use template?</$checkbox> &nbsp;
-<$reveal type="match" text="use-template" default={{$:/state/commander/tiddler-template-status}}>
+ checked="use-template" unchecked="no-template"
+ default="no-template"> 
+ Use template?
+</$checkbox>
+
+<$reveal type="match" state="$:/state/commander/tiddler-template-status" text="use-template" default="no-template" >
 Template
 <$select tiddler="$:/temp/commander/template-newtiddler"  
  default="$:/plugins/kookma/commander/template/base">
@@ -41,31 +44,37 @@ Template
 </option>
 </$list>
 </$select>
+<$button class="tc-btn-invisible"> {{$:/core/images/edit-button}}
+ <$action-sendmessage $message="tm-edit-tiddler" 
+   $param={{{ [[$:/temp/commander/template-newtiddler]get[text]]~[[$:/plugins/kookma/commander/template/base]] }}}   />
+</$button>
+
 </$reveal>
 
 Number of tiddlers  &nbsp;
 <$select tiddler="$:/temp/commander/tiddler-base-number"  default='1'>
-<$list filter='[range[1,19, 1]] [range[20,50, 5]] [range[60,100,10]]'>
+<$list filter='[range[1,19, 1]] [range[20,50, 5]] [range[60,100,10]] [range[200,500,100]]'>
 <option value=<<currentTiddler>>><$view field='title'/></option>
 </$list>
 </$select>
 
-<$reveal type="match" text="use-template" default={{$:/state/commander/tiddler-template-status}}>
-<$button class="cmd-btn"> Create tiddlers
-<$macrocall $name="bulk-tiddler-with-template-creator"
-baseTitle={{$:/temp/commander/tiddler-base-title}}
-baseTags={{$:/temp/commander/tiddler-base-tags}}
-numberTiddler={{$:/temp/commander/tiddler-base-number}}
-template={{$:/temp/commander/template-newtiddler}}
-/> </$button>
+<!-- call macros for create tiddlers -->
+<$reveal type="nomatch" state="$:/state/commander/tiddler-template-status" text="use-template" default="no-template">
+ <$button class="cmd-btn cmd-btn-wd"> Create tiddlers
+  <$macrocall $name="bulk-tiddler-creator"
+   baseTitle={{$:/temp/commander/tiddler-base-title}}
+   baseTags={{$:/temp/commander/tiddler-base-tags}}
+   datafieldsTid="$:/temp/commander/tiddler/datafields/createTiddler"
+   numberTiddler={{$:/temp/commander/tiddler-base-number}} />
+ </$button>
 </$reveal>
-
-<$reveal type="nomatch" text="use-template" default={{$:/state/commander/tiddler-template-status}}>
-<$button class="cmd-btn"> Create tiddlers
-<$macrocall $name="bulk-tiddler-creator"
-baseTitle={{$:/temp/commander/tiddler-base-title}}
-baseTags={{$:/temp/commander/tiddler-base-tags}}
-numberTiddler={{$:/temp/commander/tiddler-base-number}}
-/>
-</$button>
+<$reveal type="match" state="$:/state/commander/tiddler-template-status" text="use-template" default="no-template">
+ <$button class="cmd-btn cmd-btn-wd"> Create tiddlers
+  <$macrocall $name="bulk-tiddler-with-template-creator"
+   baseTitle={{$:/temp/commander/tiddler-base-title}}
+   baseTags={{$:/temp/commander/tiddler-base-tags}}
+   datafieldsTid="$:/temp/commander/tiddler/datafields/createTiddler"
+   numberTiddler={{$:/temp/commander/tiddler-base-number}}
+   template={{$:/temp/commander/template-newtiddler}}/>
+ </$button>
 </$reveal>

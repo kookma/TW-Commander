@@ -1,6 +1,6 @@
 created: 20190212125920722
-modified: 20190728184415295
-tags: $:/tags/Macro
+modified: 20200109155203731
+tags: $:/tags/Commander/Macro show-content
 title: $:/plugins/kookma/commander/tiddler/macros/create
 type: text/vnd.tiddlywiki
 
@@ -8,46 +8,52 @@ type: text/vnd.tiddlywiki
 <$action-setfield $tiddler={{$:/state/commander/log-tiddler}} $index="$(newTitle)$" $value="$msg$" />
 \end
 
-\define bulk-tiddler-creator(baseTitle, baseTags, numberTiddler:"1")
+\define bulk-tiddler-creator(baseTitle, baseTags, datafieldsTid, numberTiddler:"1")
+<$list filter="[<__baseTitle__>!is[blank]]" variable=ignore>
 <<create-log-tiddler "bulk-tiddler-creator">>
 <$list filter="[range[9]addprefix[00]] [range[10,99]addprefix[0]] [range[100,500]] +[limit<__numberTiddler__>]"  variable="L1">
 <$list filter="[<__baseTitle__>addsuffix<L1>]" variable="newTitle">
 <$list filter="[<newTitle>]  -[has[title]]" variable="ignore" emptyMessage=<<log-create>> >
 <$action-createtiddler $basetitle=<<newTitle>>   tags=<<__baseTags__>>  /> 
+<$vars datafieldsTid=<<__datafieldsTid__>> >
+<<add-bulk-fields>>
+</$vars>
 <<log-create "Tiddler created">>
+</$list>
 </$list>
 </$list>
 </$list>
 \end
 
-\define oneTid-with-template(myTitle, myTags, myTemplate)
-<$tiddler tiddler=<<__myTitle__>> >
- <$action-setfield  
-   $tiddler=<<__myTemplate__>> 
-   title=<<currentTiddler>>   />   
+\define oneTid-with-template()
+<$tiddler tiddler=<<newTitle>> >
+ <$action-setfield  $tiddler=<<myTemplate>> title=<<currentTiddler>> />   
  <$fieldmangler>
-  <$list filter="[enlist<__myTags__>]" variable=newTag>
+  <$list filter="[enlist<myTags>]" variable=newTag>
     <$action-sendmessage $message="tm-add-tag" $param=<<newTag>> />
-  </$list>
+  </$list><!--next remove extra tag used by template from new created tiddler-->
   <$action-sendmessage $message="tm-remove-tag" $param="$:/tags/Commander/Template" />
 </$fieldmangler>
 </$tiddler>
 \end
 
 
-\define bulk-tiddler-with-template-creator(baseTitle, baseTags, numberTiddler:"1", template:"$:/plugins/kookma/commander/template/base")
+\define bulk-tiddler-with-template-creator(baseTitle, baseTags, datafieldsTid, numberTiddler:"1", template:"")
+<$list filter="[<__baseTitle__>!is[blank]]" variable=ignore>
 <<create-log-tiddler "bulk-tiddler-creator with template">>
+<$vars datafieldsTid=<<__datafieldsTid__>>
+       myTags=<<__baseTags__>> 
+       myTemplate=<<__template__>> >
 <$list filter="[range[9]addprefix[00]] [range[10,99]addprefix[0]] [range[100,500]] +[limit<__numberTiddler__>]"  variable="L1">
 <$list filter="[<__baseTitle__>addsuffix<L1>]" variable="newTitle">
-<$list filter="[<newTitle>]  -[has[title]]" variable="ignore" emptyMessage=<<log-create>>>
-<$macrocall $name="oneTid-with-template" 
- myTitle=<<newTitle>> 
- myTags=<<__baseTags__>> 
- myTemplate=<<__template__>>
- />
+<$list filter="[<newTitle>!has[title]]" variable="ignore" emptyMessage=<<log-create>> >
+ <<oneTid-with-template>>
+ <<add-bulk-fields>>
  <<log-create "Tiddler created">>
 </$list>
 </$list>
+</$list>
+</$vars>
 </$list>
 \end
 

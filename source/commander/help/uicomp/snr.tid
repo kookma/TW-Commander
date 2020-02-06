@@ -1,15 +1,17 @@
 caption: Search-n-Replace
 created: 20190307104654008
-list-after: $:/plugins/kookma/commander/help/uicomp/relink
-modified: 20190912053039887
+modified: 20200116075750255
 tags: $:/tags/Commander/Help
 title: $:/plugins/kookma/commander/help/uicomp/snr
 type: text/vnd.tiddlywiki
 
 !! Search and replace using Snr
-<<<
-* Enter a search filter in ''Filter search'' box like `[tag[myTag]]`
+Snr stands for search and replace, is a powerful tool uses regular expression for searching all fields and lets replace chars, words, phrases with new values.
+
+!! How to use
+* Enter a search filter or keywords in ''Combo search'' box like `[tag[myTag]]` or `concept`
 * Use ''Select tiddlers'' for the resulting list to identify which specific tiddlers to do a Snr operation on
+** If selective operation is unchecked, all tiddlers from step one will be included in Snr operation.
 * From ''Tiddler title'' drop down menu select a tiddler
 * From ''Field name'' drop down menu select a tiddler field like `text`
 ** all fileds even `title` can be selected
@@ -18,9 +20,10 @@ type: text/vnd.tiddlywiki
 * Check the ''Differences'' and if you are satisfied with the result, press the `Replace?` button
 * You can press `Replace all?` if you want to search and replace in all selected tiddlers
 
-<<commander-alert """''Important'': The `Replace all?` lets you to search and replace in all selected tiddlers at once! It is possible to Snr in `title` filed!""">>
-<<<
+;Remarks
+: The `Replace all?` lets you to search and replace in all selected tiddlers at once! It is possible to Snr in `title` filed!
 
+<$list filter="[[snr.png]is[tiddler]]"><<image-pretty img:"snr.png" width:"60%" align:"center" caption:"Fig 1. Search and replace using regular expression">></$list>
 
 !! Special characters
 <<<

@@ -1,32 +1,32 @@
 caption: Remove chars
 created: 20190217092719245
-modified: 20190728184415268
-tags: $:/tags/Commander/TitleOps
+list-after: $:/plugins/kookma/commander/title/uicomp/add-remove-suffix
+modified: 20200115043712297
+tags: $:/tags/Commander/TitleOps show-content
 title: $:/plugins/kookma/commander/title/uicomp/add-remove-chars
 type: text/vnd.tiddlywiki
 
 \define rngcat() [range[0,$(minchars)$]] -0 
 
-Number of characters
+<label style="width:30ch;">Number of chars</label>
 <$select tiddler="$:/temp/commander/title-remove-chars"  default="0" class="cmd-sl">
-<$list filter="[[$:/temp/commander/selected-titles]indexes[]] +[!is[missing]] +[length[]] +[minall[]] +[subtract[1]] -Infinity" variable="minchars">
+<$list filter="[subfilter<searchfilter>length[]minall[]subtract[1]] -Infinity" variable="minchars">
 <$list filter=<<rngcat>> >
 <option value=<<currentTiddler>>><$view field='title'/></option>
 </$list>
 </$list>
-</$select>&nbsp; 
+</$select><br>
 
-<$button class="cmd-btn"> First n chars
+<$button class="cmd-btn cmd-btn-wd"> First n characters
 <$macrocall 
  $name="remove-chars-from-begining-tiltle-bulk" 
- num={{$:/temp/commander/title-remove-chars}} 
-/>
+ num={{$:/temp/commander/title-remove-chars}} />
 </$button>
-<$button class="cmd-btn"> Last n chars
+
+<$button class="cmd-btn cmd-btn-wd"> Last n characters
 <$macrocall 
  $name="remove-chars-from-end-tiltle-bulk" 
- num={{$:/temp/commander/title-remove-chars}} 
-/>
+ num={{$:/temp/commander/title-remove-chars}} />
 </$button>
 
 
