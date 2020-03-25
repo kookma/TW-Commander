@@ -1,8 +1,8 @@
 caption: Rename fields
 created: 20200107052908832
 list-after: $:/plugins/kookma/commander/field/uicomp/remove-fields
-modified: 20200109083727777
-tags: show-content $:/tags/Commander/FieldOps
+modified: 20200325055328499
+tags: $:/tags/Commander/FieldOps
 title: $:/plugins/kookma/commander/field/uicomp/rename-fields
 type: text/vnd.tiddlywiki
 

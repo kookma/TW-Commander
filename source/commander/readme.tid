@@ -1,23 +1,24 @@
-created: 20190212050942506
-modified: 20200116041705141
+created: 20200324061906254
+modified: 20200325053332573
 tags: 
 title: $:/plugins/kookma/commander/readme
 type: text/vnd.tiddlywiki
 
-Tiddler Commander, in short ''Commander'' is a unique tool for batch operations on tiddlers. 
+; Tiddler Commander
+Tiddler Commander, in short ''Commander'' is a unique tool for batch operations on tiddlers. Commander has the below features
 
-For help and instruction on usage, open [[Commander|$:/plugins/kookma/commander/help/ui]] help tab.
+* Bulk tiddler creation/deletion
+* Combo search to filter and select tiddlers
+* Title operation: add, remove prefixes and suffixes, also remove cahras form begining and end of title (on renaming tiddlers, [[relink|$:/plugins/kookma/commander/help/uicomp/relink]] can be used to update title in other tiddlers)
+* Tag operation: add, remove, replace
+* Field operation: add, remove, rename, and set field value
+* SNR, search and replace in all fields including text, tags, //title//, and common fields
+* Inspect, to review and inspect tiddlers in one place, scroll among them and edit all fields (including common fields), tags, text (title is an exception!)
+* Log, create logs of all operations
+* Search, //save and load// any combination of filter search
 
-For detailed docummention go to [[Demo page|https://kookma.github.io/TW-Commander/]]
+; Code and demo
+For learning plugin features, syntax, tutorial and examples see the plugin demo and code pages
 
-
-!! References
-; Project code and demo
-* [[GitHub demo page|https://github.io/kookma/TW-Commander]] 
-* [[Tiddlyspot demo page|http://commander.tiddlyspot.com/]] (only for beta and trails)
-* [[GitHub code page|https://github.com/kookma/TW-Commander]]
-
-;Tiddler Commander at Tiddlywiki Google forum
-* [[Initial announcement|https://groups.google.com/d/msg/tiddlywiki/BxJsWuae-Uc/JapAx4mtBgAJ]]
-* [[Beta releases|https://groups.google.com/d/msg/tiddlywiki/w9Bv-WulKw8/CYf9D4H6BgAJ]]
-* [[Release candidate|https://groups.google.com/d/msg/tiddlywiki/Zw3F3iRtggA/qX2uWiBJBgAJ]]
+* Demo: https://kookma.github.io/TW-Commander/
+* Code: https://github.com/kookma/TW-Commander

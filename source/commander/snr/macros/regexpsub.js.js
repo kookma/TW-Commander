@@ -2,17 +2,15 @@
 created: 20190214160253135
 type: application/javascript
 title: $:/plugins/kookma/commander/snr/macros/regexpsub.js
-modified: 20200107061558629
+modified: 20200307092210323
 module-type: macro
-description: Developed by Mark S
 
 Make regular expression substitutions
-
+Developed by Mark S
 \*/
 (function(){
 
 /*jslint node: true, browser: true */
-/*global $tw: false */
 "use strict";
 
 exports.name = "regexpsub";
@@ -22,7 +20,7 @@ exports.params = [
 	{name: "replaceValue"},
 	{name: "sourceText"},
 	{name: "flags"},
-    {name: "wholeWords"}
+  {name: "wholeWords"}
 ];
 
 /*
@@ -38,10 +36,9 @@ exports.run = function(searchValue, replaceValue, sourceText, flags = "gi", whol
     } else{
     searchText = searchValue;
     }
+		
     searchText = new RegExp(searchText, flags);
-
-	
-	return sourceText.replace(searchText,replaceValue);
+    return sourceText.replace(searchText,replaceValue);
 
   } 
   catch(err) { 

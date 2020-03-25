@@ -1,11 +1,4 @@
-created: 20190725161822490
-modified: 20200113150854099
-tags: $:/tags/Stylesheet
-title: $:/plugins/kookma/commander/stylesheet/alert
-type: text/css
-
 .commander-alert {
-  position: relative;
   padding: 0.75rem 1.25rem;
   margin-bottom: 1rem;
   border: 1px dotted gray;

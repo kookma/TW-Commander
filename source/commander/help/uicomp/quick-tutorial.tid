@@ -1,7 +1,7 @@
 caption: Quick tutorial
 created: 20190314050138754
-modified: 20200116041452738
-tags: $:/tags/Commander/Help doc
+modified: 20200325092740142
+tags: $:/tags/Commander/Help
 title: $:/plugins/kookma/commander/help/uicomp/quick-tutorial
 type: text/vnd.tiddlywiki
 
@@ -23,7 +23,7 @@ type: text/vnd.tiddlywiki
 ** Multiple batch operations can be done on the same set (unless you change something in the search criteria)
 ** Sometimes it is useful to use an intermediate batch to help, like tag tiddlers with a "working" tag, using multiple searches, then then use the "working" tag to apply a batch operation to
 
-<<commander-alert """''Note'': For good operation a tiddler width of 800px is recommended. You can also use //Sidebar layout// as `Fluid story`. """>>
+<div class="commander-alert">''Note'': For good operation a tiddler width of 800px is recommended. You can also use //Sidebar layout// as `Fluid story`.</div>
 
 
 For detailed docummention go to [[Demo page|https://kookma.github.io/TW-Commander/]]

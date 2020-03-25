@@ -2,7 +2,7 @@ caption: Setting
 created: 20190214140835173
 icon: $:/core/images/options-button
 list-after: $:/plugins/kookma/commander/inspect/ui
-modified: 20200107061652910
+modified: 20200324070652760
 tags: $:/tags/Commander
 title: $:/plugins/kookma/commander/setting/ui
 type: text/vnd.tiddlywiki

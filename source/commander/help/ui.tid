@@ -2,7 +2,7 @@ caption: Help
 created: 20190314050052494
 icon: $:/core/images/help
 list-after: $:/plugins/kookma/commander/setting/ui
-modified: 20200116041013995
+modified: 20200324070652550
 tags: $:/tags/Commander
 title: $:/plugins/kookma/commander/help/ui
 type: text/vnd.tiddlywiki

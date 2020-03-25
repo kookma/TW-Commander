@@ -1,11 +1,11 @@
 created: 20200105085554618
-modified: 20200112050503843
-tags: $:/tags/Commander/Macro show-content
+modified: 20200325065829776
+tags: $:/tags/Commander/Macro
 title: $:/plugins/kookma/commander/macros/slider
 type: text/vnd.tiddlywiki
 
-\define commander-slider(title default:"closed")
-<$set name="revealState" value=<<qualify "$:/state/reveal/$title$">>>
+\define commander-slider(title, default:"closed")
+<$set name="revealState" value=<<qualify "$:/state/commander/reveal/$title$">>>
 <h2>
   <$reveal type="nomatch" state=<<revealState>> text="open" default="$default$">
     <$button class="tc-btn-invisible tc-tiddlylink" set=<<revealState>> setTo="open">

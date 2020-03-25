@@ -1,8 +1,8 @@
 caption: Temporary tiddlers
 created: 20190301184304348
 list-after: $:/plugins/kookma/commander/setting/uicomp/relink
-modified: 20200113142909467
-tags: $:/tags/Commander/Setting show-content
+modified: 20200325055328690
+tags: $:/tags/Commander/Setting
 title: $:/plugins/kookma/commander/setting/uicomp/delete-all-temp-tiddlers
 type: text/vnd.tiddlywiki
 
