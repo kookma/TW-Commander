@@ -2,16 +2,23 @@ caption: {{$:/plugins/kookma/commander/images/file-alt}} {{$:/language/Buttons/C
 created: 20190724145015836
 description: Open tiddler commander
 list-after: $:/core/ui/Buttons/advanced-search
-modified: 20200324070652326
+modified: 20201002120203952
 tags: $:/tags/PageControls
 title: $:/plugins/kookma/commander/buttons/pagecontrol
 type: text/vnd.tiddlywiki
 
-<$button to="$:/Commander" tooltip={{$:/language/Buttons/Commander/Hint}} aria-label={{$:/language/Buttons/Commander/Caption}} class=<<tv-config-toolbar-class>>>
-<$list filter="[<tv-config-toolbar-icons>prefix[yes]]">
-{{$:/plugins/kookma/commander/images/file-alt}}
+\whitespace trim
+\define commander-button(class)
+<$button to="$:/Commander" tooltip={{$:/language/Buttons/Commander/Hint}} aria-label={{$:/language/Buttons/Commander/Caption}} class="""$(tv-config-toolbar-class)$ $class$""">
+<$list filter="[<tv-config-toolbar-icons>match[yes]]">
+{{$:/plugins/kookma/commander/images/file-alt.svg}}
 </$list>
-<$list filter="[<tv-config-toolbar-text>prefix[yes]]">
+<$list filter="[<tv-config-toolbar-text>match[yes]]">
 <span class="tc-btn-text"><$text text={{$:/language/Buttons/Commander/Caption}}/></span>
 </$list>
 </$button>
+\end
+
+<$list filter="[list[$:/StoryList]] +[field:title[$:/Commander]]" emptyMessage=<<commander-button>>>
+<<commander-button "tc-selected">>
+</$list>

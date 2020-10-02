@@ -1,5 +1,5 @@
 created: 20200109104450902
-modified: 20200325055328347
+modified: 20200913180532516
 tags: $:/tags/Commander/Macro
 title: $:/plugins/kookma/commander/field/macros/bulkfields
 type: text/vnd.tiddlywiki
@@ -9,13 +9,15 @@ type: text/vnd.tiddlywiki
 \define id_fldValue()   fldv$(cnt)$
 
 \define add-bulk-fields()
-<$wikify name=flt text={{{ [<datafieldsTid>indexes[]count[]] }}}> 
+<$set name="flt" tiddler=<<datafieldsTid>> field="counter" emptyValue="1"><!-- when the datafieldsTid is not exist, there is at least one field row -->
 <$list filter=<<numfilter>> variable="cnt">
+<$list filter="[<datafieldsTid>getindex<id_fldName>]" variable="newField">
 <$action-setfield $tiddler=<<newTitle>> 
- $field={{{ [<datafieldsTid>getindex<id_fldName>trim[]lowercase[]split[ ]join[_]]  }}}
+ $field={{{ [<newField>trim[]lowercase[]split[ ]join[_]]  }}}
  $value={{{ [<datafieldsTid>getindex<id_fldValue>] }}} />
 </$list>
-</$wikify>
+</$list>
+</$set>
 \end
 
 \define getInputs()
