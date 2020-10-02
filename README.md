@@ -2,7 +2,7 @@
 A tiddler toolkit for Tiddlywiki 5. Tiddler Commander can perform many kinds of batch operation like create or delete tiddlers, rename tiddlers, add/remove fields, tags, inspect tiddlers and do search and replace in all fields of tiddler.
 
 ## Project code and demo
-* [GitHub demo page](https://github.com/kookma/TW-Commander) [DOES NOT WORK, download the index.html and open in a browser]
+* [GitHub demo page](https://kookma.github.io/TW-Commander/) 
 * [GitHub code page](https://github.com/kookma/TW-Commander)
 
 
