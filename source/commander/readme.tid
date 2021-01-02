@@ -1,15 +1,9 @@
 created: 20200324061906254
-modified: 20201002120229880
+modified: 20210102142228008
 tags: 
 title: $:/plugins/kookma/commander/readme
 type: text/vnd.tiddlywiki
 
-<style>
-.cmd-doc svg{
-width: 1.2em;
-height: 1.2em;
-vertical-align: middle;}
-</style>
 ; Tiddler Commander
 Tiddler Commander, in short ''Commander'' is a unique tool for batch operations on tiddlers. Commander has the below features
 
@@ -24,8 +18,8 @@ Tiddler Commander, in short ''Commander'' is a unique tool for batch operations 
 * Search, //save and load// any combination of filter search
 
 ; Start Commander
-* Normally Commander adds its icon: <span class="cmd-doc">{{$:/plugins/kookma/commander/images/file-alt.svg}}</span> to page controls.
-* Open the right sidebar and click on the  <span class="cmd-doc">{{$:/plugins/kookma/commander/images/file-alt.svg}}</span> Commander is started
+* Normally Commander adds its icon: <span class="cmd-doc">{{$:/plugins/kookma/commander/images/commander.svg}}</span> to page controls.
+* Open the right sidebar and click on the  <span class="cmd-doc">{{$:/plugins/kookma/commander/images/commander.svg}}</span> Commander is started
 *  In standard Tiddlywiki, control buttons are shown on the right sidebar under site title.
 
 ; Code and demo
@@ -33,3 +27,10 @@ For learning plugin features, syntax, tutorial and examples see the plugin demo 
 
 * Demo: https://kookma.github.io/TW-Commander/
 * Code: https://github.com/kookma/TW-Commander
+
+<style>
+.cmd-doc svg{
+width: 1.2em;
+height: 1.2em;
+vertical-align: middle;}
+</style>
