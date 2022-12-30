@@ -1,23 +1,6 @@
-created: 20200109083928203
-modified: 20200325055328423
 tags: $:/tags/Commander/Macro
 title: $:/plugins/kookma/commander/field/macros/remove
 type: text/vnd.tiddlywiki
-
-\define xx-add-new-field-bulk(newField:"")
-<$list filter="[subfilter<searchfilter>!is[missing]limit[1]]" variable=ignore><!--check if filter is empty -->
-<$list filter="[<__newField__>!is[blank]]">
-<<create-log-tiddler "add-new-field-bulk">>
-<$list filter="[subfilter<searchfilter>]+[!is[missing]]-[has:field[$newField$]]">
-<$fieldmangler>
-<$action-sendmessage $message="tm-add-field" $param=<<__newField__>> />
-</$fieldmangler>
-<$macrocall $name="log-add-single-operation" msg="""new field `$newField$` added""" tidItem=<<currentTiddler>> />
-</$list>
-</$list>
-</$list>
-\end
-
 
 \define remove-old-field-bulk(oldField:"")
 <$list filter="[subfilter<searchfilter>!is[missing]limit[1]]" variable=ignore><!--check if filter is empty -->

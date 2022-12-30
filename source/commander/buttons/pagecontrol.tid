@@ -1,8 +1,6 @@
 caption: {{$:/plugins/kookma/commander/images/file-alt}} {{$:/language/Buttons/Commander/Caption}}
-created: 20190724145015836
 description: Open tiddler commander
 list-after: $:/core/ui/Buttons/advanced-search
-modified: 20210102140141074
 tags: $:/tags/PageControls
 title: $:/plugins/kookma/commander/buttons/pagecontrol
 type: text/vnd.tiddlywiki

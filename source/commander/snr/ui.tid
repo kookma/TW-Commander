@@ -1,8 +1,6 @@
 caption: Snr
-created: 20190220210055713
 icon: $:/core/images/gitter
 list-after: $:/plugins/kookma/commander/inspect/ui
-modified: 20200324070652833
 tags: $:/tags/Commander
 title: $:/plugins/kookma/commander/snr/ui
 type: text/vnd.tiddlywiki

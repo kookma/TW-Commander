@@ -1,0 +1,5 @@
+description: Show all docs
+filter: [tag[doc]]
+tags: $:/tags/Commander/Filter
+title: $:/plugins/kookma/commander/filters/yourFilter
+type: text/vnd.tiddlywiki

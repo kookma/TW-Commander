@@ -1,5 +1,3 @@
-created: 20200109104450902
-modified: 20200913180532516
 tags: $:/tags/Commander/Macro
 title: $:/plugins/kookma/commander/field/macros/bulkfields
 type: text/vnd.tiddlywiki
@@ -8,12 +6,13 @@ type: text/vnd.tiddlywiki
 \define id_fldName()    fldn$(cnt)$
 \define id_fldValue()   fldv$(cnt)$
 
+<!-- from TiddlyWiki 5.2.0, field name with mixed case is allowed -->
 \define add-bulk-fields()
 <$set name="flt" tiddler=<<datafieldsTid>> field="counter" emptyValue="1"><!-- when the datafieldsTid is not exist, there is at least one field row -->
 <$list filter=<<numfilter>> variable="cnt">
 <$list filter="[<datafieldsTid>getindex<id_fldName>]" variable="newField">
 <$action-setfield $tiddler=<<newTitle>> 
- $field={{{ [<newField>trim[]lowercase[]split[ ]join[_]]  }}}
+ $field={{{ [<newField>trim[]]  }}}
  $value={{{ [<datafieldsTid>getindex<id_fldValue>] }}} />
 </$list>
 </$list>

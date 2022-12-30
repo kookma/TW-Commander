@@ -1,7 +1,5 @@
 caption: Replace tags
-created: 20190212080523588
 list-after: $:/plugins/kookma/commander/tag/uicomp/add-remove-tags
-modified: 20200325055328782
 tags: $:/tags/Commander/TagOps
 title: $:/plugins/kookma/commander/tag/uicomp/replace-tags
 type: text/vnd.tiddlywiki

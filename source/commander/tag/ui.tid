@@ -1,7 +1,5 @@
 caption: Tag
-created: 20190212051852003
 list-after: $:/plugins/kookma/commander/title/ui
-modified: 20200325055328765
 tags: $:/tags/Commander
 title: $:/plugins/kookma/commander/tag/ui
 type: text/vnd.tiddlywiki

@@ -1,5 +1,3 @@
-created: 20200112073000701
-modified: 20200325055206697
 tags: $:/tags/Commander/Macro
 title: $:/plugins/kookma/commander/field/macros/add
 type: text/vnd.tiddlywiki
@@ -17,9 +15,9 @@ type: text/vnd.tiddlywiki
 </$vars>
 </$list>
 \end
-
+<!-- from TiddlyWiki 5.2.0, field name with mixed case is allowed -->
 \define getFieldsname()
 <$list filter="[<__datafieldsTid__>indexes[]prefix[fldn]]" variable=item>
-{{{ [<__datafieldsTid__>getindex<item>trim[]lowercase[]split[ ]join[_]]  }}} 
+{{{ [<__datafieldsTid__>getindex<item>trim[]] }}} 
 </$list>
 \end

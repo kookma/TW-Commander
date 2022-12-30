@@ -1,7 +1,5 @@
 caption: Delete tiddlers
-created: 20190301144408502
 list-after: $:/plugins/kookma/commander/tiddler/uicomp/create-tiddlers
-modified: 20200325055328839
 tags: $:/tags/Commander/TiddlerOps
 title: $:/plugins/kookma/commander/tiddler/uicomp/delete-tiddlers
 type: text/vnd.tiddlywiki
