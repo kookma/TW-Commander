@@ -14,7 +14,7 @@ type: text/vnd.tiddlywiki
 <$action-setfield $tiddler=<<currentTiddler>> $field=<<__newField__>> $value=<<oldValue>>/>
 </$set>
 <$action-deletefield $tiddler=<<currentTiddler>> $field=<<__oldField__>> />
-<$macrocall $name="log-add-single-operation" msg="""fied `$oldField$` renamed to `$newField$`""" tidItem=<<currentTiddler>> />
+<$macrocall $name="log-add-single-operation" msg="""field `$oldField$` renamed to `$newField$`""" tidItem=<<currentTiddler>> />
 </$list>
 </$list>
 </$list>

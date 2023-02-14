@@ -3,7 +3,7 @@
     "name": "Tiddler Commander",
     "description": "Tiddler Commander",
     "author": "Mohammad Rahmani",
-    "version": "2.1.4",
+    "version": "2.1.5",
     "core-version": ">=5.2.0",
     "source": "https://github.com/kookma/TW-Commander",
     "list": "readme license history",
