@@ -1,4 +1,4 @@
-caption: {{$:/plugins/kookma/commander/images/file-alt}} {{$:/language/Buttons/Commander/Caption}}
+caption: {{$:/plugins/kookma/commander/images/commander.svg}} {{$:/language/Buttons/Commander/Caption}}
 description: Open tiddler commander
 list-after: $:/core/ui/Buttons/advanced-search
 tags: $:/tags/PageControls
@@ -6,7 +6,9 @@ title: $:/plugins/kookma/commander/buttons/pagecontrol
 type: text/vnd.tiddlywiki
 
 \whitespace trim
+
 \define commander-button(class)
+\whitespace trim
 <$button to="$:/Commander" tooltip={{$:/language/Buttons/Commander/Hint}} aria-label={{$:/language/Buttons/Commander/Caption}} class="""$(tv-config-toolbar-class)$ $class$""">
 <$list filter="[<tv-config-toolbar-icons>match[yes]]">
 {{$:/plugins/kookma/commander/images/commander.svg}}
