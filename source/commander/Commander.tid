@@ -8,8 +8,9 @@ type: text/vnd.tiddlywiki
 <$vars searchTerms={{{ [<searchboxTid>get[text]minlength{$:/plugins/kookma/commander/config/minlength}]~[[$:/errorCode:-23500]] }}}  pattern="^\["><!-- this part checks the combo search and selective ops-->
 <$set name="filtertext"   filter="[<searchTerms>regexp<pattern>]" value="[subfilter<searchTerms>]" emptyValue="[!is[system]search<searchTerms>]">
 <$set name="searchfilter" filter="[<selectiveOpsTid>get[text]match[yes]]"  
-	value="[subfilter<filtertext>!prefix[$:/temp/commander]]+[tag<workingTag>]" emptyValue="[subfilter<filtertext>!prefix[$:/temp/commander]]" >
-<small style="margin-left:17ch;"><i><$count filter="[subfilter<filtertext>!prefix[$:/temp/commander]!is[missing]]" /> matches </i></small>
+      value=     "[subfilter<filtertext>!prefix[$:/temp/commander]!prefix[$:/state/commander]]+[tag<workingTag>]"
+      emptyValue="[subfilter<filtertext>!prefix[$:/temp/commander]!prefix[$:/state/commander]]" >
+<small style="margin-left:17ch;"><i><$count filter="[subfilter<filtertext>!prefix[$:/temp/commander]!prefix[$:/state/commander]!is[missing]]" /> matches </i></small>
 
 <!-- Display search results and let selective operation -->
 <<commander-slider title:"$:/plugins/kookma/commander/search/selection" default:"open">>

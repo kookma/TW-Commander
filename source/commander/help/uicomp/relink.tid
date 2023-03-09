@@ -19,6 +19,6 @@ It is possible to update all links to title. This includes //tags// and //list//
 <div class="commander-alert"> ''Note'': Relink does not update all forms of title e.g those created from different segments, but it will update any occurances</div>
 
 
-!! How to integrate with ''Relink''?
+!! How to integrate with Relink?
 
 Simply install the [[Relink|https://flibbles.github.io/tw5-relink/]] plugin and it will be appeared as an option when Tiddler Commander title operations including ~SnR are performed!

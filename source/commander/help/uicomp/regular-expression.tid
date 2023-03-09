@@ -6,13 +6,13 @@ type: text/vnd.tiddlywiki
 
 !! Regular Expressions Quick Reference
 
-|''FLAGS'' |<|<|h
+|FLAGS |<|<|h
 | i |ignore case|case insensitive matching|
 |   |whole words|match strings of a-z, 0-9 and _|
 | g |global|field start=^, field end=$, all matches|
 | m |multi-line|line start=^, line end=$, first match|
 |   |first match|field start=^, field end=$, first match|
-|''MATCH'' |<|<|h
+|MATCH |<|<|h
 |''Anchors''|<|<|
 | ^ |start of scope|see Flags, match is zero length|
 | $ |end of scope|see Flags, match is zero length|
@@ -21,7 +21,7 @@ type: text/vnd.tiddlywiki
 |''Character Classes''|<|<|
 | [c] |class of characters|any one matches, e.g. [abc123]|
 | [^c] |negated class of characters|any one doesn't match, e.g. [^abc123]|
-|''Shorthand Character Classes''|<|<|
+|''Shorthand Character Classes'' |<|<|
 | . |any character except newline|same as [^\n]|
 | \d |decimal|same as [0-9]|
 | \D |not decimal|same as [^0-9]|
@@ -45,9 +45,9 @@ type: text/vnd.tiddlywiki
 | {x,} |match x or more times|match x times or as many as possible|
 |''Escapes''|<|<|
 | \ |escape special characters|add to \ [  ] ( ) { } ^ $ . ?  *  + for literals|
-|''REPLACE'' |<|<|h
+|REPLACE |<|<|h
 | $& |return the full match|<|
 | $x |return $x where x is the numeric index of a Capturing Group|<|
-|''NOTE'' |<|<|h
+|NOTE |<|<|h
 |This Reference supports most ordinary uses of regular expressions.<br> For advanced options: [[MDN Reference|https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#Using_simple_patterns]]; examples: [[regular-expressions.info|https://www.regular-expressions.info/tutorial.html]].|<|<|
 

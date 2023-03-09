@@ -3,7 +3,7 @@ title: $:/plugins/kookma/commander/snr/macros/actions
 type: text/vnd.tiddlywiki
 
 \define regexp-flags()
-{{$:/state/commander/snr/gm}}{{$:/state/commander/snr/case-sensitive}}{{$:/state/commander/snr/unicode}}
+{{$:/config/commander/snr/gm}}{{$:/config/commander/snr/case-sensitive}}{{$:/config/commander/snr/unicode}}
 \end
 
 \define snr-ui-show-diffs()
@@ -20,7 +20,7 @@ Tiddler: <$link to={{$:/state/commander/snr/select-tiddler}}><$text text={{$:/st
  replace={{$:/state/commander/snr/replace-text}} 
  replaceWith={{$:/state/commander/snr/replace-text-with}} 
  flags=<<flags>> 
- wholeWords={{$:/state/commander/snr/whole-words}}
+ wholeWords={{$:/config/commander/snr/whole-words}}
 />
 
 </$wikify>
@@ -38,7 +38,7 @@ Tiddler: <$link to={{$:/state/commander/snr/select-tiddler}}><$text text={{$:/st
  replace={{$:/state/commander/snr/replace-text}} 
  replaceWith={{$:/state/commander/snr/replace-text-with}} 
  flags=<<flags>> 
- wholeWords={{$:/state/commander/snr/whole-words}}
+ wholeWords={{$:/config/commander/snr/whole-words}}
 />""">
 <$reveal type="match" text={{{ [<__tiddler__>get<__field__>] }}} default=<<result>> >
 same
@@ -61,7 +61,7 @@ different
  replace=<<__replace__>>
  replaceWith=<<__replaceWith__>> 
  flags=<<flags>> 
- wholeWords={{$:/state/commander/snr/whole-words}}
+ wholeWords={{$:/config/commander/snr/whole-words}}
 />
 <$macrocall $name="log-add-single-operation" msg="""`$field$` field has been changed""" tidItem=<<__tiddler__>> />
 <$macrocall $name="clear-select-tiddler-if-field-is-title" tiddler=<<__tiddler__>>  field=<<__field__>> />

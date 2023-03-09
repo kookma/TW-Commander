@@ -1,11 +1,10 @@
 .kk-commander-tiddler-list {
-  font-size:small; 
-	border-left:0.5px 
-	dotted grey;
+	font-size:small; 
+	border-left:0.5px dotted grey;
 	padding-left:10px;
 	overflow-y:auto;
 	max-width:100%;
-	max-height:$(height)$;
+/*	max-height:$(height)$; */
 }
 
 .kk-commander-columns1   { display:block; column-count:1; column-gap:1em; }

@@ -21,8 +21,9 @@ placeholder=" new field name"
 <$button class="cmd-btn cmd-btn-wd"> Rename field
 <$macrocall $name="rename-field-bulk" 
 oldField={{$:/temp/commander/rename-field/old}} 
-newField={{{ [[$:/temp/commander/rename-field/new]get[text]lowercase[]trim[]split[ ]join[_]] }}} />
+newField={{{ [[$:/temp/commander/rename-field/new]get[text]trim[]] }}} />
 </$button>
 
-<!-- new field name is checked to be lowecase and leading and trailing spaces are removed and space between words replaced by underscore (_).
+<!--
+From TW 5.2.0 field name can have mixed case and space, so all restrictions are released.
 -->

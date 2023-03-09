@@ -4,7 +4,7 @@ type: text/vnd.tiddlywiki
 
 \define commander-slider(title, default:"closed")
 <$set name="revealState" value=<<qualify "$:/state/commander/reveal/$title$">>>
-<h2>
+<h3>
   <$reveal type="nomatch" state=<<revealState>> text="open" default="$default$">
     <$button class="tc-btn-invisible tc-tiddlylink" set=<<revealState>> setTo="open">
       {{$:/core/images/right-arrow}}
@@ -18,8 +18,7 @@ type: text/vnd.tiddlywiki
   <$view tiddler="$title$" field="caption">
     <$view tiddler="$title$" field="title"></$view>
   </$view>
-  
-</h2>
+</h3>
 
 <$reveal type="match" state=<<revealState>> text="open" default="$default$">
 <$transclude tiddler="$title$" mode="block" />

@@ -9,21 +9,21 @@ type: text/vnd.tiddlywiki
 <legend>Search flags</legend>
 
 <$checkbox 
-  tiddler="$:/state/commander/snr/case-sensitive" 
+  tiddler="$:/config/commander/snr/case-sensitive" 
   field="text" 
   checked="i" 
   unchecked=""
 />&nbsp; ignore case<br>
 
 <$checkbox 
-  tiddler="$:/state/commander/snr/whole-words" 
+  tiddler="$:/config/commander/snr/whole-words" 
   field="text" 
   checked="words" 
   unchecked="characters"
 />&nbsp; whole words<br>
 
 <$checkbox 
-  tiddler="$:/state/commander/snr/unicode" 
+  tiddler="$:/config/commander/snr/unicode" 
   field="text" 
   checked="u" 
   unchecked=""
@@ -32,25 +32,25 @@ type: text/vnd.tiddlywiki
 <br>
 
 <$radio
-  tiddler="$:/state/commander/snr/gm" 
+  tiddler="$:/config/commander/snr/gm" 
   field="text" 
   value="">&nbsp; first match 
 </$radio><br>
 
 <$radio
-  tiddler="$:/state/commander/snr/gm" 
+  tiddler="$:/config/commander/snr/gm" 
   field="text" 
   value="g">&nbsp; global match
 </$radio><br>
 
 <$radio
-  tiddler="$:/state/commander/snr/gm" 
+  tiddler="$:/config/commander/snr/gm" 
   field="text" 
   value="m">&nbsp; multiline mode
 </$radio><br>
 
 <$radio
-  tiddler="$:/state/commander/snr/gm" 
+  tiddler="$:/config/commander/snr/gm" 
   field="text" 
   value="mg">&nbsp; global multiline mode
 </$radio>
