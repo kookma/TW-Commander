@@ -1,5 +1,0 @@
-caption: Tiddler Commander
-tags: $:/tags/Actions
-title: $:/plugins/kookma/commander/buttons/ActionOpenCommander
-
-<$action-navigate $to="$:/Commander"/>
