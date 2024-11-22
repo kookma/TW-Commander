@@ -1,0 +1,8 @@
+key: ((open-commander))
+tags: $:/tags/KeyboardShortcut
+title: $:/plugins/kookma/commander/ui/KeyboardShortcuts/open-commander
+type: text/vnd.tiddlywiki
+
+<$navigator story="$:/StoryList" history="$:/HistoryList">
+<$action-navigate $to="$:/Commander" $scroll="yes"/>
+</$navigator>
