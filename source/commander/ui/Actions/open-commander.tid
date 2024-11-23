@@ -1,0 +1,9 @@
+caption: {{$:/language/Buttons/Commander/Caption}}
+description: {{$:/language/Buttons/Commander/Hint}}
+tags: $:/tags/Actions
+title: $:/plugins/kookma/commander/ui/Actions/open-commander
+type: text/vnd.tiddlywiki
+
+\whitespace trim
+<$action-navigate $to="$:/Commander" $scroll="yes"/>
+<!-- This is used with plugins like Command Palette See: https://github.com/kookma/TW-Commander/pull/36-->

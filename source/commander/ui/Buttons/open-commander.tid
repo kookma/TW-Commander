@@ -1,0 +1,24 @@
+caption: {{$:/plugins/kookma/commander/images/commander.svg}} {{$:/language/Buttons/Commander/Caption}}
+description: {{$:/language/Buttons/Commander/Hint}}
+list-after: $:/core/ui/Buttons/advanced-search
+tags: $:/tags/PageControls
+title: $:/plugins/kookma/commander/ui/Buttons/open-commander
+type: text/vnd.tiddlywiki
+
+\whitespace trim
+
+\define commander-button(class)
+\whitespace trim
+<$button to="$:/Commander" tooltip={{$:/language/Buttons/Commander/Hint}} aria-label={{$:/language/Buttons/Commander/Caption}} class="""$(tv-config-toolbar-class)$ $class$""">
+<$list filter="[<tv-config-toolbar-icons>match[yes]]">
+{{$:/plugins/kookma/commander/images/commander.svg}}
+</$list>
+<$list filter="[<tv-config-toolbar-text>match[yes]]">
+<span class="tc-btn-text"><$text text={{$:/language/Buttons/Commander/Caption}}/></span>
+</$list>
+</$button>
+\end
+
+<$list filter="[list[$:/StoryList]] +[field:title[$:/Commander]]" emptyMessage=<<commander-button>>>
+<<commander-button "tc-selected">>
+</$list>
