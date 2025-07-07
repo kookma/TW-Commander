@@ -1,9 +1,12 @@
+created: 20250707183601941
+modified: 20250707183646063
 tags: 
 title: $:/plugins/kookma/commander/history
 type: text/vnd.tiddlywiki
 
 Full change log  https://kookma.github.io/TW-Commander/#ChangeLog
 
+* ''2.1.14'' -- 2025.07.07 -- updated to TiddlyWiki 5.3.7
 * ''2.1.9'' -- 2024.09.13 -- development moved to Gatha-Thirdflow
 * ''2.1.8'' -- 2024.06.13 -- updated to support Tiddlywiki 5.3.3
 * ''2.1.5'' -- 2023.02.14 -- updated to support Tiddlywiki 5.2.5
